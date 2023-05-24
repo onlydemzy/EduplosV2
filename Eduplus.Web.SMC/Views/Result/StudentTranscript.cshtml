@@ -1,0 +1,195 @@
+﻿@model Eduplus.DTO.AcademicModule.TranscriptDTO
+@{
+    ViewBag.Title = "StudentTranscript";
+    Layout = "~/Views/Shared/_A4ReportLayout.cshtml";
+}
+
+<h3>Student Transcript</h3>
+
+@if (Model != null)
+{
+    <div class="hold-holders">
+        <div class="title-holderS1">
+
+            <table class="table-condensed">
+                <tr>
+                    <td>RegNo:</td>
+                    <td>@Html.DisplayFor(model => model.RegNo)</td>
+                </tr>
+                <tr>
+                    <td>Name:</td>
+                    <td>@Html.DisplayFor(model => model.Name)</td>
+                </tr>
+                <tr>
+                    <td>Gender:</td>
+                    <td>@Html.DisplayFor(model => model.Gender)</td>
+                </tr>
+                <tr>
+                    <td>Addmitted Yr:</td>
+                    <td>@Html.DisplayFor(model => model.YearAdmitted)</td>
+                </tr>
+                <tr>
+                    <td>Entry Mode:</td>
+                    <td>@Html.DisplayFor(model => model.EntryMode)</td>
+                </tr>
+                @if (Model.BaseCGPA > 0)
+                {
+                    <tr>
+                        <td>Base CGPA:</td>
+                        <td>@Html.DisplayFor(model => model.BaseCGPA)</td>
+                    </tr>
+                }
+            </table>
+
+        </div>
+        <div class="title-holderS2">
+            <table class="table-condensed">
+                <tr>
+                    <td>Programme Duration:</td>
+                    <td>@Html.DisplayFor(model => model.Duration)</td>
+                </tr>
+                <tr>
+                    <td>Department:</td>
+                    <td>@Html.DisplayFor(model => model.Department)</td>
+                </tr>
+                <tr>
+                    <td>Faculty:</td>
+                    <td>@Html.DisplayFor(model => model.Faculty)</td>
+                </tr>
+                <tr>
+                    <td>CGPA:</td>
+                    <td>@Html.DisplayFor(model => model.CGPA)</td>
+                </tr>
+                <tr>
+                    <td>Degree Class:</td>
+                    <td>@Html.DisplayFor(m=>m.DegreeClass)</td>
+                </tr>
+            </table>
+
+        </div>
+
+    </div>
+
+    <div id="Input1" style="width:600px;  height:auto; margin-left:auto; margin-right:auto; clear:both;
+ border:solid; border-width:1px; font-size:9px; float:left">
+
+        <table class="table-striped">
+            <thead>
+                <tr>
+                    <th>Semester</th>
+                    <th>Code</th>
+                    <th> Title</th>
+                    <th style="width:auto; padding-left:5px;padding-right:5px;"> CH</th>
+
+                    <th style="width:auto; padding-left:5px;padding-right:5px;"> Grade</th>
+                    <th style="width:auto; padding-left:5px;padding-right:5px;"> GP</th>
+                    <th style="width:auto; padding-left:5px;padding-right:5px;"> QP</th>
+                </tr>
+            </thead>
+
+            @foreach (var hd in Model.SemesterSummaries)
+            {
+
+                <tr>
+                    <td style="color:white;">ghj</td>
+                </tr>
+                <tr>
+                    <td><b>@Html.DisplayFor(model => hd.Title)</b> </td>
+
+                </tr>
+
+                foreach (var res in hd.SemesterResults)
+                {
+                    <tr>
+                        <td></td>
+                        <td>@Html.DisplayFor(model => res.CourseCode)</td>
+                        <td>
+                            @Html.DisplayFor(model => res.CourseTitle)
+                        </td>
+                        <td style="width:auto; text-align:center;">
+                            @Html.DisplayFor(model => res.CHr)
+                        </td>
+
+                        <td style="width:auto; text-align:center;">
+                            @Html.DisplayFor(model => res.Grade)
+                        </td>
+                        <td style="width:auto; text-align:center;">
+                            @Html.DisplayFor(model => res.GradePoint)
+                        </td>
+                        <td style="width:auto; text-align:center;">
+                            @Html.DisplayFor(model => res.QualityPoint)
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td>
+                        <b>Summary:</b>
+                    </td>
+                    <td><b>GPA = @Html.DisplayFor(model => hd.GPA)</b> </td>
+                    <td style="padding-left:15px;"><b>CGPA=  @Html.DisplayFor(model => hd.CGPA)</b></td>
+                </tr>
+
+            }
+
+
+        </table>
+
+
+
+    </div>
+
+    <div id="gading" style="margin-left:620px; border-width:1px">
+        <table class="table">
+            <caption>Grading System (5 Points System)</caption>
+            <thead>
+                <tr>
+                    <th>Score</th>
+                    <th>Grade</th>
+                    <th>Grade Point</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>70 - 100</th>
+                    <th>A</th>
+                    <th>5</th>
+                </tr>
+                <tr>
+                    <th>60 - 69</th>
+                    <th>B</th>
+                    <th>4</th>
+                </tr>
+                <tr>
+                    <th>50 - 59</th>
+                    <th>C</th>
+                    <th>3</th>
+                </tr>
+                <tr>
+                    <th>45 - 49</th>
+                    <th>D</th>
+                    <th>2</th>
+                </tr>
+                <tr>
+                    <th>0 - 44</th>
+                    <th>F</th>
+                    <th>0</th>
+                </tr>
+            </tbody>
+        </table>
+        <h6>Quality Point (QP) = Credit Hour (CH) * Grade Point (GP)</h6>
+    </div>
+
+    <div class="auth" style="width:420px;  overflow:hidden; margin-top:80px;">
+
+
+        <div id="hd" style="width:200px; margin-left:220px">
+            <a>----------------------------------------</a><br />
+            <a style="width:200px; text-align:center;">Registrar</a>
+        </div>
+
+    </div>
+}
+else
+{
+    <span>Inputted Matric Number does not exist</span>
+}

@@ -1,0 +1,39 @@
+﻿@model Eduplus.Domain.CoreModule.AppImages
+@{
+    ViewBag.Title = "UploadSlidePix";
+}
+
+<div class="row">
+    <div class="col-md-7">
+        @Html.ValidationSummary();
+        @using (Html.BeginForm("UploadSlidePix", "SitePanel", FormMethod.Post, new{ enctype = "multipart/form-data", @class = "form-horizontal"}))
+        {
+            <div class="form-group">
+                @Html.Label("", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <img id="output" style="max-height:150px; max-width:150px;" />
+                    <input type="file" accept="image/*" onchange="loadfile(event)" name="image" id="image" value="Picture File" size="1024" />
+                    
+                </div>
+             </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Description, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.Description, new { @class = "form-control" })
+                    
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-success" value="Upload Picture" />
+            </div>
+        }
+
+     </div>
+</div>
+<script>
+    var loadfile = function (event) {
+
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+    };
+</script>

@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "CurrentFeeSchedule";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="form-horizontal" style="max-width:600px;margin-left:auto;margin-right:auto;">
+    <h3>Current Fee Schedule</h3>
+    <div class="form-group">
+        <div class="col-md-5">
+
+            <select data-bind="value:facultyCode,options:faculties,optionsValue:'FacultyCode',optionsText:'Title', optionsCaption:'--Select Faculty--'" class="form-control"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-5">
+            <select data-bind="value:programmeType,options:types, optionsCaption:'--Select Programme--'" class="form-control"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-5">
+            <button data-bind="click:view" class="btn btn-success btn-block">Submit</button>
+        </div>
+        
+    </div>
+</div>
+
+    
+
+@Scripts.Render("~/Scripts/ViewModels/currentFeeSchedule.js")

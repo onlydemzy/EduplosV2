@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title-Eduplus</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    
+</head>
+<body>
+    <div class="wrapper">
+        <img src="~/Content/images/jkbana.png" class="banner-image" />
+        <p style="text-align:justify; float:right; display:block;">
+            <b>
+                Tel: +2348107381867<br />+2348027175638<br />+2348037847780
+                <br />
+
+            </b>
+            <br />
+        </p>
+        <section>
+            @Html.Partial("_MenuPartial")
+        </section>
+        
+            <div class="row">
+                <div class="col-md-8">
+                    @Scripts.Render("~/bundles/jquery")
+                    @Scripts.Render("~/bundles/bootstrap")
+                    @Scripts.Render("~/bundles/menu")
+                    @Scripts.Render("~/bundles/knockout")
+                    @RenderSection("scripts", required: false)
+                    @RenderBody()
+                </div>
+                <div class="col-md-4">
+                    <section class="row">
+                        @Html.Action("_NewsPartial", "Home")
+                    </section>
+                    <section class="row">
+                        @Html.Action("_EventsPartial", "Home")
+                    </section>
+                </div>
+               
+            </div>
+
+       
+        <footer style="background-color:#ff6a00; color:#fff;">
+           @Html.Action("FooterPartial","Home")
+        </footer>
+    </div>
+    
+   
+</body>
+</html>

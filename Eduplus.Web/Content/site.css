@@ -1,0 +1,135 @@
+﻿body {
+    padding-top: 1px;
+    padding-left:1px;
+     
+    
+}
+
+/*Begin custom*/
+.title-holder1{
+    width:400px;
+    
+    margin-right:auto;
+    height:auto;
+    float:right;
+}
+.title-holderS1{
+    width:395px;
+    margin-left:auto;
+    border-bottom-width:2px;
+    height:auto;
+    float:left;
+}
+
+.title-holderS2{
+    width:395px;
+    
+    margin-right:auto;
+    height:auto;
+    float:right;
+    border-bottom-width:2px;
+}
+.report-header{
+    width:100%;
+    height:auto;
+    
+    text-align:center;
+}
+
+/*End*/
+
+a{
+    color:#0a5e23;
+    font-weight:bold;
+}
+a:hover{color:#ffd800;}
+h3{
+    color:#0a5e23;
+    font-weight:bold;
+}
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+
+}
+.wrapper{
+    width:70%;
+    margin-left:auto;
+    margin-right:auto;
+    min-width:780px;
+    height:auto;
+    background-color:#fff;
+    overflow:hidden;
+}
+
+.heading {
+    color: #0a5e23;
+    height: 30px;
+    padding-bottom: -5px;
+    border-bottom: solid;
+    border-bottom-color: #0a5e23;
+    border-bottom-width: 2px;
+    border-bottom: solid;
+    border-left-width: 1px;
+    border-left-style: solid;
+    
+}
+.banner{
+    width:auto;
+    background-color:#fff;
+
+}
+.wrapper-container{
+    clear:both;
+    width:100%;
+    overflow:hidden;
+    
+    margin-top:-17px;
+}
+.main-content{
+    width:75%;
+    float:left;
+    
+}
+href{
+    color:forestgreen;
+}
+.main-right-bar{
+    width:24%;
+    float:right;
+    background-color:crimson;
+    margin-top:-2px;
+}
+.banner-image{
+    width:auto;
+    max-width:70%;
+    margin-left:1px;
+}
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 500px;
+    
+}
+nav li a{
+    color:#fff;
+}
+label { display: block; }
+
+.validationMessage { color: Red; }
+
+
+
+@media all and (max-width: 800px), only screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: 1024px), only screen and (min--moz-device-pixel-ratio: 2) and (max-width: 1024px), only screen and (-o-min-device-pixel-ratio: 2/1) and (max-width: 1024px), only screen and (min-device-pixel-ratio: 2) and (max-width: 1024px), only screen and (min-resolution: 192dpi) and (max-width: 1024px), only screen and (min-resolution: 2dppx) and (max-width: 1024px) {
+    
+}
+

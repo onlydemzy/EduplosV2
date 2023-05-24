@@ -1,0 +1,113 @@
+﻿@model Eduplus.DTO.CoreModule.StudentInProgDTO
+@{
+    ViewBag.Title = "Student";
+    Layout = "~/Views/Shared/_A4ReportLayout.cshtml";
+}
+    @if(Model==null)
+    {
+        <h2>Oops! No record found </h2>
+    }
+    else
+    {
+        <div id="A" style="page-break-after:always; width:850px; height:auto; margin-left:auto;margin-right:auto;margin-top:10px;">
+            <div class="report-header">
+                @if (UserData.Logo != null)
+                {
+                    var base64 = Convert.ToBase64String(UserData.Logo);
+                    var imgSrc = String.Format("data:image/jpeg;base64,{0}", base64);
+                    <img src='@imgSrc' style="width:100px; height:100px;" />
+
+                }
+                <br /><b style="font-family:'Arial Rounded MT';font-size:25px;font-weight:bold">
+                    @UserData.InstitutionName
+                </b>
+            </div>
+            <div class="hold-holders">
+                <h3 style="border-bottom-width:1px; border-bottom:solid">Students</h3>
+                <div class="title-holderS1">
+                    <table class="table table-condensed">
+                        <tr>
+                            <td class="col-md-4">Faculty:</td>
+                            <td>@Html.DisplayFor(model => model.Faculty, new { @class = "form-control" })</td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">Department:</td>
+                            <td>@Html.DisplayFor(model => model.Department, new { @class = "form-control" })</td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">Programme:</td>
+                            <td>@Html.DisplayFor(model => model.Programme, new { @class = "form-control" })</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="title-holderS2">
+                    <table class="table" border="0">
+                        <tr>
+                            <td width=50px>Year Admitted:</td>
+                            <td>@Html.DisplayFor(model => model.Set, new { @class = "form-control" })</td>
+                        </tr>
+                        <tr>
+                            <td width=50px>Programme Type:</td>
+                            <td>@Html.DisplayFor(model => model.ProgType, new { @class = "form-control" })</td>
+                        </tr>
+                        <tr>
+                            <td width=50px>Total:</td>
+                            <td>@Html.DisplayFor(model => model.Level, new { @class = "form-control" })</td>
+                        </tr>
+                    </table>
+                </div>
+                <hr />
+            </div>
+            <div id="Input" style="width:850px; margin-left:auto; clear:both;">
+                <table class="table table-bordered table-condensed">
+                    <thead style="display: table-row-group">
+                        <tr>
+                            <th>StudentId</th>
+                            <th>Matric No</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Level</th>
+                            <th>Status</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Students != null)
+                        {
+                            foreach (var resul in Model.Students)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(model => resul.StudentId, new { @class = "form-control" })
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => resul.MatricNumber, new { @class = "form-control" })
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => resul.FullName, new { @class = "form-control" })
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => resul.Email, new { @class = "form-control" })
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => resul.CurrentLevel, new { @class = "form-control" })
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => resul.Status, new { @class = "form-control" })
+                                    </td>
+                                   
+                                </tr>
+
+                            }
+
+                        }
+                       
+                    </tbody>
+                    
+                </table>
+            </div>
+            
+        </div>
+    }
+  

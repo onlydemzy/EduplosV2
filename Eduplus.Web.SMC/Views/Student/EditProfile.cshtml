@@ -1,0 +1,267 @@
+﻿
+@{ViewBag.Title = "Edit Student";
+    
+}
+
+
+ 
+
+    
+
+            <h4 style="color:#08581b">Personal Data</h4>
+            <hr />
+        <div class="form-group">
+            <label class="control-label col-md-3">StudentID</label>
+            <div class="col-md-7">
+                <input type="text" data-bind="value:StudentId" class="form-control" disabled />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3">MatricNo</label>
+            <div class="col-md-7">
+                <input type="text" data-bind="value:MatricNumber" class="form-control" />
+            </div>
+        </div>
+         
+            <div class="form-group">
+
+                <div class="col-md-7">
+                    <input type="text" data-bind="value: Surname" class="form-control" placeholder="Surname" />
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-7">
+                    <input type="text" data-bind="value:Firstname" class="form-control" placeholder="First name" />
+
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-7">
+                    <input type="text" data-bind="value:Middlename" class="form-control" placeholder="Middle name" />
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-4">
+                    <select data-bind="value:MaritalStatus, options:MStatus, optionsCaption:'Your marital status'" class="form-control"></select>
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-4">
+                    <select data-bind="value:Sex, options:Sexes, optionsCaption:'I am...'" class="form-control"></select>
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <div class="col-md-7">
+                    <input type="text" data-bind="value:ResidentialAddress" class="form-control" placeholder="Residential Address" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-7">
+                    <select data-bind="value:Country, options:Countries,optionsValue:'Country', optionsCaption:'Select your Country'" class="form-control"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-7">
+                    <select data-bind="value:State, options:States,optionsValue:'State', optionsCaption:'Select your State'" class="form-control"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-7">
+                    <select data-bind="value:Lg, options:Lgs, optionsValue:'Lga',optionsText:'Lga', optionsCaption:'Select your lga'" class="form-control"></select>
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    <input type="email" data-bind="value:Email" class="form-control" placeholder="Email"   />
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-7">
+                    <input type="tel" data-bind="value:Phone" class="form-control" placeholder="Phone number" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-2">
+                    Birth Date
+                </div>
+
+                <div class="col-md-2">
+                    <select data-bind="value:BDay,options:days, optionsCaption:'Day'" class="form-control"></select>
+                </div>
+                <div class="col-md-3">
+                    <select data-bind="value:BMonth,options:months, optionsCaption:'-Month-'" class="form-control"></select>
+                </div>
+                <div class="col-md-3">
+                    <select data-bind="value:BYear,options:yrs, optionsCaption:'-Year-'" class="form-control"></select>
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <div class="col-md-7">
+                    <select data-bind="value:IsHandicapped,options:handies,optionsCaption:'Is handicapped?'" class="form-control"></select>
+                </div>
+            </div>
+
+            <hr />
+            <h4><label class="label label-success">Next of Kin Information</label></h4>
+            <div class="form-group">
+
+                <div class="col-md-7">
+                    <input type="text" data-bind="value:NextKin" class="form-control" placeholder="Kin name" />
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-7">
+                    <input type="text" data-bind="value:KinMail" class="form-control" placeholder="Kin Email" />
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-7">
+                    <input type="tel" data-bind="value:KinPhone" class="form-control" placeholder="Kin Phone Number" />
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-7">
+                    <input type="text" data-bind="value:KinAddress" class="form-control" placeholder="Kins Address" />
+                </div>
+            </div>
+            <hr />
+            <h4><label class="label label-success">Sponsor Information</label></h4>
+            <div class="form-group">
+
+                <div class="col-md-12">
+                    <input type="text" data-bind="value:Referee" class="form-control" placeholder="Sponsor's full Name" />
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-7">
+                    <input type="text" data-bind="value:RefereeMail" class="form-control" placeholder="Email" />
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-7">
+                    <input type="tel" data-bind="value:RefereePhone" class="form-control" placeholder="Sponosr Phone Number" />
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-7">
+                    <input type="tel" data-bind="value:RefereeAddress" class="form-control" placeholder="Sponsor Address" />
+                </div>
+            </div>
+
+            <h4><label class="label label-success">Academics</label></h4>
+
+            <div class="form-group">
+
+                <div class="col-md-7">
+                    <input data-bind="value:JambRegNumber" class="form-control" placeholder="Jamb Number" />
+                </div>
+            </div>
+<div class="form-group">
+    <div class="col-md-7">
+        <input data-bind="value:JambYear" class="form-control" placeholder="Jamb Year" />
+    </div>
+</div>
+         
+
+<div class="form-group">
+    <div class="col-md-7">
+        <select data-bind="value:YearAdmitted, options:sessions,optionsText:'Title',optionsValue:'Title', optionsCaption:'Session Admitted'" class="form-control"></select>
+    </div>
+
+</div>
+
+            <div class="form-group">
+
+                <div class="col-md-7">
+                    <select data-bind="value:EntryMode, options:EntryModes, optionsCaption:'Mode of Entry'" class="form-control"></select>
+                </div>
+
+
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-7">
+                    <select data-bind="value:StudyMode, options:studymodes, optionsCaption:'Study Mode'" class="form-control"></select>
+                </div>
+
+
+            </div>
+            <div class="form-group">
+                <div class="col-md-7">
+                    <select data-bind="options:pTypes,value:ProgrammeType,optionsValue:'Type',optionsText:'Type',optionsCaption:'Choose Programme Type'" class="form-control"></select>
+                    <img src="~/Content/images/wait24.gif" id="sp" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-7">
+                    <select data-bind="options:progs,value:Prog,optionsText:'Title',optionsCaption:'Choose Programme'" class="form-control"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-7">
+                    <input type="text" class="form-control" data-bind="value:Department" placeholder="Department" disabled />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-7">
+                    <input type="text" class="form-control" data-bind="value:Faculty" placeholder="Faculty" disabled />
+                </div>
+            </div> 
+            <div class="form-group">
+
+                <div class="col-md-7">
+                    <select data-bind="value:Duration, options:durations, optionsCaption:'Duration in years'" class="form-control"></select>
+                </div>
+
+            </div>
+        
+        <div class="form-group">
+
+            <div class="col-md-7">
+                <select data-bind="value:CurrentLevel, options:lvls, optionsCaption:'Current Level'" class="form-control"></select>
+            </div>
+
+        </div>
+        <div class="form-group">
+
+            <div class="col-md-7">
+                <select data-bind="value:Status, options:statues, optionsCaption:'Select Status'" class="form-control"></select>
+            </div>
+
+        </div>
+<div>
+            <div class="form-group">
+                <button data-bind="click:submit, disable:kill" class="btn btn-success">Submit</button>
+                <img src="~/Content/images/wait24.gif" data-bind="visible:kill" />
+            </div>
+
+       </div>
+
+@Scripts.Render("~/Scripts/ViewModels/editProfileVM.js")
+
+<style>
+    .validationMessage {
+        color: red;
+        font-size: 1.0em;
+    }
+</style>
+
+
+

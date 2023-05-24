@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "Daily Collections";
+}
+<div>
+@using (Html.BeginForm("DailyCollections", "Bursary", FormMethod.Post))
+{ 
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="row form-horizontal">
+        <div class="form-group">
+            From
+            <div class="col-md-12">
+                <input class="form-control" id="fromDate" name="fromDate" type="date" />
+            </div>
+        </div>
+    </div>
+    <div class="row form-horizontal">
+        <div class="form-group">
+            To
+            <div class="col-md-12">
+                <input class="form-control" id="toDate" name="toDate" type="date" />
+            </div>
+        </div>
+       
+    </div>
+
+    <div class="row form-horizontal">
+        <div class="form-group">
+            Report Type
+            <div class="col-md-12">
+                <select class="form-control" id="rptType" name="rptType">
+                    <option value="">--Report Type--</option>
+                    <option value="Bulk">Bulk</option>
+                    <option value="Full">Detailed</option>
+                </select>
+            </div>
+        </div>
+
+    </div>
+    <div class="row form-horizontal">
+        
+        <div class="form-group">
+            <input type="submit" class="btn btn-info" value="Submit" />
+        </div>
+    </div>
+}
+    </div>

@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "FeesCollections";
+}
+<div class="col-md-8">
+    <h2>Fees Collections Report Generation</h2>
+    <select data-bind="value:duration,options:durations',optionsCaption:'Choose Duration'" class="form-control"></select>
+    <select data-bind="value:rpt,options:reports',optionsCaption:'Choose Report'" class="form-control"></select>
+    <select data-bind="visible:hideS,value:session,options:sessions,optionsValue:'Title',optionsText:'Title',optionsCaption:'Choose Session'" class="form-control"></select>
+    <select data-bind="visible:hideS,value:session,options:sessions,optionsValue:'Title',optionsText:'Title',optionsCaption:'Choose Session'" class="form-control"></select>
+    <select data-bind="visible:hideAct,value:account,options:accounts,optionsValue:'AccountCode',optionsText:'Title',optionsCaption:'Choose Account'" class="form-control"></select>
+
+</div>
+@section Scripts{
+    @Scripts.Render("~/Scripts/ViewModels/FeesCollectionsVM.js")
+}

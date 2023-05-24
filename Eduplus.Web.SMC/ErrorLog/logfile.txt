@@ -1,0 +1,13 @@
+------Error(2021-05-05 09:45:47.1186)DESKTOP-6JMPARN------
+
+                      Exception Type:System.Net.WebException |
+                      Exception Message:The remote name could not be resolved: 'remitademo.net' |
+                      Stack Trace: |
+                      Additional Info:An error occurred while sending the request.
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Eduplus.Web.SMC.Controllers.PayProcessorController.<PaymentConfirmation>d__6.MoveNext() in C:\VS\EduplosV2\Eduplus.Web.SMC\Controllers\PayProcessorController.cs:line 69
+

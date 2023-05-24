@@ -1,0 +1,71 @@
+﻿@model Eduplus.DTO.BursaryModule.FeeScheduleDTO
+@{
+    ViewBag.Title = "Current Fees";
+    Layout = "~/Views/Shared/_A4ReportLayout.cshtml";
+}
+
+    @if (Model==null)
+    {
+        <p>Schedule not defined for chosen faculty and programme</p>
+    }
+    else
+    {
+        
+       
+            <h3>Obong University Current Fees Schedule</h3>
+            <table class="table" style="border-width:0; border:none">
+                <tr>
+                    <td>Session</td>
+                    <td>@Html.DisplayFor(m => m.Session)</td>
+
+                </tr>
+                <tr>
+
+                    <td>Faculty</td>
+                    <td>@Html.DisplayFor(m => m.Faculty)</td>
+
+                </tr>
+                <tr>
+
+                    <td>Programme Type</td>
+                    <td>@Html.DisplayFor(m => m.ProgrammeType)</td>
+                </tr>
+            </table>
+
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th style="text-align:center; background-color:#0a6422; color:#ffffff">S/N</th>
+                        <th style="text-align:center; background-color:#0a6422; color:#ffffff">Item</th>
+                        <th style="text-align:center; background-color:#0a6422; color:#ffffff">Amount (NGN)</th>
+                        <th style="text-align:center; background-color:#0a6422; color:#ffffff">Applies To</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null)
+                {
+                    foreach (var m in Model.Details)
+                    {
+                            <tr>
+                                <td style="text-align:center;">@( ((Int32)1) + Model.Details.IndexOf(m) )</td>
+                                <td>@Html.DisplayFor(a => m.AccountCode)</td>
+                                <td style="text-align:right; font-weight:bold">@String.Format("{0:N}",m.Amount)</td>
+                                <td>@Html.DisplayFor(a => m.AppliesTo)</td>
+                            </tr>
+                        }
+                    }
+
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td></td>
+                        <td>Total</td>
+                        <td style="text-align:right; font-weight:bold">@String.Format("{0:N}",Model.Total)</td>
+                    </tr>
+                </tfoot>
+            </table>
+       
+    }
+    
+ 

@@ -1,0 +1,102 @@
+﻿@model Eduplus.DTO.BursaryModule.FeesCollectionDTO
+@{
+    ViewBag.Title = "SessionCollectionsByAccountPayDate";
+    Layout = "~/Views/Shared/_A4ReportLayout.cshtml";
+}
+<div class="col-md-10">
+    <h3>Session Collections By Accounts and Date Range</h3>
+
+    @if (Model != null)
+    {
+        <div class="hold-holders">
+            <div class="title-holderS1">
+
+                <table class="table-condensed">
+                    <tr>
+                        <td>Session :</td>
+                        <td>@Html.DisplayFor(model => model.Session)</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Account:</td>
+                        <td>@Html.DisplayFor(model => model.Title)</td>
+                    </tr>
+
+
+                </table>
+
+            </div>
+
+
+        </div>
+
+        <div id="Input1" style="width:600px;  height:auto; margin-left:auto; margin-right:auto; clear:both;
+ border:solid; border-width:1px; font-size:9px; float:left">
+
+            <table class="table-striped">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>MatricNo</th>
+                        <th>Name</th>
+                        <th> Programme</th>
+                        <th> Pay Date</th>
+                        <th> Amount</th>
+                        
+                    </tr>
+                </thead>
+
+                @foreach (var res in Model.Details)
+                {
+
+                    
+                        <tr>
+                            <td></td>
+                            <td>@Html.DisplayFor(model => res.RegNo)</td>
+                            <td>
+                                @Html.DisplayFor(model => res.Name)
+                            </td>
+                            <td style="width:auto; text-align:center;">
+                                @Html.DisplayFor(model => res.Programme)
+                            </td>
+
+                            <td style="width:auto; text-align:center;">
+                                @Html.DisplayFor(model => res.PayDate)
+                            </td>
+                            <td style="width:auto; text-align:center;">
+                                @Html.DisplayFor(model => res.Amount)
+                            </td>
+                            
+                        </tr>
+                  
+
+                }
+
+
+            </table>
+
+
+
+        </div>
+
+        
+
+        <div class="auth" style="width:420px;  overflow:hidden; margin-top:80px;">
+
+
+            <div id="hd" style="width:200px; margin-left:220px">
+                <a>----------------------------------------</a><br />
+                <a style="width:200px; text-align:center;">Registrar</a>
+            </div>
+
+        </div>
+    }
+    else
+    {
+        <span>NO records found</span>
+    }
+
+</div>
+
+
+

@@ -1,0 +1,7 @@
+------Error(2021-05-05 06:51:53.3883)DESKTOP-6JMPARN------
+
+                      Exception Type:System.Net.Http.HttpRequestException |
+                      Exception Message:An error occurred while sending the request. |
+                      Stack Trace: |
+                      Additional Info:Error On remita Processing
+

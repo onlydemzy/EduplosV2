@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewBag.Title = "StudentAccounts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Student Accounts</h3>
+<div class="container">
+    <div class="row">
+        <div class="col-md-7">
+            <hr />
+
+            <div class="form-group">
+
+                <input type="text" data-bind="value:regNo" placeholder="Enter Student Matric or Jamb Reg. No" class="form-control" />
+
+                <input type="button" data-bind="click:searchStudent, disable:dC" class="btn btn-success" value="Search" />
+                <img src="~/Content/images/wait24.gif" data-bind="visible:dC"/>
+            </div>
+
+            <hr />
+            <table class="table table-striped">
+                <tr>
+                    
+                    <td id="ttt">
+                        <input type="hidden" id="balance" data-bind="text:balance" />
+
+                        <input type="button" data-bind="click:accountDetails" id="btnDetails" class="btn btn-info" value="View Account Details" />
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Reg Number</td>
+                    <td data-bind="text:regNo"></td>
+                </tr>
+                <tr>
+                    <td>Name</td>
+                    <td data-bind="text:name"></td>
+                </tr>
+                <tr>
+                    <td>Year Addmitted</td>
+                    <td data-bind="text:yearAddmitted"></td>
+                </tr>
+                <tr>
+                    <td>Currnet Level</td>
+                    <td data-bind="text:currentLevel"></td>
+                </tr>
+                <tr>
+                    <td>Department</td>
+                    <td data-bind="text:department"></td>
+                </tr>
+                <tr>
+                    <td>Phone</td>
+                    <td data-bind="text:phone"></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td data-bind="text:email"></td>
+                </tr>
+                <tr>
+                    <td>Balance(N)</td>
+                    <td data-bind="text:balance" id="balance"></td>
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <input type="button" id="btncs" data-bind="click:creditStudent" class="btn btn-success" value="Credit Student" />
+
+                    </td>
+                    <td>
+                        <input type="button" id="btnds" data-bind="click:debitStudent" class="btn btn-danger" value="Debit Student" />
+                    </td>
+
+                    <td>
+                        <input type="button" id="btof" data-bind="click:postOldFee" class="btn btn-danger" value="Post Old School Fee" />
+                    </td>
+                    <td>
+                        <input type="button" id="btsf" data-bind="click:paySchoolFee" class="btn btn-danger" value="Generate Current Semester Invoice" />
+                    </td>
+
+                </tr>
+
+            </table>
+
+
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/Scripts/ViewModels/StudentAccountVM.js")
+}

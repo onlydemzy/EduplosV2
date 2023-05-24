@@ -1,0 +1,50 @@
+﻿@model Eduplus.Web.SMC.ViewModels.remitaPayConfirmationData
+@{ 
+    ViewBag.Title = "Payment Confirmation";
+}
+
+    <div class="container">
+        <h4>Payment Confirmation</h4>
+        <hr />
+        @if(Model==null)
+        {
+            <h4>@ViewBag.error</h4>
+        }
+        else
+        {
+            <div class="row">
+                <div class="col-md-6">
+                    <table class="table">
+                        <tr>
+                            <td>@Html.DisplayNameFor(model => model.RRR)</td>
+                            <td>@Html.DisplayFor(model => model.RRR)</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.DisplayNameFor(model => model.message)</td>
+                            <td>@Html.DisplayFor(model => model.message)</td>
+                        </tr>
+                        <tr>
+                            <td>Invoice No</td>
+                            <td>@Html.DisplayFor(model => model.orderId)</td>
+                        </tr>
+                        <tr>
+                            <td>Amount</td>
+                            <td>N @Html.DisplayFor(model=>model.amount)</td>
+                        </tr>
+                    </table>
+
+                    <p>
+                        @using (Html.BeginForm("WebPayConfirmation", "Payments", FormMethod.Post))
+                {
+                            <input type="submit" class="btn btn-info" value="Close" />
+                        }
+                    </p>
+                </div>
+                
+            </div>
+
+            
+        }
+        
+    </div>
+ 

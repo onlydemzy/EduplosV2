@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Eduplus.DTO.BursaryModule.PaymentInvoiceDTO>
+@{
+    ViewBag.Title = "My Invoices";
+     
+}
+@if (Model == null)
+{
+    <p>Oops No Invoices found</p>
+}
+else
+{
+    <div>
+        <h2>My Invoices</h2>
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>
+                        S/N
+                    </th>
+                    <th>Date</th>
+                    <th>
+                        Particulars
+                    </th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var i in Model)
+                {
+                    <tr>
+                        <td>@( ((Int32)1) + Model.ToList().IndexOf(i) )</td>
+                        <td>@string.Format("{0:dd-MMM-yyyy hh:mm}", i.GeneratedDate)</td>
+                        <td>@Html.DisplayFor(a => i.Particulars)</td>
+                        <td>@string.Format("{0:N}", i.Amount)</td>
+                        <td>@Html.DisplayFor(a => i.Status)</td>
+                        <td><a href='@Url.Action("PaymentInvoice", "Payments", new { transId = i.TransactionId })'>Proceed</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+
+

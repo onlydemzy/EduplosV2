@@ -1,0 +1,143 @@
+﻿﻿
+@{
+    ViewBag.Title = "Scores Entry";
+     
+}
+
+
+<div class="form-inline col-md-10">
+    
+    <p style="color:red;font-style:italic;font-weight:bold"> *Note: For incomplete result input "-"(a dash) on either the CA or Exam box as may be applied</p>
+    <div class="row">
+        <div class="form-group">
+            <div class="col-md-3">
+                <select data-bind="value:SessionId,options:sessions,optionsValue:'SessionId',optionsText:'Title',optionsCaption:'--Select Session--'" class="form-control"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-3">
+                <select data-bind="value:SemesterId,options:semesters,optionsValue:'SemesterId',optionsText:'Title',optionsCaption:'--Select Semester--'" class="form-control"></select>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="row" style="margin-top:20px">
+         
+        <div class="form-group">
+            <div class="col-md-3">
+                <select data-bind="value:Programme,options:programmes,optionsText:'Fullname',optionsText:'Title',optionsCaption:'--Select Programme--'" class="form-control"></select>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-3">
+                <select data-bind="value:CourseId,options:courses,optionsValue:'CourseId',optionsText:'Course',optionsCaption:'--Select Course--'" class="form-control"></select>
+
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <h4>Students</h4>
+        <img src="~/Content/images/15.gif" data-bind="visible:spinar" />
+        <hr />
+        <table class="table table-striped" style="border:none;">
+            <thead>
+                <tr>
+                    <th>RegNo</th>
+                    <th>CA1(<span data-bind="text:ca1"></span>)</th>
+                    <th>CA2(<span data-bind="text:ca2"></span>)</th>
+                    <th>Exam(<span data-bind="text:exam"></span>)</th>
+                    <th>Total</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+            
+            <tbody data-bind="with:$root.selectedItem">
+                <tr>
+                    <td data-bind="text:RegNo"></td>
+                    <td><input data-bind="value:CA1" class="col-sm-5" /></td>
+                    <td><input data-bind="value:CA2" class="col-sm-5" /></td>
+                    <td><input data-bind="value:Exam" class="col-sm-5" /></td>
+                    <td data-bind="text:TScore"></td>
+                    <td data-bind="text:Grade"></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    
+                    <td class="buttons">
+                        <a class="btn btn-danger" data-bind="click: $root.next,enable:Kill" href="#"><i class="glyphicon glyphicon-save">Next>></i></a>
+                        <img src="~/Content/images/wait24.gif" data-bind="visible:spinar" />
+                    </td>
+
+                    <td data-bind="text:display"></td>
+                    <td></td>
+                    <td></td>
+                    <td class="buttons">
+                        <a class="btn btn-danger" data-bind="click: $root.cancel,visible:spinar" href="#" title="edit"><i class="glyphicon glyphicon-remove">Cancel</i></a>
+
+                    </td>
+                    
+                </tr>
+            </tfoot>
+        </table>
+        
+    </div>
+    
+</div>
+<style>
+    .tableFixHead {
+        overflow-y: auto;
+        height: 500px;
+        max-width:700px;
+    }
+
+        .tableFixHead thead th {
+            position: sticky;
+            top: 0;
+        }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th,
+    td {
+        padding: 8px 16px;
+        border: 1px solid #ccc;
+    }
+
+    th {
+        background: #eee;
+    }
+</style>
+<div class="tableFixHead">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>RegNo</th>
+                <th>CA1(<span data-bind="text:ca1"></span>)</th>
+                <th>CA2(<span data-bind="text:ca2"></span>)</th>
+                <th>Exam(<span data-bind="text:exam"></span>)</th>
+                <th>Total</th>
+                <th>Grade</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach:inputtedScores">
+            <tr>
+                <td data-bind="text:RegNo"></td>
+                <td data-bind="text:CA1"></td>
+                <td data-bind="text:CA2"></td>
+                <td data-bind="text:Exam"></td>
+                <td data-bind="text:TScore"></td>
+                <td data-bind="text:Grade"></td>
+            </tr>
+        </tbody>
+    </table>
+    
+</div>
+
+@Scripts.Render("~/Scripts/ViewModels/scoresEntry.js")

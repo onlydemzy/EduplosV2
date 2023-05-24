@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Generate Transcript";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Generate Transcript</h3>
+
+@using (Html.BeginForm("GenerateTranscript", "Result", FormMethod.Post, new { @class = "form-inline" }))
+{
+    <div class="form-group">
+
+        <label class="sr-only" for="inputEmail">Matric No.</label>
+
+        <input type="text" class="form-control" id="regNo" name="regNo" placeholder="Enter Student's Matric Number'">
+
+    </div>
+
+        <button type="submit" class="btn btn-primary">Generate</button>
+
+
+}

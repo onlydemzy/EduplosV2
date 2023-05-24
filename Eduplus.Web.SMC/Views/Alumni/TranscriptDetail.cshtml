@@ -1,0 +1,69 @@
+﻿@model Eduplus.Domain.AcademicModule.TranscriptApplication
+@{
+    ViewBag.Title = "Transcript Detail";
+}
+<div class="row">
+    <div class="col-md-9">
+        <table class="table table-condensed table-responsive table-borderless">
+            <tr>
+                <td>@Html.ActionLink("Back to List","CurrentTranscriptApplications","Alumni")</td>
+            </tr>
+            <tr>
+                <td>Transcript No</td>
+                <td>@Model.TranscriptNo</td>
+            </tr>
+            <tr>
+                <td>Matric Number</td>
+                <td>@Model.Matricnumber</td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td>@Model.Student</td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td>@Model.Phone</td>
+            </tr>
+            <tr>
+                <td>Recipient</td>
+                <td>@Model.Recipient</td>
+            </tr>
+            <tr>
+                <td>Delivery Address</td>
+                <td>@Model.DeliveryAddress</td>
+            </tr>
+            
+            <tr>
+                <td>City</td>
+                <td>@Model.City</td>
+            </tr>
+            <tr>
+                <td>Province/State</td>
+                <td>@Model.State</td>
+            </tr>
+            <tr>
+                <td>Country</td>
+                <td>@Model.Country</td>
+            </tr>
+            <tr>
+                <td>Delivery Mode</td>
+                <td>@Model.DeliveryMode</td>
+            </tr>
+            <tr>
+                <td>Delivery Email</td>
+                <td>@Model.DeliveryEmail</td>
+            </tr>
+            <tr>
+                <td>Date Applied</td>
+                <td>@Model.DateApplied.ToString("dd-MMM-yyyy")</td>
+            </tr>
+            <tr>
+                <td>Status</td>
+                <td>@Model.Status</td>
+            </tr>
+        
+        </table>
+    </div>
+</div>
+
+

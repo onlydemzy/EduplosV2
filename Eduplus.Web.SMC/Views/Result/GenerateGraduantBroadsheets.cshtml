@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "Generate BroadSheet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="form-horizontal">
+    <h3>Generate Graduants Broadsheet Results</h3>
+
+    <div class="form-group">
+
+        <div class="col-md-5">
+            <select class="form-control" data-bind="value:admitYr,options:sessions,optionsValue:'Title',optionsText:'Title',optionsCaption:'--Session Admitted--'"></select>
+
+        </div>
+    </div>
+    <div class="form-group">
+
+        <div class="col-md-5">
+            <select class="form-control" data-bind="value:gradYr,options:sessions,optionsValue:'Title',optionsText:'Title',optionsCaption:'--Select Graduation Session--'"></select>
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-5">
+            <select class="form-control" data-bind="value:batch,options:batches,optionsCaption:'--Graduation Batch--'"></select>
+        </div>
+    </div>
+
+    <div class="form-group">
+
+        <div class="col-md-5">
+            <select class="form-control" data-bind="value:SessionId,options:sessions,optionsValue:'SessionId',optionsText:'Title',optionsCaption:'--Result Session--'"></select>
+
+        </div>
+    </div>
+    <div class="form-group">
+
+        <div class="col-md-5">
+            <select class="form-control" data-bind="value:SemesterId,options:semesters,optionsValue:'SemesterId',optionsText:'Title',optionsCaption:'--Select Semester--'"></select>
+
+        </div>
+    </div>
+    <div class="form-group">
+
+        <div class="col-md-5">
+            <select class="form-control" data-bind="value:Level,options:Levels,optionsCaption:'--Select Level--'"></select>
+
+        </div>
+    </div>
+    <div class="form-group">
+
+        <div class="col-md-5">
+            <select class="form-control" data-bind="value:ProgramCode,options:Programs,optionsValue:'ProgrammeCode',
+                    optionsText:'Fullname',optionsCaption:'--Select Programme--'"></select>
+
+        </div>
+    </div>
+    
+    <div class="form-group">
+
+        <div class="col-md-5">
+            <button class="btn btn-success" data-bind="click:fetch">Generate</button>
+
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/Scripts/ViewModels/generateGraduatesBroadsheetVM.js")

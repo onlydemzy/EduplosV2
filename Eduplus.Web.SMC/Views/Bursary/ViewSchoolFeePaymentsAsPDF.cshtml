@@ -1,0 +1,75 @@
+﻿@model Eduplus.DTO.BursaryModule.FeesCollectionDTO
+@{
+    ViewBag.Title = "Student Payments";
+    Layout = "~/Views/Shared/_A4ReportLayout.cshtml";
+}
+@if(Model==null)
+{
+    <h4>Oops no records found</h4>
+}
+else
+{
+    <div>
+        <h3>@Model.Title Payments</h3>
+        <p>
+            
+            Department:  @Model.Department;
+        </p>
+
+        <table class="table table-responsive table-hover">
+            <thead style="display: table-row-group">
+                <tr>
+                    <th>S/N</th>
+                    <th>RegNo</th>
+                    <th>Name</th>
+                    <th>Programme</th>
+                    <th>Level</th>
+                     
+                    <th>TransRef</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int sno = 0;
+                }
+                @foreach (var p in Model.Details)
+                {
+
+                    <tr>
+                        <td>
+                            @{ sno++; }
+                        @sno
+                    </td>
+                    <td>@Html.DisplayFor(a => p.RegNo)</td>
+                    <td>@Html.DisplayFor(a => p.Name)</td>
+                    <td>@Html.DisplayFor(a => p.Programme)</td>
+                        <td>@Html.DisplayFor(a => p.Level)</td>
+                         
+                        <td>@Html.DisplayFor(a => p.TransRef)</td>
+                         
+                    <td style="text-align:right">@string.Format("{0:#,##0.00;(#,##0.00)}", p.Amount)</td>
+                </tr>
+                            }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Total</td>
+                    <td></td>
+                     
+                    <td></td>
+                    <td style="text-align:right">
+                        @string.Format("{0:#,##0.00;(#,##0.00)}", Model.Total)
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+                            }
+
+
+

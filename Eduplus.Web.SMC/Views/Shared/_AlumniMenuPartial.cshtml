@@ -1,0 +1,74 @@
+﻿@model IEnumerable<KS.Core.UserManagement.MenuItem>
+<link href="~/Content/vertical-menu.css" rel="stylesheet" />
+
+<div class="vert-wrapper">
+    <nav class="vertical">
+        <span>
+            @if (ViewBag.photo != null)
+            {
+                var base64 = Convert.ToBase64String(@ViewBag.photo);
+                var imgSrc = String.Format("data:image/jpeg;base64,{0}", base64);
+                <img src='@imgSrc' style="max-width:100px; max-height:100px;border-radius:360px;" />
+
+            }
+        </span>
+        <p style="font-size:13px; text-align:left;">
+            @if (Request.IsAuthenticated)
+            {
+                using (Html.BeginForm("LogOut", "Accounts", FormMethod.Post, new { id = "logoutForm" }))
+                {
+
+
+                    <ul>
+                        <li>
+                            @Html.ActionLink(@User.FullName + "!", "ChangePassword", "Accounts", routeValues: null, htmlAttributes: new { title = "Manage" })
+                        </li>
+                        <li><a href="javascript:document.getElementById('logoutForm').submit()">Logout</a></li>
+                    </ul>
+                }
+            }
+            else
+            {
+
+                
+            }
+        </p>
+          
+            <ul>
+                
+                
+                
+                <li>
+
+                    <a href='@Url.Action("Addmissions_Step2","Admission_Center")'>Upload passport</a>
+
+                </li>
+                <li>
+
+                    <a href='@Url.Action("Student_Application_Summary","Alumni")'>Print Profile</a>
+
+                </li>
+                <li>
+
+                    <a href='@Url.Action("PayConvocationFee","Alumni")'>Pay Convocation Fee</a>
+
+                </li>
+                <li>
+
+                    <a href='@Url.Action("SchoolFeePayment","Payments")'>Pay School Fees</a>
+
+                </li>
+                 
+
+                <li>
+
+                    <a href='@Url.Action("MyInvoices","Payments")'>View Invoice</a>
+
+                </li>
+               
+            </ul>
+          
+    </nav>
+
+
+</div>

@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "SessionBalances Report";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+
+    <div class="col-mod-8">
+        <div class="form-group">
+            <div class="col-mod-6">
+                <select data-bind="value:sessionId, options:sessions,optionsValue:'SessionId',optionsText:'Title',optionsCaption:'Select Session'" class="form-control"></select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-mod-6">
+                <select data-bind="value:progType, options:progTypes,optionsValue:'Type',optionsText:'Type',optionsCaption:'Select Programme Type'" class="form-control"></select>
+            </div>
+        </div>
+        
+
+        <div class="form-group">
+            <div class="col-mod-6">
+                <select data-bind="value:report, options:reports,optionsCaption:'Generate Report as...'" class="form-control"></select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-mod-6">
+                <button data-bind="click:$root.submit" class="btn btn-info">Generate</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+@Scripts.Render("~/Scripts/ViewModels/sessionBalancesVM.js")

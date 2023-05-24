@@ -1,0 +1,14 @@
+﻿@model IEnumerable<Eduplus.DTO.CoreModule.DepartmentDTO>
+@{
+    ViewBag.Title = "Departments";
+}
+<div id="home" style="margin-left:50px">
+    <h3>Our Departments</h3>
+    @if (Model != null)
+    {
+        foreach (var d in Model)
+        {
+            <h3><a style="color:#0e891c" href="@Url.Action("DepartmentDetail","Home", new { dept = d.Code })">@d.Title</a></h3>
+        }
+    }
+</div>

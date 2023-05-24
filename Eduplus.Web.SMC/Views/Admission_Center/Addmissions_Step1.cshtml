@@ -1,0 +1,291 @@
+﻿﻿
+@{
+    ViewBag.Title = "Edit Profile";
+}
+
+
+
+<div class="row">
+
+    <div class="col-md-10">
+
+        <div class="form-horizontal">
+
+            <h3 style="color:#08581b">Personal Data</h3>
+            <hr />
+            
+            <div class="form-group">
+
+                <div class="col-md-12">
+                    <input type="text" data-bind="value: Surname" class="form-control" placeholder="Surname" />
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-12">
+                    <input type="text" data-bind="value:Firstname" class="form-control" placeholder="First name" />
+
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-12">
+                    <input type="text" data-bind="value:Middlename" class="form-control" placeholder="Middle name" />
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-4">
+                    <select data-bind="value:MaritalStatus, options:MStatus, optionsCaption:'Your marital status'" class="form-control"></select>
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-3">
+                    <select data-bind="value:Sex, options:Sexes, optionsCaption:'I am...'" class="form-control"></select>
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <div class="col-md-12">
+                    <input type="text" data-bind="value:ResidentialAddress" class="form-control" placeholder="Residential Address" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <input type="text" data-bind="value:HomeTown" class="form-control" placeholder="Home Town" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <input type="text" data-bind="value:PermanentHomeAdd" class="form-control" placeholder="Permanent home Address" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <input type="text" data-bind="value:SpouseName" class="form-control" placeholder="Spouse name" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <input type="text" data-bind="value:SpouseAddress" class="form-control" placeholder="Spouse address" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-7">
+                    <select data-bind="value:Country, options:Countries,optionsValue:'Country', optionsCaption:'Select your Country'" class="form-control"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-7">
+                    <select data-bind="value:State, options:States,optionsValue:'State', optionsCaption:'Select your State'" class="form-control"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <select data-bind="value:Lg, options:Lgs, optionsValue:'Lga', optionsCaption:'Select your lga'" class="form-control"></select>
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-12">
+                    <input type="email" data-bind="value:Email" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    <input type="tel" data-bind="value:Phone" class="form-control" placeholder="Phone number" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-2">
+                    Birth Date
+                </div>
+
+                <div class="col-md-2">
+                    <select data-bind="value:BDay,options:days, optionsCaption:'Day'" class="form-control"></select>
+                </div>
+                <div class="col-md-3">
+                    <select data-bind="value:BMonth,options:months, optionsCaption:'-Month-'" class="form-control"></select>
+                </div>
+                <div class="col-md-3">
+                    <select data-bind="value:BYear,options:yrs, optionsCaption:'-Year-'" class="form-control"></select>
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    <select data-bind="value:IsHandicapped,options:handies,optionsCaption:'Are you handicapped?'" class="form-control"></select>
+                </div>
+            </div>
+
+            <hr />
+            <h4><label class="label label-success">Next of Kin Information</label></h4>
+            <div class="form-group">
+
+                <div class="col-md-12">
+                    <input type="text" data-bind="value:NextKin" class="form-control" placeholder="Name of Next of Kin" />
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-12">
+                    <input type="text" data-bind="value:KinMail" class="form-control" placeholder="Next of Kin Email" />
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-12">
+                    <input type="tel" data-bind="value:KinPhone" class="form-control" placeholder="Next of Kin Phone Number" />
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-12">
+                    <input type="text" data-bind="value:KinAddress" class="form-control" placeholder="Next of Kin Address" />
+                </div>
+            </div>
+            <hr />
+            <h4><label class="label label-success">Sponsor Information</label></h4>
+            <div class="form-group">
+
+                <div class="col-md-12">
+                    <input type="text" data-bind="value:Referee" class="form-control" placeholder="Sponsor's full Name" />
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-12">
+                    <input type="text" data-bind="value:RefereeMail" class="form-control" placeholder="Sponsor's Email" />
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-12">
+                    <input type="tel" data-bind="value:RefereePhone" class="form-control" placeholder="Sponsor's Phone Number" />
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-12">
+                    <input type="tel" data-bind="value:RefereeAddress" class="form-control" placeholder="Sponsor's Address" />
+                </div>
+            </div>
+
+            <h4><label class="label label-success">Academics</label></h4>
+
+            <div class="form-group">
+
+                <div class="col-md-12">
+                    <input data-bind="value:JambRegNumber" class="form-control" placeholder="Jamb Number" />
+                </div>
+
+
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <input data-bind="value:JambYear" class="form-control" placeholder="Year you sat for Jamb" />
+                </div>
+
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-12">
+                    <input data-bind="value:ProgrammeType,class=" form-control" disabled />
+                </div>
+
+
+            </div>
+
+            <div class="form-group">
+
+                <div class="col-md-12">
+                    <select data-bind="value:EntryMode, options:EntryModes, optionsCaption:'Mode of Entry'" class="form-control"></select>
+                </div>
+
+
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-12">
+                    <select data-bind="value:StudyMode, options:studymodes, optionsCaption:'Study Mode'" class="form-control"></select>
+                </div>
+
+
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-12">
+                    <input data-bind="value:Faculty" class="form-control" disabled />
+                </div>
+
+
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-12">
+                    <input data-bind="value:Department" class="form-control" disabled />
+                </div>
+
+
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-12">
+                    <input data-bind="value:Programme" class="form-control" disabled />
+                </div>
+
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-12">
+                    <select data-bind="value:Duration, options:durations, optionsCaption:'Duration in years'" class="form-control"></select>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+
+                <div class="col-md-12">
+                    <textarea data-bind="value:WhyUs" class="form-control" rows="5" placeholder="Why study above programme with us"></textarea>
+                </div>
+
+            </div>
+            <div class="row col-md-10">
+                <div class="col-md-3">
+                    <button data-bind="click:submit, disable:kill" class="btn btn-success">Submit</button>
+                    <img src="~/Content/images/wait24.gif" data-bind="visible:kill" alt="busy" />
+                </div>
+                <div class="col-md-3">
+                </div>
+                <div class="col-md-3">
+                    <button data-bind="click:skip" class="btn btn-danger" id="btnSkip" name="btnSkip">Next</button>
+                    <img data-bind="visible:kill" />
+                </div>
+                
+            </div>
+            
+
+
+        </div>
+    </div>
+    <div class="col-md-3">
+         
+    </div>
+
+</div>
+ 
+@Scripts.Render("~/Scripts/ViewModels/registrationStep1VM.js")
+
+<style>
+    .validationMessage {
+        color: red;
+        font-size: 1.0em;
+    }
+</style>
+
+
+

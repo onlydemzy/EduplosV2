@@ -1,0 +1,128 @@
+﻿
+    @model Eduplus.DTO.AcademicModule.ExamsAttendanceDTO
+  
+    @{Layout ="~/Views/Shared/_A4ReportLayout.cshtml";}
+
+
+    <style type="text/css">
+        .breakhere {
+            page-break-after: always;
+        }
+    </style>
+
+    @if (Model != null)
+    {
+       
+            <div id="A" style="page-break-after:always; width:800px; height:auto; margin-left:auto;margin-right:auto;margin-top:10px;">
+             
+                <div class="hold-holders">
+
+                    <div class="hold-holders">
+                        <h3>Exams Attendance</h3>
+                        <div class="title-holderS1">
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td width=25px>Session:</td>
+                                    <td>@Html.DisplayFor(h => h.Session)</td>
+                                </tr>
+                                <tr>
+                                    <td width=25px>Semester:</td>
+                                    <td>@Html.DisplayFor(h => h.Semester)</td>
+                                </tr>
+
+                                <tr>
+                                    <td width=25px>Department:</td>
+                                    <td>@Html.DisplayFor(h => h.Department)</td>
+                                </tr>
+
+                                <tr>
+                                    <td width=25px>Exam Date:</td>
+                                    <td></td>
+                                </tr>
+
+                                <tr>
+                                    <td width=25px>Supervisor(1):</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+
+                        </div>
+                        <div class="title-holderS2">
+                            <table class="table" border="0">
+                                <tr>
+                                    <td width=50px>Code:</td>
+                                    <td>@Html.DisplayFor(h => h.CourseCode)</td>
+                                </tr>
+                                <tr>
+                                    <td width=50px>Title:</td>
+                                    <td>@Html.DisplayFor(h => h.Course)</td>
+                                </tr>
+                                <tr>
+                                    <td width=50px>CHour:</td>
+                                    <td>@Html.DisplayFor(h => h.CreditHour)</td>
+                                </tr>
+
+
+                                <tr>
+                                    <td width=50px>Venue:</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td width=50px>Supervisor(2):</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                    <hr />
+                </div>
+                
+
+                <div id="Input" style="width:800px; margin-left:auto; clear:both; ">
+                    <table class="table table-bordered table-condensed">
+                        <tr>
+                            <th>S/N</th>
+                            <th>RegNo</th>
+                            <th>Name</th>
+                            <th>Ans. Script No</th>
+                            <th>Signature</th>
+
+
+                        </tr>
+
+                        @foreach (var resul in Model.Students)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(model => resul.Count, new { @class = "form-control" })
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => resul.RegNo, new { @class = "form-control" })
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => resul.Student, new { @class = "form-control" })
+                                </td>
+                                <td></td>
+                                <td></td>
+
+                            </tr>
+
+                        }
+
+                    </table>
+
+
+
+                </div>
+
+
+            </div>
+
+
+
+        }
+
+    

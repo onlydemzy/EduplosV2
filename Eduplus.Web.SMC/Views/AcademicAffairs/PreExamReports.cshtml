@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "PreExamReports";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="form-horizontal">
+    <h3>Pre-Exams Reports</h3>
+    <div class="form-group">
+
+        <div class="col-md-5">
+            <select class="form-control" data-bind="value:SessionId,options:sessions,optionsValue:'SessionId',optionsText:'Title',optionsCaption:'--Select Session--'"></select>
+
+        </div>
+    </div>
+    <div class="form-group">
+
+        <div class="col-md-5">
+            <select class="form-control" data-bind="value:SemesterId,options:semesters,optionsValue:'SemesterId',optionsText:'Title',optionsCaption:'--Select Semester--'"></select>
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-5">
+            <select class="form-control" data-bind="value:Type,options:reportTypes,optionsCaption:'--Select Report--'"></select>
+        </div>
+    </div>
+    
+    <div class="form-group">
+
+        <div class="col-md-5">
+            <select class="form-control" data-bind="value:ProgramCode,options:Programs,optionsValue:'ProgrammeCode',
+                    optionsText:'Title',optionsCaption:'--Select Programme--'"></select>
+
+        </div>
+    </div>
+
+    <div class="form-group">
+
+        <div class="col-md-5">
+            <select class="form-control" data-bind="value:courseId,options:courses,optionsValue:'CourseId',
+                    optionsText:'CourseCode',optionsCaption:'--Select Course--', disable:disabled"></select>
+
+        </div>
+    </div>
+    
+    <div class="form-group">
+
+        <div class="col-md-5">
+            <button class="btn btn-success" data-bind="click:fetch">Generate</button>
+
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/Scripts/ViewModels/preExamReportVM.js")

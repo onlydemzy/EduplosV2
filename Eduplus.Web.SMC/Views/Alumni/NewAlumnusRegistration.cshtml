@@ -1,0 +1,248 @@
+﻿
+@{ViewBag.Title = "Alumni";
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>NewStudentProfile</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="form-horizontal" style="margin-left:auto; margin-right:auto; max-width:900px;">
+        <p style="text-align:center">
+           @if (UserData.Logo != null)
+           {
+               var base64 = Convert.ToBase64String(UserData.Logo);
+               var imgSrc = String.Format("data:image/jpeg;base64,{0}", base64);
+            <img src='@imgSrc' style="width:100px; height:100px;" />
+
+           }
+            <br />@UserData.InstitutionName
+        </p>
+
+        <h3>New College Alumni Registration</h3>
+        <h4 style="color:red">Please ensure that you provide a valid email address</h4>
+        <div class="row">
+
+            <div class="col-md-6 form-horizontal">
+                <h3></h3>
+
+                <h5 style="color:#08581b">Personal Data</h5>
+                <hr />
+
+                <div class="form-group">
+
+                    <div class="col-md-7">
+                        <input type="text" data-bind="value:MatricNumber" class="form-control" placeholder="Matric Number" />
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <div class="col-md-7">
+                        <select data-bind="value:Title, options:Titles, optionsCaption:'Your Title'" class="form-control"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <div class="col-md-7">
+                        <input type="text" data-bind="value: Surname" class="form-control" placeholder="Surname" />
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <div class="col-md-7">
+                        <input type="text" data-bind="value:Firstname" class="form-control" placeholder="First name" />
+
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <div class="col-md-7">
+                        <input type="text" data-bind="value:Middlename" class="form-control" placeholder="Middle name" />
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <div class="col-md-4">
+                        <select data-bind="value:MaritalStatus, options:MStatus, optionsCaption:'Your marital status'" class="form-control"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <div class="col-md-7">
+                        <select data-bind="value:Sex, options:Sexes, optionsCaption:'I am...'" class="form-control"></select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <div class="col-md-10">
+                        <input type="text" data-bind="value:ResidentialAddress" class="form-control" placeholder="Residential Address" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <select data-bind="value:Country, options:Countries,optionsValue:'Country', optionsCaption:'Select your Country'" class="form-control"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <select data-bind="value:State, options:States,optionsValue:'State', optionsCaption:'Select your State'" class="form-control"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <select data-bind="value:Lg, options:Lgs, optionsValue:'Lga',optionsText:'Lga', optionsCaption:'Select your lga'" class="form-control"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <div class="col-md-10">
+                        <input type="email" data-bind="value:Email" class="form-control" placeholder="Email" />
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <div class="col-md-10">
+                        <input type="tel" data-bind="value:Phone" class="form-control" placeholder="Phone number" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2">
+                        Birth Date
+                    </div>
+
+                    <div class="col-md-2">
+                        <select data-bind="value:BDay,options:days, optionsCaption:'Day'" class="form-control"></select>
+                    </div>
+                    <div class="col-md-3">
+                        <select data-bind="value:BMonth,options:months, optionsCaption:'-Month-'" class="form-control"></select>
+                    </div>
+                    <div class="col-md-3">
+                        <select data-bind="value:BYear,options:yrs, optionsCaption:'-Year-'" class="form-control"></select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <div class="col-md-10">
+                        <select data-bind="value:IsHandicapped,options:handies,optionsCaption:'Are you handicapped?'" class="form-control"></select>
+                    </div>
+                </div>
+
+                <hr />
+
+
+                <h4><label class="label label-success">Academics</label></h4>
+
+                <div class="form-group">
+
+                    <div class="col-md-10">
+                        <select data-bind="value:YearAdmitted, options:sessions,optionsValue:'Title',optionsText:'Title', optionsCaption:'Session admitted'" class="form-control"></select>
+                    </div>
+
+
+                </div>
+                <div class="form-group">
+
+                    <div class="col-md-10">
+                        <select data-bind="value:GradYear, options:sessions,optionsValue:'Title',optionsText:'Title', optionsCaption:'Year of graduation'" class="form-control"></select>
+                    </div>
+
+
+                </div>
+                <div class="form-group">
+
+                    <div class="col-md-10">
+                        <select data-bind="value:EntryMode, options:EntryModes, optionsCaption:'Mode of Entry'" class="form-control"></select>
+                    </div>
+
+
+                </div>
+                <div class="form-group">
+
+                    <div class="col-md-10">
+                        <select data-bind="value:StudyMode, options:studymodes, optionsCaption:'Study Mode'" class="form-control"></select>
+                    </div>
+
+
+                </div>
+                <div class="form-group">
+                    <div class="col-md-7">
+                        <select data-bind="options:pTypes,value:ProgrammeType,optionsValue:'Type',optionsText:'Type',optionsCaption:'Choose Programme Type'" class="form-control"></select>
+                        <img src="~/Content/images/wait24.gif" id="sp" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <select data-bind="options:progs,value:Prog,optionsText:'Title',optionsCaption:'Choose Programme'" class="form-control"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" data-bind="value:Department" placeholder="Department" disabled />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" data-bind="value:Faculty" placeholder="Faculty" disabled />
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <div class="col-md-10">
+                        <select data-bind="value:Duration, options:durations, optionsCaption:'Duration in years'" class="form-control"></select>
+                    </div>
+
+                </div>
+                <div class="form-group">
+
+                    <div class="col-md-10">
+                        <select data-bind="value:CurrentLevel, options:lvls, optionsCaption:'Level on graduation'" class="form-control"></select>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-5">
+                        <input type="password" class="form-control" data-bind="value:Password" placeholder="Password" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-5">
+                        <input type="password" class="form-control" data-bind="value:ConfirmPassword" placeholder="Confirm Password" />
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button data-bind="click:submit, disable:kill" class="btn btn-success">Submit</button>
+                    <img src="~/Content/images/wait24.gif" data-bind="visible:kill" />
+                </div>
+
+            </div>
+
+        </div>
+
+        </div>
+    </body>
+</html>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/knockout")
+@Scripts.Render("~/bundles/sweetalert")
+        @Scripts.Render("~/Scripts/ViewModels/editAlumniVM.js")
+
+        <style>
+            .validationMessage {
+                color: red;
+                font-size: 1.0em;
+            }
+        </style>
+
+
+

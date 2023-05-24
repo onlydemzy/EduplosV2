@@ -1,0 +1,103 @@
+﻿@model IEnumerable<KS.Core.UserManagement.MenuItem>
+
+<ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard.html">
+        <div class="sidebar-brand-icon">
+             
+            @if (UserData.Logo != null)
+            {
+                var base64 = Convert.ToBase64String(UserData.Logo);
+                var imgSrc = String.Format("data:image/jpeg;base64,{0}", base64);
+                <img src='@imgSrc' class="img-responsive img-thumbnail" />
+
+            }
+            
+        </div>
+        <div class="sidebar-brand-text mx-3">
+            SMC
+
+        </div>
+    </a>
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        User Menu
+    </div>
+    <hr class="sidebar-divider my-0">
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+        @{if (Request.IsAuthenticated)
+            {
+                var rol = (string)Session["UserRole"];
+                if (rol == "Administrator" || rol == "Bursar")
+                {
+                    <a class="nav-link" href="@Url.Action("Dashboard","Home")">
+                        <i class="fa fa-fw fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                }
+            }
+
+        }
+        
+    </li>
+    
+    <!-- Nav Item -->
+    @if (Model != null)
+    {
+        foreach (var m in Model)
+        {
+            
+                if (m.ChildrenMenus.Count > 0)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#@m.Collapse" aria-expanded="true" aria-controls="@m.Collapse">
+                            <i class="@m.fawsome"></i>
+                            <span>@m.MenuItemName</span>
+                        </a>
+                        <div id="@m.Collapse" class="collapse" aria-labelledby="@m.Heading" data-parent="#accordionSidebar">
+                            <div class="bg-white py-2 collapse-inner rounded">
+                                @foreach (var mc in m.ChildrenMenus)
+                                {
+                                    <a class="collapse-item" href="@Url.Action(mc.Action, mc.Controller)">@mc.MenuItemName</a>
+                                }
+                                
+                            </div>
+                        </div>
+                       
+                    </li>
+
+            }
+            else
+            {
+                
+            }
+
+        }
+
+    }
+    <li class="nav-item">
+        <a class="nav-link" href="#">
+            <i class="fa fa-user"></i>
+            <span>@Html.ActionLink("Change Password","ChangePassword","Accounts")</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="@Url.Action("LogOut","Accounts")">
+            <i class="fa fa-sign-out-alt"></i>
+            <span>Logout</span>
+        </a>
+    </li>
+
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+</ul>

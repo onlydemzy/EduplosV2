@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Academic Calender";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="form-horizontal">
+    <h3>Academic Calender</h3>
+    <p><a class="btn btn-success" data-bind="click:add" href="#" title="Add Calender"><i class="icon-plus"></i> Add Calender</a></p>
+    
+    <table class="table">
+            <thead>
+                <tr>
+                    
+                    <th>Title</th>
+                    <th>SessionId</th>
+                </tr>
+            </thead>
+            <tbody data-bind="template:{name:templateToUse, foreach:list }">
+             
+            </tbody>
+        </table>
+
+    </div>
+<script id="itemsTmpl" type="text/html">
+    <tr>
+        <td data-bind="text:Title"></td>
+        <td data-bind="text:Semester"></td>
+        <td data-bind="text:Session"></td>
+        <td class="buttons">
+            <a class="btn btn-success" data-bind="click: $root.edit" href="#" title="edit"><i class="glyphicon glyphicon-edit"></i></a>
+            <a class="btn btn-success" data-bind="click: $root.details" href="#" title="View Detail"><i class="glyphicon glyphicon-dashboard"></i>Details</a>
+        </td>
+
+    </tr>
+</script>
+
+<script id="editTmpl" type="text/html">
+    <tr>
+        <td><input data-bind="value:Title" class="form-control"/></td>
+        <td><select data-bind="value:SessionId,options:Sessions,optionsValue:'SessionId',optionsText:'Title',optionsCaption:'-Select Session'" class="form-control"></select></td>
+        <td class="buttons">
+            <a class="btn btn-success" data-bind="click:$root.save" href="#" title="save"><i class="glyphicon glyphicon-floppy-disk"></i></a>
+            <a class="btn btn-danger" data-bind="click: $root.cancel" href="#" title="cancel"><i class="glyphicon glyphicon-remove-sign"></i></a>
+        </td>
+    </tr>
+</script>
+
+@section Scripts{
+    @Scripts.Render("~/Scripts/ViewModels/calenderVM.js")}

@@ -1,0 +1,23 @@
+------Error(2021-05-05 09:37:37.2001)DESKTOP-6JMPARN------
+
+                      Exception Type:System.Data.SqlClient.SqlException |
+                      Exception Message:Invalid column name 'IsDefault'. |
+                      Stack Trace: |
+                      Additional Info:An error occurred while executing the command definition. See the inner exception for details.
+   at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   at System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.Execute[TResultType](ObjectContext context, ObjectParameterCollection parameterValues)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClassb.<GetResults>b__a()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClassb.<GetResults>b__9()
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   at System.Lazy`1.CreateValue()
+   at System.Lazy`1.LazyInitValue()
+   at System.Lazy`1.get_Value()
+   at System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Eduplus.Services.Implementations.GeneralDutiesService.GetDefaultPaymentGateway() in C:\VS\EduplosV2\Eduplus.Services\Implementations\GeneralDutiesService.cs:line 713
+   at Eduplus.Web.SMC.Controllers.PayProcessorController.<PaymentConfirmation>d__6.MoveNext() in C:\VS\EduplosV2\Eduplus.Web.SMC\Controllers\PayProcessorController.cs:line 61
+

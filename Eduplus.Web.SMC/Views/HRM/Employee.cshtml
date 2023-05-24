@@ -1,0 +1,227 @@
+﻿
+    @{Layout = "~/Views/Shared/_Layout.cshtml";}
+ 
+            <div>
+                <h3>Add Employee</h3>
+                <div class="form-horizontal">
+
+                    <hr />
+                    <div class="form-group">
+
+                        <div class="col-md-3">
+                            <select data-bind="value:Title, options:Titles, optionsCaption:'Your Title'" class="form-control"></select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <div class="col-md-12">
+                            <input type="text" data-bind="value: Surname" class="form-control" placeholder="Surname" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <div class="col-md-12">
+                            <input type="text" data-bind="value:Firstname" class="form-control" placeholder="First name" />
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <div class="col-md-12">
+                            <input type="text" data-bind="value:Middlename" class="form-control" placeholder="Middle name" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <div class="col-md-4">
+                            <select data-bind="value:MaritalStatus, options:MStatus, optionsCaption:'Your marital status'" class="form-control"></select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <div class="col-md-3">
+                            <select data-bind="value:Sex, options:Sexes, optionsCaption:'I am...'" class="form-control"></select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <div class="col-md-12">
+                            <input type="text" data-bind="value:ResidentialAddress" class="form-control" placeholder="Residential Address" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            <select data-bind="value:Country, options:Countries,optionsValue:'Country', optionsCaption:'Select your Country'" class="form-control"></select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            <select data-bind="value:State, options:States,optionsValue:'State', optionsCaption:'Select your State'" class="form-control"></select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <select data-bind="value:Lg, options:Lgs, optionsValue:'Lga', optionsCaption:'Select your lga'" class="form-control"></select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <div class="col-md-12">
+                            <input type="email" data-bind="value:Email" class="form-control" placeholder="Email Address" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <div class="col-md-10">
+                            <input type="tel" data-bind="value:Phone" class="form-control" placeholder="Phone number" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <div class="col-md-10">
+                            Date of Birth<input type="date" data-bind="value:DateOfBirth" class="form-control" placeholder="Date of Birth" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <select data-bind="value:IDType, options:ids, optionsCaption:'Means of Identifications'" class="form-control"></select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <div class="col-md-12">
+                            <input type="text" data-bind="value:IDNumber" class="form-control" placeholder="ID Number" />
+                        </div>
+                    </div>
+                    <hr />
+                    <h4><label class="label label-success">Next of Kin Info</label></h4>
+                    <div class="form-group">
+
+                        <div class="col-md-12">
+                            <input type="text" data-bind="value:NextKin" class="form-control" placeholder="Next of Kin" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <div class="col-md-12">
+                            <input type="text" data-bind="value:KinMail" class="form-control" placeholder="Next of Kin Email" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <div class="col-md-12">
+                            <input type="tel" data-bind="value:KinPhone" class="form-control" placeholder="Next of Kin Phone Number" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <div class="col-md-12">
+                            <input type="text" data-bind="value:KinAddress" class="form-control" placeholder="Next of Kin Address" />
+                        </div>
+                    </div>
+                    <hr />
+                    <h4><label class="label label-success">Referee's Information</label></h4>
+                    <div class="form-group">
+
+                        <div class="col-md-12">
+                            <input type="text" data-bind="value:Referee" class="form-control" placeholder="Referee full Name" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <div class="col-md-12">
+                            <input type="text" data-bind="value:RefereeMail" class="form-control" placeholder="Referee Email" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <div class="col-md-12">
+                            <input type="tel" data-bind="value:RefereePhone" class="form-control" placeholder="Referee Phone Number" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <div class="col-md-12">
+                            <input type="tel" data-bind="value:RefereeAddress" class="form-control" placeholder="Referee's Address" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <div class="col-md-12">
+                            <input type="date" data-bind="value:DateEmployeed" class="form-control" placeholder="Employment Date" />
+                        </div>
+                    </div>
+                    <h4><label class="label label-success">Office Information</label></h4>
+                    
+                    <div class="form-group">
+
+                        <div class="col-md-12">
+                            <select data-bind="value:DepartmentCode, options:Departments, optionsValue:'DepartmentCode', optionsText:'Title', optionsCaption:'Select Department'" class="form-control"></select>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+
+                        <div class="col-md-12">
+                            <select data-bind="value:ProgrammeCode, options:Programmes, optionsValue:'ProgrammeCode', optionsText:'Title', optionsCaption:'Select Programme'" class="form-control"></select>
+                        </div>
+
+
+                    </div>
+                    <div class="form-group">
+
+                        <div class="col-md-12">
+                            <input type="text" data-bind="value:Designation" class="form-control" placeholder="Staff Designation" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <div class="col-md-12">
+                            <input type="text" data-bind="value:Category" class="form-control" placeholder="Staff Category" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <div class="col-md-12">
+                            <input type="text" data-bind="value:Unit" class="form-control" placeholder="Unit" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <div class="col-md-12">
+                            <input type="text" data-bind="value:Building" class="form-control" placeholder="Building" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <div class="col-md-12">
+                            <input type="text" data-bind="value:Floor" class="form-control" placeholder="Floor" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <div class="col-md-12">
+                            <input type="text" data-bind="value:Room" class="form-control" placeholder="Room" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button data-bind="click:submit" class="btn btn-success">Submit</button>
+                    </div>
+
+                </div>
+            </div>
+           
+ 
+
+    @Scripts.Render("~/Scripts/ViewModels/employeeVM.js")
+ 
+<style>
+    .validationMessage {
+        color: red;
+        font-size: 1.0em;
+    }
+</style>
+
+
+

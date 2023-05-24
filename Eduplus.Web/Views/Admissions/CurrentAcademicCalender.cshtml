@@ -1,0 +1,35 @@
+﻿@model Eduplus.DTO.AcademicModule.CurrentCalenderDTO
+@{
+    ViewBag.Title = "Current Academic Calender";
+    Layout = "~/Views/Shared/_A4ReportLayout.cshtml";
+}
+
+<h3>@Html.DisplayFor(s=>s.Title)</h3>
+<hr/>
+@foreach(var sem in Model.Semesters)
+{
+    <span style="width:auto;color:#ffffff;font-size:16px;background-color:#095c05; font-weight:bold">@Html.DisplayFor(s => sem.Semester)</span>
+    
+    <table class="table table-bordered table-condensed">
+        <thead>
+            <tr>
+                <th style="text-align:center; background-color:#0a6422; color:#ffffff">Activity</th>
+                <th style="text-align:center; background-color:#0a6422; color:#ffffff">From</th>
+                <th style="text-align:center; background-color:#0a6422; color:#ffffff">To</th>
+                <th style="text-align:center; background-color:#0a6422; color:#ffffff">Duration</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var activity in sem.Activities)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(a=>activity.Activity)</td>
+                    <td>@Html.DisplayFor(a => activity.StartDate)</td>
+                    <td>@Html.DisplayFor(a => activity.EndDate)</td>
+                    <td>@Html.DisplayFor(a => activity.Duration)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+

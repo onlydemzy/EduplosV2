@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "New Student Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="form-horizontal">
+    <div class="row" style="margin-left:100px">
+        
+        
+            <h3>New Student Profile</h3>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <select data-bind="options:titles,value:Title,optionsCaption:'Choose Title'" class="form-control"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <input type="text" data-bind="value:Surname" class="form-control" placeholder="Surname" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <input type="text" data-bind="value:Firstname" class="form-control" placeholder="First name" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <input type="text" data-bind="value:Middlename" class="form-control" placeholder="Middle name" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="coll-md-2">DOB</label>
+                <div class="col-md-5">
+                    <input type="date" data-bind="value:DateOfBirth" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <select data-bind="options:Sexes,value:Sex,optionsCaption:'Choose Gender'" class="form-control"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <input type="email" data-bind="value:Email" class="form-control" placeholder="Email" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <input type="tel" class="form-control" data-bind="value:Phone" placeholder="Phone" />
+                </div>
+            </div>
+
+        <div class="form-group">
+            <div class="col-md-5">
+                <select data-bind="options:pTypes,value:ProgramType,optionsCaption:'Choose Programme Type'" class="form-control"></select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-5">
+                <select data-bind="options:progs,value:ProgrammeCode,optionsValue:'ProgrammeCode',optionsText:'Title',optionsCaption:'Choose Programme'" class="form-control"></select>
+            </div>
+        </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <input type="password" class="form-control" data-bind="value:Password" placeholder="Password" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <input type="password" class="form-control" data-bind="value:ConfirmPassword" placeholder="Password" />
+                   
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-5">
+                    <button class="btn btn-success" data-bind="click:submit, disable:disable">Subit</button>
+                    <img src="~/Content/images/wait24.gif" data-bind="visible:disable" />
+                </div>
+            </div>
+        
+    </div>
+
+</div>
+
+@Scripts.Render("/Scripts/ViewModels/newprofileVM.js")

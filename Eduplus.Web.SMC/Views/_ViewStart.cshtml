@@ -1,0 +1,30 @@
+﻿@{
+
+
+    if(Request.IsAuthenticated)
+    {
+        var rol = (string)Session["UserRole"];
+        if (rol != null)
+        {
+            switch (rol)
+            {
+                case "Student":
+                    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+                    break;
+                case "Prospective":
+                    Layout = "~/Views/Shared/_ProspectiveLayout.cshtml";
+                    break;
+                case "Alumnus":
+                    Layout = "~/Views/Shared/_AlumniLayout.cshtml";
+                    break;
+                default:
+                    Layout = "~/Views/Shared/_Layout.cshtml";
+                    break;
+            }
+        }
+
+
+    }
+
+
+}

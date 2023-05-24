@@ -1,0 +1,7 @@
+------Error(2021-05-05 09:26:55.8146)DESKTOP-6JMPARN------
+
+                      Exception Type:System.Data.SqlClient.SqlException |
+                      Exception Message:Invalid column name 'IsDefault'. |
+                      Stack Trace: |
+                      Additional Info:Error On remita Processing
+

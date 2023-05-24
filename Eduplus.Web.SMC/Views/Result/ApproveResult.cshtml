@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "Approve Result";
+     
+}
+ 
+
+ <div class="form-inline col-md-7">
+   <h5>Result Approval</h5>
+     <div class="row">
+         <div class="form-group">
+             <div class="col-md-3">
+                 <select data-bind="value:sessionId,options:sessions,optionsValue:'SessionId',optionsText:'Title',optionsCaption:'--Select Session--'" class="form-control"></select>
+             </div>
+         </div>
+         <div class="form-group">
+             <div class="col-md-3">
+                 <select data-bind="value:semesterId,options:semesters,optionsValue:'SemesterId',optionsText:'Title',optionsCaption:'--Select Semester--'" class="form-control"></select>
+             </div>
+         </div>
+         <div class="form-group">
+             <div class="col-md-3">
+                 <select data-bind="value:progType,options:progTypes,optionsValue:'Type',optionsText:'Type',optionsCaption:'--Programme Types--'" class="form-control"></select>
+
+             </div>
+         </div>
+     </div>
+     <div class="row" style="margin-top:20px">
+         
+         <div class="form-group">
+             <div class="col-md-3">
+                 <select data-bind="value:prog,options:progs,optionsValue:'ProgrammeCode',optionsText:'Title',optionsCaption:'--Select Programme--'" class="form-control"></select>
+
+             </div>
+         </div>
+         <div class="form-group">
+             <div class="col-md-3">
+                 <select data-bind="value:apOption,options:apOptions,optionsCaption:'--Approval options--'" class="form-control"></select>
+             </div>
+         </div>
+
+         <div class="form-group">
+             <div class="col-md-3">
+                 <select data-bind="value:lvl,options:lvls,optionsCaption:'--Choose level--'" class="form-control"></select>
+             </div>
+         </div>
+
+          <div class="form-group">
+              <input type="submit" class="btn btn-danger" value="Approve" data-bind="click:approve, disabled:spinar"/>
+              <img src="~/Content/images/wait24.gif" data-bind="visible:spinar" alt=""/>
+          </div>
+     </div>
+ </div>
+<script src="~/Scripts/ViewModels/resultApprovalVM.js"></script>
+ 

@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewBag.Title = "Students";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div>
+    <h3>Students</h3>
+
+    
+    <div class="form-group">
+        <div class="col-md-4">
+            <select data-bind="value:ProgrammeCode,options:programmes,optionsValue:'ProgrammeCode',optionsText:'Fullname',optionsCaption:'--Select Programme--',disable:Kill" class="form-control"></select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-4">
+            <select data-bind="value:SessionId,options:sessions,optionsText:'Title',optionsCaption:'--Graduation Session--'" class="form-control"></select>
+        </div>
+    </div>
+     <div class="form-group">
+        <div class="col-md-4">
+            <select data-bind="value:batch,options:batches,optionsCaption:'--Graduation Batch--'" class="form-control"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-4">
+            <button class="btn btn-success" data-bind="click:$root.fetch">Fetch</button>
+        </div>
+    </div>
+    
+    <hr />
+    <p>.</p>
+    <hr />
+
+    <h4>Students</h4>
+    <hr />
+</div>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>S/N</th>
+            <th>MatricNumber</th>
+            <th>Name</th>
+            <th>CGPA</th>
+            <th>Degree Class</th>
+            <th>Remark</th>
+            <th>Graduate</th>
+
+        </tr>
+    </thead>
+    <tbody data-bind="foreach:list">
+        <tr>
+            <td data-bind="text: Count"></td>
+            <td data-bind="text: MatricNumber"></td>
+            <td data-bind="text: Name"></td>
+            <td data-bind="text: CGPA"></td>
+            <td data-bind="text: Qualification"></td>
+            <td data-bind="text: Status"></td>
+            <td data-bind="if:Qualified"><input type="checkbox" data-bind="checked: Graduate" class="form-control"></td>
+            <td><button data-bind="click:$root.viewProfile" class="btn btn-danger">Profile</button></td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="form-group">
+    <div class="col-md-4">
+        <button class="btn btn-info" data-bind="click:$root.submit">Submit</button>
+    </div>
+</div>
+
+@Scripts.Render("/Scripts/ViewModels/studentsDueForGraduationVM.js")

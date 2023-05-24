@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "View Student Registrations";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="form-horizontal">
+     
+    <div class="form-group">
+        <div class="col-md-4">
+            <select data-bind="value:session,options:sessions,optionsValue:'SessionId',optionsText:'Title',optionsCaption:'--Select Session--'" class="form-control"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-4">
+            <select data-bind="value:semester,options:semesters,optionsValue:'SemesterId',optionsText:'Title',optionsCaption:'--Select Semester--'" class="form-control"></select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-4">
+            <select data-bind="value:programCode,options:programmes,optionsValue:'ProgrammeCode',optionsText:'Title',optionsCaption:'--Select Programme--'" class="form-control"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-4">
+            <button class="btn btn-success" data-bind="click:$root.fetch, disable:busy">Fetch</button>
+        </div>
+    </div>
+
+</div>
+
+
+
+@Scripts.Render("/Scripts/ViewModels/semesterRegsVM.js")
+

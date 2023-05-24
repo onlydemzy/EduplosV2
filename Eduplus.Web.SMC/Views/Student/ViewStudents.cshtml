@@ -1,0 +1,98 @@
+﻿
+@{
+    ViewBag.Title = "Students";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="form-inline">
+
+    <div class="row">
+        <div class="form-group">
+            <div class="col-md-8">
+                <input type="text" class="form-control" data-bind="value:searchText" placeholder="Student ID,MatricNo or Surname" />
+            </div>
+
+        </div>
+        <div class="form-group">
+            <div class="col-md-4">
+                <button class="btn btn-success" data-bind="click:$root.search">Fetch</button>
+                <img src="~/Content/images/wait24.gif" data-bind="visible:dis" />
+            </div>
+        </div>
+    </div>
+
+
+    <hr />
+    <h5>Advanced Filter</h5>
+     
+    <div class="form-group">
+        <div class="col-md-4">
+            <select data-bind="value:ProgrammeCode,options:programmes,optionsValue:'ProgrammeCode',optionsText:'Fullname',optionsCaption:'--Select Programme--'" class="form-control"></select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-4">
+            <select data-bind="value:admittedSession,options:sessions,optionsValue:'Title',optionsText:'Title',optionsCaption:'--Select Year Admitted--'" class="form-control"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-4">
+            <button class="btn btn-success" data-bind="click:$root.fetch">Fetch</button>
+            <img src="~/Content/images/wait24.gif" data-bind="visible:dis" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-4">
+            <select class="btn btn-info" data-bind="value:reportType,options:$root.reportTypes,optionsCaption:'Report Type'"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-4">
+            <button class="btn btn-info" data-bind="click:$root.print">Generate</button>
+        </div>
+    </div>
+    <hr />
+    <p>.</p>
+    <hr />
+
+    <hr />
+</div>
+<table class="table table-hover table-sm">
+    <thead>
+        <tr>
+            <th>StudentId</th>
+            <th>MatricNumber</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Programme</th>
+            <th>Status</th>
+
+        </tr>
+    </thead>
+    <tbody data-bind="foreach:pagedList">
+        <tr>
+            <td data-bind="text: StudentId"></td>
+            <td data-bind="text: MatricNumber"></td>
+            <td data-bind="text: FullName"></td>
+            <td data-bind="text: Phone"></td>
+            <td data-bind="text: Programme"></td>
+            <td data-bind="text: Status"></td>
+            <td class="buttons">
+                <a class="btn btn-success" data-bind="click: $root.edit" href="#" title="edit"><i class="glyphicon glyphicon-edit"></i></a>
+            </td>
+            <td class="buttons">
+                <a class="btn btn-success" data-bind="click: $root.detail" href="#" title="edit">Profile</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div>
+    <ul class="pagination"><li data-bind="css: { disabled: pageIndex() === 0 }"><a href="#" data-bind="click: previousPage">Previous</a></li></ul>
+    <ul data-bind="foreach: allPages" class="pagination">
+        <li data-bind="css: { active: $data.pageNumber === ($root.pageIndex() + 1) }"><a href="#" data-bind="text: $data.pageNumber, click: function() { $root.moveToPage($data.pageNumber-1); }"></a></li>
+    </ul>
+    <ul class="pagination"><li data-bind="css: { disabled: pageIndex() === maxPageIndex() }"><a href="#" data-bind="click: nextPage">Next</a></li></ul>
+</div>
+
+@Scripts.Render("/Scripts/ViewModels/studentsVM.js")

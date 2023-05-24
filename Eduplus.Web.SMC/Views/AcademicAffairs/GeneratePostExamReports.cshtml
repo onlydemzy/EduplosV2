@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Generate Post Exam Reports";
+}
+<div class="row">
+    <div class="col-md-7">
+        <div class="form-group">
+
+            <div class="col-md-7">
+                <select class="form-control" data-bind="value:SessionId,options:sessions,optionsValue:'SessionId',optionsText:'Title',optionsCaption:'--Select Session--'"></select>
+            </div>
+        </div>
+        <div class="form-group">
+
+            <div class="col-md-7">
+                <select class="form-control" data-bind="value:SemesterId,options:semesters,optionsValue:'SemesterId',optionsText:'Title',optionsCaption:'--Select Semester--'"></select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-7">
+                <select class="form-control" data-bind="value:ProgramCode,options:programmes,optionsValue:'ProgrammeCode',
+                    optionsText:'Fullname',optionsCaption:'--Select Programme--'"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-7">
+                <select class="form-control" data-bind="value:courseId,options:courses,optionsValue:'CourseId',
+                    optionsText:'Title',optionsCaption:'--Select Course--'"></select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-7">
+                <button class="btn btn-block btn-info" data-bind="click:fetch">Generate</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/Scripts/ViewModels/generatePostExamReportsVM.js")

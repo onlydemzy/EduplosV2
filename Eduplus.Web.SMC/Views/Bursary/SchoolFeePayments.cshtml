@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "School fee Payments";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-8">
+
+    <h3>View School Fee Payments</h3>
+    <div class="form-group">
+        <div class="col-mod-6">
+            <select data-bind="value:sessionId, options:sessions,optionsValue:'SessionId',optionsText:'Title',optionsCaption:'Select Session'" class="form-control"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-mod-6">
+            <select data-bind="value:deptCode, options:depts,optionsValue:'DepartmentCode',optionsText:'Title',optionsCaption:'Select Department'" class="form-control"></select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-mod-6">
+            <select data-bind="value:report, options:reports,optionsCaption:'Generate Report as...'" class="form-control"></select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-mod-6">
+            <button data-bind="click:submit" class="btn btn-info">Generate</button>
+        </div>
+    </div>
+</div>
+@Scripts.Render("~/Scripts/ViewModels/schoolFeePaymentsVM.js")

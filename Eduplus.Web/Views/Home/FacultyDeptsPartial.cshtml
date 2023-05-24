@@ -1,0 +1,9 @@
+﻿@model IEnumerable<Eduplus.DTO.CoreModule.DepartmentDTO
+    <div class="row">
+        <ul class="item">
+            @foreach(var i in Model)
+            {
+                <li class="list-group-item-text">@Html.DisplayFor(a=>i.Title)</li>
+            }
+        </ul>
+    </div>

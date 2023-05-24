@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    @{ Layout = null;}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home-Eduplus</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/slide/slide.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="wrapper">
+        <section class="banner">
+            <img src="~/Content/images/jkbana.png" class="banner-image" />
+            <p style="text-align:justify; float:right; display:block;">
+                <b>
+                    Tel: +2348107381867<br />+2348027175638<br />+2348037847780
+                    <br />
+                    
+                </b>
+
+                <br />
+            </p>
+        </section>
+        <div class="row">
+            @Html.Partial("_MenuPartial")
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-12" style="padding:0px 0px; margin-top:19px">
+
+                @Html.Action("_SlidePartial", "Home");
+
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-md-6" style="padding-top:30px;padding-left:8px;">
+                <p style="text-align:center">
+                    Welcome to JetKing University College
+                </p>
+            </div>
+             
+            <div class="col-md-5">
+
+                @Html.Action("_EventsPartial", "Home")
+            </div>
+        </div>
+
+
+        <footer style="background-color:#0a5e23; color:#fff;">
+            @Html.Action("FooterPartial","Home")
+        </footer>
+    </div>
+</body>
+</html>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="~/Scripts/menu-script.js"></script>
+<script type="text/javascript" src="~/Scripts/jssor.slider.mini.js"></script>
+
+<script type="text/javascript" src="~/Scripts/slide.js"></script>
+

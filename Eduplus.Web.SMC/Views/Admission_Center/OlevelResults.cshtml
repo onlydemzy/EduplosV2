@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewBag.Title = "Olevel Results";
+     
+}
+
+    <div class="form-horizontal">
+        
+        
+        <div class="form-horizontal">
+            <h3 style="background-color:#14c368;color:#ffffff; text-align:center">
+               Sit Attempt <span data-bind="text:SitAttempt"></span>
+            </h3> 
+                <div class="form-group">
+
+                    <div class="col-md-6">
+                        
+                        <select data-bind="value:ExamType, options:$root.examTypes, optionsCaption:'Select Exam Type'" class="form-control"></select>
+                    </div>
+                </div>
+            <div class="form-group">
+
+                <div class="col-md-6">
+                    <input type="number" data-bind="value:Year" class="form-control" placeholder="Exam Year" />
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-6">
+                    <input type="text" data-bind="value:ExamNumber" class="form-control" placeholder="Registration Number" />
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-12">
+                    <input type="text" data-bind="value:Venue" class="form-control" placeholder="Venue" />
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-12">
+                    <input type="hidden" data-bind="value:SitAttempt" />
+                </div>
+            </div>
+            <h4>Results</h4>
+            <div id="sitting-1" style="width:60%;">
+                <table class="table">
+                    <tr>
+                        <th>
+                            Subject
+                        </th>
+                        <th>Grade</th>
+                        <th></th>
+                    </tr>
+                    <tbody data-bind="foreach:Details">
+                       
+                        <tr>
+                            <td data-bind="text:Subject"></td>
+                            <td data-bind="text:Grade"></td>
+                            <td><button class="btn btn-danger" data-bind="click:$root.removeSubject">Delete</button></td>
+                        </tr>
+                        
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td><select data-bind="value:subject,options:Subjects,optionsValue:'Title',optionsText:'Title',optionsCaption:'Select Subject'" class="form-control" /></td>
+                            <td><select data-bind="value:grade, options:Grades, optionsCaption:'Select Grade'" class="form-control" /></td>
+                            <td><button class="btn btn-info" data-bind="click:addSubject,disable:kill">+Add</button>
+
+                                <img src="~/Content/images/wait24trans.gif" data-bind="visible:kill"/> </td>
+                        </tr>
+                    </tfoot>
+                </table>
+
+            </div> 
+
+        </div>
+        
+        
+        <div class="row">
+            <div class="col-md-4">
+                <button data-bind="click:addsitting" class="btn btn-info">Add 2nd O/Level Sitting</button>
+            </div>
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-4">
+                <button data-bind="click:skip" class="btn btn-danger">Next</button>
+            </div>
+        </div>
+     
+</div>
+    
+
+@section Scripts{
+    @Scripts.Render("~/Scripts/ViewModels/olevelResultsVM.js")
+    }

@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "Accounts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="col-md-10">
+    <h3>Other Charges</h3>
+    <hr />
+    <p><a class="btn btn-success" data-bind="click:$root.add" href="#" title="edit"><i class="icon-plus"></i> Add Other charge</a></p>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ChargeId</th>
+                <th>Code</th>
+                <th>Description</th>
+                <th>ProgType</th>
+                <th>Amount</th>
+                 
+                <th style="width: 120px; text-align:right;" />
+            </tr>
+        </thead>
+        <tbody data-bind="template:{name:templateToUse, foreach:list}"></tbody>
+        <tfoot>
+            <tr><td><a class="btn btn-success" data-bind="click:$root.add" href="#" title="edit"><i class="icon-plus"></i> Add Record</a></td></tr>
+        </tfoot>
+    </table>
+    
+    <script id="itemsTmpl" type="text/html">
+        <tr>
+            
+            <td width="10" data-bind="text:ChargeId"></td>
+            <td width="10" data-bind="text:AccountCode"></td>
+            <td width="150" data-bind="text:Description"></td>
+            <td width="100" data-bind="text:ProgrammeType"></td>
+            <td width="70" data-bind="text:Amount"></td>
+            <td></td>  
+            <td class="buttons">
+                <a class="btn btn-success" data-bind="click: $root.edit" href="#" title="edit"><i class="glyphicon glyphicon-edit"></i></a>
+
+            </td>
+        </tr>
+    </script>
+
+    <script id="editTmpl" type="text/html">
+        <tr>
+            <td width="10" data-bind="text:ChargeId"></td>
+            <td width="10" data-bind="text:AccountCode"></td>
+            <td width="150" data-bind="text:Description"></td>
+            <td width="100px"><select data-bind="value:ProgrammeType,options:progTypes,optionsText:'Type',optionsValue:'Type',optionsCaption:'Select programme Type'" class="form-control"></select></td>
+            <td width="70px"><input class="form-control" data-bind="value:Amount"></td>
+            <td><select data-bind="value:mainAcct,options:accounts,optionsText:'Title',optionsCaption:'Select Source Account'" class="form-control"></select></td>
+             
+            <td class="buttons">
+                <a class="btn btn-success" data-bind="click:$root.save" href="#" title="save"><i class="glyphicon glyphicon-floppy-disk"></i></a>
+                <a class="btn btn-danger" data-bind="click: $root.cancel" href="#" title="cancel"><i class="glyphicon glyphicon-remove-sign"></i></a>
+            </td>
+        </tr>
+    </script>
+</div>
+@section Scripts{
+    @Scripts.Render("~/Scripts/ViewModels/otherChargesVM.js")
+}
+

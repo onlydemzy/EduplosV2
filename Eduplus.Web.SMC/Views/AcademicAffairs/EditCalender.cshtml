@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewBag.Title = "Edit Calender";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <h3>Edit Calender</h3>
+    <hr />
+<table class="table" style="border:hidden">
+    <tr>
+        <td><button data-bind="click:$root.addCalender" class="btn btn-success">Add Calender</button></td>
+        <td><button data-bind="click:$root.editCalender" class="btn btn-info">Edit Calender</button></td>
+        <td><button data-bind="click:$root.save" class="btn btn-info">Save Calender</button></td>
+    </tr>
+</table>
+        
+            <div class="form-group">
+                
+            </div>
+            <div class="form-group">
+                
+            </div>
+
+   <hr />
+
+    <div class="form-group">
+        <div class="col-md-3">
+            <select data-bind="value:SessionId,options:sessionList, optionsValue:'SessionId',optionsText:'Title', optionsCaption:'Select Session'" class="form-control"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-3">
+            <input type="text" data-bind="value:Title" class="form-control" placeholder="Title" id="title" />
+        </div>
+    </div>
+<div class="form-group">
+    <div class="col-md-3">
+        <input type="checkbox" data-bind="checked:IsCurrent" class="form-control"  id="current" />
+    </div>
+</div>
+<hr/>
+<h4>Calender Contents</h4>
+<table class="table table-responsive" id="control-table">
+    <thead>
+        <tr>
+            <th>Activity</th>
+            <th>Start Date</th>
+            <th>EndDate</th>
+            <th>Semester</th>
+        </tr>
+    </thead>
+    <tbody data-bind="foreach:Details">
+        <tr>
+            <td><input type="text" data-bind="value:Activity" class="form-control" placeholder="Activity" id="activity"/></td>
+            <td><input type="date" data-bind="value:StartDate" class="form-control" id="sdate" /></td>
+            <td><input type="date" data-bind="value:EndDate,format:'dd/mm/yyyy'" class="form-control" id="edate" /></td>
+            <td><select data-bind="value:Semester,options:SemesterList" class="form-control"></select></td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td class="button">
+                <a class="btn btn-success" data-bind="click:$root.addActivity" href="#" title="save"><i class="glyphicon glyphicon-plus-sign">Add</i></a>
+            </td>
+        </tr>
+    </tfoot>
+</table>
+<script id="itemsTmpl" type="text/html">
+    
+</script>
+<script id="editTmpl" type="text/html">
+
+</script>
+    @Scripts.Render(
+    "~/Scripts/ViewModels/EditCalenderVM.js"
+    )
+

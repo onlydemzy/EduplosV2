@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Edit Faculty";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Faculties</h2>
+<p><a class="btn btn-success" data-bind="click: $root.add" href="#" title="edit"><i class="icon-plus"></i> Add Faculty</a></p>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Code</th>
+            <th>Title</th>
+            <th>Location</th>
+            <th style="width: 120px; text-align:right;" />
+        </tr>
+    </thead>
+    <tbody data-bind="template:{name:templateToUse, foreach: list }"></tbody>
+</table>
+<script id="itemsTmpl" type="text/html">
+    <tr>
+        <td data-bind="text: FacultyCode"></td>
+        <td data-bind="text: Title"></td>
+        <td data-bind="text: Location"></td>
+        <td class="buttons">
+            <a class="btn btn-success" data-bind="click: $root.edit" href="#" title="edit"><i class="glyphicon glyphicon-edit"></i></a>
+            
+        </td>
+        
+    </tr>
+</script>
+
+<script id="editTmpl" type="text/html">
+    <tr>
+        <td><input class="form-control" data-bind="value: FacultyCode" /></td>
+        <td><input class="form-control" data-bind="value: Title" /></td>
+        <td><input class="form-control" data-bind="value: Location" /></td>
+        <td class="buttons">
+            <a class="btn btn-success" data-bind="click: $root.save" href="#" title="save"><i class="glyphicon glyphicon-floppy-disk"></i></a>
+            <a class="btn btn-danger" data-bind="click: $root.cancel" href="#" title="cancel"><i class="glyphicon glyphicon-remove-sign"></i></a>
+        </td>
+    </tr>
+</script>  
+@Scripts.Render("/Scripts/ViewModels/facultyVM.js")

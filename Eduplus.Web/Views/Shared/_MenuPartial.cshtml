@@ -1,0 +1,44 @@
+﻿
+<div id='cssmenu'>
+    <ul>
+        <li><a href='@Url.Action("index","Home")'><span>Home</span></a></li>
+        <li class='active has-sub'>
+            <a href='#'><span>About</span></a>
+            <ul>
+                <li><a href='@Url.Action("InfoView","Home",new { view = "About Obong University" })'><span>Obong University</span></a></li>
+                <li><a href='@Url.Action("InfoView","Home",new { view = "Mission" })'><span>Mission</span></a></li>
+                <li><a href='@Url.Action("InfoView","Home",new { view = "Vision" })'><span>Vision</span></a></li>
+                <li><a href='@Url.Action("InfoView","Home",new { view = "Philosophy" })'><span>Our Philosophy</span></a></li>
+
+            </ul>
+        </li>
+
+        <li class='active has-sub'>
+            <a href='#'><span>Study At JetKing University College</span></a>
+            <ul>
+                <li><a href='@Url.Action("InfoView","Home",new { view = "Undergraduate Programme" })'><span>Undergraduate Programme</span></a></li>
+                
+                <li class="active has-sub1">
+                    <a href='#'><span>Faculties</span></a>
+                    <ul style="margin-left:60px">
+                        <li><a href='@Url.Action("CollegeDetail","Home",new { college = "Natural and Applied Sciences" })'><span>Faculty of Natural and Applied Sciences</span></a></li>
+                        <li><a href='@Url.Action("CollegeDetail","Home",new { college = "Arts and Humanities" })'><span>Faculty of Arts and Humanities</span></a></li>
+                        <li><a href='@Url.Action("CollegeDetail","Home",new { college = "Management Sciences" })'><span>Faculty of Management Sciences</span></a></li>
+                        <li><a href='@Url.Action("CollegeDetail","Home",new { college = "Social Sciences" })'><span>Faculty of Social Sciences</span></a></li>
+                    </ul>
+                </li>
+
+                <li><a href='@Url.Action("CurrentAcademicCalender","Admissions")'><span>Current Academic Calender</span></a></li>
+                <li><a href='@Url.Action("CurrentFeeSchedule","Admissions")'><span>Current Fees</span></a></li>
+                
+            </ul>
+        </li>
+        <li><a href='@Url.Action("Instructions","Admissions")'><span>Apply for Addmission</span></a></li>
+        <li class='last'><a href='#'><span>Contact Us</span></a></li>
+        <li class='last'><a href='https://smc.jetkinguniversitycolleged.net'><span>Portal</span></a></li>
+
+
+    </ul>
+
+</div>
+

@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Candidate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Candidate</h3>
+<div>
+    <div class="form-group">
+        <div class="col-md-3">
+            <select data-bind="value:Title,options:sessionList, optionsValue:'Title', optionsText:'Title',optionsCaption:'Select Sessions'" class="form-control"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-3">
+            <select data-bind="value:ProgType,options:ProgTypes, optionsCaption:'Select Programme Type'" class="form-control"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-3">
+            <button class="btn btn-success" data-bind="click:$root.fetchList">Fetch</button>
+        </div>
+    </div>
+    
+    <hr />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>RegNo</th>
+                <th>Name</th>
+                <th>Programme</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach:candidatesList">
+            <tr>
+                <td data-bind="text:RegNo"></td>
+                <td data-bind="text:Name"></td>
+                <td data-bind="text:Programme"></td>
+                <td data-bind="text:Phone"></td>
+                <td data-bind="text:Email"></td>
+                <td data-bind="text:Status"></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+@Scripts.Render("~/Scripts/ViewModels/candidatesVM.js")

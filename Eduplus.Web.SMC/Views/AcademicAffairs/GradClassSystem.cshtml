@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "Graduating Class";
+
+}
+
+
+ <div class="row col-md-8">
+     <h3>Grades</h3>
+     <p><a class="btn btn-success" data-bind="click: $root.add" href="#" title="edit"><i class="icon-plus"></i> Add Grade</a></p>
+     <table class="table" width="400">
+         <thead>
+             <tr>
+                 <th width="20">ID</th>
+                 <th width="20px">Low</th>
+                 <th width="20px">High</th>
+                  <th width="40px">Remark</th>
+                 <th width="70px">Prog Type</th>
+                 <th width="10px">IsProbation</th>
+                 <th width="20px"></th>
+                 <th width="20px"></th>
+             </tr>
+         </thead>
+         <tbody data-bind="template:{name:templateToUse, foreach: list }"></tbody>
+     </table>
+
+
+     <script id="itemsTmpl" type="text/html">
+         <tr>
+             <td data-bind="text: ClassId" width="20"></td>
+             <td data-bind="text: Low" width="20px"></td>
+             <td data-bind="text: High" width="20px"></td>
+             <td data-bind="text: Remark" width="40px"></td>
+             <td data-bind="text:ProgrammeType" width="70px"></td>
+             <td data-bind="text:IsProbation" width="20px"></td>
+             <td class="buttons" width="20px">
+                 <a class="btn btn-success" data-bind="click: $root.edit" href="#" title="edit"><i class="glyphicon glyphicon-edit"></i></a>
+
+             </td>
+             <td class="buttons" width="20px">
+                 <a class="btn btn-danger" data-bind="click: $root.delete" href="#" title="delete"><i class="glyphicon glyphicon-remove"></i></a>
+
+             </td>
+
+         </tr>
+     </script>
+
+     <script id="editTmpl" type="text/html">
+         <tr>
+             <td data-bind="text:GradeId" width="20px"></td>
+             <td width="20px"><input data-bind="value:Low" type="number" placeholder="Low band" /></td>
+             <td width="20px"><input data-bind="value:High" type="number" placeholder="High band" /></td>
+             <td width="40px"><input data-bind="value:Remark" type="text" placeholder="Remark" width="40" /></td>
+             <td width="70px"><select data-bind="value:ProgrammeType,options:$root.progTypes,optionsValue:'Type',optionsText:'Type',optionsCaption:'-Select Programme Type--'"></select></td>
+             <td width="40px"><input data-bind="checked:IsProbation" type="checkbox"  width="5" /></td>
+             <td class="buttons" width="20px">
+                 <a class="btn btn-success" data-bind="click: $root.save" href="#" title="save">
+                     <i class="glyphicon glyphicon-floppy-disk"></i>
+                 </a>
+                 <a class="btn btn-danger" data-bind="click: $root.cancel" href="#" title="cancel"><i class="glyphicon glyphicon-remove-sign"></i></a>
+
+             </td>
+         </tr>
+     </script>
+
+     <p><a class="btn btn-success" data-bind="click: $root.add" href="#" title="edit"><i class="icon-plus"></i> Add Grade</a></p>
+ </div>
+
+
+<script src="~/Scripts/ViewModels/gradingSystemVM.js"></script>

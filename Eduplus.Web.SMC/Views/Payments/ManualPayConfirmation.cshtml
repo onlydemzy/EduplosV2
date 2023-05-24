@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewBag.Title = "ManualPayConfirmation";
+     
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-7">
+            <hr />
+
+            <div class="form-group">
+
+                <input type="text" data-bind="value:transId" placeholder="Enter Transaction ID" class="form-control" />
+
+                <input type="button" data-bind="click:fetchTrans, disable:dC" class="btn btn-success" value="Search" />
+                <img src="~/Content/images/wait24.gif" data-bind="visible:dC" />
+            </div>
+
+            <hr />
+            <table class="table table-striped">
+                <tr>
+                    
+                </tr>
+
+                <tr>
+                    <td>StudentId</td>
+                    <td data-bind="text:studentId"></td>
+                </tr>
+                <tr>
+                    <td>Trans1Id</td>
+                    <td data-bind="text:transId"></td>
+                </tr>
+
+                <tr>
+                    <td>Name</td>
+                    <td data-bind="text:name"></td>
+                </tr>
+                <tr>
+                    <td>Type</td>
+                    <td data-bind="text:payType"></td>
+                </tr>
+                <tr>
+                    <td>Department</td>
+                    <td data-bind="text:department"></td>
+                </tr>
+                <tr>
+                    <td>Programme</td>
+                    <td data-bind="text:prog"></td>
+                </tr>             
+                <tr>
+                    <td>Particulars</td>
+                    <td data-bind="text:particulars"></td>
+                </tr>
+                <tr>
+                    <td>Amount</td>
+                    <td data-bind="text:amount"></td>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td data-bind="text:status" id="balance"></td>
+                </tr>
+                <tr>
+                    <td>Payment Date</td>
+                    <td><input type="date" data-bind="value:pDate" /></td>
+                </tr>
+
+                <tr>
+                    <td><input type="button" data-bind="click:confirmPay, disable:dC" id="btnPay" class="btn btn-danger" value="Confirm Payment" /></td>
+                    <td id="ttt">
+
+                        <input type="button" data-bind="click:cancel" id="btnDetails" class="btn btn-info" value="Cancel" />
+
+                    </td>
+                </tr>
+
+            </table>
+
+
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/Scripts/ViewModels/manualConfirmationVM.js")

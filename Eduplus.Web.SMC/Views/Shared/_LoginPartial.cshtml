@@ -1,0 +1,19 @@
+﻿@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOut", "Accounts", FormMethod.Post, new { id = "logoutForm"}))
+    {
+
+
+        <ul>
+            <li style="font-weight:normal; font-size:14px;">
+                @Html.ActionLink(@User.FullName + "!", "ChangePassword", "Accounts", routeValues: null, htmlAttributes: new { title = "Manage" })
+            </li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        </ul>
+    }
+}
+else
+{
+
+    
+<li>@Html.ActionLink("Log in", "Login", "Accounts", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>}

@@ -1,0 +1,12 @@
+﻿@model Eduplus.DTO.ArticleModule.EventDTO
+@{
+    ViewBag.Title = "Event Detail";
+}
+<div class="row">
+    <h3>@Html.DisplayFor(a => a.Title)</h3>
+    <hr />
+    @Html.Raw(Model.Content)
+</div>
+
+
+

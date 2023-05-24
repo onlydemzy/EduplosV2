@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "Generate Student Result";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="form-horizontal">
+    <h3>Generate Student Semester Result</h3>
+  
+        
+        <div class="form-group">
+
+            <div class="col-md-5">
+                <input type="text" class="form-control" data-bind="value:MatricNumber" placeholder="Student Matric Number" />
+
+            </div>
+        </div>
+    <div class="form-group">
+        
+            <div class="col-md-10"><p>
+    Choose student result type to generate.<br/>
+    <input type="radio" data-bind="checked:resultType" value="profile" name="typeGroup" class="radio-inline" />Entire Profile <br />
+    <input type="radio" data-bind="checked:resultType" value="semester" name="typeGroup" class="radio-inline" />Result by Semester <br />
+</p>
+</div>
+        
+    </div>
+
+    <div class="form-group" data-bind="visible:visibleC">
+
+        <div class="col-md-3">
+            <select class="form-control" data-bind="value:SessionId,options:sessions,optionsValue:'SessionId',optionsText:'Title',optionsCaption:'--Choose session'" ></select>
+
+        </div>
+    </div>
+
+    <div class="form-group" data-bind="visible:visibleC">
+
+        <div class="col-md-3">
+            <select class="form-control" data-bind="value:SemesterId,options:semesters,optionsValue:'SemesterId',optionsText:'Title',optionsCaption:'--Choose semester'"></select>
+
+        </div>
+    </div>
+
+    <hr />    
+    <div class="form-group">
+
+        <div class="col-md-5">
+            <button class="btn btn-success" data-bind="click:fetch">Generate</button>
+
+        </div>
+    </div>
+    
+</div>
+ 
+
+@Scripts.Render("~/Scripts/ViewModels/studentSemesterResultVM.js")

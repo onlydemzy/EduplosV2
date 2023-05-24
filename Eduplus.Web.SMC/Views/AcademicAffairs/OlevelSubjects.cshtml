@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Olevel Subjects";
+}
+<div class="row">
+    <div class="col-md-8">
+        <table class="table table-sm">
+            <thead>
+                <tr><th>ID</th></tr>
+                <tr><th>Subject</th></tr>
+            </thead>
+            <tbody data-bind="foreach:subjects">
+                
+            <tbody data-bind="template:{name:templateToUse, foreach: list }"></tbody>          
+        </table> 
+    </div>
+</div>
+ <script id="itemsTmpl" type="text/html">
+    <tr>
+        <td data-bind="text: SubjectId"></td>
+        <td data-bind="text: Title"></td>
+        <td class="buttons">
+            <a class="btn btn-success" data-bind="click: $root.edit" href="#" title="edit"><i class="glyphicon glyphicon-edit"></i></a>
+
+        </td>
+
+    </tr>
+</script>
+
+<script id="editTmpl" type="text/html">
+    <tr>
+        <td data-bind="text:SubjectId"></td>
+        <td><input data-bind="value:Title" placeholder="Title"></td>
+        
+        <td class="buttons">
+            <a class="btn btn-success" data-bind="click: $root.save" href="#" title="save">
+                <img src="/Content/images/wait24.gif" data-bind="visible:$root.spinar" /><i class="glyphicon glyphicon-floppy-disk"></i>
+            </a>
+            <a class="btn btn-danger" data-bind="click: $root.cancel" href="#" title="cancel"><i class="glyphicon glyphicon-remove-sign"></i></a>
+        </td>
+    </tr>
+</script>
+@Scripts.Render("/Scripts/ViewModels/coursesVM.js")

@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "AddFeeSchedule";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="col-md-11">
+    <h3>Add Fee Schedule</h3>   
+     
+    <div class="row form-inline">
+         
+        <div class="form-group">
+            <div class="col-md-3">
+                <select data-bind="value:SessionId,options:Sessions,optionsValue:'SessionId',optionsText:'Title',optionsCaption:'--Session--'" class="form-control"></select>
+                 
+            </div>
+            <div class="col-md-3">
+                <select data-bind="value:ProgrammeType,options:progTypes,optionsValue:'Type',optionsText:'Type',optionsCaption:'Select Programme Type'" class="form-control"></select>
+                 
+            </div>
+            <div class="col-md-4">
+                <select data-bind="value:FacultyCode,options:Faculties,optionsValue:'FacultyCode',optionsText:'Faculty',optionsCaption:'-Select School'" class="form-control"></select>
+                
+            </div>
+            
+        </div>
+         
+        <div class="form-group">
+            
+        </div>
+        
+    </div>
+    
+    <hr />
+    <h5>@Html.ActionLink("Click to go back to all schedules", "FeeSchedules")</h5>
+    <table class="table table-responsive">
+       <caption style="font-size:20px;font-weight:bold;background-color:#54b972">Schedule Details</caption>
+        <thead>
+            <tr>
+                <th>Account</th>
+                <th>Amount</th>
+                <th>Type</th>
+                <th>Applies To</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach:Details">
+            <tr>
+                <td><select data-bind="value:AccountCode,options:accounts,optionsValue:'AccountCode',optionsText:'Title',optionsCaption:'-Select Account'" class="form-control"></select></td>
+                <td><input data-bind="value:Amount" class="form-control" /></td>
+                <td><select data-bind="value:Type,options:types,optionsCaption:'Fee is...'" class="form-control"></select></td>
+                <td><select data-bind="value:AppliesTo,options:applies,optionsCaption:'Fee is applicable to...'" class="form-control" /></td>
+                <td class="buttons">
+                    <a class="btn btn-danger" data-bind="click: $root.removeItem" href="#" title="edit"><i class="glyphicon glyphicon-remove">Remove</i></a>
+
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr> 
+                <td class="button">
+                    <a class="btn btn-success" data-bind="click:$root.addItem, disable:disableButton" href="#" title="save"><i class="glyphicon glyphicon-plus-sign">Add</i></a>
+                    <img src="~/Content/images/wait24.gif" data-bind="visible:disableButton" alt="busy"/>
+                </td>
+                <td data-bind="text:totalAmount"></td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+@Scripts.Render("/Scripts/ViewModels/newFeeScheduleVM.js")

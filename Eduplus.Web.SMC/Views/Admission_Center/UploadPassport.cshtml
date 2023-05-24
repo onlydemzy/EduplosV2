@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "StudentAddmission_Step2";
+     
+}
+
+
+@using (Html.BeginForm("UploadPassport", "Admission_Center", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+{
+   
+
+    <div class="row">
+        <div class="col-md-7">
+            <h3 style="color:#08581b">Upload Your Passport</h3>
+            <hr/>
+            <h4>Maximum passport size is 50Kb</h4>
+            @Html.AntiForgeryToken();
+            @Html.ValidationSummary(true);
+
+            @if (ViewBag.foto != null)
+                {
+                 
+                    var base64 = Convert.ToBase64String(@ViewBag.foto);
+                    var imgSrc = String.Format("data:image/jpeg;base64,{0}", base64);
+                    <img src='@imgSrc' style="max-width:200px; max-height:200px;border-radius:360px;" />
+         
+            }
+
+
+
+
+            <div class="form-group">
+                <img id="output" style="max-height:200px; max-width:200px;" />
+                <input type="file" accept="image/*" onchange="loadfile(event)" name="image" id="image" value="Choose File" /> 
+            </div>
+
+            <div class="form-group">
+                <input type="submit" class="btn btn-block btn-success" value="Upload and Continue"/>
+            </div>
+
+            <div class="form-group">
+                @Html.ActionLink("Skip","OlevelResults","Admission_Center")
+            </div>
+        </div>
+    </div>
+}
+<script>
+    var loadfile = function (event) {
+
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+    };
+
+</script>
+

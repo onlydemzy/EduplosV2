@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "ScheduleCourses";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ScheduleCourses</h2>
+<div class="row">
+    <div class="form-group">
+        <select data-bind="options:programmes,optionsText:'Title',value:programme,optionsCaption:'Select Programme'" class="form-control"></select>
+    </div>
+    <div class="form-group">
+        <select data-bind="value:session,options:sessions,optionsText:'Title',optionsCaption:'Select Session'" class="form-control"></select>
+    </div>
+    <div class="form-group">
+        <select data-bind="options:semesters,optionsText:'Title',value:semester,optionsCaption:'Select Semester'" class="form-control"></select>
+    </div>
+    <div class="form-group">
+        <select data-bind="options:levels,value:level,optionsCaption:'Select Level'" class="form-control"></select>
+    </div>
+    
+
+    
+</div>
+<div class="row">
+    <hr/>
+    <div class="col-md-4">
+        <select multiple data-bind="value:lecturer,options:lecturers,optionsText:'Name'" title="Select Courses" size="15" class="form-control"></select>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+            <button class="btn btn-default" data-bind="click:addschedule">Add>></button>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-default" data-bind="click:removeschedule">Remove<<</button>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <select data-bind="value:course,options:courses,optionsText:'CourseCode',optionsCaption:'Select Courses'"  class="form-control"></select>
+        <select multiple data-bind="value:schedule,options:schedules,optionsText:'Title'" title="Course Schedules" size="15" class="form-control"></select>
+    </div>
+    <hr/>
+    <div class="form-group">
+        <button class="btn btn-success" data-bind="click:saveSchedule">Save schedule</button>
+    </div>
+</div>
+
+@Scripts.Render("/Scripts/ViewModels/courseScheduleVM.js")

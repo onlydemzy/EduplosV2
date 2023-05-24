@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "Academic Sesssions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Academic Sessions</h2>
+<p><a class="btn btn-success" data-bind="click:$root.add" href="#" title="Add new department"><i class="icon-plus"></i> Add Session</a></p>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>IsCurrent</th>
+            <th></th>
+            <th style="width: 120px; text-align:right;" />
+            <th></th>
+        </tr>
+    </thead>
+    <tbody data-bind="template:{name:templateToUse, foreach: sessionList }"></tbody>
+</table>
+<script id="itemsTmpl" type="text/html">
+    <tr>
+        <td data-bind="text: SessionId"></td>
+        <td data-bind="text: Title"></td>
+        <td data-bind="text:StartDate"></td>
+        <td data-bind="text:EndDate"></td>
+        <td data-bind="text: IsCurrent"></td>
+        <td class="buttons">
+            <a class="btn btn-success" data-bind="click: $root.edit" href="#" title="edit"><i class="glyphicon glyphicon-edit"></i></a>
+
+        </td>
+        <td class="buttons">
+            <a class="btn btn-success" data-bind="click: $root.details" href="#" title="edit"><i class="glyphicon glyphicon-edit"></i>Details</a>
+
+        </td>
+
+    </tr>
+</script>
+
+<script id="editTmpl" type="text/html">
+    <tr>
+        <td data-bind="text:SessionId"></td>
+        <td><input class="form-control" data-bind="value:Title" /></td>
+        <td><input  type="date" class="form-control" data-bind="value: SDate" /></td>
+        <td><input type="date" class="form-control" data-bind="value:EDate"></td>
+        <td><input type="checkbox" class="form-control" data-bind="checked:IsCurrent"></td>
+        
+        <td class="buttons">
+            <a class="btn btn-success" data-bind="click:$root.save" href="#" title="save"><i class="glyphicon glyphicon-floppy-disk"></i></a>
+            <a class="btn btn-danger" data-bind="click: $root.cancel" href="#" title="cancel"><i class="glyphicon glyphicon-remove-sign"></i></a>
+        </td>
+    </tr>
+</script>
+@Scripts.Render("/Scripts/ViewModels/sessionVM.js")

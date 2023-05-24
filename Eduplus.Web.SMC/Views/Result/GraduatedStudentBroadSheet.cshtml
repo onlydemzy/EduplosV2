@@ -1,0 +1,110 @@
+﻿@model Eduplus.DTO.AcademicModule.BroadSheetDTO
+@using System.Data
+@{
+    Layout = "~/Views/Shared/_ReportLayout.cshtml";
+
+}
+
+@if (Model == null)
+{
+    <p>Results not found for the chosen period</p>
+}
+else
+{
+
+    <div style="max-width:1024px;">
+        <h4 style="color:#000000"> Students' Semester Broad Sheet</h4><hr />
+        <div class="title-holder">
+            <table class="table table-sm" style="color:#000000">
+                <tr>
+                    <td width=50px>Faculty:</td>
+                    <td>@Html.DisplayFor(model => model.Faculty)</td>
+                </tr>
+                <tr>
+                    <td width=50px>Department:</td>
+                    <td>@Html.DisplayFor(model => model.Department)</td>
+                </tr>
+                <tr>
+                    <td width=50px>Programme:</td>
+                    <td>@Html.DisplayFor(model => model.Programme)</td>
+                </tr>
+            </table>
+
+        </div>
+        <div class="title-holder1">
+            <table class="table table-sm" style="color:#000000">
+                <tr>
+                    <td width=50px>Session:</td>
+                    <td>@Html.DisplayFor(model => model.Session)</td>
+                </tr>
+                <tr>
+                    <td width=50px>Semester:</td>
+                    <td>@Html.DisplayFor(model => model.Semester)</td>
+                </tr>
+                <tr>
+                    <td width=50px>Level:</td>
+                    <td>@Html.DisplayFor(model => model.Level)</td>
+                </tr>
+            </table>
+
+        </div>
+
+    </div>
+
+    <div id="tab" style="clear:both; font-family:'Times New Roman';font-size:9px;">
+        <hr />
+        <table class="table table-bordered table-condensed" style="color:#000000; border-color:#000000; border-style:solid">
+
+            <thead style="display:table-row-group;font-size:8px">
+                <tr>
+                    <th>S/N</th>
+                    @foreach (DataColumn col in Model.Results.Columns)
+                {
+                        <th>@col.ColumnName</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @{int chk = 0;
+
+                foreach (DataRow row in Model.Results.Rows)
+                {
+                    int ans = chk + 1;
+                        <tr>
+
+                            <td>@ans</td>
+
+                            @foreach (DataColumn col in Model.Results.Columns)
+                            {
+
+                                <td style="padding-bottom:1px">@row[col.ColumnName]</td>
+
+                            }
+                        </tr>
+                        chk++;
+                    }
+
+                }
+
+            </tbody>
+
+
+        </table>
+
+    </div>
+
+
+    <div class="auth" style="width:700px;  overflow:hidden; margin-top:30px;">
+        <div id="hd" style="width:200px;float:left;">
+            <a>--------------------------<br />H.O.D</a>
+        </div>
+
+        <div id="hd" style="width:200px; margin-left:220px">
+            <a>--------------------------<br />Exams Officer</a>
+        </div>
+        <div id="hd" style="width:200px; float:right; margin-right:2px; margin-top:-40px;">
+            <a>--------------------------<br />Dean of College/Faculty</a>
+        </div>
+    </div>
+                    }
+

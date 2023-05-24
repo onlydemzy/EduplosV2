@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Eduplus.DTO.AcademicModule.StudentSemesterProfileDTO>
+@{
+    ViewBag.Title = "Semester  Registrations";
+    Layout = "~/Views/Shared/_A4ReportLayout.cshtml";
+}
+@if (Model != null)
+{
+    <div>
+        <p><label class="label control-label">Semester:@ViewBag.semester</label></p>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>MatricNo</th>
+                    <th>Name</th>
+                    <th>Level</th>
+                    <th>Programme</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var i in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(a => i.RegNo)</td>
+                        <td>@Html.DisplayFor(a => i.Name)</td>
+                        <td>@Html.DisplayFor(a => i.Level)</td>
+                        <td>@Html.DisplayFor(a => i.Programme)</td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>Total</td>
+                    <td><b>@ViewBag.total</b></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+}
+else
+{
+    <h3>Oops! No registrations for selected semester and programme</h3>
+}

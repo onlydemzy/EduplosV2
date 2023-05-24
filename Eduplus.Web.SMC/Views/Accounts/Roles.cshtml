@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "Roles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-6">
+        <h3>Roles</h3>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Role</th>
+                    <td>Delete</td>
+                    <td>Permissions</td>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach:roles">
+                <tr>
+                    <td data-bind="text:RoleName"></td>
+                    <td><button data-bind="click:$root.deleteRow" class="btn btn-info">Delete</button></td>
+                    <td><button data-bind="click:$root.viewPermissions" class="btn btn-info">Permissions</button></td>
+                    <td><button data-bind="click:$root.getRoleUsers" class="btn btn-info">Users</button></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control" data-bind="value:nRole" placeholder="Enter new role"/>
+                    </td>
+                    <td>
+                        <button data-bind="click:$root.addRole" class="btn btn-info">Add Role</button>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    
+    <div class="col-md-6">
+        <h3>Role Users</h3>
+        <table class="table table-hover">
+            <caption data-bind="text:selected"></caption>
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <td>Fullname</td>
+                     <td></td>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach:roleUsers">
+                <tr>
+                    <td data-bind="text:UserName"></td>
+                    <td data-bind="text:FullName"></td>
+                    <td><button data-bind="click:$root.removeUserFromRole" class="btn-danger">Remove</button></td>
+                     
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>
+                        <select data-bind="value:nroleUser,options:allUsers,optionsText:'FullName',optionsCaption:'Select user to add'"></select>
+                    </td>
+                    <td>
+                        <button data-bind="click:$root.addUserToRole" class="btn btn-info">Add to Role</button>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+@Scripts.Render("~/Scripts/ViewModels/rolesVM.js")
+

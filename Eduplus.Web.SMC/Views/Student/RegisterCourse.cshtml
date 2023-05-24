@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "Semester Course Registration";
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+<div class="container" id="lvl">
+
+    <div class="row">
+
+        <div class="col-md-6">
+            <select data-bind="value:level,options:Levels,optionsCaption:'Choose your current Level'" class="form-control"></select>
+            <img src="~/Content/images/15.gif" data-bind="visible:Kill" />
+
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-9">
+            <hr />
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th>Code</th>
+                        <th>Title</th>
+                        <th>Unit</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach:courses">
+                    <tr>
+                        <td data-bind="text:CourseCode"></td>
+                        <td data-bind="text:Title"></td>
+                        <td data-bind="text:CreditHour"></td>
+                        <td data-bind="text:Type"></td>
+                        <td data-bind="ifnot:IsOutStanding">
+                            <button data-bind="click:$root.removeCourse" class="btn btn-danger">Remove</button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td></td>
+                        <td class="buttons">
+                            <a class="btn btn-success" data-bind="click: $root.addAdditionalCourses" href="#" title="add"><i class="glyphicon glyphicon-plus-sign"></i>Add More Courses</a>
+
+                        </td>
+                    </tr>
+                    <tr id="t1">
+                        <td><select data-bind="value:addedCourse,options:additionalCourses,optionsText:'vcourse',optionsCaption:'-Select Course-'" class="form-control"></select></td>
+                        <td data-bind="with:addedCourse"><span data-bind="text:Title"></span></td>
+                        <td data-bind="with:addedCourse"><span data-bind="text:CreditHour"></span></td>
+                        <td data-bind="with:addedCourse"><span data-bind="text:Type"></span></td>
+                        <td class="button">
+                            <a class="btn btn-success" data-bind="click:$root.addCourse"><i class="glyphicon glyphicon-plus-sign"></i> Add</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold">Total</td>
+                        <td></td>
+                        <td style="font-weight:bold" data-bind="text:$root.totalUnit"></td>
+                    </tr>
+                    <tr>
+                        <td class="buttons">
+                            <a class="btn btn-success" data-bind="click: $root.register,disable:Kill" href="#" title="register"><i class="glyphicon glyphicon-save"></i>Submit</a>
+
+                            <img src="~/Content/images/wait24.gif" data-bind="visible:Kill" />
+
+                        </td>
+                        <td></td>
+                        <td class="buttons">
+                            <a class="btn btn-danger" data-bind="click: $root.reset" href="#" title="edit"><i class="glyphicon glyphicon-edit"></i>Cancel</a>
+
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+
+@Scripts.Render("~/Scripts/ViewModels/courseRegistrationVM.js")
+

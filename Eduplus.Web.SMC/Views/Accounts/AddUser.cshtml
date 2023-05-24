@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "Add User";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="form-horizontal">
+    <h3>Add User</h3>
+    <hr />
+    <div class="form-group">
+        <div class="col-md-12">
+            <input type="text" data-bind="value: UserName" class="form-control" placeholder="Username" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-12">
+            <input type="text" data-bind="value: Email" class="form-control" placeholder="User Email" />
+        </div>
+    </div>
+    <div class="form-group">
+
+        <div class="col-md-12">
+            <select data-bind="value:DepartmentCode, options:Departments, optionsValue:'DepartmentCode', optionsText:'Title', optionsCaption:'Choose Department'" class="form-control"></select>
+        </div>
+
+    </div>
+    <div class="form-group">
+
+        <div class="col-md-12">
+            <select data-bind="value:ProgrammeCode, options:Programmes, optionsValue:'ProgrammeCode', optionsText:'Title', optionsCaption:'Choose Programme'" class="form-control"></select>
+        </div>
+
+    </div>
+    <div class="form-group">
+
+        <div class="col-md-12">
+            <select data-bind="value:PersonId, options:staff, optionsValue:'PersonId', optionsText:'Name', optionsCaption:'Choose Staff'" class="form-control"></select>
+        </div>
+
+    </div>
+    
+    
+    <div class="form-group">
+
+        <div class="col-md-12">
+            <select data-bind="value:Role, options:Roles, optionsCaption:'Choose user role'" class="form-control"></select>
+        </div>
+
+    </div>
+    <div class="form-group">
+        <div class="col-md-12">
+            <input type="password" data-bind="value: Password" class="form-control" placeholder="User password" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-12">
+            <input type="password" data-bind="value: ConfirmPassword" class="form-control" placeholder="Confirm Password" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button data-bind="click:submit,disable:disableButton" class="btn btn-success">Submit</button>
+    </div>
+</div>
+
+@Scripts.Render("~/Scripts/ViewModels/createUserVM.js")

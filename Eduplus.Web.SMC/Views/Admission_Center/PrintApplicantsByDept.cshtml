@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title - Eduplus</title>
+    @model IEnumerable<Eduplus.DTO.CoreModule.ApplicantDTO>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @{Layout = null;}
+</head>
+<body>
+@if (Model == null || Model.Count() == 0)
+{
+    <h4>No records found</h4>
+}
+else
+{
+    <div id="A" style="page-break-after:always; width:850px; height:auto; margin-left:auto;margin-right:auto;margin-top:10px;">
+        <div class="report-header">
+            @if (UserData.Logo != null)
+                {
+                    var base64 = Convert.ToBase64String(UserData.Logo);
+                    var imgSrc = String.Format("data:image/jpeg;base64,{0}", base64);
+                <img src='@imgSrc' style="width:100px; height:100px;" />
+
+            }
+            <br /><b style="font-family:'Arial Rounded MT';font-size:25px;font-weight:bold">
+                @UserData.InstitutionName
+            </b>
+        </div>
+        <div class="hold-holders">
+            <h3 style="border-bottom-width:1px; border-bottom:solid">@Model.First().Session Addmission Applicants</h3>
+            <div class="title-holderS1">
+                <table class="table table-condensed">
+                    <tr>
+                        <td class="col-md-4">School:</td>
+                        <td>@Model.First().Faculty</td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">Department:</td>
+                        <td>@Model.First().Department</td>
+                    </tr>
+                    
+                </table>
+            </div>
+
+            <div class="title-holderS2">
+                <table class="table" border="0">
+                    <tr>
+                        <td class="col-md-4">Proramme Type:</td>
+                        <td>@Model.First().ProgrammeType</td>
+                    </tr>
+                    
+                </table>
+            </div>
+            <hr />
+        </div>
+        <div id="Input" style="width:720px; margin-left:auto; margin-right:auto; clear:both;">
+            <table class="table table-bordered table-condensed">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>Student ID</th>
+                        <th>Name</th>
+                        <th>State</th>
+                        <th>Lga</th>
+                        <th>JambNo</th>
+                        <th>Phone</th>
+                        <th>Programme</th>
+                        <th>Stage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int sno = 0;
+                    }
+                   @foreach (var i in Model)
+                   {
+                    <tr>
+                        <td>
+                            @{ sno++; }
+                        @sno
+                    </td>
+                        <td>
+                            @Html.DisplayFor(model => i.RegNo, new { @class = "form-control" })
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => i.Name, new { @class = "form-control" })
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => i.State, new { @class = "form-control" })
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => i.Lga, new { @class = "form-control" })
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => i.JambNo, new { @class = "form-control" })
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => i.Phone, new { @class = "form-control" })
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => i.Programme, new { @class = "form-control" })
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => i.AddmissionCompleteStage, new { @class = "form-control" })
+                        </td>                  
+                     </tr>
+                    }                               
+                </tbody>    
+            </table>
+        </div>
+         
+  </div>  
+}
+<div class="page-breaker"></div>
+</body>
+</html>
+

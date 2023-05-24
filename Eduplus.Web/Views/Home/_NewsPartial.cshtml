@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Eduplus.DTO.ArticleModule.ArticleDTO>
+<style>
+    .h3-me {
+        color:#fff;
+        height: 30px;
+        
+        border-bottom: solid;
+        border-bottom-color: #0a5e23;
+        border-bottom-width: 2px;
+        border-bottom: solid;
+       
+        
+    }
+    
+</style>
+<h4 class="h3-me">News</h4>
+<div class="row">
+    <ul>
+        @foreach (var n in Model)
+            {
+            @Html.DisplayFor(a => n.Title)
+
+            <li><a style="color:#0a5e23;" href="@Url.Action("News","Home",new { news = n.Title })">Read more...</a></li>
+
+        }
+    </ul>
+           
+      
+</div>
+

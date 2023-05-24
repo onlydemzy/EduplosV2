@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Fetch Payments";
+}
+<div class="row form-horizontal">
+     
+        <h2>Fetch Payments</h2>
+    
+        <div class="form-group">
+            <label class="label control-label">From Date</label>
+            <div class="col-4">
+                <input type="date" data-bind="value:fromDate" class="form-control" />
+            </div>
+            
+        </div>
+        <div class="form-group">
+            <label class="label control-label">From Date</label>
+            <div class="col-4">
+                <input type="date" data-bind="value:toDate" class="form-control" />
+            </div>
+
+        </div>
+    <div class="form-group">
+        <div class="col-4">
+            <select data-bind="value:payType,options:payTypes, optionsCaption:'Select Record type'" class="form-control"></select>
+        </div>
+
+    </div>
+        <div class="form-group">
+            <div class="col-4">
+                <select data-bind="value:payType,options:payTypes, optionsCaption:'Select Record type'" class="form-control"></select>
+            </div>
+
+        </div>
+        <div class="form-group">
+            
+            <div class="col-4">
+                <button data-bind="click:fetch" class="btn btn-info" id="btnFetch">Fetch
+                    <img src="~/Content/images/wait24.gif" id="sp"/></button>
+            </div>
+
+        </div>
+     
+</div>
+<script src="~/Scripts/ViewModels/fetchPaymentsVM.js"></script>
+

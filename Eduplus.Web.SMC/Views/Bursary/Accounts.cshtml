@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "Accounts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+    <h2>Accounts</h2>
+    <hr />
+    <p><a class="btn btn-success" data-bind="click:$root.add" href="#" title="edit"><i class="icon-plus"></i> Add Account</a></p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Act Type</th>
+                <th>Op. Balance</th>
+                <th>Cur. Balance</th>
+                <th>IsActive</th>
+                <th style="width: 120px; text-align:right;" />
+            </tr>
+        </thead>
+        <tbody data-bind="template:{name:templateToUse, foreach:list}"></tbody>
+        <tfoot>
+            <tr><td><a class="btn btn-success" data-bind="click:$root.add" href="#" title="edit"><i class="icon-plus"></i> Add Account</a></td></tr>
+        </tfoot>
+    </table>
+    <p><a class="btn btn-success" data-bind="click:$root.add" href="#" title="edit"><i class="icon-plus"></i> Add Account</a></p>
+    
+    <script id="itemsTmpl" type="text/html">
+        <tr>
+            <td data-bind="text:AccountCode"></td>
+            <td data-bind="text:Title"></td>
+            <td data-bind="text:Description"></td>
+            <td data-bind="text:AccountType"></td>
+            <td data-bind="text:OpeningBalance"></td>
+            <td data-bind="text:CurrentBalance"></td>
+            <td data-bind="text:Active"></td>
+            <td class="buttons">
+                <a class="btn btn-success" data-bind="click: $root.edit" href="#" title="edit"><i class="glyphicon glyphicon-edit"></i></a>
+
+            </td>
+        </tr>
+    </script>
+
+    <script id="editTmpl" type="text/html">
+        <tr>
+            <td><input class="form-control" data-bind="value:AccountCode"/></td>
+            <td><input class="form-control" data-bind="value:Title"/></td>
+            <td><input class="form-control" data-bind="value:Description"/></td>
+            <td><select data-bind="value:AccountType,options:AccountTypes" class="form-control"></select></td>
+            <td><input class="form-control" data-bind="value:OpeningBalance"/></td>
+            <td><input class="form-control" data-bind="value:CurrentBalance"/></td>
+            <td><input type="checkbox" class="form-control" data-bind="checked:Active"/></td>
+            <td class="buttons">
+                <a class="btn btn-success" data-bind="click:$root.save" href="#" title="save"><i class="glyphicon glyphicon-floppy-disk"></i></a>
+                <a class="btn btn-danger" data-bind="click: $root.cancel" href="#" title="cancel"><i class="glyphicon glyphicon-remove-sign"></i></a>
+            </td>
+        </tr>
+    </script>  
+</div>
+@section Scripts{
+    @Scripts.Render("~/Scripts/ViewModels/accountsVM.js")
+    }
+

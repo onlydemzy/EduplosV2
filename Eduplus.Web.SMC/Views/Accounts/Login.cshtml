@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    @model Eduplus.Web.ViewModels.LoginModel
+    @{Layout = null; }
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login - Eduplus</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="container-fluid">
+
+        <div id='cssmenu'>
+            <ul>
+                <li><a href='#'><span class="glyphicon glyphicon-home">Home</span></a></li>
+
+            </ul>
+        </div>
+        <div id="hj" style="background-color:#fff; height:20px;">
+        </div>
+        <div id="hkj" style="background-color:#fff;height:25px;">
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-4">
+                <p style="width:100%; text-align:justify; display:block">
+                     
+                </p>
+            </div>
+            <div class="col-md-4">
+                <p style="text-align:center">
+                    @if (UserData.Logo != null)
+                    {
+                        var base64 = Convert.ToBase64String(UserData.Logo);
+                        var imgSrc = String.Format("data:image/jpeg;base64,{0}", base64);
+                        <img src='@imgSrc' style="max-width:200px; max-height:200px;" />
+
+                    }
+                    
+                    <h3 style="background:#08581b; text-align:center; border-top:solid; border:0px 2px 0px 2px; border-color:#0e983b;
+                            color:#ffffff;">
+                       Akwa Ibom State COE Login
+                    </h3>
+                    @using (Html.BeginForm("Login", "Accounts", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group glyphicon-user">
+                            @Html.TextBoxFor(m => m.Username, new { @class = "form-control",placeholder="Username"})
+                            @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+                        </div>
+                            <div class="form-group">
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control",placeholder = "Password" })
+                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(m=>m.ReturnUrl)
+                            </div>
+                            <div class="form-group">
+
+                                <input type="submit" class="btn btn-success btn-block" value="Login" />
+                            </div>
+                            <div class="form-group">
+
+                                @Html.ActionLink("New student? Click here to create profile","NewStudentProfile","Admission_Center")
+                                @Html.ActionLink("Are you an Alumnus? Click here to Register", "NewAlumnusRegistration", "Alumni")
+                            </div>
+                    }
+
+                </p>
+
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+
+        <footer style="background-color:#171978; color:#fff;">
+            <p>&copy;& @DateTime.Now.Year - @UserData.InstitutionName</p>
+        </footer>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/knockout")
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewBag.Title = "ResultApproval";
+    Layout = "~/Views/Shared/_AuthorisedLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <h3>Semester Result Approval</h3>
+        <hr/>
+        
+        @using (Html.BeginForm("ResultApproval", "StudentResults", FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+            @Html.ValidationSummary(true)
+            @Html.AntiForgeryToken()
+            
+                <div class="form-group">
+                    @Html.Label("Session", new { @class = "col-md-2 control-label" })
+                    <div class="col-sm-10">
+                        @Html.DropDownList("sessionId", null, new { @class = "form-control" })
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.Label("Semester", new { @class = "col-md-2 control-label" })
+                    <div class="col-sm-10">
+                        @Html.DropDownList("semesterId", null, new { @class = "form-control" })
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.Label("Approval Option", new { @class = "col-md-2 control-label" })
+                    <div class="col-sm-10">
+                        @Html.DropDownList("options", null, new { @class = "form-control" })
+
+                    </div>
+                </div>
+               
+           
+                   
+            <div class="form-group">
+                @Html.Label("Level", new { @class = "col-md-2 control-label" })
+                <div class="col-sm-10">
+                    @Html.DropDownList("level",null, new { @class = "form-control" })
+
+                </div>
+            </div>
+            if (User.IsInRole("Administrator"))
+            {
+                <div class="form-group">
+                    @Html.Label("Department", new { @class = "col-md-2 control-label" })
+                    <div class="col-sm-10">
+                        @Html.DropDownList("departmentId", null, new { @class = "form-control" })
+
+                    </div>
+                </div>
+            }
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-info" value="Submit" />
+                </div>
+            </div>
+
+
+        }
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $('#options').change(function () {
+            var ops = $('#optons:selected').val();
+            if (ops == 1) {
+                $('#level').prop('disabled', false);
+            }
+            else {
+                $('#level').prop('disabled', true);
+            }
+        });
+    });
+</script>

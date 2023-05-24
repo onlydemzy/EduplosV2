@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "PayOtherCharges";
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+  
+<div class="form-horizontal">
+    <h3>Other charges fee payment</h3>
+    <hr />
+    <div class="form-group">
+
+        <div class="col-md-12">
+            <select data-bind="value:SessionId, options:sessions,optionsValue:'SessionId',optionsText:'Title', optionsCaption:'Select Session'" class="form-control"></select>
+        </div>
+
+    </div>
+
+    <div class="form-group">
+
+        <div class="col-md-12">
+            <select data-bind="value:charge, options:charges,optionsText:'Description', optionsCaption:'Other Fees Charges'" class="form-control"></select>
+        </div>
+
+    </div>
+    <div class="form-group">
+         
+        <div class="col-md-3">
+            <input type="text" data-bind="value:Amount" class="form-control" disabled />
+        </div>
+
+    </div>
+    <div class="form-group">
+        <div class="col-md-3">
+            <button data-bind="click:submit, disable:dC" class="btn btn-success">Generate Invoice</button>
+            <img src="~/Content/images/wait24.gif" data-bind="visible:dC" />
+        </div>
+
+    </div>
+
+</div>
+
+@Scripts.Render("~/Scripts/ViewModels/payOtherChargesVM.js")

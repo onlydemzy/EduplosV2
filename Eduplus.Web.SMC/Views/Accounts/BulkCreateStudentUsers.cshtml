@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "BulkCreateStudentUsers";
+}
+ 
+
+<div class="col-md-7">
+    <h2>BulkCreateStudentUsers</h2>
+    <div class="form-group">
+        <select data-bind="value:faculty,options:faculties,optionsValue:'FacultyCode',optionsText:'Title',optionsCaption:'Select faculty'" class="form-control"></select>
+    </div>
+        
+        <div class="form-group">
+            <input data-bind="click:create,disabled:dis" class="btn btn-danger" value="Generate"/>
+            <img src="~/Content/images/wait24.gif" data-bind="visible:dis" />
+        </div>
+   
+</div> 
+<script src="~/Scripts/ViewModels/bulkcreateVM.js"></script>

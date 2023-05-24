@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Eduplus.Domain.AcademicModule.TranscriptApplication>
+@{
+    ViewBag.Title = "Transcript Applications";
+}
+<div class="row">
+     
+    <div class="col-md-10">
+        <table class="table table-responsive-sm">
+            <tr>
+                <th>
+                    S/N
+                </th>
+                <th>Name</th>
+                <th>MatricNo</th>
+                <th>Date Applied</th>
+                <th>Status</th>
+            </tr>
+            <tbody>
+                @{int count = 0;
+                foreach (var i in Model)
+                {
+                    count = count + 1;
+                    <tr>
+                        <td>@count</td>
+                        <td>@i.Student</td>
+                        <td>@i.Matricnumber</td>
+                        <td>@i.DateApplied.ToString("dd-MMM-yyyy")</td>
+                        <td>@i.Status</td>
+                        <td>@Html.ActionLink("Detail", "TranscriptDetail", new { transNo=@i.TranscriptNo})</td>
+                        <td> @if (i.Status == "PAID")
+                        {<form action="@Url.Action("Transcript", "Result")" method="post">
+                                <input name="transcriptNo" value="@i.TranscriptNo" hidden />
+                                 <input type="submit" name="gen" class="btn btn-info" value="Generate Transcript" />
+                            </form>
+                        }
+                        </td>
+                        
+                    </tr>
+                }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

@@ -1,0 +1,1176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.Net.Compilers.4.2.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.4.2.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{384AFB57-8C87-4A7A-9828-36C9A80EE6C2}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Eduplus.Web.SMC</RootNamespace>
+    <AssemblyName>Eduplus.Web.SMC</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
+    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.5.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>..\packages\Portable.BouncyCastle.1.8.5\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Common.Logging, Version=3.4.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.3.4.1\lib\net40\Common.Logging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Common.Logging.Core, Version=3.4.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.Core.3.4.1\lib\net40\Common.Logging.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Eduplus.Domain">
+      <HintPath>..\Eduplus.Domain\bin\Debug\Eduplus.Domain.dll</HintPath>
+    </Reference>
+    <Reference Include="Eduplus.DTO">
+      <HintPath>..\Eduplus.DTO\bin\Debug\Eduplus.DTO.dll</HintPath>
+    </Reference>
+    <Reference Include="Eduplus.Services">
+      <HintPath>..\Eduplus.Services\bin\Debug\Eduplus.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPPlus, Version=5.2.1.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.5.2.1\lib\net45\EPPlus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="itext.barcodes, Version=7.1.12.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.1.12\lib\net40\itext.barcodes.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="itext.forms, Version=7.1.12.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.1.12\lib\net40\itext.forms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="itext.io, Version=7.1.12.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.1.12\lib\net40\itext.io.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="itext.kernel, Version=7.1.12.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.1.12\lib\net40\itext.kernel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="itext.layout, Version=7.1.12.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.1.12\lib\net40\itext.layout.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="itext.pdfa, Version=7.1.12.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.1.12\lib\net40\itext.pdfa.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="itext.sign, Version=7.1.12.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.1.12\lib\net40\itext.sign.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="itext.styledxmlparser, Version=7.1.12.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.1.12\lib\net40\itext.styledxmlparser.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="itext.svg, Version=7.1.12.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.7.1.12\lib\net40\itext.svg.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.7.9\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="QRCoder, Version=1.4.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QRCoder.1.4.1\lib\net40\QRCoder.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Quartz, Version=3.0.6.0, Culture=neutral, PublicKeyToken=f6b8c98a402cc8a4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Quartz.3.0.6\lib\net452\Quartz.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rotativa.1.6.4\lib\net40\Rotativa.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.9\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard1.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Threading.Tasks" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Cors, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.9\lib\net45\System.Web.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.9\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.9\lib\net45\System.Web.Http.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Unity.Abstractions, Version=5.11.6.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Abstractions.5.11.6\lib\net45\Unity.Abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Unity.AspNet.WebApi, Version=5.11.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.AspNet.WebApi.5.11.2\lib\net45\Unity.AspNet.WebApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.11.8.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Container.5.11.8\lib\net45\Unity.Container.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Unity.Mvc, Version=5.11.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Mvc.5.11.1\lib\net45\Unity.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Chart.css" />
+    <Content Include="Content\Chart.min.css" />
+    <Content Include="Content\cmsImages\coeT1.jpg" />
+    <Content Include="Content\DataTables\css\autoFill.bootstrap.css" />
+    <Content Include="Content\DataTables\css\autoFill.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\autoFill.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.dataTables.css" />
+    <Content Include="Content\DataTables\css\autoFill.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.foundation.css" />
+    <Content Include="Content\DataTables\css\autoFill.foundation.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.jqueryui.css" />
+    <Content Include="Content\DataTables\css\autoFill.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.semanticui.css" />
+    <Content Include="Content\DataTables\css\autoFill.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\buttons.bootstrap.css" />
+    <Content Include="Content\DataTables\css\buttons.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\buttons.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\buttons.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\buttons.dataTables.css" />
+    <Content Include="Content\DataTables\css\buttons.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\buttons.foundation.css" />
+    <Content Include="Content\DataTables\css\buttons.foundation.min.css" />
+    <Content Include="Content\DataTables\css\buttons.jqueryui.css" />
+    <Content Include="Content\DataTables\css\buttons.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\buttons.semanticui.css" />
+    <Content Include="Content\DataTables\css\buttons.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.bootstrap.css" />
+    <Content Include="Content\DataTables\css\colReorder.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\colReorder.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.dataTables.css" />
+    <Content Include="Content\DataTables\css\colReorder.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.foundation.css" />
+    <Content Include="Content\DataTables\css\colReorder.foundation.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.jqueryui.css" />
+    <Content Include="Content\DataTables\css\colReorder.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.semanticui.css" />
+    <Content Include="Content\DataTables\css\colReorder.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.foundation.css" />
+    <Content Include="Content\DataTables\css\dataTables.foundation.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.jqueryui.css" />
+    <Content Include="Content\DataTables\css\dataTables.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.material.css" />
+    <Content Include="Content\DataTables\css\dataTables.material.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.semanticui.css" />
+    <Content Include="Content\DataTables\css\dataTables.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.uikit.css" />
+    <Content Include="Content\DataTables\css\dataTables.uikit.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.bootstrap.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.dataTables.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.foundation.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.foundation.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.jqueryui.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.semanticui.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.bootstrap.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.dataTables.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.foundation.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.foundation.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.jqueryui.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.semanticui.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\jquery.dataTables.css" />
+    <Content Include="Content\DataTables\css\jquery.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\jquery.dataTables_themeroller.css" />
+    <Content Include="Content\DataTables\css\keyTable.bootstrap.css" />
+    <Content Include="Content\DataTables\css\keyTable.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\keyTable.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\keyTable.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\keyTable.dataTables.css" />
+    <Content Include="Content\DataTables\css\keyTable.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\keyTable.foundation.css" />
+    <Content Include="Content\DataTables\css\keyTable.foundation.min.css" />
+    <Content Include="Content\DataTables\css\keyTable.jqueryui.css" />
+    <Content Include="Content\DataTables\css\keyTable.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\keyTable.semanticui.css" />
+    <Content Include="Content\DataTables\css\keyTable.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\responsive.bootstrap.css" />
+    <Content Include="Content\DataTables\css\responsive.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\responsive.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\responsive.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\responsive.dataTables.css" />
+    <Content Include="Content\DataTables\css\responsive.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\responsive.foundation.css" />
+    <Content Include="Content\DataTables\css\responsive.foundation.min.css" />
+    <Content Include="Content\DataTables\css\responsive.jqueryui.css" />
+    <Content Include="Content\DataTables\css\responsive.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\responsive.semanticui.css" />
+    <Content Include="Content\DataTables\css\responsive.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\rowGroup.bootstrap.css" />
+    <Content Include="Content\DataTables\css\rowGroup.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\rowGroup.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\rowGroup.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\rowGroup.dataTables.css" />
+    <Content Include="Content\DataTables\css\rowGroup.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\rowGroup.foundation.css" />
+    <Content Include="Content\DataTables\css\rowGroup.foundation.min.css" />
+    <Content Include="Content\DataTables\css\rowGroup.jqueryui.css" />
+    <Content Include="Content\DataTables\css\rowGroup.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\rowGroup.semanticui.css" />
+    <Content Include="Content\DataTables\css\rowGroup.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.bootstrap.css" />
+    <Content Include="Content\DataTables\css\rowReorder.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\rowReorder.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.dataTables.css" />
+    <Content Include="Content\DataTables\css\rowReorder.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.foundation.css" />
+    <Content Include="Content\DataTables\css\rowReorder.foundation.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.jqueryui.css" />
+    <Content Include="Content\DataTables\css\rowReorder.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.semanticui.css" />
+    <Content Include="Content\DataTables\css\rowReorder.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\scroller.bootstrap.css" />
+    <Content Include="Content\DataTables\css\scroller.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\scroller.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\scroller.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\scroller.dataTables.css" />
+    <Content Include="Content\DataTables\css\scroller.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\scroller.foundation.css" />
+    <Content Include="Content\DataTables\css\scroller.foundation.min.css" />
+    <Content Include="Content\DataTables\css\scroller.jqueryui.css" />
+    <Content Include="Content\DataTables\css\scroller.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\scroller.semanticui.css" />
+    <Content Include="Content\DataTables\css\scroller.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\select.bootstrap.css" />
+    <Content Include="Content\DataTables\css\select.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\select.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\select.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\select.dataTables.css" />
+    <Content Include="Content\DataTables\css\select.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\select.foundation.css" />
+    <Content Include="Content\DataTables\css\select.foundation.min.css" />
+    <Content Include="Content\DataTables\css\select.jqueryui.css" />
+    <Content Include="Content\DataTables\css\select.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\select.semanticui.css" />
+    <Content Include="Content\DataTables\css\select.semanticui.min.css" />
+    <Content Include="Content\DataTables\images\details_close.png" />
+    <Content Include="Content\DataTables\images\details_open.png" />
+    <Content Include="Content\DataTables\images\sort_asc.png" />
+    <Content Include="Content\DataTables\images\sort_asc_disabled.png" />
+    <Content Include="Content\DataTables\images\sort_both.png" />
+    <Content Include="Content\DataTables\images\sort_desc.png" />
+    <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
+    <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\images\15.gif" />
+    <Content Include="Content\images\3.gif" />
+    <Content Include="Content\images\accessDenied.jpg" />
+    <Content Include="Content\images\LOGO.png" />
+    <Content Include="Content\images\regban.png" />
+    <Content Include="Content\images\regFooter.png" />
+    <Content Include="Content\images\regSig.png" />
+    <Content Include="Content\images\wata.png" />
+    <Content Include="Content\images\bana.jpg" />
+    <Content Include="Content\images\etLogo.png" />
+    <Content Include="Content\images\grinwitespina.gif" />
+    <Content Include="Content\images\mbashLogo.jpg" />
+    <Content Include="Content\images\remitaPay.png" />
+    <Content Include="Content\images\wait22trans.gif" />
+    <Content Include="Content\images\wait24.gif" />
+    <Content Include="Content\images\wait24trans.gif" />
+    <Content Include="Content\images\wait26.gif" />
+    <Content Include="Content\menu-styles.css" />
+    <Content Include="Content\sb-admin-2.min.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\slide\images\a11.png" />
+    <Content Include="Content\slide\images\a21.png" />
+    <Content Include="Content\slide\images\admission.jpg" />
+    <Content Include="Content\slide\images\b05.png" />
+    <Content Include="Content\slide\images\b21.png" />
+    <Content Include="Content\slide\images\pix1.JPG" />
+    <Content Include="Content\slide\images\pix2.png" />
+    <Content Include="Content\slide\images\pix3.png" />
+    <Content Include="Content\slide\images\pix4.JPG" />
+    <Content Include="Content\slide\images\pix5.JPG" />
+    <Content Include="Content\slide\print.css" />
+    <Content Include="Content\slide\slide.css" />
+    <Content Include="Content\vertical-menu.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="App_Browsers\qt.browser" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\DataTables\css\semanticui.scss" />
+    <Content Include="Content\DataTables\css\mixins.scss" />
+    <Content Include="Content\DataTables\css\common.scss" />
+    <None Include="Properties\PublishProfiles\Mbash.pubxml" />
+    <None Include="Properties\PublishProfiles\SouthAtlPortal.pubxml" />
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Chart.js" />
+    <Content Include="Scripts\Chart.min.js" />
+    <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
+    <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\autoFill.bootstrap4.js" />
+    <Content Include="Scripts\DataTables\autoFill.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTables\autoFill.foundation.js" />
+    <Content Include="Scripts\DataTables\autoFill.foundation.min.js" />
+    <Content Include="Scripts\DataTables\autoFill.jqueryui.js" />
+    <Content Include="Scripts\DataTables\autoFill.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\autoFill.semanticui.js" />
+    <Content Include="Scripts\DataTables\autoFill.semanticui.min.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap4.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTables\buttons.colVis.js" />
+    <Content Include="Scripts\DataTables\buttons.colVis.min.js" />
+    <Content Include="Scripts\DataTables\buttons.flash.js" />
+    <Content Include="Scripts\DataTables\buttons.flash.min.js" />
+    <Content Include="Scripts\DataTables\buttons.foundation.js" />
+    <Content Include="Scripts\DataTables\buttons.foundation.min.js" />
+    <Content Include="Scripts\DataTables\buttons.html5.js" />
+    <Content Include="Scripts\DataTables\buttons.html5.min.js" />
+    <Content Include="Scripts\DataTables\buttons.jqueryui.js" />
+    <Content Include="Scripts\DataTables\buttons.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\buttons.print.js" />
+    <Content Include="Scripts\DataTables\buttons.print.min.js" />
+    <Content Include="Scripts\DataTables\buttons.semanticui.js" />
+    <Content Include="Scripts\DataTables\buttons.semanticui.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.autoFill.js" />
+    <Content Include="Scripts\DataTables\dataTables.autoFill.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap4.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.buttons.js" />
+    <Content Include="Scripts\DataTables\dataTables.buttons.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.colReorder.js" />
+    <Content Include="Scripts\DataTables\dataTables.colReorder.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedColumns.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedColumns.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedHeader.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedHeader.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.foundation.js" />
+    <Content Include="Scripts\DataTables\dataTables.foundation.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.jqueryui.js" />
+    <Content Include="Scripts\DataTables\dataTables.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.keyTable.js" />
+    <Content Include="Scripts\DataTables\dataTables.keyTable.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.material.js" />
+    <Content Include="Scripts\DataTables\dataTables.material.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.responsive.js" />
+    <Content Include="Scripts\DataTables\dataTables.responsive.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.rowGroup.js" />
+    <Content Include="Scripts\DataTables\dataTables.rowGroup.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.rowReorder.js" />
+    <Content Include="Scripts\DataTables\dataTables.rowReorder.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.scroller.js" />
+    <Content Include="Scripts\DataTables\dataTables.scroller.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.select.js" />
+    <Content Include="Scripts\DataTables\dataTables.select.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.semanticui.js" />
+    <Content Include="Scripts\DataTables\dataTables.semanticui.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.uikit.js" />
+    <Content Include="Scripts\DataTables\dataTables.uikit.min.js" />
+    <Content Include="Scripts\DataTables\jquery.dataTables.js" />
+    <Content Include="Scripts\DataTables\jquery.dataTables.min.js" />
+    <Content Include="Scripts\DataTables\responsive.bootstrap.js" />
+    <Content Include="Scripts\DataTables\responsive.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\responsive.bootstrap4.js" />
+    <Content Include="Scripts\DataTables\responsive.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTables\responsive.foundation.js" />
+    <Content Include="Scripts\DataTables\responsive.foundation.min.js" />
+    <Content Include="Scripts\DataTables\responsive.jqueryui.js" />
+    <Content Include="Scripts\DataTables\responsive.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\responsive.semanticui.js" />
+    <Content Include="Scripts\DataTables\responsive.semanticui.min.js" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\favicon.ico" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.easing.1.3.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\knockout-3.4.2.debug.js" />
+    <Content Include="Scripts\knockout-3.4.2.js" />
+    <Content Include="Scripts\knockout.validation.js" />
+    <Content Include="Scripts\knockout.validation.min.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\sweetalert-dev.js" />
+    <Content Include="Scripts\sweetalert.min.js" />
+    <Content Include="Scripts\tinymce\jquery.tinymce.min.js" />
+    <Content Include="Scripts\tinymce\license.txt" />
+    <Content Include="Scripts\tinymce\plugins\advlist\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\advlist\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\anchor\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\anchor\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\autolink\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\autolink\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\autoresize\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\autoresize\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\autosave\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\autosave\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\bbcode\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\bbcode\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\charmap\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\charmap\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\codesample\css\prism.css" />
+    <Content Include="Scripts\tinymce\plugins\codesample\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\codesample\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\code\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\code\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\colorpicker\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\colorpicker\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\compat3x\css\dialog.css" />
+    <Content Include="Scripts\tinymce\plugins\compat3x\img\buttons.png" />
+    <Content Include="Scripts\tinymce\plugins\compat3x\img\icons.gif" />
+    <Content Include="Scripts\tinymce\plugins\compat3x\img\items.gif" />
+    <Content Include="Scripts\tinymce\plugins\compat3x\img\menu_arrow.gif" />
+    <Content Include="Scripts\tinymce\plugins\compat3x\img\menu_check.gif" />
+    <Content Include="Scripts\tinymce\plugins\compat3x\img\progress.gif" />
+    <Content Include="Scripts\tinymce\plugins\compat3x\img\tabs.gif" />
+    <Content Include="Scripts\tinymce\plugins\compat3x\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\compat3x\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\compat3x\tiny_mce_popup.js" />
+    <Content Include="Scripts\tinymce\plugins\compat3x\utils\editable_selects.js" />
+    <Content Include="Scripts\tinymce\plugins\compat3x\utils\form_utils.js" />
+    <Content Include="Scripts\tinymce\plugins\compat3x\utils\mctabs.js" />
+    <Content Include="Scripts\tinymce\plugins\compat3x\utils\validate.js" />
+    <Content Include="Scripts\tinymce\plugins\contextmenu\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\contextmenu\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\directionality\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\directionality\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-cool.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-cry.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-embarassed.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-foot-in-mouth.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-frown.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-innocent.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-kiss.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-laughing.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-money-mouth.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-sealed.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-smile.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-surprised.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-tongue-out.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-undecided.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-wink.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-yell.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\fullpage\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\fullpage\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\fullscreen\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\fullscreen\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\help\img\logo.png" />
+    <Content Include="Scripts\tinymce\plugins\help\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\help\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\hr\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\hr\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\imagetools\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\imagetools\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\image\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\image\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\importcss\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\importcss\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\insertdatetime\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\insertdatetime\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\legacyoutput\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\legacyoutput\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\link\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\link\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\lists\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\lists\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\media\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\media\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\nonbreaking\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\nonbreaking\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\noneditable\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\noneditable\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\pagebreak\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\pagebreak\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\paste\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\paste\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\preview\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\preview\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\print\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\print\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\save\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\save\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\searchreplace\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\searchreplace\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\spellchecker\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\spellchecker\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\tabfocus\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\tabfocus\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\table\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\table\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\template\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\template\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\textcolor\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\textcolor\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\textpattern\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\textpattern\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\toc\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\toc\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\visualblocks\css\visualblocks.css" />
+    <Content Include="Scripts\tinymce\plugins\visualblocks\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\visualblocks\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\visualchars\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\visualchars\plugin.min.js" />
+    <Content Include="Scripts\tinymce\plugins\wordcount\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\wordcount\plugin.min.js" />
+    <Content Include="Scripts\tinymce\skins\lightgray\content.inline.min.css" />
+    <Content Include="Scripts\tinymce\skins\lightgray\content.min.css" />
+    <Content Include="Scripts\tinymce\skins\lightgray\content.mobile.min.css" />
+    <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-small.svg" />
+    <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.svg" />
+    <Content Include="Scripts\tinymce\skins\lightgray\img\anchor.gif" />
+    <Content Include="Scripts\tinymce\skins\lightgray\img\loader.gif" />
+    <Content Include="Scripts\tinymce\skins\lightgray\img\object.gif" />
+    <Content Include="Scripts\tinymce\skins\lightgray\img\trans.gif" />
+    <Content Include="Scripts\tinymce\skins\lightgray\skin.min.css" />
+    <Content Include="Scripts\tinymce\skins\lightgray\skin.mobile.min.css" />
+    <Content Include="Scripts\tinymce\themes\inlite\theme.js" />
+    <Content Include="Scripts\tinymce\themes\inlite\theme.min.js" />
+    <Content Include="Scripts\tinymce\themes\mobile\theme.js" />
+    <Content Include="Scripts\tinymce\themes\mobile\theme.min.js" />
+    <Content Include="Scripts\tinymce\themes\modern\theme.js" />
+    <Content Include="Scripts\tinymce\themes\modern\theme.min.js" />
+    <Content Include="Scripts\tinymce\tinymce.js" />
+    <Content Include="Scripts\tinymce\tinymce.min.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Scripts\ViewModels\accountsGroupVM.js" />
+    <Content Include="Scripts\ViewModels\allowCourseRegistration.js" />
+    <Content Include="Scripts\ViewModels\allTranscriptsVM.js" />
+    <Content Include="Scripts\ViewModels\bulkcreateVM.js" />
+    <Content Include="Scripts\ViewModels\changeDepartmentVM.js" />
+    <Content Include="Scripts\ViewModels\courseCategoriesVM.js" />
+    <Content Include="Scripts\ViewModels\courseOutStandingsVM.js" />
+    <Content Include="Scripts\ViewModels\courseRegPermitVM.js" />
+    <Content Include="Scripts\ViewModels\alevelVM.js" />
+    <Content Include="Scripts\ViewModels\examsOfficerVM.js" />
+    <Content Include="Scripts\ViewModels\feesCollectionSumary.js" />
+    <Content Include="Scripts\ViewModels\generateGraduantSummaryVM.js" />
+    <Content Include="Scripts\ViewModels\olvlSubjectsVM.js" />
+    <Content Include="Scripts\ViewModels\createStudentUserVM.js" />
+    <Content Include="Scripts\ViewModels\editRegisteredCourseVM.js" />
+    <Content Include="Scripts\ViewModels\feeOptionsVM.js" />
+    <Content Include="Scripts\ViewModels\feesCollectionsVM.js" />
+    <Content Include="Scripts\ViewModels\generatePostExamReportsVM.js" />
+    <Content Include="Scripts\ViewModels\gradClassVM.js" />
+    <Content Include="Scripts\ViewModels\gradingSystemVM.js" />
+    <Content Include="Scripts\ViewModels\matricRegisterGenerationVM.js" />
+    <Content Include="Scripts\ViewModels\newTranscriptApplicationVM.js" />
+    <Content Include="Scripts\ViewModels\otherChargesVM.js" />
+    <Content Include="Scripts\ViewModels\accountsVM.js" />
+    <Content Include="Scripts\ViewModels\addStudentVM.js" />
+    <Content Include="Scripts\ViewModels\articlesVM.js" />
+    <Content Include="Scripts\ViewModels\articleVM.js" />
+    <Content Include="Scripts\ViewModels\backlogScoresEntry.js" />
+    <Content Include="Scripts\ViewModels\calenderDetailsVM.js" />
+    <Content Include="Scripts\ViewModels\calenderVM.js" />
+    <Content Include="Scripts\ViewModels\candidatesVM.js" />
+    <Content Include="Scripts\ViewModels\changePassword.js" />
+    <Content Include="Scripts\ViewModels\courseRegistrationVM.js" />
+    <Content Include="Scripts\ViewModels\courseScheduleVM.js" />
+    <Content Include="Scripts\ViewModels\coursesVM.js" />
+    <Content Include="Scripts\ViewModels\createUserVM.js" />
+    <Content Include="Scripts\ViewModels\creditStudentVM.js" />
+    <Content Include="Scripts\ViewModels\debitStudentVM.js" />
+    <Content Include="Scripts\ViewModels\departmentVM.js" />
+    <Content Include="Scripts\ViewModels\editCalenderVM.js" />
+    <Content Include="Scripts\ViewModels\editAlumniVM.js" />
+    <Content Include="Scripts\ViewModels\editProfileVM.js" />
+    <Content Include="Scripts\ViewModels\editStudentVM.js" />
+    <Content Include="Scripts\ViewModels\employeeVM.js" />
+    <Content Include="Scripts\ViewModels\facultyVM.js" />
+    <Content Include="Scripts\ViewModels\feeExemptionVM.js" />
+    <Content Include="Scripts\ViewModels\feeSchedulesVM.js" />
+    <Content Include="Scripts\ViewModels\fetchPaymentsVM.js" />
+    <Content Include="Scripts\ViewModels\findStudentVM.js" />
+    <Content Include="Scripts\ViewModels\generateGraduatesBroadsheetVM.js" />
+    <Content Include="Scripts\ViewModels\generateGraduatesVM.js" />
+    <Content Include="Scripts\ViewModels\internalCourseRegistrationVM.js" />
+    <Content Include="Scripts\ViewModels\lecturerScoreSheetVM.js" />
+    <Content Include="Scripts\ViewModels\manualConfirmationVM.js" />
+    <Content Include="Scripts\ViewModels\mySemesterResultVM.js" />
+    <Content Include="Scripts\ViewModels\newFeeScheduleVM.js" />
+    <Content Include="Scripts\ViewModels\newProfileVM.js" />
+    <Content Include="Scripts\ViewModels\passwordResetVM.js" />
+    <Content Include="Scripts\ViewModels\payOtherChargesVM.js" />
+    <Content Include="Scripts\ViewModels\preExamReportVM.js" />
+    <Content Include="Scripts\ViewModels\programmeVM.js" />
+    <Content Include="Scripts\ViewModels\registrationStep1VM.js" />
+    <Content Include="Scripts\ViewModels\olevelResultsVM.js" />
+    <Content Include="Scripts\ViewModels\jambScoreVM.js" />
+    <Content Include="Scripts\ViewModels\resultApprovalVM.js" />
+    <Content Include="Scripts\ViewModels\resultComplainVM.js" />
+    <Content Include="Scripts\ViewModels\rolePermVM.js" />
+    <Content Include="Scripts\ViewModels\rolesVM.js" />
+    <Content Include="Scripts\ViewModels\postConfirmedschoolFeePaymentVM.js" />
+    <Content Include="Scripts\ViewModels\scoresEntry.js" />
+    <Content Include="Scripts\ViewModels\sessionBalancesVM.js" />
+    <Content Include="Scripts\ViewModels\schoolFeePaymentVM.js" />
+    <Content Include="Scripts\ViewModels\scoresEditVM.js" />
+    <Content Include="Scripts\ViewModels\semesterRegsVM.js" />
+    <Content Include="Scripts\ViewModels\sessionDetailsVM.js" />
+    <Content Include="Scripts\ViewModels\sessionVM.js" />
+    <Content Include="Scripts\ViewModels\studentAccountVM.js" />
+    <Content Include="Scripts\ViewModels\generateStudentResultsVM.js" />
+    <Content Include="Scripts\ViewModels\studentsDueForGraduationVM.js" />
+    <Content Include="Scripts\ViewModels\studentSemesterResultVM.js" />
+    <Content Include="Scripts\ViewModels\studentsVM.js" />
+    <Content Include="Scripts\ViewModels\supplementaryscoresEntry.js" />
+    <Content Include="Scripts\ViewModels\tokensVM.js" />
+    <Content Include="Scripts\ViewModels\schoolFeePaymentsVM.js" />
+    <Content Include="Scripts\ViewModels\viewApplicantsVM.js" />
+    <Content Include="Scripts\ViewModels\viewStudentPaymentsVM.js" />
+    <Content Include="Styles\sweetalert.css" />
+    <Content Include="UrlPaths.txt" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Scripts\knockout.validation.min.js.map" />
+    <Content Include="Views\AcademicAffairs\AcademicCalender.cshtml" />
+    <Content Include="Views\AcademicAffairs\CalenderDetails.cshtml" />
+    <Content Include="Views\AcademicAffairs\Courses.cshtml" />
+    <Content Include="Views\AcademicAffairs\EditCalender.cshtml" />
+    <Content Include="Views\AcademicAffairs\ExamsAttendanceByCourse.cshtml" />
+    <Content Include="Views\AcademicAffairs\ExamsAttendanceByProgramme.cshtml" />
+    <Content Include="Views\AcademicAffairs\ExamsScoreSheet.cshtml" />
+    <Content Include="Views\AcademicAffairs\InputtedResultSheet.cshtml" />
+    <Content Include="Views\AcademicAffairs\PreExamReports.cshtml" />
+    <Content Include="Views\AcademicAffairs\ScheduleCourses.cshtml" />
+    <Content Include="Views\AcademicAffairs\SemesterRegistrations.cshtml" />
+    <Content Include="Views\AcademicAffairs\ViewSemesterRegistrations.cshtml" />
+    <Content Include="Views\Accounts\AddUser.cshtml" />
+    <Content Include="Views\Accounts\AllTokens.cshtml" />
+    <Content Include="Views\Accounts\ChangePassword.cshtml" />
+    <Content Include="Views\Accounts\CreateToken.cshtml" />
+    <Content Include="Views\Accounts\Login.cshtml" />
+    <Content Include="Views\Accounts\ResetUSerPassword.cshtml" />
+    <Content Include="Views\Accounts\TokenDetails.cshtml" />
+    <Content Include="Views\Accounts\Tokens.cshtml" />
+    <Content Include="Views\Accounts\Unauthorised.cshtml" />
+    <Content Include="Views\Administration\AcademicSessions.cshtml" />
+    <Content Include="Views\Administration\Departments.cshtml" />
+    <Content Include="Views\Administration\Faculties.cshtml" />
+    <Content Include="Views\Administration\Programmes.cshtml" />
+    <Content Include="Views\Administration\SessionDetails.cshtml" />
+    <Content Include="Views\Admission_Center\UploadPassport.cshtml" />
+    <Content Include="Views\Admission_Center\OlevelResults.cshtml" />
+    <Content Include="Views\Admission_Center\JambScore.cshtml" />
+    <Content Include="Views\Admission_Center\Addmissions_Step5.cshtml" />
+    <Content Include="Views\Admission_Center\AddStudent.cshtml" />
+    <Content Include="Views\Admission_Center\AdmissionLetter.cshtml" />
+    <Content Include="Views\Admission_Center\Candidates.cshtml" />
+    <Content Include="Views\Admission_Center\ChooseProgramme.cshtml" />
+    <Content Include="Views\Admission_Center\FindStudent.cshtml" />
+    <Content Include="Views\Admission_Center\Index.cshtml" />
+    <Content Include="Views\Admission_Center\Prospectives.cshtml" />
+    <Content Include="Views\Admission_Center\ViewProspectives.cshtml" />
+    <Content Include="Views\Bursary\AccountGroups.cshtml" />
+    <Content Include="Views\Bursary\Accounts.cshtml" />
+    <Content Include="Views\Bursary\AddFeeSchedule.cshtml" />
+    <Content Include="Views\Bursary\DebitStudentAccount.cshtml" />
+    <Content Include="Views\Bursary\ExpenseEntry.cshtml" />
+    <Content Include="Views\Bursary\FeeSchedules.cshtml" />
+    <Content Include="Views\Bursary\ScheduleDetail.cshtml" />
+    <Content Include="Views\Bursary\StudentAccountsDetail.cshtml" />
+    <Content Include="Views\Bursary\StudentFeeExemptions.cshtml" />
+    <Content Include="Views\Bursary\ViewStudentPayments.cshtml" />
+    <Content Include="Views\Bursary\ViewStudentPaymentsAsPDF.cshtml" />
+    <Content Include="Views\ContentManagement\Articles.cshtml" />
+    <Content Include="Views\ContentManagement\EditArticle.cshtml" />
+    <Content Include="Views\ContentManagement\ManageSlideContents.cshtml" />
+    <Content Include="Views\ContentManagement\UploadSlidePix.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\HRM\Employee.cshtml" />
+    <Content Include="Views\Payments\MyInvoices.cshtml" />
+    <Content Include="Views\Payments\MyPayments.cshtml" />
+    <Content Include="Views\Payments\SchoolFeePayment.cshtml" />
+    <Content Include="Views\Payments\TestToken.cshtml" />
+    <Content Include="Views\Result\BacklogScoresEntry.cshtml" />
+    <Content Include="Views\Result\EditScores.cshtml" />
+    <Content Include="Views\Result\GeneralStudentsPerformance.cshtml" />
+    <Content Include="Views\Result\GenerateStudentResults.cshtml" />
+    <Content Include="Views\Result\GenerateGraduantBroadsheets.cshtml" />
+    <Content Include="Views\Result\GenerateGraduants.cshtml" />
+    <Content Include="Views\Result\GenerateStudentResult.cshtml" />
+    <Content Include="Views\Result\GenerateStudentsDueForGraduation.cshtml" />
+    <Content Include="Views\Result\GenerateTranscript.cshtml" />
+    <Content Include="Views\Result\Graduants.cshtml" />
+    <Content Include="Views\Result\GraduatedStudentBroadSheet.cshtml" />
+    <Content Include="Views\Result\ProbationList.cshtml" />
+    <Content Include="Views\Result\SemesterResultForFile.cshtml" />
+    <Content Include="Views\Result\StudentSemesterResult.cshtml" />
+    <Content Include="Views\Result\SupplementaryScoresEntry.cshtml" />
+    <Content Include="Views\Result\ViewStudentProfile.cshtml" />
+    <Content Include="Views\Shared\_A4ReportLayout.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_MenuPartial.cshtml" />
+    <Content Include="Views\Shared\_ProspectiveLayout.cshtml" />
+    <Content Include="Views\Shared\_ReportLayout.cshtml" />
+    <Content Include="Views\Shared\_StudentLayout.cshtml" />
+    <Content Include="Views\Student\EditProfile.cshtml" />
+    <Content Include="Views\Student\Index.cshtml" />
+    <Content Include="Views\Student\MyCourseRegistrations.cshtml" />
+    <Content Include="Views\Student\MyResult.cshtml" />
+    <Content Include="Views\Student\MySemesterRegistration.cshtml" />
+    <Content Include="Views\Student\MySemesterResult.cshtml" />
+    <Content Include="Views\Student\PrintStudent.cshtml" />
+    <Content Include="Views\Student\RegisterCourse.cshtml" />
+    <Content Include="Views\Student\StudentCourseRegistration.cshtml" />
+    <Content Include="Views\Student\ViewStudents.cshtml" />
+    <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.woff" />
+    <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.ttf" />
+    <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.eot" />
+    <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-small.woff" />
+    <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-small.ttf" />
+    <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
+    <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-mobile.woff" />
+    <Content Include="Scripts\tinymce\langs\readme.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApiLogHandler.cs" />
+    <Compile Include="App_Start\RemoveUnwantedHeaderAttribute.cs" />
+    <Compile Include="App_Start\BaseViewPage.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FetchUserData.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="App_Start\UnityMvcActivator.cs" />
+    <Compile Include="App_Start\UnityWebApiActivator.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AcademicAffairsController.cs" />
+    <Compile Include="Controllers\AccountsController.cs" />
+    <Compile Include="Controllers\AdministrationController.cs" />
+    <Compile Include="Controllers\Admission_CenterController.cs" />
+    <Compile Include="Controllers\AlumniController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\BursaryController.cs" />
+    <Compile Include="Controllers\ContentManagementController.cs" />
+    <Compile Include="Controllers\ContentManagementOutController.cs" />
+    <Compile Include="Controllers\DocuVerifyController.cs" />
+    <Compile Include="Controllers\ElectionController.cs" />
+    <Compile Include="Controllers\HelperServiceController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HRMController.cs" />
+    <Compile Include="Controllers\PaymentsController.cs" />
+    <Compile Include="Controllers\PayProcessorController.cs" />
+    <Compile Include="Controllers\ResultController.cs" />
+    <Compile Include="Controllers\ResultIssuesController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="BinaryMediaFormatter.cs" />
+    <Compile Include="MVCQueryStringExtension.cs" />
+    <Compile Include="PaymentsSync.cs" />
+    <Compile Include="PDFGenerations\EventHandlers\FooterHandler.cs" />
+    <Compile Include="PDFGenerations\EventHandlers\PdfBackgroundEventHandlers.cs" />
+    <Compile Include="PDFGenerations\StudentPdfReports.cs" />
+    <Compile Include="PDFGenerations\StudentResultPdfGenerator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\CustomPrincipal.cs" />
+    <Compile Include="Security\KSWebAuthorisation.cs" />
+    <Compile Include="StaticHelpers.cs" />
+    <Compile Include="ViewModels\AddStudentViewModel.cs" />
+    <Compile Include="ViewModels\ApplicantsVM.cs" />
+    <Compile Include="ViewModels\CalenderViewModel.cs" />
+    <Compile Include="ViewModels\ChangePasswordViewModel.cs" />
+    <Compile Include="ViewModels\CourseRegistrationVM.cs" />
+    <Compile Include="ViewModels\ElectorateVM.cs" />
+    <Compile Include="ViewModels\ExcelStudentVM.cs" />
+    <Compile Include="ViewModels\remitaData.cs" />
+    <Compile Include="ViewModels\JambReg.cs" />
+    <Compile Include="ViewModels\LoginModel.cs" />
+    <Compile Include="ViewModels\outPutMsg.cs" />
+    <Compile Include="ViewModels\RegistrationViewModel.cs" />
+    <Compile Include="ViewModels\ResultSubmission.cs" />
+    <Compile Include="ViewModels\SlideContentVM.cs" />
+    <Compile Include="ViewModels\StatDashboardViewModel.cs" />
+    <Compile Include="ViewModels\StepRegistrationViewModel.cs" />
+    <Compile Include="ViewModels\StudentsForGraduation.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Bursary\StudentAccount.cshtml" />
+    <Content Include="Views\Result\SemesterCourseFormForFile.cshtml" />
+    <Content Include="Views\Payments\ManualPayConfirmation.cshtml" />
+    <Content Include="Views\Bursary\CreditStudent.cshtml" />
+    <Content Include="Views\Accounts\Roles.cshtml" />
+    <Content Include="Views\Accounts\RolePermissions.cshtml" />
+    <Content Include="Views\Admission_Center\NewStudentProfile.cshtml" />
+    <Content Include="Views\Administration\InstitutionData.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Payments\FetchPayments.cshtml" />
+    <Content Include="Views\Admission_Center\PrintApplicants.cshtml" />
+    <Content Include="Views\Shared\_AlumniLayout.cshtml" />
+    <Content Include="Views\Alumni\NewAlumnusRegistration.cshtml" />
+    <Content Include="Views\Payments\PaymentInvoice.cshtml" />
+    <Content Include="Views\Payments\WebPayConfirmation.cshtml" />
+    <Content Include="Views\Alumni\AlumniDashboard.cshtml" />
+    <Content Include="Views\Bursary\OtherCharges.cshtml" />
+    <Content Include="Views\Payments\PayOtherCharges.cshtml" />
+    <Content Include="Views\Payments\CheckInvoiceStatus.cshtml" />
+    <Content Include="Views\Admission_Center\PrintApplicantsByDept.cshtml" />
+    <Content Include="Views\AcademicAffairs\GradingSystem.cshtml" />
+    <Content Include="Views\Result\ApproveResult.cshtml" />
+    <Content Include="Views\Result\ResultApproval.cshtml" />
+    <Content Include="Views\AcademicAffairs\GradClassSystem.cshtml" />
+    <Content Include="SpecialChargesWithRange.xlsx" />
+    <Content Include="Views\Accounts\BulkCreateStudentUsers.cshtml" />
+    <Content Include="Views\Admission_Center\Addmissions_Step1.cshtml" />
+    <Content Include="Views\Bursary\StudentBalancesByProgTypeAsPDF.cshtml" />
+    <Content Include="Views\Bursary\FeesCollections.cshtml" />
+    <Content Include="Views\Bursary\SessionCollectionsSummary.cshtml" />
+    <Content Include="Views\Bursary\SessionCollectionsByAccount.cshtml" />
+    <Content Include="Views\Bursary\SessionCollectionsByAccountPayDate.cshtml" />
+    <Content Include="Views\Home\StatDashboard.cshtml" />
+    <Content Include="Views\Payments\AllCompletedRemitaPayments.cshtml" />
+    <Content Include="Views\Home\Dashboard.cshtml" />
+    <Content Include="Views\Bursary\FeeOptions.cshtml" />
+    <Content Include="Views\Bursary\SchoolFeePayments.cshtml" />
+    <Content Include="Views\Bursary\ViewSchoolFeePaymentsAsPDF.cshtml" />
+    <Content Include="Views\Bursary\ViewSchoolFeePaymentsAsExcel.cshtml" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Bursary\DailyCollections.cshtml" />
+    <Content Include="Views\Accounts\ResetStudentUsersPassword.cshtml" />
+    <Content Include="Views\Payments\ManualCompletedPaymentsStatusUPdate.cshtml" />
+    <Content Include="Views\AcademicAffairs\EditCourseRegistration.cshtml" />
+    <Content Include="Views\Accounts\ResetConfirmation.cshtml" />
+    <Content Include="Views\Accounts\ForgotPassword.cshtml" />
+    <Content Include="Views\ResultIssues\NewResultComplain.cshtml" />
+    <Content Include="Views\AcademicAffairs\CourseCategories.cshtml" />
+    <Content Include="Views\Admission_Center\PayAdmissionFee.cshtml" />
+    <Content Include="Views\Alumni\PayConvocationFee.cshtml" />
+    <Content Include="Views\Bursary\SessionBalancesReport.cshtml" />
+    <Content Include="Views\Admission_Center\ViewApplicants.cshtml" />
+    <Content Include="Views\AcademicAffairs\PermitStudentRegistration.cshtml" />
+    <Content Include="Views\Admission_Center\PayAcceptanceFee.cshtml" />
+    <Content Include="Views\Bursary\PostConfirmedOldSchoolFeePayment.cshtml" />
+    <Content Include="Views\DocuVerify\Verify.cshtml" />
+    <Content Include="Views\Alumni\NewTranscriptApplication.cshtml" />
+    <Content Include="Views\Alumni\CurrentTranscriptApplications.cshtml" />
+    <Content Include="Views\Result\Transcript.cshtml" />
+    <Content Include="Views\Alumni\TranscriptDetail.cshtml" />
+    <Content Include="Views\Administration\UploadInstitutionImages.cshtml" />
+    <Content Include="Views\Home\TranscriptApplication.cshtml" />
+    <Content Include="Views\Result\StudentTranscript.cshtml" />
+    <Content Include="Views\Result\ScoresEntry.cshtml" />
+    <Content Include="Views\Alumni\MyTranscriptApplications.cshtml" />
+    <Content Include="Views\Student\MatricRegisterGeneration.cshtml" />
+    <Content Include="Views\Student\GenerateMatricRegister.cshtml" />
+    <Content Include="Views\Student\GenerateMatricRegisterExcel.cshtml" />
+    <Content Include="Views\AcademicAffairs\GeneratePostExamReports.cshtml" />
+    <Content Include="Views\AcademicAffairs\OlevelSubjects.cshtml" />
+    <Content Include="Views\Admission_Center\AlevelResults.cshtml" />
+    <Content Include="Views\Student\ChangeStudentDept.cshtml" />
+    <Content Include="Views\Admission_Center\Student_Application_Summary.cshtml" />
+    <Content Include="Views\Student\MyOutstandings.cshtml" />
+    <Content Include="Views\AcademicAffairs\StudentOutstandings.cshtml" />
+    <Content Include="Views\Bursary\CollectionSummary.cshtml" />
+    <Content Include="Views\AcademicAffairs\ExamsOfficers.cshtml" />
+    <Content Include="Views\Result\GenerateGraduantSummary.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="bin\" />
+    <Folder Include="Content\Documents\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Eduplus.Data\Eduplus.Data.csproj">
+      <Project>{DD3CBBEB-410D-42FC-BC83-7CEEAE033463}</Project>
+      <Name>Eduplus.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>3272</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:55945/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.4.2.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.4.2.0\build\Microsoft.Net.Compilers.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

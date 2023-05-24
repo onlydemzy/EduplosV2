@@ -1,0 +1,22 @@
+ResponseUrl=http://localhost:13302/PaymentProcessor/PaymentConfirmation
+logoUrl=https://www.obonguniversity.edu.ng/etLogo.png
+RemitaTerminalId=7007139429
+RemitaTerminalKEY=GTOC36UA
+RemitaMerchantCode=40816499
+RemitaServiceTypeId=40816498
+RemitaGatewayConfirmationUrl=https://remitademo.net/remita/exapp/api/v1/send/api/echannelsvc/
+RemitaGatewayPostUrl=https://remitademo.net/remita/exapp/api/v1/send/api/echannelsvc/merchant/api/paymentinit
+==============PaymentSharing===================================
+========Provider==========
+ProviderAccountNumber=0360883515
+ProviderAccountName=Alozie Michael
+ProviderBankCode=058
+ProviderMajorFee=1700
+ProviderMinorFee=100
+==============END===============
+
+=======Client===================
+ClientAccountNumber=6020067886
+ClientAccountName=Folivi Joshua
+ClientBankCode=058
+

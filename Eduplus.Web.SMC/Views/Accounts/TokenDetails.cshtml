@@ -1,0 +1,52 @@
+﻿@model KS.Core.UserManagement.Token
+@{
+    ViewBag.Title = "Token Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Token Details</h3>
+<div class="form-horizontal">
+    <div class="form-group">
+        <label class="label control-label col-md-">TokenId</label>
+        <div class="col-md-10">
+            @Html.DisplayFor(m => m.TokenId, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="label control-label col-md-2">ClientId</label>
+        <div class="col-md-10">
+            @Html.DisplayFor(m => m.ClientId, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="label control-label col-md-2">Secret</label>
+        <div class="col-md-10">
+            @Html.DisplayFor(m => m.ClientSecret, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="label control-label col-md-2">Token</label>
+        <div class="col-md-10">
+            @Html.DisplayFor(m => m.AuthToken, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="label control-label col-md-4">Company</label>
+        <div class="col-md-10">
+            @Html.DisplayFor(m => m.Company, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="label control-label col-md-2">Issued On</label>
+        <div class="col-md-10">
+            @Html.DisplayFor(m => m.IssuedDate, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="label control-label col-md-2">Expired On</label>
+        <div class="col-md-10">
+            @Html.DisplayFor(m => m.ExpiryDate, new { @class = "form-control" })
+        </div>
+    </div>
+</div>
+

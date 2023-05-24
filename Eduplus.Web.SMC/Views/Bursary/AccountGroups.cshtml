@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "Accounts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+    <h2>Accounts</h2>
+    <hr />
+    <p><a class="btn btn-success" data-bind="click:$root.add" href="#" title="edit"><i class="icon-plus"></i> Add Account</a></p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                
+                <th style="width: 120px; text-align:right;" />
+            </tr>
+        </thead>
+        <tbody data-bind="template:{name:templateToUse, foreach:list}"></tbody>
+        <tfoot>
+            <tr><td><a class="btn btn-success" data-bind="click:$root.add" href="#" title="edit"><i class="icon-plus"></i> Add Account</a></td></tr>
+        </tfoot>
+    </table>
+
+    
+    <script id="itemsTmpl" type="text/html">
+        <tr>
+            <td data-bind="text:GroupId"></td>
+            <td data-bind="text:Title"></td>
+            
+            <td class="buttons">
+                <a class="btn btn-success" data-bind="click: $root.edit" href="#" title="edit"><i class="glyphicon glyphicon-edit"></i></a>
+
+            </td>
+        </tr>
+    </script>
+
+    <script id="editTmpl" type="text/html">
+        <tr>
+            <td></td>
+            <td><input  type="text" data-bind="value:Title" class="form-control"/></td>
+            
+            
+            <td><input type="checkbox" class="form-control" data-bind="checked:Active"/></td>
+            <td class="buttons">
+                <a class="btn btn-success" data-bind="click:$root.save" href="#" title="save"><i class="glyphicon glyphicon-floppy-disk"></i></a>
+                <a class="btn btn-danger" data-bind="click: $root.cancel" href="#" title="cancel"><i class="glyphicon glyphicon-remove-sign"></i></a>
+            </td>
+        </tr>
+    </script>  
+</div>
+@section Scripts{
+    @Scripts.Render("~/Scripts/ViewModels/accountsGroupVM.js")
+    }
+

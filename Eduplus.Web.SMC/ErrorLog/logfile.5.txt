@@ -1,0 +1,7 @@
+------Debug(2021-05-05 07:08:48.7532)DESKTOP-6JMPARN------
+
+                      Exception Type:System.Net.Http.HttpRequestException |
+                      Exception Message:An error occurred while sending the request. |
+                      Stack Trace: |
+                      Additional Info:Debug Error
+

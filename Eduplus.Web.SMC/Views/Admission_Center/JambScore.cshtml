@@ -1,0 +1,76 @@
+﻿ @{
+    ViewBag.Title = "Jamb Subject Combination";
+     
+}
+
+
+<div class="form-horizontal">
+
+    
+    
+    <div class="form-group">
+
+        <div class="col-md-12">
+            <input type="text" data-bind="value:JambRegNumber" class="form-control" placeholder="Jamb RegNumber" />
+        </div>
+    </div>
+    <div class="form-group">
+
+        <div class="col-md-12">
+            <input type="number" data-bind="value:JambYear"  class="form-control" placeholder="Year" />
+
+        </div>
+    </div>
+    <div id="sitting-1" style="width:60%;">
+        <table class="table">
+            <thead>
+                <tr><th>Subject</th><th>Score</th></tr>
+            </thead>
+            <tbody data-bind="foreach:jambScores">
+                <tr>
+                    
+                    <td data-bind="text:Subject"></td>
+                    <td data-bind="text:Score"></td>
+                    <td><button class="btn btn-danger" data-bind="click:$root.removeSubject">Delete</button></td>
+                    
+
+                </tr>
+                
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>
+                        Total
+                    </td>
+                    <td data-bind="text:totalScore"></td>
+                </tr>
+                <tr>
+                    <td><select data-bind="value:subject,options:$root.subjects, optionsText:'Title',optionsValue:'Title', optionsCaption:'Select Subject'" class="form-control"></select></td>
+                    <td><input type="number" data-bind="value:score" class="form-control" placeholder="Score" /></td>
+                    <td><button class="btn btn-info" data-bind="click:addSubject, disable:kill">+Add</button>
+                        <img src="~/Content/images/wait24.gif" data-bind="visible:kill" /></td>
+
+                </tr>
+            </tfoot>
+        </table>
+
+    </div> 
+    
+    <div class="form-group">
+        <button data-bind="click:skip" class="btn btn-success">Done</button>
+        
+    </div>
+
+</div>
+
+
+@section Scripts{
+    @Scripts.Render("~/Scripts/ViewModels/jambScoreVM.js")
+
+}
+<style>
+    .validationMessage {
+        color: red;
+        font-size: 1.0em;
+    }
+</style>

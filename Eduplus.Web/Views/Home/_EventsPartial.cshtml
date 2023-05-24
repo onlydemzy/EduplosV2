@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Eduplus.Web.ViewModels.EventsViewModel>
+<style>
+    .h3-me {
+        color: #0a5e23;
+        height: 30px;
+        padding-bottom: -5px;
+        border-bottom: solid;
+        border-bottom-color: #0a5e23;
+        border-bottom-width: 2px;
+        border-bottom: solid;
+        border-left-width: 1px;
+        border-left-style:solid;
+        border-bottom-left-radius:8px;
+    }
+    .scroll-area {
+        width: 100%;
+        height: 200px;
+        overflow-y: scroll;
+    }
+</style>
+<h3 class="h3-me">Up Coming Events</h3>
+<div class="scroll-area">
+    @if (Model == null)
+    {
+        <h3>No Event</h3>
+    }
+    else
+    {
+        <table class="table">
+            <tbody>
+                @foreach (var e in Model)
+                {
+                    <tr>
+                        <td style="display:block;background-color:#0a5e23;color:#ffffff; width:40px">@Html.DisplayFor(a => e.Date)</td>
+                        <td>
+                            @Html.DisplayFor(a => e.Title)
+
+                        <a style="color:#0a5e23;" href="@Url.Action("EventDetail","Home",new { _event = e.EventId })">Read more...</a>
+                    </td>
+
+                </tr>
+                }
+            </tbody>
+        </table>
+
+    }
+</div>
+

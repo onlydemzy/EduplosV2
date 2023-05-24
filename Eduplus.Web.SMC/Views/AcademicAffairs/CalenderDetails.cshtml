@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "Calender Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="form-horizontal">
+    <p style="text-align:left"><a class="btn btn-success" data-bind="click:back" href="#" title="Add Details"><i class="icon-plus"></i> Back to Calender List</a></p>
+    <hr/>
+    
+    
+    <div class="form-group">
+        <label class="col-md-2 control-label">Title</label>
+        <div class="col-md-4">
+            <label class="form-control" data-bind="text:Title" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Session</label>
+        <div class="col-md-8">
+            <label class="label control-label" data-bind="text:Session" />
+        </div>
+    </div>
+    <hr/>
+   <h4>Activities</h4>
+    <p><a class="btn btn-success" data-bind="click:add" href="#" title="Add Details"><i class="icon-plus"></i> Add Activity</a></p>
+    <div class="col-md-12">
+        
+        <table class="table">
+            <thead>
+                <tr>
+                    
+                    
+                    <th>Activity</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Semester</th>
+                </tr>
+            </thead>
+            <tbody data-bind="template:{name:templateToUse, foreach:list }"></tbody>
+        </table>
+        <p><a class="btn btn-success" data-bind="click:add" href="#" title="Add Details"><i class="icon-plus"></i> Add Activity</a></p>
+    </div>
+    
+
+</div>
+<script id="itemsTmpl" type="text/html">
+    <tr>
+        
+        <td data-bind="text:Activity"></td>
+        <td data-bind="text:StartDate"></td>
+        <td data-bind="text:EndDate"></td>
+        <td data-bind="text:Semester"></td>
+        <td class="buttons">
+            <a class="btn btn-success" data-bind="click: $root.edit" href="#" title="edit"><i class="glyphicon glyphicon-edit"></i></a>
+            <a class="btn btn-danger" data-bind="click: $root.remove" href="#" title="View Detail"><i class="glyphicon glyphicon-dashboard"></i>Delete</a>
+        </td>
+
+    </tr>
+</script>
+
+<script id="editTmpl" type="text/html">
+    <tr>
+        <td><input type="text" data-bind="value:Activity" class="form-control" /></td>
+        <td><input type="date" data-bind="value:StartDate" class="form-control" /></td>
+        <td><input type="date" data-bind="value:EndDate" class="form-control" /></td>
+        <td><select data-bind="value:Semester,options:semesters,optionsCaption:'-Select Semester-'" class="form-control"></select></td>
+        <td class="buttons">
+            <a class="btn btn-success" data-bind="click:$root.save" href="#" title="save"><i class="glyphicon glyphicon-floppy-disk"></i></a>
+            <a class="btn btn-danger" data-bind="click: $root.cancel" href="#" title="cancel"><i class="glyphicon glyphicon-remove-sign"></i></a>
+        </td>
+    </tr>
+</script>
+
+@section Scripts{
+    @Scripts.Render("~/Scripts/ViewModels/calenderDetailsVM.js")}

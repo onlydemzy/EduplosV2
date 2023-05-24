@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "Generate Results";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="form-horizontal">
+    <h3>Generate Semester Results</h3>
+    <div class="form-group">
+       
+        <div class="col-md-5">
+            <select class="form-control" data-bind="value:SessionId,options:sessions,optionsValue:'SessionId',optionsText:'Title',optionsCaption:'--Select Session--'"></select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        
+        <div class="col-md-5">
+            <select class="form-control" data-bind="value:SemesterId,options:semesters,optionsValue:'SemesterId',optionsText:'Title',optionsCaption:'--Select Semester--'"></select>
+
+        </div>
+    </div>
+    <div class="form-group">
+
+        <div class="col-md-5">
+            <select class="form-control" data-bind="value:Level,options:Levels,optionsCaption:'--Select Level--'"></select>
+
+        </div>
+    </div>
+    <div class="form-group">
+
+        <div class="col-md-5">
+            <select class="form-control" data-bind="value:ProgramCode,options:programmes,optionsValue:'ProgrammeCode',
+                    optionsText:'Fullname',optionsCaption:'--Select Programme--'"></select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-5">
+            <select class="form-control" data-bind="value:Type,options:ResultTypes,optionsCaption:'--Result Type--'"></select>
+        </div>
+    </div>
+    <div class="form-group" data-bind="visible:showC">
+        <div class="col-md-5">
+            <select class="form-control" data-bind="value:expTo,options:exports,optionsCaption:'--Export Broadsheet to--'"></select>
+        </div>
+    </div>
+    <div class="form-group">
+
+        <div class="col-md-5">
+            <button class="btn btn-success" data-bind="click:fetch">Generate</button>
+
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/Scripts/ViewModels/generateStudentResultsVM.js")

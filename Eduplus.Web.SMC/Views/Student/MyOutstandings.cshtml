@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Eduplus.DTO.AcademicModule.OutstandingCoursesDTO>
+@{
+    ViewBag.Title = "Student Outstandings";
+}
+ @if (Model != null)
+ {
+    <div class="col-md-6">
+        <table class="table table-sm">
+            @foreach (var i in Model)
+            {
+                <tr>
+                    <td>Course Code</td>
+                    <td>
+                        @Html.DisplayFor(a=>i.CourseCode)
+                    </td>
+                    <td>Title</td>
+                    <td>
+                        @Html.DisplayFor(a => i.Title)
+                    </td>
+                    <td>Semester</td>
+                    <td>
+                        @Html.DisplayFor(a => i.Semester)
+                    </td>
+                    
+            </tr>
+            }
+        </table>
+
+    </div>
+ }

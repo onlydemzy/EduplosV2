@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "UploadInstitutionImages";
+}
+@{
+    ViewBag.Title = "InstitutionData";
+}
+<div class="row">
+    <h2>InstitutionData</h2>
+    @using (Html.BeginForm("UploadInstitutionImages", "Administration", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+            {
+                Html.ValidationSummary();
+        <div class="form-group">
+            School Logo
+             
+            <input type="file" accept="image/*" onchange="loadfile(event)" name="logo" id="logo" value="Choose File" />
+        </div>
+        <div class="form-group">
+            Registrar's Sign
+            <img id="output" style="max-height:200px; max-width:200px;" />
+            <input type="file" accept="image/*" onchange="loadfile(event)" name="regSign" id="regSign" value="Choose File" />
+        </div>
+        <div class="form-group">
+            Registrar's Footer
+            <img id="output" style="max-height:200px; max-width:200px;" />
+            <input type="file" accept="image/*" onchange="loadfile(event)" name="regFooter" id="regFooter" value="Choose File" />
+        </div>
+        <div class="form-group">
+            Registrar's Banner
+            <img id="output" style="max-height:200px; max-width:200px;" />
+            <input type="file" accept="image/*" onchange="loadfile(event)" name="regBana" id="regBana" value="Choose File" />
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Submit" class="btn btn-info" />
+        </div>
+    }
+
+</div>

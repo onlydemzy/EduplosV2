@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "Course Categories";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Courses</h3>
+<p><a class="btn btn-success" data-bind="click: $root.add" href="#" title="edit"><i class="icon-plus"></i> Add Category</a></p>
+
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Category</th>
+            
+            <th style="width: 120px; text-align:right;" />
+        </tr>
+    </thead>
+    <tbody data-bind="foreach: categories }"></tbody>
+</table>
+ 
+<script id="itemsTmpl" type="text/html">
+    <tr>
+        <td data-bind="text: CategoryId"></td>
+        <td data-bind="text: Category"></td>
+       
+        <td class="buttons">
+            <a class="btn btn-success" data-bind="click: $root.edit" href="#" title="edit"><i class="glyphicon glyphicon-edit"></i></a>
+
+        </td>
+
+    </tr>
+</script>
+
+<script id="editTmpl" type="text/html">
+    <tr>
+        <td data-bind="text: CategoryId"></td>
+        <td><input data-bind="value:Category" placeholder="Category"></td>
+       
+        <td class="buttons">
+            <a class="btn btn-success" data-bind="click: $root.save" href="#" title="save">
+                <img src="/Content/images/wait24.gif" data-bind="visible:$root.spinar" /><i class="glyphicon glyphicon-floppy-disk"></i>
+            </a>
+            <a class="btn btn-danger" data-bind="click: $root.cancel" href="#" title="cancel"><i class="glyphicon glyphicon-remove-sign"></i></a>
+        </td>
+    </tr>
+</script>
+@Scripts.Render("/Scripts/ViewModels/courseCategoriesVM.js")

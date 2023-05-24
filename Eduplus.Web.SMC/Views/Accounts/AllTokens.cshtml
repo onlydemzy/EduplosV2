@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "AllTokens";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+    <p style="color:red;font-weight:bold;font-size:14px;">
+        Please Note:<br />
+        <ul>
+            <li>Always regenerate a new token to client if you doubt a particular token key</li>
+            <li>Always inform the client concerned if you do so.</li>
+            <li>Know client must be assigned more than 1 (one) token.</li>
+        </ul>
+    </p>
+    <p><a class="btn btn-success" data-bind="click:$root.addhjhgjhgj" href="#" title="edit"><i class="icon-plus"></i> Add Tokens</a></p>
+<table class="table">
+
+</table>
+</div>
+
+
+@Scripts.Render("/Scripts/ViewModels/tokensVM.js")

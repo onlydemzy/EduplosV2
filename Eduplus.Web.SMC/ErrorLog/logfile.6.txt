@@ -1,0 +1,19 @@
+------Error(2021-05-05 07:16:26.8615)DESKTOP-6JMPARN------
+
+                      Exception Type: |
+                      Exception Message: |
+                      Stack Trace: |
+                      Additional Info:An error occurred while sending the request.
+
+------Info(2021-05-05 07:16:26.9864)DESKTOP-6JMPARN------
+
+                      Exception Type: |
+                      Exception Message: |
+                      Stack Trace: |
+                      Additional Info:   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Eduplus.Web.SMC.Controllers.PayProcessorController.<PaymentConfirmation>d__6.MoveNext() in C:\VS\EduplosV2\Eduplus.Web.SMC\Controllers\PayProcessorController.cs:line 69
+

@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Graduants";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div>
+    <h3>Generate Graduants</h3>
+
+    
+    <div class="form-group">
+        <div class="col-md-4">
+            <select data-bind="value:programmeCode,options:programmes,optionsValue:'ProgrammeCode',optionsText:'Fullname',optionsCaption:'--Select Programme--',disabled:Kill" class="form-control"></select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-4">
+            <select data-bind="value:session,options:sessions,optionsValue:'Title',optionsText:'Title',optionsCaption:'--Select Year Admitted--'" class="form-control"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-4">
+            <button class="btn btn-info" data-bind="click:$root.submit">Print</button>
+        </div>
+    </div>
+    
+    <hr />
+    <p>.</p>
+    <hr />
+
+    <h4>Students</h4>
+    <hr />
+</div>
+
+
+
+
+@Scripts.Render("/Scripts/ViewModels/generateGraduatesVM.js")

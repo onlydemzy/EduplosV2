@@ -1,0 +1,31 @@
+﻿@model Eduplus.DTO.ArticleModule.ArticleDTO
+@{
+    ViewBag.Title = "News";
+}
+<style>
+
+</style>
+    <div style="max-width:100%;">
+        
+        <div>
+            <h3>@Html.DisplayFor(a => a.Title)</h3>
+            <hr />
+            <div id="pix" style="width:90%;max-height:480px;overflow:hidden;padding:0Px 0px; clear:both">
+                @if (Model.Photo != null)
+                {
+
+                    var base64 = Convert.ToBase64String(Model.Photo);
+                    var imgSrc = String.Format("data:image/jpeg;base64,{0}", base64);
+                    <img src='@imgSrc' style="width:100%;height:80%;"/>
+                
+                }
+            </div>
+             <div id="cont" style="text-align:justify; margin-left:5px;">
+                @Html.Raw(Model.Content)
+            </div>
+
+        </div>
+      
+    </div>
+
+

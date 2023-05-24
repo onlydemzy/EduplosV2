@@ -1,0 +1,49 @@
+﻿@model Eduplus.DTO.BursaryModule.FeeScheduleDTO
+@{
+    ViewBag.Title = "ScheduleDetail";
+    Layout = "~/Views/Shared/_A4ReportLayout.cshtml";
+}
+
+<div class="form-horizontal" style="max-width:600px; margin-left:auto;margin-right:auto">
+    <h3>Session Fees Schedule</h3>
+    <table class="table" style="border-width:0;">
+        <tr>
+            <td>Session</td>
+            <td>@Html.DisplayFor(m => m.Session)</td>
+            <td>Faculty</td>
+            <td>@Html.DisplayFor(m => m.Faculty)</td>
+            <td>Programme Type</td>
+            <td>@Html.DisplayFor(m => m.ProgrammeType)</td>
+        </tr>
+    </table>
+
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Amount</th>
+                <th>Type</th>
+                <th>Applies to</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var m in Model.Details)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(a=>m.AccountCode)</td>
+                    <td style="text-align:right">@Html.DisplayFor(a => m.Amount)</td>
+                    <td>@Html.DisplayFor(a => m.Type)</td>
+                    <td>@Html.DisplayFor(a => m.AppliesTo)</td>
+                </tr>
+            }
+            
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>Total</td>
+                <td style="text-align:right">@Html.DisplayFor(m=>m.Total)</td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+

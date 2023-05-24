@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Find Student";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+    <h3>Find Student</h3>
+    <hr />
+    <div class="form-group">
+        <div class="col-md-3">
+            <input type="text" data-bind="value:searchString" class="form-control" placeholder="Reg/MatricNumber,Jamb No OR Surname"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-3">
+            <button class="btn btn-success" data-bind="click:$root.find">Search</button>
+        </div>
+    </div>
+</div>
+
+

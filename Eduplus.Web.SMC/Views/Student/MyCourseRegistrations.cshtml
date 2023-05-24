@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Eduplus.Domain.AcademicModule.SemesterRegistrations>
+@{
+    ViewBag.Title = "MyCourseRegistrations";
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+@if(Model!=null ||Model.Count()>0)
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table table-responsive table-hover">
+                    <thead>
+                        <tr>
+                            <th>Semester</th>
+                            <th>Session</th>
+                            <th>Level</th>
+                        </tr>
+                    </thead>
+                    @foreach (var regs in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayTextFor(a => regs.Semester)</td>
+                            <td>@Html.DisplayTextFor(a => regs.Session)</td>
+                            <td>@Html.DisplayTextFor(a => regs.Lvl)</td>
+                            <td>@Html.ActionLink("Details", "MySemesterRegistration", new { studentId = regs.StudentId, semesterId = regs.SemesterId })</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+            
+        </div>
+    </div>
+}

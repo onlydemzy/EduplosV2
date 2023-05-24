@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Collection Summary";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="col-7">
+    <div class="row">
+        <table class="table table-borderless">
+            <tr><td>From</td><td><input type="date" class="form-control" data-bind="value:from" /></td></tr>
+            <tr><td>to</td><td><input type="date" class="form-control" data-bind="value:to" /></td></tr>
+            <tr><td>Programme Type</td><td><select class="form-control" data-bind="value:pType,options:progs,optionsCaption:'--Select Type--'"></select></td></tr>
+            <tr><td></td><td><button class="btn btn-info" data-bind="click:fetch,disable:biz">Fetch</button>
+                             <img src="~/Content/images/wait24.gif" data-bind="visible:biz" />
+                </td>
+                
+            </tr>
+        </table>
+    </div>
+    <div class="row">
+
+        <table class="table table-borderless table-sm">
+            <thead>
+                <tr>
+                    <th>Account Code</th>
+                    <th>Account</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach:pays">
+                <tr>
+                    <td data-bind="text:Name"></td>
+                    <td data-bind="text:Particulars"></td>
+                    <td data-bind="text:Amount"></td>
+                </tr>
+            </tbody>
+            <tfoot><tr><td>Total</td><td></td><td data-bind="text:total"></td></tr></tfoot>
+        </table>
+        <div class="form-group">
+
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/ViewModels/feesCollectionSumary.js"></script>

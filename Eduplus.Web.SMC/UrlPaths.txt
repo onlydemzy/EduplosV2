@@ -1,0 +1,27 @@
+ResponseUrl=http://localhost:13302/Payments/WebPayConfirmation
+ 
+RemitaTerminalId=7007139429
+RemitaTerminalKEY=1946
+RemitaMerchantCode=2547916
+RemitaServiceTypeId=4430731
+RemitaGatewayConfirmationUrl=https://remitademo.net/remita/exapp/api/v1/send/api/echannelsvc/
+RemitaGatewayPostUrl=https://remitademo.net/remita/exapp/api/v1/send/api/echannelsvc/merchant/api/paymentinit
+RemitaCharge=300
+==============PaymentSharing===================================
+========Provider==========
+ProviderAccountNumber=0360883515
+ProviderAccountName=Alozie Michael
+ProviderBankCode=058
+ProviderMajorFee=1400
+ProviderMinorFee=100
+==============END===============
+
+=======Client===================
+ClientAccountNumber=6020067886
+ClientAccountName=Folivi Joshua
+ClientBankCode=058
+
+card=5178 6810 0000 0002
+exp=05/30
+cvv=000
+otp=123456

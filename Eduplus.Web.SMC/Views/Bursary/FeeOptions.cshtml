@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "FeeOptions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row"><h4>Fee Options</h4>
+    <select data-bind="options:list, optionsValue:'OptionsId',value:op"></select>
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Prog. Type</th>
+                <th>Tuition %</th>
+                <th> Sundry %</th>
+                <th>Register1</th>
+                <th>Register2</th>
+                <th>Register3</th>
+                <th>Exam1</th>
+                <th>Exam2</th>
+                <th>Exam3</th>
+                <th>Cycle</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach:$root.list">
+            <tr>
+                <td data-bind="value:OptionsId"></td>
+                <td data-bind="text:Installment"></td>
+                <td data-bind="text:ProgrammeType"></td>
+                <td data-bind="text:PercentageTuition"></td>
+                <td data-bind="text:PercentageSundry">
+                </td>
+                <td data-bind="text:Register1"></td>
+                <td data-bind="text:Register2"></td>
+                <td data-bind="text:Register3"></td>
+                <td data-bind="text:Write1"></td>
+                <td data-bind="text:Write2"></td>
+                <td data-bind="text:Write3"></td>
+                <td><button data-bind="click:edit" class="btn btn-info"></button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+@section Scripts{
+    @Scripts.Render("~/Scripts/ViewModels/feeOptionsVM.js")
+}
+

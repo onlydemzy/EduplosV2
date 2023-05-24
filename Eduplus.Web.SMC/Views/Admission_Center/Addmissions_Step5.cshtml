@@ -1,0 +1,17 @@
+﻿@model Eduplus.Domain.CoreModule.StudentDocuments
+@{
+    ViewBag.Title = "Upload documents";
+     
+}
+
+<h2>Upload your Document</h2>
+
+@using (Html.BeginForm("Addmissions_Step5", "Admission_Center", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+{
+    <h3>
+        Please combine all your credentials into a single PDF file  before uploading.</h3>
+        <input type="File" accept="pdf/*" name="file" id="file" value="Choose File" />
+        <div class="form-group">
+            <button type="submit">Upload</button>
+        </div>
+}

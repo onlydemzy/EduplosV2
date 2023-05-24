@@ -1,0 +1,7 @@
+------Error(2021-05-05 07:43:07.9467)DESKTOP-6JMPARN------
+
+                      Exception Type:System.Net.WebException |
+                      Exception Message:The remote name could not be resolved: 'remitademo.net' |
+                      Stack Trace: |
+                      Additional Info:Error On remita Processing
+

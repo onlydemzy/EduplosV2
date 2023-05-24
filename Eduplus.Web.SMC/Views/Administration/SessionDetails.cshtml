@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewBag.Title = "Academic Sesssions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="form-horizontal">
+    <h2>Academic Semesters</h2>
+    <hr/>
+
+    <p><a class="btn btn-success" data-bind="click:$root.add" href="#" title="Add new department"><i class="icon-plus"></i> Add Semester</a></p>
+    <div class="form-group">  
+        <label class="col-md-2 control-label">Title</label>
+        <div class="col-md-4">    
+            <label class="form-control" data-bind="text:Title"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Start Date</label>
+        <div class="col-md-4">
+            <input class="form-control" data-bind="value:StartDate" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">End Date</label>
+        <div class="col-md-4">
+            <label  class="form-control" data-bind="text:EndDate" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Is Current</label>
+        <div class="col-md-4">
+            <label type="text" class="form-control" data-bind="text:IsCurrent"></label>
+        </div>
+    </div>
+   
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+
+                <th>Title</th>
+                <th>Active</th>
+                <th>1st Late Reg.SDate </th>
+                <th>Late Reg1 Applied</th>
+                <th>1st late Reg. EDate</th>
+                <th>2nd Late Reg.SDate </th>
+                <th>Late Reg2 Applied</th>
+                <th>2nd late Reg. EDate</th>
+
+                <th style="width: 120px; text-align:right;" />
+                
+            </tr>
+        </thead>
+        <tbody data-bind="template:{name:templateToUse, foreach: semesterList }"></tbody>
+    </table>
+</div>
+
+<script id="itemsTmpl" type="text/html">
+    <tr>
+        
+        <td data-bind="text: Title"></td>
+        <td data-bind="text: IsCurrent"></td>
+        <td data-bind="text:StartDate"></td>
+        <td data-bind="text:ApplyLate1"></td>
+        <td data-bind="text:EndDate"></td>
+        <td data-bind="text:LateRegistration2StartDate"></td>
+        <td data-bind="text:ApplyLate2"></td>
+        <td data-bind="text:LateRegistration2EndDate"></td>
+        <td class="buttons">
+            <a class="btn btn-success" data-bind="click: $root.edit" href="#" title="edit"><i class="glyphicon glyphicon-edit"></i></a>
+
+        </td>
+        
+    </tr>
+</script>
+
+<script id="editTmpl" type="text/html">
+    <tr>
+        
+        <td><select data-bind="value: Title,options:semesters,optionsCaption:'-Choose Semester'"></select></td>
+        <td><input type="checkbox" class="form-control" data-bind="checked:IsCurrent"></td>
+        <td><input type="date" class="form-control" data-bind="value: StartDate" /></td>
+        <td><input type="checkbox" class="form-control" data-bind="checked:ApplyLate1"></td>
+        <td><input type="date" class="form-control" data-bind="value:EndDate"></td>
+        <td><input type="date" class="form-control" data-bind="value: LateRegistration2StartDate" /></td>
+        <td><input type="checkbox" class="form-control" data-bind="checked:ApplyLate2"></td>
+        <td><input type="date" class="form-control" data-bind="value:LateRegistration2EndDate"></td>
+        <td class="buttons">
+            <a class="btn btn-success" data-bind="click: $root.save" href="#" title="save"><i class="glyphicon glyphicon-floppy-disk"></i></a>
+            <a class="btn btn-danger" data-bind="click: $root.cancel" href="#" title="cancel"><i class="glyphicon glyphicon-remove-sign"></i></a>
+        </td>
+    </tr>
+</script>
+@Scripts.Render("/Scripts/ViewModels/sessionDetailsVM.js")

@@ -1,0 +1,137 @@
+﻿
+@{
+    ViewBag.Title = "Backlog Scores Entry";
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+
+
+<div>
+
+        <div class="form-group">
+            <div class="col-md-4">
+                <select data-bind="value:SessionId,options:sessions,optionsValue:'SessionId',optionsText:'Title',optionsCaption:'--Select Session--'" class="form-control"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-4">
+                <select data-bind="value:SemesterId,options:semesters,optionsValue:'SemesterId',optionsText:'Title',optionsCaption:'--Select Semester--'" class="form-control"></select>
+            </div>
+        </div>
+    <div class="form-group">
+        <div class="col-md-4">
+            <select data-bind="value:Level,options:Levels,optionsCaption:'--Scores Entry Level--'" class="form-control"></select>
+        </div>
+    </div>
+    <p>.</p>
+
+    <div class="form-group">
+        <div class="col-md-4">
+            <select data-bind="value:Programme,options:programmes,optionsText:'Fullname',optionsCaption:'--Select Programme--'" class="form-control"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-4">
+            <select data-bind="value:CourseId,options:courses,optionsValue:'CourseId',optionsText:'Course',optionsCaption:'--Select Course--'" class="form-control"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-4">
+            <select data-bind="value:YearAdmitted,options:AdmitSessions,optionsValue:'Title',optionsText:'Title',optionsCaption:'--Select Year Admitted--'" class="form-control"></select>
+        </div>
+    </div>
+
+        <h4>Students</h4>
+    <img src="~/Content/images/15.gif" data-bind="visible:spinar" alt=""/>
+   <hr/>
+    <table class="table table-striped" style="border:none;">
+        <thead>
+            <tr>
+                <th>RegNo</th>
+                <th>CA1(<span data-bind="text:ca1"></span>)</th>
+                <th>CA2(<span data-bind="text:ca2"></span>)</th>
+                <th>Exam(<span data-bind="text:exam"></span>)</th>
+                <th>Total</th>
+                <th>Grade</th>
+            </tr>
+        </thead>
+        <tbody data-bind="with:selectedItem">
+            <tr>
+                <td data-bind="text:RegNo"></td>
+                <td><input data-bind="value:CA1" class="col-sm-5" /></td>
+                <td><input data-bind="value:CA2" class="col-sm-5" /></td>
+                <td><input data-bind="value:Exam" class="col-sm-5"/></td>
+                <td data-bind="text:TScore"></td>
+                <td data-bind="text:Grade"></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+               
+                <td class="buttons">
+                    <a class="btn btn-danger" data-bind="click: $root.next,enable:Kill" href="#"><i class="glyphicon glyphicon-save">Next>></i></a>
+                    <img src="~/Content/images/wait24.gif" data-bind="visible:spinar" alt=""/>
+                </td>
+
+                <td data-bind="text:display"></td>
+                <td></td>
+                <td></td>
+                <td class="buttons">
+                    <a class="btn btn-danger" data-bind="click: $root.cancel,visible:spinar" href="#" title="edit"><i class="glyphicon glyphicon-remove">Cancel</i></a>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+<style>
+    .tableFixHead {
+        overflow-y: auto;
+        height: 500px;
+        max-width: 700px;
+    }
+
+        .tableFixHead thead th {
+            position: sticky;
+            top: 0;
+        }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th,
+    td {
+        padding: 8px 16px;
+        border: 1px solid #ccc;
+    }
+
+    th {
+        background: #eee;
+    }
+</style>
+<div class="tableFixHead">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>RegNo</th>
+                <th>CA1(<span data-bind="text:ca1"></span>)</th>
+                <th>CA2(<span data-bind="text:ca2"></span>)</th>
+                <th>Exam(<span data-bind="text:exam"></span>)</th>
+                <th>Total</th>
+                <th>Grade</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach:inputtedScores">
+            <tr>
+                <td data-bind="text:RegNo"></td>
+                <td data-bind="text:CA1"></td>
+                <td data-bind="text:CA2"></td>
+                <td data-bind="text:Exam"></td>
+                <td data-bind="text:TScore"></td>
+                <td data-bind="text:Grade"></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+@Scripts.Render("~/Scripts/ViewModels/backlogScoresEntry.js")

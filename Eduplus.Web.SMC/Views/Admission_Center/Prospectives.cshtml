@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Prospectives";
+    Layout = "~/Views/Shared/_ProspectiveLayout.cshtml";
+}
+
+@if (ViewBag.stat == 0)
+{
+    <a href="@Url.Action("PayAdmissionFee", "Admission_Center")" class="btn btn-danger">
+        Click here to pay your screening fee
+    </a>  }
+else if (ViewBag.stat == 3) {
+    @ViewBag.status
+<a href="@Url.Action("PayAcceptanceFee", "Admission_Center")" class="btn btn-danger">
+    You have been offered admission, Click here to Pay Acceptance Fee
+</a> <br/>
+    <p>
+        Please Note: Once your payment is approved, your Matriculation number will be generated and Emailed to you. Use your new matriculation as 
+        your new username. Congratulations in advance.
+    </p>
+}
+else if (ViewBag.stat == 4) { 
+        <h4>Admission Pending</h4>
+    }
+
+

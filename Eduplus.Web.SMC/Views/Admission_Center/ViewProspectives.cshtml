@@ -1,0 +1,107 @@
+﻿
+@{
+    ViewBag.Title = "View Prospectives";
+    
+}
+
+    <div class="row form-inline">
+        <div class="form-group">
+            <div class="col-md-6">
+                <select data-bind="value:dept,options:depts,optionsValue:'DepartmentCode',optionsText:'Title',optionsCaption:'Select Department'" class="form-control"></select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-6">
+                <select data-bind="value:ProgType,options:ProgTypes,optionsValue:'Type',optionsText:'Type',optionsCaption:'Select Programme Type'" class="form-control"></select>
+            </div>   
+        </div>
+        <div class="form-group">
+            <div class="col-md-6">
+                <select data-bind="value:prog,options:programs,optionsValue:'ProgrammeCode',optionsText:'Fullname',optionsCaption:'Select Programme '" class="form-control"></select>
+            </div>
+        </div>
+
+    <p>
+        <br/><br/>
+    </p>
+        <div class="row form-inline">
+            <div class="form-group">
+                <div class="col-md-6">
+                    <select data-bind="value:Title,options:sessionList,optionsText:'Title',optionsValue:'Title',optionsCaption:'Select Session'" class="form-control"></select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-6">
+                    <select data-bind="value:rptType,options:genTypes,optionsCaption:'Candidates'" class="form-control"></select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-6">
+                    <button class="btn btn-info" data-bind="click:fetchList,disabled:kill">Fetch</button>
+                    <img src="~/Content/images/wait24.gif" data-bind="visible:kill" />
+                </div>
+
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <button class="btn btn-danger" data-bind="click:printByProg">Print By Prog.</button>
+
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-10">
+                    <button class="btn btn-danger" data-bind="click:printByDept">Print By Dept.</button>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+     
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                   
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Programme</th>
+                    <th>Stage</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach:pagedList">
+                <tr>
+                     
+                    <td data-bind="text:Name"></td>
+                    <td data-bind="text:Phone"></td>
+                    <td data-bind="text:Email"></td>
+                    <td data-bind="text:Programme"></td>
+                    <td data-bind="text:AddmissionCompleteStage"></td>
+                    <td>
+                    <button class="btn btn-info" data-bind="click:$root.docs">Docs</button>
+                    <button class="btn btn-info" data-bind="click:$root.admitStudent">Addmit</button>
+                    </td>
+                    <td><button class="btn btn-info" data-bind="click:$root.details">Details</button></td>
+                    
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <ul class="pagination"><li data-bind="css: { disabled: pageIndex() === 0 }"><a href="#" data-bind="click: previousPage">Previous</a></li></ul>
+            <ul data-bind="foreach: allPages" class="pagination">
+                <li data-bind="css: { active: $data.pageNumber === ($root.pageIndex() + 1) }"><a href="#" data-bind="text: $data.pageNumber, click: function() { $root.moveToPage($data.pageNumber-1); }"></a></li>
+            </ul>
+            <ul class="pagination"><li data-bind="css: { disabled: pageIndex() === maxPageIndex() }"><a href="#" data-bind="click: nextPage">Next</a></li></ul>
+        </div>
+    </div>
+
+@Scripts.Render("/Scripts/ViewModels/candidatesVM.js")

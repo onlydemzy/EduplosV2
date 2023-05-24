@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "RolePermissions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Role Permissions</h3>
+<div class="row">
+    <p>@Html.ActionLink("Back to Roles","Roles")</p>
+    <div class="col-md-6">
+        <p>Role ID: <a data-bind="text:RoleId"></a></p>
+        <p>Role: <a data-bind="text:Role"></a></p>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Module</th>
+                    <th>Permission</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach:permissions">
+                <tr>
+                    <td data-bind="text:Controller"></td>
+                    <td data-bind="text:Action"></td>
+                    <td><button data-bind="click:$root.remove" class="btn btn-danger">Remove</button></td>
+                </tr>
+
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>
+                        <select data-bind="value:npermission,options:allpermissions,optionsText:'Activity',optionsCaption:'Add new Permission to Role'"></select>
+                    </td>
+                    <td><button data-bind="click:newPermission" class="btn btn-info">Add Permission</button></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    
+
+</div>
+@Scripts.Render("/Scripts/ViewModels/rolePermVM.js")

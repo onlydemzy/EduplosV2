@@ -1,0 +1,59 @@
+﻿@model Eduplus.Web.SMC.ViewModels.remitaPayConfirmationData
+@{
+    ViewBag.Title = "Invoice Status";
+
+}
+@using (Html.BeginForm("CheckInvoiceStatus", "Payments", FormMethod.Post))
+{
+    <div class="row">
+        <div class="form-group">
+            <div class="col-md-6">
+                <input class="form-control" id="invoiceNo" name="invoiceNo" placeholder="Enter InvoiceNo" type="text" />
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-info" value="Check" />
+        </div>
+    </div>
+
+    <div class="col-md-7">
+        <h2>Check Invoice Status</h2>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>TransactionId</td>
+                    <td>@Html.DisplayFor(a => a.orderId)</td>
+                </tr>
+                <tr>
+                    <td>RRR</td>
+                    <td>@Html.DisplayFor(a => a.RRR)</td>
+                </tr>
+                <tr>
+                    <td>Amount</td>
+                    <td>@Html.DisplayFor(a => a.amount)</td>
+                </tr>
+                <tr>
+                    <td>Trans Date</td>
+                    <td>@Html.DisplayFor(a => a.transactiontime)</td>
+                </tr>
+                <tr>
+                    <td>Pay Date</td>
+                    <td>@Html.DisplayFor(a => a.paymentDate)</td>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td>@Html.DisplayFor(a => a.status)</td>
+                </tr>
+                <tr>
+                    <td>Message</td>
+                    <td>@Html.DisplayFor(a => a.message)</td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+
+}
+
+
+

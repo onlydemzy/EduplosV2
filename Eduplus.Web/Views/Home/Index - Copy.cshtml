@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>  
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    @{ Layout = null;}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home-Eduplus</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/slide/slide.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="wrapper">
+        <section class="banner">
+            <img src="~/Content/images/bana.jpg" class="banner-image" />
+            <p style="text-align:justify; float:right; display:block;">
+                <b>
+                    Tel: +2348159336424<br />+2348029902026<br />
+                    <br />
+                    Mail:info@obonguniversity.edu.ng
+                </b>
+
+                <br />
+            </p>
+        </section>
+        <div class="row">
+            @Html.Partial("_MenuPartial")
+        </div>
+
+
+
+            <div class="row" style="padding-left:0;background-color:#ff0000;overflow:hidden;clear:both;">
+                <div class="col-md-9" style="padding:0px 0px; margin-top:19px; margin-left:0; background-color:#428bca;">
+
+                    @Html.Action("_SlidePartial", "Home");
+
+                </div>
+                <div class="col-md-3">
+                    @Html.Action("_NewsPartial", "Home")
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <h3 class="heading">Events</h3>
+                    <p style="color:#428bca;">
+
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    
+                    @Html.Action("OtherLinksPartial", "Home")
+                </div>
+                <div class="col-md-4">
+                    
+                    @Html.Action("_EventsPartial","Home")
+                </div>
+            </div>
+    
+
+        <div style="background-color:#0a5e23; color:#fff;">
+            <p>&copy; @DateTime.Now.Year - Obong University IT Directorate</p>
+        </div>
+ </div>
+</body>
+</html>
+<script src="~/Scripts/jquery-2.2.4.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="~/Scripts/menu-script.js"></script>
+   <script type="text/javascript" src="~/Scripts/jssor.slider.mini.js"></script>
+   <script type="text/javascript" src="~/Scripts/slide.js"></script>

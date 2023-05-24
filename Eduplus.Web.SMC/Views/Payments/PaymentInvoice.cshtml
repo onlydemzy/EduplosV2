@@ -1,0 +1,201 @@
+﻿@model Eduplus.DTO.BursaryModule.PaymentInvoiceDTO
+@{
+    ViewBag.Title = "Payment Invoice";
+    Layout = "~/Views/Shared/_A4ReportLayout.cshtml";
+    
+}
+<style>
+    body{
+        color:#000000;
+    }
+</style>
+<div>
+    <div id="printPageButton">
+        <input type="button" onclick="printPage()" class="btn btn-info" value="Print">||<input type="button" onclick="window.location.href='/Payments/MyInvoices'" class="btn btn-danger" value="Close" />
+    </div>
+
+    @if (Model == null)
+    {
+        <h3>@ViewBag.msg</h3>
+        <h3>@ViewBag.error</h3>
+        <p>@Html.Display("response")</p>
+    }
+    else
+    {
+       
+        
+         <div class="hold-holders" style="font-size:14px; ">
+            <h4 style="border-bottom-width:1px; border-bottom:solid">Fees Payment Invoice</h4>
+            <div class="title-holderS1" style="width:350px">
+                <table class="table table-sm" style="color:#000000;border-style:none">
+                    <tr>
+                        <td width=50px>Transaction ID:</td>
+                        <td>
+                            @Html.DisplayFor(model => model.TransactionId, new { @class = "form-control" })
+                           
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width=50px>RegNo:</td>
+                        <td>@Html.DisplayFor(model => model.Regno, new { @class = "form-control" })</td>
+                    </tr>
+                    <tr>
+                        <td width=50px>Name:</td>
+                        <td>@Html.DisplayFor(model => model.Name, new { @class = "form-control" })</td>
+                    </tr>
+                    <tr>
+                        <td width=50px>Payment :</td>
+                        <td>@Html.DisplayFor(model => model.Particulars, new { @class = "form-control" })</td>
+                    </tr>
+                    <tr>
+                        <td width=50px>Generated Date :</td>
+                        <td>@Html.DisplayFor(model => model.GeneratedDate, new { @class = "form-control" })</td>
+                    </tr>
+                </table>
+            </div>
+             <div id="pas">
+                 @if (Model.Photo != null)
+                 {
+                     var base64 = Convert.ToBase64String(Model.Photo);
+                     var imgSrc = String.Format("data:image/jpeg;base64,{0}", base64);
+                    <img src='@imgSrc' style="max-width:100px; max-height:100px;border-radius:0px;" />
+                 }
+             </div>
+            <div class="title-holderS2" style="margin-top:-100px;">
+                <table class="table table-sm" border="0" style="color:#000000;">
+                    <tr>
+                        <td width=50px>RRR:</td>
+                        <td>@Html.DisplayFor(model => model.TransRef, new { @class = "form-control" })</td>
+                    </tr>
+                    <tr>
+                        <td width=50px>Session:</td>
+                        <td>@Html.DisplayFor(model => model.Session, new { @class = "form-control" })</td>
+                    </tr>
+
+                    <tr>
+                        <td width=50px>Department:</td>
+                        <td>@Html.DisplayFor(model => model.Department, new { @class = "form-control" })</td>
+                    </tr>
+                    <tr>
+                        <td width=50px>Programme:</td>
+                        <td>@Html.DisplayFor(model => model.Programme, new { @class = "form-control" })</td>
+                    </tr>
+                    <tr>
+                        <td width=50px>Programme Type:</td>
+                        <td>@Html.DisplayFor(model => model.ProgrammeType, new { @class = "form-control" })</td>
+                    </tr>
+                   @if (Model.LevelToPay>0)
+                   {
+                    <tr>
+                        <td width=50px>Pay Level:</td>
+                        <td>@Html.DisplayFor(model => model.LevelToPay, new { @class = "form-control" })</td>
+                    </tr>
+                   }
+                </table>
+            </div>
+             
+        </div>
+        <div id="Input" style="width:650px; margin-left:50px; clear:both;">
+            <table class="table table-sm" style="color:#000000;">
+                <thead>
+                    <tr>
+                        <td>S/N</td>
+                        <th>Item</th>
+                        <th>Amount</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                        @foreach (var resul in Model.Details)
+                        {
+                            <tr>
+                                <td align="center"> @( ((Int32)1) + Model.Details.ToList().IndexOf(resul) ) </td>
+                                <td>
+                                    @Html.DisplayFor(model => resul.Item, new { @class = "form-control" })
+                                </td>
+                                <td style="text-align:left">@string.Format("{0:#,##0.00;(#,##0.00)}", resul.Amount)</td>
+
+                            </tr>
+
+                        }
+
+
+                </tbody>
+                <tfoot>
+                    @if (Model.Status != "PAID")
+                    {
+                        <tr>
+                            <td></td>
+                            <td>Fee Total</td>
+                            <td style="text-align:left; font-weight:bold">@string.Format("{0:#,##0.00;(#,##0.00)}", Model.Amount)</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Service Charge</td>
+                            <td style="text-align:left; font-weight:bold">@string.Format("{0:#,##0.00;(#,##0.00)}", Model.ServiceCharge)</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Amount to Pay</td>
+                            <td style="text-align:left; font-weight:bold">@string.Format("{0:#,##0.00;(#,##0.00)}", (Model.Amount+Model.ServiceCharge))</td>
+                        </tr>
+
+                    }
+                    else
+                    {
+                        <tr>
+                            <td></td>
+                            <td>Total</td>
+                            <td style="text-align:left; font-weight:bold">@string.Format("{0:#,##0.00;(#,##0.00)}", (Model.Amount + Model.ServiceCharge))</td>
+                        </tr>
+                         
+                    }
+                    
+
+                </tfoot>
+
+            </table>
+            @if (Model.Status != "PAID")
+            {
+            <p>
+                Please Note:<br />
+                <ul>
+                    <li>To make Fee payment through the Bank</li>
+                    <li>Print out this slip and take to any <strong>commercial Bank branch</strong> nearest to you/li>
+                     
+                    <li>Once your payment has been confirmed, you shall proceed to complete your registration</li>
+
+                </ul>
+            </p>
+            <div id="printPageButton">
+                <form action="@ViewBag.postUrl" method="POST">
+                    <input name="merchantId" value="@ViewBag.merchantId" hidden />
+                    <input name="hash" value="@ViewBag.hash" hidden />
+                    <input name="rrr" value="@ViewBag.rrr" hidden />
+                    <input name="responseurl" value="@ViewBag.response" hidden />
+                    <input type="submit" name="remitaPay" class="btn btn-danger btn-block" value="...Pay via Remita..." />
+                    <img src="~/Content/images/remitaPay.png" />
+                </form>
+            </div> 
+            }
+        </div>
+      
+            }
+
+
+</div>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script> 
+<script type="text/javascript">
+    function printPage() {
+
+        $("browser-only").visible=false;
+        //Set the print button visibility to 'hidden'
+        //print.style.visibility = 'hidden';
+        //Print the page content
+        window.print()
+        //Set the print button to 'visible' again
+        //[Delete this line if you want it to stay hidden after printing]
+        print.style.visibility = 'visible';
+    }
+</script>

@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "MatricRegisterGeneration";
+}
+<div class="container">
+    <div class="form-group">
+        <div class="col-md-3">
+            <select class="form-control" data-bind="value:session,options:yrs,optionsValue:'Title',optionsText:'Title',optionsCaption:'--Choose Session'"></select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-3">
+            <select class="form-control" data-bind="value:dept,options:depts,optionsValue:'DepartmentCode',optionsText:'Title',optionsCaption:'--Choose Department'"></select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-3">
+            <select class="form-control" data-bind="value:progType,options:progTypes,optionsValue:'Type',optionsText:'Type',optionsCaption:'--Choose Programme type'"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-3">
+            <select class="form-control" data-bind="value:rpt,options:rpts,optionsCaption:'--Generate report As...'"></select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-5">
+            <button class="btn btn-success" data-bind="click:generate">Generate</button>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/ViewModels/matricRegisterGenerationVM.js"></script>

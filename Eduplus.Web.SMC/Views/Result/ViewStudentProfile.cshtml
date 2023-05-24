@@ -1,0 +1,140 @@
+﻿@model Eduplus.DTO.AcademicModule.TranscriptDTO
+@{
+    ViewBag.Title = "Student Academic Profile";
+    Layout = "~/Views/Shared/_A4ReportLayout.cshtml";
+}
+
+<h3>Student Academic Profile</h3>
+
+@if (Model != null)
+{
+    <div class="hold-holders">
+        <div class="title-holderS1">
+
+            <table class="table-condensed">
+                <tr>
+                    <td>RegNo:</td>
+                    <td>@Html.DisplayFor(model => model.RegNo)</td>
+                </tr>
+                <tr>
+                    <td>Name:</td>
+                    <td>@Html.DisplayFor(model => model.Name)</td>
+                </tr>
+                <tr>
+                    <td>Gender:</td>
+                    <td>@Html.DisplayFor(model => model.Gender)</td>
+                </tr>
+                <tr>
+                    <td>Addmitted Yr:</td>
+                    <td>@Html.DisplayFor(model => model.YearAdmitted)</td>
+                </tr>
+            </table>
+
+        </div>
+        <div class="title-holderS2">
+            <table class="table-condensed">
+                <tr>
+                    <td>Department:</td>
+                    <td>@Html.DisplayFor(model => model.Department)</td>
+                </tr>
+                <tr>
+                    <td>Faculty:</td>
+                    <td>@Html.DisplayFor(model => model.Faculty)</td>
+                </tr>
+                <tr>
+                    <td>CGPA:</td>
+                    <td>@Html.DisplayFor(model => model.CGPA)</td>
+                </tr>
+                <tr>
+                    <td>Current Class:</td>
+                    <td>@Html.DisplayFor(m => m.DegreeClass)</td>
+                </tr>
+            </table>
+
+        </div>
+
+    </div>
+
+    <div id="Input1" style="width:650px;  height:auto; margin-left:auto; margin-right:auto; clear:both;
+ border:solid; border-width:1px; font-size:9px">
+
+        <table class="table-striped">
+            <thead>
+                <tr>
+                    <th>Semester</th>
+                    <th>Code</th>
+                    <th> Title</th>
+                    <th style="width:auto; padding-left:5px;padding-right:5px;"> CH</th>
+                    <th style="width:auto; padding-left:5px;padding-right:5px;"> CA1</th>
+                    <th style="width:auto; padding-left:5px;padding-right:5px;"> CA2</th>
+                    <th style="width:auto; padding-left:5px;padding-right:5px;"> Exam</th>
+                    <th style="width:auto; padding-left:5px;padding-right:5px;"> Score</th>
+                    <th style="width:auto; padding-left:5px;padding-right:5px;"> Grade</th>
+                </tr>
+            </thead>
+
+            @foreach (var hd in Model.SemesterSummaries)
+            {
+
+                <tr>
+                    <td style="color:white;">ghj</td>
+                </tr>
+                <tr>
+                    <td><b>@Html.DisplayFor(model => hd.Title)</b> </td>
+
+                </tr>
+
+                foreach (var res in hd.SemesterResults)
+                {
+                    <tr>
+                        <td></td>
+                        <td>@Html.DisplayFor(model => res.CourseCode)</td>
+                        <td>
+                            @Html.DisplayFor(model => res.CourseTitle)
+                        </td>
+                        <td style="width:auto; text-align:center;">
+                            @Html.DisplayFor(model => res.CHr)
+                        </td>
+
+                        <td style="width:auto; text-align:center;">
+                            @Html.DisplayFor(model => res.CA1)
+                        </td>
+                        <td style="width:auto; text-align:center;">
+                            @Html.DisplayFor(model => res.CA2)
+                        </td>
+                        <td style="width:auto; text-align:center;">
+                            @Html.DisplayFor(model => res.Exam)
+                        </td>
+                        <td style="width:auto; text-align:center;">
+                            @Html.DisplayFor(model => res.Score)
+                        </td>
+                        <td style="width:auto; text-align:center;">
+                            
+                                @Html.DisplayFor(r => res.Grade, new { @class = "form-control" })
+                          
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td>
+                        <b>Summary:</b>
+                    </td>
+                    <td><b>GPA = @Html.DisplayFor(model => hd.GPA)</b> </td>
+                    <td style="padding-left:15px;"><b>CGPA=  @Html.DisplayFor(model => hd.CGPA)</b></td>
+                </tr>
+
+            }
+
+
+        </table>
+
+
+
+    </div>
+
+
+}
+else
+{
+    <span>Record not found</span>
+}

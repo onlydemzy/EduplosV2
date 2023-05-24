@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "FeeSchedules";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Fee Schedules</h3>
+<hr/>
+<p><a class="btn btn-success" data-bind="click:$root.add" href="#" title="edit"><i class="icon-plus"></i> Add Schedule</a></p>
+<table class="table table-responsive table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Session</th>
+            <th>Prog Type</th>
+            <th>Faculty</th>
+            <th>Total Amt</th>
+            
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody data-bind="foreach:Schedules">
+        <tr>
+            <td data-bind="text:ScheduleId"></td>
+            <td data-bind="text:Session"></td>
+            <td data-bind="text:ProgrammeType"></td>
+            <td data-bind="text:Faculty"></td>
+            <td data-bind="text:Total"></td>
+            
+            <td data-bind="text:Status"></td>
+            <td class="buttons">
+                <a class="btn btn-success" data-bind="click: $root.detail" href="#" title="edit"><i class="glyphicon glyphicon-new-window">Details</i></a>
+            </td>
+            <td class="buttons">
+                <a class="btn btn-danger" data-bind="click: $root.apply, disabled:$root.dC" href="#" title="edit"><i class="glyphicon glyphicon-floppy-open">Apply</i></a>
+                <img src="~/Content/images/wait24.gif" data-bind="visible:$root.dC" />
+            </td>
+        </tr>
+    </tbody>
+</table>
+@section Scripts{
+    @Scripts.Render("~/Scripts/ViewModels/feeSchedulesVM.js")
+}

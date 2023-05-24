@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title - Eduplus</title>
+    @model IEnumerable<Eduplus.DTO.AcademicModule.StudentAcademicProfileDTO>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @{Layout = null;}
+</head>
+<body>
+    <style type="text/css">
+        .breakhere {
+            page-break-after: always;
+        }
+
+        body {
+            color: #000000;
+        }
+    </style>
+    @if (Model == null)
+    {
+        <h2>Oops!record does not exist</h2>
+    }
+    else
+    {
+        foreach (var model in Model)
+        {
+            <div id="A" style="page-break-after:always; width:850px; height:auto; margin-left:auto;margin-right:auto;margin-top:10px;">
+                <div class="report-header">
+                    @if (UserData.Logo != null)
+                    {
+                        var base64 = Convert.ToBase64String(UserData.Logo);
+                        var imgSrc = String.Format("data:image/jpeg;base64,{0}", base64);
+                        <img src='@imgSrc' style="width:100px; height:100px;" />
+
+                    }
+                    <br /><b style="font-family:'Arial Rounded MT';font-size:25px;font-weight:bold">
+                        @UserData.InstitutionName
+                    </b>
+                </div>
+                <div class="hold-holders">
+                    <h3 style="border-bottom-width:1px; border-bottom:solid">Semester Result</h3>
+                    <div class="title-holderS1">
+                        <table class="table table-sm" style="color:#000000;border-style:none">
+                            <tr>
+                                <td width=50px>RegNo:</td>
+                                <td>@Html.DisplayFor(m => model.MatricNumber, new { @class = "form-control" })</td>
+                            </tr>
+                            <tr>
+                                <td width=50px>Name:</td>
+                                <td>@Html.DisplayFor(m => model.Name, new { @class = "form-control" })</td>
+                            </tr>
+                            <tr>
+                                <td width=50px>Level:</td>
+                                <td>@Html.DisplayFor(m => model.Level, new { @class = "form-control" })</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="title-holderS2">
+                        <table class="table table-sm" border="0" style="color:#000000;">
+                            <tr>
+                                <td width=50px>Session:</td>
+                                <td>@Html.DisplayFor(m => model.Session, new { @class = "form-control" })</td>
+                            </tr>
+                            <tr>
+                                <td width=50px>Semester:</td>
+                                <td>@Html.DisplayFor(m => model.Semester, new { @class = "form-control" })</td>
+                            </tr>
+                            <tr>
+                                <td width=50px>Department:</td>
+                                <td>@Html.DisplayFor(m => model.Department, new { @class = "form-control" })</td>
+                            </tr>
+                            <tr>
+                                <td width=50px>Programme:</td>
+                                <td>@Html.DisplayFor(m => model.Programme, new { @class = "form-control" })</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <hr />
+                </div>
+                <div id="Input" style="width:800px; margin-left:50px; clear:both;">
+                    <table class="table table-sm" border="0" style="color:#000000;">
+                        <thead>
+                            <tr>
+                                <th>S/N</th>
+                                <th>Course Code</th>
+                                <th>Title</th>
+                                <th>Unit</th>
+                                
+                                <th>Type</th>
+                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var resul in model.Results)
+                            {
+                                <tr>
+                                    <td align="center"> @( ((Int32)1) + model.Results.ToList().IndexOf(resul) ) </td>
+                                    <td>
+                                        @Html.DisplayFor(r => resul.CourseCode, new { @class = "form-control" })
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(r => resul.CourseTitle, new { @class = "form-control" })
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(r => resul.CreditHour, new { @class = "form-control" })
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(r => resul.Type, new { @class = "form-control" })
+                                    </td>
+                                    
+                                </tr>
+
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td></td>
+                                <td>Total</td>
+                                <td>@Html.DisplayFor(m => model.TotalCreditUnit, new { @class = "form-control" })</td>
+                            </tr>
+                             
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="dlf" style="float:left;width:150px;text-align:justify;margin-top:50px;">
+                        <strong>Exams</strong><br />
+                        Sign-----------------<br />Date---------------<br />
+                    </div>
+                    <div class="dlf1" style="width:150px;margin-left:150px; text-align:justify;margin-top:50px;">
+                        <strong>HOD</strong><br />
+                        Sign-----------------<br />Date----------------<br />
+                    </div>
+                    <div class="dlf2" style="float:right;width:150px; margin-left:20px;text-align:justify;margin-top:50px;">
+                        <strong>Dean</strong><br />
+                        Sign-----------------<br />Date----------------<br />
+                    </div>
+                </div>
+            </div>
+        }
+
+    }
+
+</body>
+</html>

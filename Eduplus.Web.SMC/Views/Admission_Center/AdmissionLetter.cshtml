@@ -1,0 +1,140 @@
+﻿@model Eduplus.DTO.CoreModule.StudentSummaryDTO
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        li {
+  display: list-item;
+  list-style-position: inside;
+}
+
+    </style>
+</head>
+
+<body style="background-image:url(../../Content/images/wata.png); background-repeat: no-repeat; background-position:center;
+            background-size:55% 40%; padding-left:20px;">
+    @if(Model.Status==null)
+    {
+        <p>Please complete your admission processes</p>
+    }
+    else
+    {
+        <div class="container">
+            <div class="row" style="font-size:18px; text-align:justify">
+                <div id="rtpt" style="width:950px;height:auto; margin-left:auto;margin-right:auto;">
+                     @if (UserData.Regbanner != null)
+                     {
+                         var base64 = Convert.ToBase64String(UserData.Regbanner);
+                         var imgSrc = String.Format("data:image/jpeg;base64,{0}", base64);
+                        <img src='@imgSrc' style="height:200px; width:900px; margin-top:5px;" alt=""/>
+
+                     }
+                        
+                    <div class="row">
+                        <div class="col-md-6" style="margin-top:1px; max-width:400px; float:left">
+                            <p style="text-align:left">
+                                <strong>Date: @ViewBag.dt</strong>
+                                
+                                <br/>
+                                <br/>
+                                <strong>Dear @Model.FullName - @Model.JambRegNumber </strong> 
+                                
+                            </p>
+                             
+                        </div>
+                        <div class="col-md-6" style="margin-top:1px;width:150px; margin-top:10px; margin-left:700px;">
+                            @if (Model.Foto != null)
+                            {
+                                var base64 = Convert.ToBase64String(Model.Foto);
+                                var imgSrc = String.Format("data:image/jpeg;base64,{0}", base64);
+                                <img src='@imgSrc' style="max-width:150px; max-height:180px;" alt="Logo"/>
+
+                            }
+                        </div>
+                    </div>
+                    
+                    <h4 style="text-transform:uppercase; font-weight:bold; margin-top:5px">NOTIFICATION OF PROVISIONAL ADMISSION INTO @Model.ProgrammeType PROGRAMME FOR <br/>THE @Model.YearAdmitted ACADEMIC YEAR</h4>
+                    <p>
+                        
+                        I am pleased to inform you that following your success in the just concluded Screening Exercise, you have been offered
+                        <strong>Provisional Admission</strong> into the Akwa Ibom State College of Education (in afiliation to University of Uyo) for a &nbsp <strong>@Model.Duration-Year @Html.DisplayTextFor(a => a.ProgrammeType)</strong>  
+                         programme in the Department of <strong>@Model.Department</strong>, <strong>@Model.Faculty</strong>  for the award of <strong>@Model.Award in @Model.Programme</strong> in the <strong>@Model.YearAdmitted Academic Year</strong>.
+                        
+
+                    </p>
+                    <p style="text-align:justify; font-size:16px;">
+                        <strong>You are please requested to note the following:</strong> 
+                        <ol>
+                            <li>You are required to  pay the approved non-refundable acceptance fee through an online transaction via 
+                            https://eportal.akscoe.edu.ng and present the official receipt from the Bursary to the screening officer for further screening and registration exercises.</li>
+                            <li>This offer will only be valid if on verification of your credentials at the time of registration
+                            it is confirmed that your qualification satisfies the minimum admission requirements.</li>
+                            <li>
+                                You are expected to come for screening with the following credentials:
+                                <ol type="i">
+                                    <li>The original of all your academic qualifications (Certificates/Statement of results). <strong>Note: Case of awaiting result(s) will not be accepted</strong>.</li>
+                                    <li>Birth Certificate/Age Declaration</li>
+                                    <li>A letter of good conduct from your village Head or responsible member of your community or a Civil Servant not below Grade Level 10
+                                    or its equivalent in the private sector.</li>
+                                    <li>Certificate of Local Government of origin.</li>
+                                </ol>
+                            </li>
+                            <li>Before registration, you will be required to undergo medical examination conducted by the College's Medical Centre.</li>
+                            <li>If this offer is accepted by you, you should present your credentials to the screening officer in the @Model.Faculty for screening
+                            before you can pay the prescribed fees and register.</li>
+                        </ol>
+                    </p>
+                    
+                    <p style="text-align:justify; font-size:16px;">
+                        <strong>Accept our congratulations!</strong>
+
+                    </p>
+                    <div class="row">
+                        <div style="float:left;width:100px">
+                            <p style="font-size:16px;">
+                                <br />
+                                @if (UserData.RegSign != null)
+                                {
+                                    var base64 = Convert.ToBase64String(UserData.RegSign);
+                                    var imgSrc = String.Format("data:image/jpeg;base64,{0}", base64);
+                                    <img src='@imgSrc' alt=""/>
+
+                                }
+
+
+
+                                <strong style="clear:both"><br />Registrar</strong> <br />
+
+                            </p>
+                        </div>
+                        <div class="col-md-4" style="max-width:200px;float:right; margin-left:400px;">
+                            <img src="@ViewBag.qrCode" style="width:150px; height:150px" alt=""/><br />
+                             
+                        </div>
+                    </div>
+                    
+                    @if (UserData.RegFooter != null)
+                    {
+                        var base64 = Convert.ToBase64String(UserData.RegFooter);
+                        var imgSrc = String.Format("data:image/jpeg;base64,{0}", base64);
+                        <img src='@imgSrc' style="height:30px; width:900px; margin-top:120px" alt=""/>
+
+                    }
+                    
+                </div>
+
+            </div>
+        </div>
+    }
+    
+</body>
+</html>

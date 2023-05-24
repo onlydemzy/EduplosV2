@@ -1,0 +1,18 @@
+﻿@model Eduplus.DTO.ArticleModule.ArticleDTO
+@{
+    ViewBag.Title = "Detail";
+}
+
+<div style="max-width:90%; margin-left:auto;margin-right:auto;">
+    
+    <h3>@Html.DisplayFor(a => a.Title)</h3>
+    <hr />
+    @if(Model!=null)
+    {
+        @Html.Raw(Model.Content)
+    }
+    
+   
+</div>
+
+

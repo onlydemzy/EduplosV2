@@ -1,0 +1,115 @@
+﻿
+@{
+    Layout = null;
+    ViewBag.Title = "New Student Profile";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>NewStudentProfile</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    
+        <div class="form-horizontal" style="margin-left:auto; margin-right:auto; max-width:900px;">
+            <p style="text-align:center">
+                @if (UserData.Logo != null)
+                {
+                    var base64 = Convert.ToBase64String(UserData.Logo);
+                    var imgSrc = String.Format("data:image/jpeg;base64,{0}", base64);
+                    <img src='@imgSrc' style="width:100px; height:100px;" />
+
+                }
+                <br />@UserData.InstitutionName
+            </p>
+            
+            <h3>New Student Profile</h3>
+            <h4 style="color:red">Please ensure that you provide a valid email address</h4>
+
+                <div class="form-group">
+                    <div class="col-md-5">
+                        <input type="text" data-bind="value:Surname" class="form-control" placeholder="Surname" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-5">
+                        <input type="text" data-bind="value:Firstname" class="form-control" placeholder="First name" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-5">
+                        <input type="text" data-bind="value:Middlename" class="form-control" placeholder="Middle name" />
+                    </div>
+                </div>
+                <div class="form-group">
+                     
+                    <div class="col-md-5">
+                        <input type="tel" data-bind="value:Phone" class="form-control" placeholder="Phone" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-5">
+                        <select data-bind="options:Sexes,value:Sex,optionsCaption:'Choose Gender'" class="form-control"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-5">
+                        <input type="email" data-bind="value:Email" class="form-control" placeholder="Email" />
+                    </div>
+                </div>
+
+             
+                <div class="form-group">
+                    <div class="col-md-5">
+                        <select data-bind="options:pTypes,value:ProgramType,optionsValue:'Type',optionsText:'Type',optionsCaption:'Choose Programme Type'" class="form-control"></select>
+                        <img src="~/Content/images/wait24.gif" id="sp" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-5">
+                        <select data-bind="options:progs,value:Prog,optionsText:'Fullname',optionsCaption:'Choose Programme'" class="form-control"></select>
+                    </div>
+                </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <input type="text" class="form-control" data-bind="value:Department" placeholder="Department" disabled />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <input type="text" class="form-control" data-bind="value:Faculty" placeholder="Faculty" disabled/>
+                </div>
+            </div>
+                <div class="form-group">
+                    <div class="col-md-5">
+                        <input type="password" class="form-control" data-bind="value:Password" placeholder="Password" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-5">
+                        <input type="password" class="form-control" data-bind="value:ConfirmPassword" placeholder="Confirm Password" />
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-5">
+                        <button class="btn btn-success" data-bind="click:submit, disable:disable">Submit</button>
+                        <img src="~/Content/images/wait24.gif" data-bind="visible:disable" />
+                    </div>
+                </div>
+ 
+    </div>
+</body>
+</html>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/knockout")
+@Scripts.Render("~/bundles/moment")
+@Scripts.Render("/Scripts/ViewModels/newprofileVM.js")
+@Scripts.Render("~/bundles/sweetalert")

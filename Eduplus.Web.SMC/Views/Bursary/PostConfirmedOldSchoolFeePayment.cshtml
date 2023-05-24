@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "Schoo fee payment";
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+<div class="form-horizontal">
+    <h3>Pay School Fee</h3>
+    <hr />
+     
+    <div class="form-group">
+
+        <div class="col-md-12">
+            <select data-bind="value:sessionId, options:sessions,optionsValue:'SessionId',optionsText:'Title', optionsCaption:'Select Session'" class="form-control"></select>
+        </div>
+
+    </div>
+
+    <div class="form-group">
+
+        <div class="col-md-12">
+            <select data-bind="value:installment, options:installments,optionsValue:'OptionsId',optionsText:'Installment', optionsCaption:'My Fee Payment Plan'" class="form-control"></select>
+        </div>
+
+    </div>
+    <div class="form-group">
+        <div class="col-md-12">
+            <select data-bind="value:lvl, options:levels,optionsCaption:'Select Level to Pay'" class="form-control"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-12">
+            <input data-bind="value:amtToPay" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-3">
+            <button data-bind="click:fetch, disable:kill" class="btn btn-success">Fetch Amount</button>
+            <img src="~/Content/images/wait24.gif" data-bind="visible:kill" />
+        </div>
+        
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-3">
+            <button data-bind="click:submit, disable:kill" class="btn btn-success">Submit</button>
+            <img src="~/Content/images/wait24.gif" data-bind="visible:kill" />
+        </div>
+
+    </div>
+
+</div>
+    
+@Scripts.Render("~/Scripts/ViewModels/postConfirmedschoolFeePaymentVM.js")
+
+

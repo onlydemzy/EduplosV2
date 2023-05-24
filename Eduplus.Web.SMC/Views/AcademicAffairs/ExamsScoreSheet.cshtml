@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title - KS Acada Portal</title>
+    @model IEnumerable<Eduplus.DTO.AcademicModule.ExamsAttendanceDTO>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @{Layout = null;}
+</head>
+<body>
+
+    <style type="text/css">
+        .breakhere {
+            page-break-after: always;
+        }
+    </style>
+
+    @if (Model != null)
+    {
+        foreach (var ind in Model)
+        {
+
+            <div id="A" style="page-break-after:always; width:800px; height:auto; margin-left:auto;margin-right:auto;margin-top:10px;">
+                <div class="report-header">
+                    @if (UserData.Logo != null)
+                    {
+                        var base64 = Convert.ToBase64String(UserData.Logo);
+                        var imgSrc = String.Format("data:image/jpeg;base64,{0}", base64);
+                        <img src='@imgSrc' style="width:100px; height:100px;" />
+
+                    }
+                    <br /><b style="font-family:'Arial Rounded MT';font-size:25px;font-weight:bold">
+                        @UserData.InstitutionName
+                    </b>
+                </div>
+                <div class="hold-holders">
+
+                    <div class="hold-holders">
+                        <h3>Exams Attendance</h3>
+                        <div class="title-holderS1">
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td width=25px>Session:</td>
+                                    <td>@Html.DisplayFor(h => ind.Session)</td>
+                                </tr>
+                                <tr>
+                                    <td width=25px>Semester:</td>
+                                    <td>@Html.DisplayFor(h => ind.Semester)</td>
+                                </tr>
+
+                                <tr>
+                                    <td width=25px>Department:</td>
+                                    <td>@Html.DisplayFor(h => ind.Department)</td>
+                                </tr>
+
+                                <tr>
+                                    <td width=25px>Program:</td>
+                                    <td>@Html.DisplayFor(h => ind.Programme)</td>
+                                </tr>
+
+                                <tr>
+                                    <td width=25px>Origin:</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+
+                        </div>
+                        <div class="title-holderS2">
+                            <table class="table" border="0">
+                                <tr>
+                                    <td width=50px>Code:</td>
+                                    <td>@Html.DisplayFor(h => ind.CourseCode)</td>
+                                </tr>
+                                <tr>
+                                    <td width=50px>Title:</td>
+                                    <td>@Html.DisplayFor(h => ind.Course)</td>
+                                </tr>
+                                <tr>
+                                    <td width=50px>CHour:</td>
+                                    <td>@Html.DisplayFor(h => ind.CreditHour)</td>
+                                </tr>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+                    <hr />
+
+                </div>
+
+
+                <div id="Input" style="width:800px; margin-left:auto; clear:both; ">
+                    <table class="table table-bordered table-condensed">
+                        <tr>
+                            <th>S/N</th>
+                            <th>RegNo</th>
+                            <th>CA(30%)</th>
+                            <th>Exam(70%)</th>
+                            <th>Total</th>
+                            <th>Grade</th>
+                            <th>Remark</th>
+
+                        </tr>
+
+                        @foreach (var resul in ind.Students)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(model => resul.Count, new { @class = "form-control" })
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => resul.RegNo, new { @class = "form-control" })
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+
+                        }
+
+                    </table>
+
+                    <hr />
+                    <table>
+                        <tr>
+                            <td>Lecturer(1)</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Lecturer(2)</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Lecturer(3)</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Lecturer(4)</td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                </div>
+
+
+            </div>
+
+
+
+        }
+
+    }
+</body>
+</html>

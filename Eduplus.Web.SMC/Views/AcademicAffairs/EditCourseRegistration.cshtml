@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewBag.Title = "Edit Course Registration";
+}
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-12">
+            <select data-bind="value:sessionId,options:sessions,optionsText:'Title',optionsValue:'SessionId',optionsCaption:'Select Session'" class="form-control"></select>
+            
+            <select data-bind="value:semesterId,options:semesters,optionsText:'Title',optionsValue:'SemesterId',optionsCaption:'Select Semester'" class="form-control"></select>
+            
+            <input type="text" class="form-control" data-bind="value:regNo" placeholder="Enter Student MatricNo"/>
+            <button class="btn btn-info" data-bind="click:fetch">Fetch Registrations</button>
+            <img src="~/Content/images/15.gif" data-bind="visible:spinar" />
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-9">
+            <h3>Registered Courses</h3>
+            <hr />
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th>Code</th>
+                        <th>Title</th>
+                        <th>Unit</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach:regCourses">
+                    <tr>
+                        <td data-bind="text:CourseCode"></td>
+                        <td data-bind="text:Title"></td>
+                        <td data-bind="text:CreditHour"></td>
+                        <td data-bind="text:Type"></td>
+                        <td>
+                            <button data-bind="click:$root.removeCourse" class="btn btn-danger">Remove</button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    
+                    <tr id="t1">
+                        <td><select data-bind="value:addedCourse,options:addCourses,optionsText:'vcourse',optionsCaption:'-Select Course-'" class="form-control"></select></td>
+                        <td data-bind="with:addedCourse"><span data-bind="text:Title"></span></td>
+                        <td data-bind="with:addedCourse"><span data-bind="text:CreditHour"></span></td>
+                        <td data-bind="with:addedCourse"><span data-bind="text:Type"></span></td>
+                        <td class="button">
+                            <a class="btn btn-success" data-bind="click:$root.addCourse"><i class="glyphicon glyphicon-plus-sign"></i> Add</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold">Total</td>
+                        <td></td>
+                        <td style="font-weight:bold" data-bind="text:$root.totalUnit"></td>
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            
+                            <button data-bind="click:deleteRegistration" class="btn btn-danger btn-block">Delete Registration</button>
+                        </td>
+                    </tr>
+                   
+                </tfoot>
+            </table>
+
+        </div>
+    </div>
+</div>
+@Scripts.Render("~/Scripts/ViewModels/editRegisteredCourseVM.js")
+

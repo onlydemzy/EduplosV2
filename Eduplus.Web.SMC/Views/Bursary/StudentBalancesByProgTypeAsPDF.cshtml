@@ -1,0 +1,112 @@
+﻿@model IEnumerable<Eduplus.DTO.BursaryModule.StudentsBalancesDTO>
+@{
+    ViewBag.Title = "Session Balances";
+    Layout = "~/Views/Shared/_A4ReportLayout.cshtml";
+}
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <h3>Student Balances</h3>
+            @if (Model != null)
+            {
+                <div class="hold-holders">
+                    <div class="title-holderS1">
+                        
+                        <table class="table" border="0" style="color:#000000">
+                            <tr>
+                                <td class="col-md-4">Session:</td>
+                                <td>@Html.Display("session", new { @class = "form-control" })</td>
+                            </tr>
+
+                            <tr>
+                                <td class="col-md-2">Programme Type:</td>
+                                <td>@Html.Display("progr", new { @class = "form-control" })</td>
+                            </tr>
+                             
+                        </table>
+                    </div>
+                    
+
+                </div>
+
+                    <div id="Input" style="width:800px; margin-left:50px; clear:both; color:#000000">
+                        <table class="table table-condensed" style="color:#000000">
+                            <tr>
+                                <th>S/N</th>
+                                <th style ="text-align:center;">Name</th>
+                                <th style="text-align:center;">MatricNumber</th>
+                                <th style="text-align:center;">Amount Due</th>
+                                <th style="text-align:center;">Amount Paid</th>
+                                <th style="text-align:center;">Balance</th>
+
+
+                            </tr>
+                            @{
+                                int sno = 0;
+                            }
+                            @foreach (var resul in Model)
+                            {
+                                <tr>
+                                     
+                                    <td>
+                                        @{ sno++; }
+                                        @sno
+                                    </td>
+                                    
+                                    <td>
+                                        @Html.DisplayFor(model => resul.Name, new { @class = "form-control" })
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => resul.MatricNumber, new { @class = "form-control" })
+                                    </td>
+                                    <td style="text-align:right;">@string.Format("{0:#,##0.00;(#,##0.00)}", resul.AmountOwed)
+                                        
+                                    </td>
+                                    <td style ="text-align:right;">
+                                        @string.Format("{0:#,##0.00;(#,##0.00)}", resul.AmountPaid)
+                                    </td>
+                                    <td style="text-align:right;">
+                                        @string.Format("{0:#,##0.00;(#,##0.00)}", resul.Balance)
+                                    </td>
+
+                                </tr>
+
+                            }
+
+                            <tr>
+
+                                <td>Total</td>
+                                <td></td>
+                                <td></td>
+                                <td style="text-align:right;"><strong>@string.Format("{0:#,##0.00;(#,##0.00)}",Model.Sum(a => a.AmountOwed))</strong></td>
+                                <td style ="text-align:right;"><strong>@string.Format("{0:#,##0.00;(#,##0.00)}",Model.Sum(a => a.AmountPaid))</strong></td>
+                                
+                                <td style ="text-align:right;"><strong>@string.Format("{0:#,##0.00;(#,##0.00)}",Model.Sum(a => a.Balance))</strong></td style>
+                            </tr>
+
+                        </table>
+
+
+
+
+
+
+
+                    </div>
+
+                    <div class="auth" style="width:420px;  overflow:hidden">
+                        <div id="hd" style="width:200px;float:left;">
+                            <a>---------------------------------------<br />Authorized Signature</a>
+                        </div>
+
+                    </div>
+
+            }
+        </div>
+       
+    </div>
+</div>

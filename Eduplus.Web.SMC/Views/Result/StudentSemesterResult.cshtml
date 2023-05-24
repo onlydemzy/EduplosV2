@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title - Eduplus</title>
+    @model Eduplus.DTO.AcademicModule.StudentAcademicProfileDTO
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @{Layout = null;}
+</head>
+<body>
+    @if(Model.Results==null)
+    {
+        <h2>Oops! Inputed matric number does not exist</h2>
+    }
+    else
+    {
+        <div id="A" style="page-break-after:always; width:850px; height:auto; margin-left:auto;margin-right:auto;margin-top:10px;">
+            <div class="report-header">
+                @if (UserData.Logo != null)
+                {
+                    var base64 = Convert.ToBase64String(UserData.Logo);
+                    var imgSrc = String.Format("data:image/jpeg;base64,{0}", base64);
+                    <img src='@imgSrc' style="width:100px; height:100px;" />
+
+                }
+                <br /><b style="font-family:'Arial Rounded MT';font-size:25px;font-weight:bold">
+                    @UserData.InstitutionName
+                </b>
+            </div>
+            <div class="hold-holders">
+                <h3 style="border-bottom-width:1px; border-bottom:solid">Semester Result</h3>
+                <div class="title-holderS1">
+                    <table class="table table-condensed">
+                        <tr>
+                            <td class="col-md-4">RegNo:</td>
+                            <td>@Html.DisplayFor(model => model.MatricNumber, new { @class = "form-control" })</td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">Name:</td>
+                            <td>@Html.DisplayFor(model => model.Name, new { @class = "form-control" })</td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">Level:</td>
+                            <td>@Html.DisplayFor(model => model.Level, new { @class = "form-control" })</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="title-holderS2">
+                    <table class="table" border="0">
+                        <tr>
+                            <td width=50px>Session:</td>
+                            <td>@Html.DisplayFor(model => model.Session, new { @class = "form-control" })</td>
+                        </tr>
+                        <tr>
+                            <td width=50px>Semester:</td>
+                            <td>@Html.DisplayFor(model => model.Semester, new { @class = "form-control" })</td>
+                        </tr>
+                        <tr>
+                            <td width=50px>Department:</td>
+                            <td>@Html.DisplayFor(model => model.Department, new { @class = "form-control" })</td>
+                        </tr>
+                        <tr>
+                            <td width=50px>Programme:</td>
+                            <td>@Html.DisplayFor(model => model.Programme, new { @class = "form-control" })</td>
+                        </tr>
+                    </table>
+                </div>
+                <hr />
+            </div>
+            <div id="Input" style="width:650px; margin-left:50px; clear:both;">
+                <table class="table table-bordered table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Course Code</th>
+                            <th>Title</th>
+                            <th>Unit</th>
+                            <th>CA1</th>
+                            <th>CA2</th>
+                            <th>Exam</th>
+                            <th>Total</th>
+                            <th>Grade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Results != null)
+                        {
+                            foreach (var resul in Model.Results)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(model => resul.CourseCode, new { @class = "form-control" })
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => resul.CourseTitle, new { @class = "form-control" })
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => resul.CreditHour, new { @class = "form-control" })
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => resul.CA1, new { @class = "form-control" })
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => resul.CA2, new { @class = "form-control" })
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => resul.Exam, new { @class = "form-control" })
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => resul.Score, new { @class = "form-control" })
+                                    </td>
+                                    <td>
+                                       
+                                            @Html.DisplayFor(r => resul.Grade, new { @class = "form-control" })
+                                      
+                                    </td>
+                                </tr>
+
+                            }
+
+                        }
+                        else { }
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td></td>
+                            <td>Total</td>
+                            <td>@Html.DisplayFor(model => model.TotalCreditUnit, new { @class = "form-control" })</td>
+                        </tr>
+                        <tr><td>GPA: @Html.DisplayFor(model => model.GPA)</td></tr>
+
+                        <tr><td>CGPA: @Html.DisplayFor(model => model.CGPA)</td></tr>
+                    </tfoot>
+
+                </table>
+            </div>
+            <div class="auth" style="width:420px;  overflow:hidden">
+                <div id="hd" style="width:200px;float:left;">
+                    <a>---------------------------------------<br />H.O.D</a>
+                </div>
+
+                <div id="hd" style="width:200px; margin-left:220px">
+                    <a>----------------------------------------<br />Exams Officer</a>
+                </div>
+
+            </div>
+        </div>
+    }
+    
+
+</body>
+</html>
+
+
+
+

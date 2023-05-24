@@ -1,0 +1,45 @@
+﻿
+
+
+@{ViewBag.Title = "Transcript Application"; }
+
+
+<div class="row">
+    <div class="col-md-10">
+        <div class="form-group">
+            <div class="col-md-7">
+                <input type="text" data-bind="value:Recipient" class="form-control" placeholder="Name of Recieving Organisation" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-7">
+                <input type="text" data-bind="value:DeliveryAddress" class="form-control" placeholder="Full Address for Delivery (without City)" />
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="text" data-bind="value:City" class="form-control" placeholder="City" />
+        </div>
+        <div class="form-group">
+            <input data-bind="value:State" class="form-control" placeholder="State/Province" />
+        </div>
+        <div class="form-group">
+            
+            <select data-bind="value:Country,options:countries,optionsValue:'Country',optionsCaption:'Select Country'" class="form-control"></select>
+        </div>
+        <div class="form-group">
+            Amount= <input type="text" data-bind="value:AmountToPay" class="form-control" disabled />
+        </div>
+        <div class="form-group">
+            <select data-bind="options:modes,value:DeliveryMode,optionsCaption:'Mode of Delivery'" class="form-control"></select>
+        </div>
+        <div class="form-group">
+            <input type="email" id="dEmail" name="dEmail" data-bind="value:DeliveryEmail" class="form-control" placeholder="Email to forward trascript to" />
+        </div>
+        <div class="form-group">
+            <button class="btn btn-info" data-bind="click:submit, disable:kill">Proceed to Payment</button>
+            <img src="~/Content/images/wait24.gif" data-bind="visible:kill" />
+        </div>
+    </div>
+
+</div>
+@Scripts.Render("~/Scripts/ViewModels/newTranscriptApplicationVM.js")

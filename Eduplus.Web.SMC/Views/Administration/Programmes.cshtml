@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "Academic Programmes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Academic Programmes</h2>
+<p><a class="btn btn-success" data-bind="click:$root.add" href="#" title="Add new programme"><i class="icon-plus"></i> Add Academic Programme</a></p>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Code</th>
+            <th>Title</th>
+            <th>Type</th>
+            <th>Dept</th>
+            <th>MatricNo Format</th>
+            <th>IsActive</th>
+            <th style="width: 120px; text-align:right;" />
+        </tr>
+    </thead>
+    <tbody data-bind="template:{name:templateToUse, foreach: programmeList }"></tbody>
+</table>
+<p><a class="btn btn-success" data-bind="click:$root.add" href="#" title="Add new programme"><i class="icon-plus"></i> Add Academic Programme</a></p>
+
+<script id="itemsTmpl" type="text/html">
+    <tr>
+        <td data-bind="text:ProgrammeCode"></td>
+        <td data-bind="text: Title"></td>
+        <td data-bind="text:ProgrammeType"></td>
+        <td><select data-bind="value:DepartmentCode,options:departments,optionsValue:'DepartmentCode',optionsText:'Title', optionsCaption:'Select Department--'" disabled class="form-control"></select></td>
+        <td data-bind="text:MatricNoFormat"></td>
+        <td data-bind="text: IsActive"></td>
+        <td class="buttons">
+            <a class="btn btn-success" data-bind="click: $root.edit" href="#" title="edit"><i class="glyphicon glyphicon-edit"></i></a>
+
+        </td>
+
+    </tr>
+</script>
+
+<script id="editTmpl" type="text/html">
+    <tr>
+        <td><input class="form-control" data-bind="value:ProgrammeCode" /></td>
+        <td><input class="form-control" data-bind="value: Title" /></td>
+        <td><select data-bind="value:ProgrammeType,options:$root.ProgTypes,optionsText:'Type',optionsValue:'Type',optionsCaption:'Select ProgrammeType'" class="form-control"></select></td>
+        <td><select data-bind="value:DepartmentCode,options:departments,optionsValue:'DepartmentCode',optionsText:'Title', optionsCaption:'Select Department--'" class="form-control"></select></td>
+        <td><input type="text" data-bind="value: MatricNoFormat" /></td>
+        <td><input type="checkbox" data-bind="checked: IsActive" /></td>
+        
+        <td class="buttons">
+            <a class="btn btn-success" data-bind="click:$root.save" href="#" title="save"><i class="glyphicon glyphicon-floppy-disk"></i></a>
+            <a class="btn btn-danger" data-bind="click: $root.cancel" href="#" title="cancel"><i class="glyphicon glyphicon-remove-sign"></i></a>
+        </td>
+    </tr>
+</script>
+@Scripts.Render("/Scripts/ViewModels/programmeVM.js")

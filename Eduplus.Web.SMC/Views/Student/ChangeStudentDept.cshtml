@@ -1,0 +1,95 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Transfer student to different department";
+}
+
+ 
+        <div class="form-horizontal" style="margin-left:auto; margin-right:auto; max-width:900px;">
+             
+            <div class="form-group">
+                <div class="col-md-5">
+                    <input type="text" class="form-control" data-bind="value:searchText" placeholder="Student ID,MatricNo" />
+                </div>
+                <button class="btn btn-success btn-block col-md-5" data-bind="click:fetchStudent">Fetch</button>
+                <img src="~/Content/images/wait24.gif" data-bind="visible:kill" />
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-5">
+                    <input type="text" data-bind="value:studentId" class="form-control" disabled placeholder="Student ID" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <input type="text" data-bind="value:matricNumber" class="form-control" disabled placeholder="Matric Number" />
+                </div>
+            </div>
+             <div class="form-group">
+                    <div class="col-md-5">
+                        <input type="text" data-bind="value:name" class="form-control" disabled placeholder="Student name" />
+                    </div>
+                </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <input type="text" data-bind="value:currentProgType" class="form-control" disabled placeholder="Current Programme Type" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <input type="text" data-bind="value:currentDept" class="form-control" disabled  placeholder="Current Department"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <input type="text" data-bind="value:currentProg" class="form-control" disabled placeholder="Current Programme" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <input type="text" data-bind="value:status" class="form-control" disabled placeholder="Status" />
+                </div>
+            </div>
+                
+             
+               
+            <hr/>
+            <h4>Destination Programme</h4>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <select data-bind="options:pTypes,value:progType,optionsValue:'Type',optionsText:'Type',optionsCaption:'Choose Programme Type'" class="form-control"></select>
+                    <img src="~/Content/images/wait24.gif" id="sp" />
+                </div>
+            </div>
+                <div class="form-group">
+                    <div class="col-md-5">
+                        <select data-bind="options:progs,value:prog,optionsText:'Title',optionsCaption:'Choose destination Programme'" class="form-control"></select>
+                    </div>
+                </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <input type="text" class="form-control" data-bind="value:newDept" placeholder="Department" disabled />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <input type="text" class="form-control" data-bind="value:faculty" placeholder="School/Faculty" disabled />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <textarea class="form-control"cols="200" rows="5" data-bind="value:reason" placeholder="Reason for Transfer"></textarea>
+                </div>
+            </div>
+                <div class="form-group">
+                    <div class="col-md-5">
+                        <button class="btn btn-success" data-bind="click:submit, disable:kill">Transfer</button>
+                        <img src="~/Content/images/wait24.gif" data-bind="visible:kill" />
+                    </div>
+                </div>
+ 
+    </div>
+
+
+@Scripts.Render("/Scripts/ViewModels/changeDepartmentVM.js")
+ 

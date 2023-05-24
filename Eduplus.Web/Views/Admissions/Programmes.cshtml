@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Eduplus.DTO.ArticleModule.FacultyProgrammesDTO>
+
+@{
+    ViewBag.Title = "Programmes";
+}
+
+    <div class="row">
+        <div class="col-md-8">
+            <h3>Our Programmes</h3>
+            @foreach (var f in Model)
+            {
+                <div class="col-md-7">
+                    <h3>Faculty of @Html.DisplayFor(a => f.Faculty)</h3>
+
+                    @foreach (var i in f.Programmes)
+                    {
+                        <p>
+                            <a href="@Url.Action("View_Detail","Admissions",new { item = i.Programme })">@Html.DisplayFor(a => i.Programme)</a>
+                        </p>
+                    }
+                    <hr />
+                </div>
+            }
+        </div>
+       
+    </div>
+
+
+

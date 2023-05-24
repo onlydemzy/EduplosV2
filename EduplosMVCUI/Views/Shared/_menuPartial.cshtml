@@ -1,0 +1,81 @@
+﻿@model IEnumerable<EduplosMVCUI.Models.MenuItem>
+<ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color:#4B0082">
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard.html">
+        <div class="sidebar-brand-icon">
+            <img src="~/Content/images/logo.png" class="img-responsive img-thumbnail" style="height:40px" />
+        </div>
+        <div class="sidebar-brand-text mx-3">
+            HRMS
+
+        </div>
+    </a>
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        User Menu
+    </div>
+    <hr class="sidebar-divider my-0">
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+        <a class="nav-link" href="dashboard.html">
+            <i class="fa fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+        </a>
+    </li>
+    <!-- Nav Item -->
+    @foreach (var m in Model)
+    {
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#@m.Colapse" aria-expanded="true" aria-controls="@m.Colapse">
+                <i class="@m.fawsome"></i>
+                <span>@m.MenuItemName</span>
+            </a>
+            <div id="@m.Colapse" class="collapse" aria-labelledby="@m.Heading" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                   @foreach (var child in m.ChildrenMenus)
+                   {
+                    <a class="collapse-item" href="@Url.Action(child.Action,child.Controller)">@child.MenuItemName</a>
+                     
+                   }
+                     
+                </div>
+            </div>
+        </li>
+    }
+    
+    <!-- Nav Item -->
+    
+    
+
+    <!-- Nav Item - Utilities Collapse Menu -->
+    
+
+    <!-- Nav Item - Utilities Collapse Menu -->
+    
+
+
+    <li class="nav-item">
+        <a class="nav-link" href="blank.html">
+            <i class="fa fa-fw fa-cog"></i>
+            <span>Change Password</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="login.html">
+            <i class="fa fa-sign-out-alt"></i>
+            <span>Logout</span>
+        </a>
+    </li>
+
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+</ul>
