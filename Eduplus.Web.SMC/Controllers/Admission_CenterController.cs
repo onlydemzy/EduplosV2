@@ -794,13 +794,63 @@ namespace Eduplus.Web.SMC.Controllers
             }
             
         }
-            
-#endregion
 
+        [KSWebAuthorisation]
+        public ActionResult StudentEnrolment()
+        {
+            return View();
+        }
+
+
+        [KSWebAuthorisation]
+        public ActionResult StudentsEnrolmentRpt(string session, string dept,string sex=null)
+        {
+            List<StudentEnrolmentDTO> vm;
+             
+            if (string.IsNullOrEmpty(sex) || sex == "undefined")
+            {
+                vm = _studentService.StudentEnrolment(session,dept);
+            }
+            else
+            {
+                vm = _studentService.StudentEnrolment(session, dept,sex);
+            }
+
+            if (vm != null)
+            {
+
+                var first = vm.First();
+                Export2Excel<StudentEnrolmentDTO>(vm, first.YearAdmitted + "_" + first.Department + "_" + "Enrolment");
+                return View("StudentEnrolment");
+            }
+            else return View("StudentEnrolment");
+           
+
+        }
         
+        public JsonResult StudentsEnrolmentSummary(string session, string dept, string sex = null)
+        {
+            List<ProgrammeDTO> vm;
 
-#region PRIVATE HELPERS
+            if (string.IsNullOrEmpty(sex) || sex == "undefined")
+            {
+                vm = _studentService.StudentEnrolmentSummary(session, dept);
+            }
+            else
+            {
+                vm = _studentService.StudentEnrolmentSummary(session, dept, sex);
+            }
+            
+            return Json(vm,JsonRequestBehavior.AllowGet);
 
-#endregion
+
+        }
+        #endregion
+
+
+
+        #region PRIVATE HELPERS
+
+        #endregion
     }
 }

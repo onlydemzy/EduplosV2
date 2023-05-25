@@ -3,7 +3,7 @@
     public class ApplicantDTO
     {
         public string RegNo { get; set; }
-        
+        public string Sex { get; set; }
         public string EntryMode { get; set; }
         public string ProgrammeType { get; set; }
         public string Programme { get; set; }

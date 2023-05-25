@@ -192,6 +192,7 @@ namespace Eduplus.ObjectMappings
             dto.JambNo = student.JambResults.Count()==1?student.JambResults.FirstOrDefault().JambRegNumber:"";
             dto.State = student.State;
             dto.Lga = student.Lg;
+            dto.Sex = student.Sex;
             return dto;
         }
         public static DepartmentDTO DepartmentToDepartmentDTO(Department dept)

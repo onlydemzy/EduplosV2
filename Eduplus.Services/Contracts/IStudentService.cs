@@ -45,6 +45,10 @@ namespace Eduplus.Services.Contracts
         void GrantStudentAccessToUtilitesBasedOnPayments(string paymentType, string studentId, int? payOptionId,int sessionId, bool late = false);
         int TotalSessionApplicants(string session);
         List<ProgrammeDTO> SessionAdmissionsSummaryProgType(string session);
+        List<StudentEnrolmentDTO> StudentEnrolment(string session, string deptCode);
+        List<StudentEnrolmentDTO> StudentEnrolment(string session, string deptCode, string sex);
+        List<ProgrammeDTO> StudentEnrolmentSummary(string session, string deptCode);
+        List<ProgrammeDTO> StudentEnrolmentSummary(string session, string deptCode, string gender);
         List<StudentInProgDTO> TotalActiveStudentsByProgramme();
         List<ProgrammeDTO> CurrentStudentEnrollmentsByProgType();
         int CurrentTotalStudents();

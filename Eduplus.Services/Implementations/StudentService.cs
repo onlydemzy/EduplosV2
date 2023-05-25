@@ -1555,6 +1555,92 @@ namespace Eduplus.Services.Implementations
             }
             return new List<ProgrammeDTO>();
         }
+        public List<StudentEnrolmentDTO> StudentEnrolment(string session,string deptCode)
+        {
+            var students = _unitOfWork.StudentRepository.GetFiltered(a => a.YearAddmitted == session && a.AdmissionStatus == "Accepted"
+            && a.DepartmentCode == deptCode).OrderBy(a => a.ProgrammeType).ThenBy(a=>a.Name).ToList();
+            List<StudentEnrolmentDTO> dto = new List<StudentEnrolmentDTO>();
+            if (students.Count > 0)
+            {
+                foreach (var s in students)
+                {
+                    dto.Add(new StudentEnrolmentDTO
+                    {
+                        StudentId=s.PersonId,FullName=s.Name,Gender=s.Sex,Phone=s.Phone,
+                        Programme=s.Programme.Title,ProgrammeType=s.ProgrammeType,Department=s.Department.Title,
+                        Status=s.Status,YearAdmitted=s.YearAddmitted
+                    });
+                }
+                return dto;
+            }
+
+            return new List<StudentEnrolmentDTO>();
+        }
+        public List<StudentEnrolmentDTO> StudentEnrolment(string session, string deptCode,string sex)
+        {
+            var students = _unitOfWork.StudentRepository.GetFiltered(a => a.YearAddmitted == session && a.AdmissionStatus == "Accepted"
+            &&a.DepartmentCode==deptCode&&a.Sex==sex).OrderBy(a=>a.Surname).ToList();
+            List<StudentEnrolmentDTO> dto = new List<StudentEnrolmentDTO>();
+            if (students.Count > 0)
+            {
+                foreach(var s in students)
+                {
+                    dto.Add(new StudentEnrolmentDTO
+                    {
+                        StudentId = s.PersonId,
+                        FullName = s.Name,
+                        Gender = s.Sex,
+                        Phone = s.Phone,
+                        Programme = s.Programme.Title,
+                        ProgrammeType = s.ProgrammeType,
+                        Department = s.Department.Title,
+                        Status = s.Status,
+                        YearAdmitted = s.YearAddmitted
+                    });
+                }
+                return dto;
+            }
+
+            return new List<StudentEnrolmentDTO>();
+        }
+        public List<ProgrammeDTO> StudentEnrolmentSummary(string session,string deptCode)
+        {
+            var students = _unitOfWork.StudentRepository.GetFiltered(a => a.YearAddmitted == session && a.AdmissionStatus == "Accepted"
+            && a.DepartmentCode==deptCode).ToList();
+            List<ProgrammeDTO> dto = new List<ProgrammeDTO>();
+            if (students.Count > 0)
+            {
+                var enr = from s in students
+                          group s by new { s.Department.Title, s.Sex } into sp
+                          select new ProgrammeDTO
+                          {
+                              Department = sp.Key.Title,
+                              Description=sp.Key.Sex,
+                              TotalEnrollment = sp.Count()
+                          };
+                return enr.OrderBy(a => a.ProgrammeType).ToList();
+            }
+            return new List<ProgrammeDTO>();
+        }
+        public List<ProgrammeDTO> StudentEnrolmentSummary(string session,string deptCode,string gender)
+        {
+            var students = _unitOfWork.StudentRepository.GetFiltered(a => a.YearAddmitted == session && a.AdmissionStatus == "Accepted"
+            && a.DepartmentCode==deptCode && a.Sex==gender).ToList();
+            List<ProgrammeDTO> dto = new List<ProgrammeDTO>();
+            if (students.Count > 0)
+            {
+                var enr = from s in students
+                          group s by new { s.Department.Title, s.Sex } into sp
+                          select new ProgrammeDTO
+                          {
+                              Department = sp.Key.Title,
+                              Description=sp.Key.Sex,
+                              TotalEnrollment = sp.Count()
+                          };
+                return enr.OrderBy(a => a.ProgrammeType).ToList();
+            }
+            return new List<ProgrammeDTO>();
+        }
         public int CurrentTotalStudents()
         {
             return   _unitOfWork.StudentRepository.GetFiltered(a => a.Status == "Active"&& a.Status == "About to Graduate").Count();

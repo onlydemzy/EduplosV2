@@ -845,6 +845,7 @@
     <Content Include="Scripts\ViewModels\supplementaryscoresEntry.js" />
     <Content Include="Scripts\ViewModels\tokensVM.js" />
     <Content Include="Scripts\ViewModels\schoolFeePaymentsVM.js" />
+    <Content Include="Scripts\ViewModels\viewStudentEnrollment.js" />
     <Content Include="Scripts\ViewModels\viewApplicantsVM.js" />
     <Content Include="Scripts\ViewModels\viewStudentPaymentsVM.js" />
     <Content Include="Styles\sweetalert.css" />
@@ -1111,6 +1112,7 @@
     <Content Include="Views\Bursary\CollectionSummary.cshtml" />
     <Content Include="Views\AcademicAffairs\ExamsOfficers.cshtml" />
     <Content Include="Views\Result\GenerateGraduantSummary.cshtml" />
+    <Content Include="Views\Admission_Center\StudentEnrolment.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
