@@ -110,7 +110,7 @@ namespace KS.Services.Implementation
             { return "User does not exist"; }//User does not exist
 
             
-            if (string.IsNullOrEmpty(oldPassword))//admin wants to reset the password
+            if (string.IsNullOrEmpty(oldPassword)&&user.UserName!="Admin")//admin wants to reset the password
             {
                 user.Password = PasswordMaker.HashPassword(newPassword);
                  _unitOfWork.SetModified<User>(user);

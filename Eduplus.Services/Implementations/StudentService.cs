@@ -944,6 +944,8 @@ namespace Eduplus.Services.Implementations
             student.AdmissionDate = DateTime.UtcNow;
             student.AdmissionStatus="Admitted";
 
+            //check if 
+
             _unitOfWork.Commit(userId);
             
             return "Student successfully admitted";
@@ -1569,6 +1571,34 @@ namespace Eduplus.Services.Implementations
                         StudentId=s.PersonId,FullName=s.Name,Gender=s.Sex,Phone=s.Phone,
                         Programme=s.Programme.Title,ProgrammeType=s.ProgrammeType,Department=s.Department.Title,
                         Status=s.Status,YearAdmitted=s.YearAddmitted
+                    });
+                }
+                return dto;
+            }
+
+            return new List<StudentEnrolmentDTO>();
+        }
+
+        public List<StudentEnrolmentDTO> StudentEnrolmentByProgrammeType(string session, string progType)
+        {
+            var students = _unitOfWork.StudentRepository.GetFiltered(a => a.YearAddmitted == session && a.AdmissionStatus == "Accepted"
+            && a.ProgrammeType == progType).OrderBy(a => a.Programme.Title).ThenBy(a => a.Name).ToList();
+            List<StudentEnrolmentDTO> dto = new List<StudentEnrolmentDTO>();
+            if (students.Count > 0)
+            {
+                foreach (var s in students)
+                {
+                    dto.Add(new StudentEnrolmentDTO
+                    {
+                        StudentId = s.PersonId,
+                        FullName = s.Name,
+                        Gender = s.Sex,
+                        Phone = s.Phone,
+                        Programme = s.Programme.Title,
+                        ProgrammeType = s.ProgrammeType,
+                        Department = s.Department.Title,
+                        Status = s.Status,
+                        YearAdmitted = s.YearAddmitted
                     });
                 }
                 return dto;

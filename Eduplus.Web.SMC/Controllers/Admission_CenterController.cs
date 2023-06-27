@@ -753,6 +753,12 @@ namespace Eduplus.Web.SMC.Controllers
             
             var student = _studentService.AdmitStudent(studentId,User.UserId);
             var user = (CustomPrincipal)Session["LoggedUser"];
+            //check if acceptance fee is 
+            var prog = _generalDuties.GetStudentProgrameType(studentId);
+            if (prog.AcceptAdmissionFee == false)
+            {
+                _userService.ChangeUserRole(studentId, user.UserId, "Prospective", "Student");
+            }
             //_studentAccount.DebitNewStudent(studentId,User.UserId);
             return Json(_studentService.AdmitStudent(studentId, user.UserId),JsonRequestBehavior.AllowGet);
         }
@@ -801,6 +807,14 @@ namespace Eduplus.Web.SMC.Controllers
             return View();
         }
 
+        public ActionResult StudentEnrolmentByProgrammeTypeRpt(string session, string progType)
+        {
+            var vm=_studentService.StudentEnrolmentByProgrammeType(session, progType);
+            var first = vm.First();
+            Export2Excel<StudentEnrolmentDTO>(vm, first.YearAdmitted + "_" + first.ProgrammeType + "_" + "Enrolment");
+            return View("StudentEnrolment");
+
+        }
 
         [KSWebAuthorisation]
         public ActionResult StudentsEnrolmentRpt(string session, string dept,string sex=null)

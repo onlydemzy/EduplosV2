@@ -13,6 +13,7 @@
 
     </div>
 
+
     <div class="form-group">
         <div class="col-md-10">
             <select data-bind="value:dept,options:depts,optionsValue:'DepartmentCode',optionsText:'Title',optionsCaption:'Select Department'" class="form-control"></select>
@@ -28,7 +29,13 @@
     <div class="form-group">
         <button class="btn btn-info" data-bind="click:fetch">Fetch</button>
     </div>
+    <div class="form-group">
+        <div class="col-md-10">
+            <select data-bind="value:progType,options:progTypes,optionsCaption:'Select ProgType to generate by Program Type'" class="form-control"></select>
 
+        </div>
+
+    </div>
 </div>
 <div class="row">
     <div class="col-md-10">

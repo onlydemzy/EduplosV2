@@ -6,6 +6,8 @@
     self.sessions = ko.observableArray();
     self.depts = ko.observableArray();
     self.viewBy = ko.observable();
+    self.progType = ko.observable();
+    self.progTypes = ko.observableArray(['Degree','NCE'])
     self.genders = ko.observableArray(['Male','Female']);
     self.data1 = ko.observableArray();
     self.viewBys = ko.observableArray(['Department', 'Gender']);
@@ -38,6 +40,11 @@
         window.location.href = '/Admission_Center/StudentsEnrolmentRpt?session=' + self.session() + '&dept=' + self.dept() + '&sex=' + self.gender();
 
     }
+
+    self.progType.subscribe(function (p) {
+        window.location.href = '/Admission_Center/StudentEnrolmentByProgrammeTypeRpt?session=' + self.session() + '&progType=' + p;
+    });
+
     self.fetchSummary = function () {
         self.enrolments();
         $.ajax({

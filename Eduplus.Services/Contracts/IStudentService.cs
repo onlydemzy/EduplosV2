@@ -49,6 +49,7 @@ namespace Eduplus.Services.Contracts
         List<StudentEnrolmentDTO> StudentEnrolment(string session, string deptCode, string sex);
         List<ProgrammeDTO> StudentEnrolmentSummary(string session, string deptCode);
         List<ProgrammeDTO> StudentEnrolmentSummary(string session, string deptCode, string gender);
+        List<StudentEnrolmentDTO> StudentEnrolmentByProgrammeType(string session, string progType);
         List<StudentInProgDTO> TotalActiveStudentsByProgramme();
         List<ProgrammeDTO> CurrentStudentEnrollmentsByProgType();
         int CurrentTotalStudents();

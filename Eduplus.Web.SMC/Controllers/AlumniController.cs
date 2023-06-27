@@ -95,10 +95,7 @@ namespace Eduplus.Web.SMC.Controllers
         public ActionResult NewTranscriptApplication()
         {
             var st = _studentService.FetchStudent(User.UserId);
-            if (st.AddmissionCompleteStage < 2)
-            {
-                return RedirectToAction("Addmissions_Step1", "Admission_Center");
-            }
+            
             if (st.PhotoId==null)
             {
                 return RedirectToAction("UploadPassport", "Admission_Center");
