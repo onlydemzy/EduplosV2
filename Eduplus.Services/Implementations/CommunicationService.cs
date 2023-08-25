@@ -1,10 +1,8 @@
 ﻿using Eduplus.Services.Contracts;
 using KS.Core;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Net.Mail;
 
 namespace Eduplus.Services.Implementations
@@ -16,46 +14,32 @@ namespace Eduplus.Services.Implementations
         {
             _unitOfWork = unitOfWork;
         }
-        public string SendMail(string receiverMail,string msgBody,string subject)
+        public string SendMail(string receiverFullname,string receiverMail,string msgBody,string subject)
         {
 
-            var userData = _unitOfWork.UserDataRepository.GetAll().First();
-            
+            MailMessage mailMessage = new MailMessage();
+            mailMessage.From = new MailAddress("info@korrhsolutions.com");
+            mailMessage.To.Add("demzy247@gmail.com");
+            mailMessage.Subject = "Take mail";
+            mailMessage.Body = "This is test email";
 
-                MailMessage message = new MailMessage();
-                SmtpClient smtp = new SmtpClient();
-                message.From = new MailAddress(userData.AppEmail);
-                message.To.Add(new MailAddress(receiverMail));
-                message.Subject = subject;
-                message.IsBodyHtml = true; //to make message body as html  
-                message.Body = msgBody;
-                smtp.Port = 25;
-                smtp.Host = userData.EmailDomain; //for gmail host  
-                smtp.EnableSsl = userData.EnableSsl;
-                smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new NetworkCredential(userData.AppEmail, userData.Password);
-                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-                smtp.Send(message);
-                return "Ok";
-           
+            SmtpClient smtpClient = new SmtpClient();
+            smtpClient.Host = "smtp.zoho.com";
+            smtpClient.Port = 587;
+            smtpClient.UseDefaultCredentials = false;
+            smtpClient.Credentials = new NetworkCredential("info@korrhsolutions", "NETman123P^$$");
+            smtpClient.EnableSsl = true;
+            smtpClient.Send(mailMessage);
+            return "Ok";
 
         }
-
-        public void SendMailViaApi(string receiverMail, string msgBody, string subject)
+        string HtmlMessageBody(string recieverFullname,string content)
         {
-            var userData = _unitOfWork.UserDataRepository.GetAll().First();
-            HttpClient client = new HttpClient();
-            Dictionary<string, string> parameters = new Dictionary<string, string>();
-            parameters.Add("fromAddress", userData.EmailDomain);
-            parameters.Add("toAddress", receiverMail);
-            parameters.Add("subject", subject);
-            parameters.Add("content", msgBody);
-            parameters.Add("mailFormat", "Html");
-            HttpResponseMessage response = null;
-
-            response=client.PutAsJsonAsync(userData.EmailDomain, parameters).Result;
-            var chk = response.Content.ToString();
+            string bd = @"<img src=cid:imageID /><h3>Dear "+recieverFullname+",</h3>"+
+                content+"\r\n"+"<strong>-Registrar</strong>";
+            return bd;
         }
+        
 
     }
 

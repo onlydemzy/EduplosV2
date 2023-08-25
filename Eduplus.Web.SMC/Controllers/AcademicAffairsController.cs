@@ -93,10 +93,11 @@ namespace Eduplus.Web.SMC.Controllers
         {
             return View();
         }
-        public string SaveSchedule(List<CourseSchedule> schedules)
+        public string SaveSchedule(CourseScheduleDTO schedules)
         {
             return _academicAffairs.AddCourseSchedules(schedules,User.UserId);
         }
+
         
         public JsonResult DepartmentalProgrammes()
         {
@@ -107,7 +108,7 @@ namespace Eduplus.Web.SMC.Controllers
                 return Json(_generalDuties.FetchProgrammes(user.DepartmentCode), JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult CoursesForSchedule(int level,string semester,string progCode)
+        public JsonResult CoursesForSchedule(string semester,string progCode)
         {
             var user = (CustomPrincipal)Session["LoggedUser"];
             string _progCode;
@@ -117,7 +118,17 @@ namespace Eduplus.Web.SMC.Controllers
             else
                 _progCode = user.ProgrammeCode;
 
-            return Json(_generalDuties.PopulateCourse(_progCode, level, semester), JsonRequestBehavior.AllowGet);
+            return Json(_generalDuties.PopulateCourse(_progCode,  semester), JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetDeptLecturers(string deptCode)
+        {
+            string dept = null;
+            if(string.IsNullOrEmpty(deptCode) || deptCode == "undefined"){
+                var user = (CustomPrincipal)Session["loggedUser"];
+                dept = user.DepartmentCode;
+            }
+            else { dept = deptCode; }
+            return Json(_academicAffairs.FetchLecturersForCourseAllocation(dept), JsonRequestBehavior.AllowGet);
         }
         #endregion
 

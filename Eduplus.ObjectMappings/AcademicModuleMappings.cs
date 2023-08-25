@@ -41,7 +41,8 @@ namespace Eduplus.ObjectMappings
                 SemesterId = registration.SemesterId,
                 SessionId=registration.SessionId,
                 StudentId=registration.StudentId,
-                CourseId=registration.CourseId
+                CourseId=registration.CourseId,
+                Programme=registration.Student.Programme.Title
 
             };
             return dto;

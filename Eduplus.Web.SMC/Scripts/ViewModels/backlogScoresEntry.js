@@ -209,11 +209,11 @@ viewModel = function () {
 
     //Populate Students Based on Year Of Admission
         self.YearAdmitted.subscribe(function (yearAdmitted) {
-            if (self.SemesterId() > 191 || self.Programme()=='undefined')
+           /* if (self.SemesterId() > 191 || self.Programme()=='undefined')
             {
                 alert("Operation denied");
                 return;
-            }
+            }*/
             var isValid = true;
             if (self.modelErrors().length != 0) {
                 self.modelErrors.showAllMessages();
@@ -235,7 +235,11 @@ viewModel = function () {
                     success: function (data) {
                         switch (data) {
                             case 0:
-                                alert("Scores already entered for selected Semester and Course");
+                                alert("No student Found");
+                                window.location.href = '/Result/BacklogScoresEntry';
+                                break;
+                            case 1:
+                                alert("Scores already inputted for selected semester and course");
                                 window.location.href = '/Result/BacklogScoresEntry';
                                 break;
                             default:

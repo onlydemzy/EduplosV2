@@ -17,7 +17,6 @@ namespace Eduplus.Domain.AcademicModule
         public string ProgrammeCode { get; set; }
         public bool IsActive { get; set; }
 
-        public DateTime InsertDate { get; set; }
         public string CourseType { get; set; }
         public string Category { get; set; }
         public virtual Department Department { get; set; }

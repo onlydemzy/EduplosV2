@@ -51,7 +51,9 @@ namespace Eduplus.Web.SMC.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
-            UserData user = System.Web.HttpContext.Current.Cache.Get("userData") as UserData;
+            
+           _commService.SendMail("ekim, udeme bassey","demzy247@gmail.com", "Can you receive me from eduplos", "Receive eduplus");
+           // UserData user = System.Web.HttpContext.Current.Cache.Get("userData") as UserData;
             /*f (user == null)
             {
                 user = _generalDutiesService.GetUserData();
@@ -193,7 +195,7 @@ namespace Eduplus.Web.SMC.Controllers
                 Password = userVM.Password,
                 DepartmentCode = userVM.DepartmentCode,
                 ProgrammeCode = userVM.ProgrammeCode,
-                    Email = userVM.Email,
+                   
                     CreatedBy=User.UserId
                     
                 };
@@ -275,7 +277,7 @@ namespace Eduplus.Web.SMC.Controllers
                 string browser= GetUserEnvironment(req);
                 string msgBody = "An attempt to change your password has been made." + "\n" +browser+"\n"+ msg;
 
-                string mailresponse = _commService.SendMail(user.Email, msgBody,"Security Notification");
+                //string mailresponse = _commService.SendMail(user.Email, msgBody,"Security Notification");
                 Session["pasRmsg"] = msgBody;
                 return RedirectToAction("ResetConfirmation");
             }
@@ -316,7 +318,7 @@ namespace Eduplus.Web.SMC.Controllers
                     UserId = user.UserId,
                     Username = user.UserName,
                     Fullname = user.FullName,
-                    Email = user.Email,
+                    
                     
                 };
 
@@ -361,7 +363,7 @@ namespace Eduplus.Web.SMC.Controllers
             principal.Username = user.UserName;
              
             principal.UserId = user.UserId;
-            principal.Email = user.Email;
+           
             //principal.ProgrammeType = user.ProgrammeType;
             
             

@@ -536,30 +536,60 @@ namespace Eduplus.Services.Implementations
             {
                 stIds.Add(s.PersonId);
             }
-
+            List<ScoresEntryDTO> dto = new List<ScoresEntryDTO>();
+            var course = _unitOfWork.CourseRepository.Get(courseId);
             var exists = _unitOfWork.CourseRegistrationRepository.GetFiltered(a => a.CourseId == courseId
               && a.SemesterId == semesterId && stIds.Contains(a.StudentId)).ToList();
-            var course = _unitOfWork.CourseRepository.Get(courseId);
-            List<ScoresEntryDTO> dto = new List<ScoresEntryDTO>();
-            foreach (var s in students)
+            if (exists.Count == 0)
             {
-                var exist = exists.Where(e => e.StudentId == s.PersonId).FirstOrDefault();
-                if (exist == null) {
-                    ScoresEntryDTO details = new ScoresEntryDTO();
-                    details.StudentId = s.PersonId;
-                    details.RegNo = s.MatricNumber;
-                    details.SemesterId = semesterId;
-                    details.SessionId = sessionId;
-                    details.StudentLevel = lvl;
-                    details.CourseId = courseId;
-                    details.CourseCode = course.CourseCode;
-                    details.CreditHour = course.CreditHours;
-                    details.Title = course.Title;
-                    dto.Add(details);
-                }                
+                foreach (var s in students)
+                {
+                    
+                        ScoresEntryDTO details = new ScoresEntryDTO();
+                        details.StudentId = s.PersonId;
+                        details.RegNo = s.MatricNumber;
+                        details.SemesterId = semesterId;
+                        details.SessionId = sessionId;
+                        details.StudentLevel = lvl;
+                        details.CourseId = courseId;
+                        details.CourseCode = course.CourseCode;
+                        details.CreditHour = course.CreditHours;
+                        details.Title = course.Title;
+                        dto.Add(details);
+                    
+                }
+                msg = 2;
+                return dto.OrderBy(s => s.RegNo).ToList();
             }
-            msg = 2;
-            return dto.OrderBy(s => s.RegNo).ToList();
+            else{
+                foreach (var s in students)
+                {
+                    var exist = exists.Where(e => e.StudentId == s.PersonId).FirstOrDefault();
+                    if (exist == null)
+                    {
+                        ScoresEntryDTO details = new ScoresEntryDTO();
+                        details.StudentId = s.PersonId;
+                        details.RegNo = s.MatricNumber;
+                        details.SemesterId = semesterId;
+                        details.SessionId = sessionId;
+                        details.StudentLevel = lvl;
+                        details.CourseId = courseId;
+                        details.CourseCode = course.CourseCode;
+                        details.CreditHour = course.CreditHours;
+                        details.Title = course.Title;
+                        dto.Add(details);
+                    }
+                }
+                if (dto.Count == 0)
+                {
+                    msg = 1;
+                    return new List<ScoresEntryDTO>();
+                }
+                msg = 2;
+                return dto.OrderBy(s => s.RegNo).ToList();
+            }
+            
+            
         }
 
 
@@ -704,55 +734,44 @@ namespace Eduplus.Services.Implementations
                 return "Scores successfully updated";
  
         }
-        public string SubmitBacklogScores(List<ScoresEntryDTO> scores,string inputedBy,bool isCarryOver)
+        public string SubmitTemplateScores(List<ScoresEntryDTO> scores,string inputedBy)
         {
             //Check if scores already entered
-            string msg;
-             
+            
+            List<long> regIds = new List<long>();
             if (scores.Count > 0)
             {
-                try
+               foreach(var s in scores)
                 {
-
-
+                    regIds.Add(s.RegistrationId);
+                }
                     var first = scores.FirstOrDefault();
-                    var entry = _unitOfWork.ScoresEntryLogRepository.GetFiltered(e => e.SemesterId == first.SemesterId && e.CourseId == first.CourseId).FirstOrDefault();
-
-                    if (isCarryOver != true && entry != null)//check if already inputted
-                    {
-                        return "Scores already entered for selected Course and Semester";
-                    }
+                    var entries = _unitOfWork.CourseRegistrationRepository.GetFiltered(e =>  regIds.Contains(e.RegistrationId)).ToList();
+                 
+                if(entries.First().Grade!=null)
+                { return "Scores already inputted"; }
                     var prog = _unitOfWork.CourseRepository.Get(first.CourseId);
                     var grades = _unitOfWork.GradingRepository.GetFiltered(a => a.ProgrammeType == prog.Programme.ProgrammeType).ToList();
 
                     //Updating the dbcourses with scores
-                    foreach (ScoresEntryDTO r in scores)
+                    foreach (var r in entries)
                     {
-                        CourseRegistration cr = new CourseRegistration();
-
-                        cr.CA1 = r.CA1;
-                        cr.CA2 = r.CA2;
-                        cr.Exam = r.Exam;
-                        cr.StudentId = r.StudentId;
-                        cr.Lvl = r.StudentLevel;
-                        cr.SessionId = r.SessionId;
-                        cr.SemesterId = r.SemesterId;
-                        cr.CourseCreditHour = r.CreditHour;
-                        cr.CourseId = r.CourseId;
-                        cr.IsApproved = false;
-                        var grade = cr.CalculateGrade((r.CA1 + r.CA2 + r.Exam), grades);
+                        ScoresEntryDTO cr = scores.Where(sr=>sr.RegistrationId==r.RegistrationId).Single();
+                     
+                        r.CA1 = cr.CA1;
+                        r.CA2 = cr.CA2;
+                        r.Exam = cr.Exam;
+                        
+                        var grade = r.CalculateGrade((r.CA1 + r.CA2 + r.Exam), grades);
                         if (grade == null)
                         {
                             throw new Exception("Invalid inputted score detected");
                         }
-                        cr.Grade = grade.Grade;
-                        cr.GradePoint = grade.GradePoint;
-
-
-                        _unitOfWork.CourseRegistrationRepository.Add(cr);
+                        r.Grade = grade.Grade;
+                        r.GradePoint = grade.GradePoint;
 
                         //Add score to outstanding if any
-                        if (cr.Grade == "F")
+                        if (r.Grade == "F")
                         {
                             OutStandingCourse ou = new OutStandingCourse();
                             ou.CourseId = r.CourseId;
@@ -776,32 +795,14 @@ namespace Eduplus.Services.Implementations
                                     o.Owing = false;
                                 }
                             }
-                        }//Check if student is writing as carryover.
-                         //If yes, update outstanding course from owing to not owing
-
+                        }
                     }
-                    //log entry
-                    if (entry == null)
-                    {
-                        _unitOfWork.ScoresEntryLogRepository.Add(new ScoresEntryLog
-                        {
-                            CourseId = first.CourseId,
-                            EnteredBy = inputedBy,
-                            EntryDate = DateTime.UtcNow,
-                            SemesterId = first.SemesterId,
-                            SessionId = first.SessionId,
-                            Status = "Inputted"
-                        });
-
-                    }
+                    
+                    
                     _unitOfWork.Commit(inputedBy);
-                    return msg = "Scores successfully submitted";
-                }
-                catch(Exception ex)
-                {
-                    return ex.Message;
-
-                }
+                    return "Scores successfully submitted";
+                
+                
             }
             else
             {
@@ -817,9 +818,6 @@ namespace Eduplus.Services.Implementations
             {
                 try
                 {
-
-
-                   
                     var prog = _unitOfWork.StudentRepository.Get(score.StudentId);
                     var grades = _unitOfWork.GradingRepository.GetFiltered(a => a.ProgrammeType == prog.ProgrammeType).ToList();
 

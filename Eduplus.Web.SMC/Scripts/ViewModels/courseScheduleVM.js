@@ -23,7 +23,7 @@ viewModel = function () {
     self.department = ko.observable();
     self.IsVisible = ko.observable(false);
     self.level = ko.observable();
-
+    self.dirty = ko.observable(false);
     self.schedule=ko.observable();
     self.departments = ko.observableArray();
     self.programmes = ko.observableArray();
@@ -62,7 +62,7 @@ viewModel = function () {
         //self.spinar(false);
     });
 
-    //Populate programmes
+    //Populate department
     $.ajax({
         type: 'Get',
         contentyType: 'application/json;charset=utf-8',
@@ -74,28 +74,25 @@ viewModel = function () {
     });
 
     //Populate courses
-    self.level.subscribe(function (lvl) {
+    self.programme.subscribe(function (prog) {
 
-        if (self.programme() == null||self.programme()=="undefined")
+        if (self.semester() == null || self.semester() == "undefined")
         {
-            alert("Choose a Programme first");
+            alert("Choose a semester first");
             return 0;
         }
         self.courses();
 
         $.ajax({
             type: 'Get',
-            data: { level: lvl,semester: self.semester().Title,progCode: self.programme().ProgrammeCode },
+            data: { semester: self.semester().Title,progCode: prog.ProgrammeCode },
             contentyType: 'application/json;charset=utf-8',
             url: '/AcademicAffairs/CoursesForSchedule',
             success: function (data) {
                 self.courses(data);
             }
         });
-    });
-
-    //Populate Lecturers
-    self.programme.subscribe(function (prog) {
+        //Populate lecturers
         self.lecturers(undefined);
         $.ajax({
             type: 'Get',
@@ -109,6 +106,7 @@ viewModel = function () {
         });
     });
 
+     
     //Buton Controlls
     self.addschedule = function () {
         if (self.course() == null||self.courses().length==0)
@@ -144,7 +142,23 @@ viewModel = function () {
             return 0;
         }
         self.schedules.push(sch);
-        //Remove from course
+        self.dirty(true);
+        //send to server
+        $.ajax({
+            type: "Post",
+            url: '/AcademicAffairs/SaveSchedule',
+            contentType: "application/json; charset=utf-8",
+            datatype: 'json',
+            data: ko.toJSON(sch),
+            success: function (data) {
+                if (data != "00") { alert(data); }
+            },
+
+            error: function (err) {
+                alert(err.status + " : " + err.statusText);
+            }
+
+        });
         //self.courses.remove(self.course());
 
     }
@@ -185,6 +199,11 @@ viewModel = function () {
 
         });
     }
+
+    self.course.subscribe(function (course) {
+        
+        //self.spinar(false);
+    });
     
 };
 ko.applyBindings(new viewModel());

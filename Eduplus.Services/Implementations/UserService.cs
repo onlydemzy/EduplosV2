@@ -45,7 +45,7 @@ namespace KS.Services.Implementation
         {
             //Check if user already exist
             
-            var _dbuser = _unitOfWork.UserRepository.GetFiltered(u => u.UserName == user.UserName || u.Email==user.Email).FirstOrDefault();
+            var _dbuser = _unitOfWork.UserRepository.GetFiltered(u => u.UserName == user.UserName).FirstOrDefault();
             if(_dbuser!=null)
             {
                 msg = "Exist";

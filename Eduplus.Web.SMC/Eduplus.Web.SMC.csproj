@@ -927,7 +927,6 @@
     <Content Include="Views\Result\ProbationList.cshtml" />
     <Content Include="Views\Result\SemesterResultForFile.cshtml" />
     <Content Include="Views\Result\StudentSemesterResult.cshtml" />
-    <Content Include="Views\Result\SupplementaryScoresEntry.cshtml" />
     <Content Include="Views\Result\ViewStudentProfile.cshtml" />
     <Content Include="Views\Shared\_A4ReportLayout.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -1014,6 +1013,7 @@
     <Compile Include="ViewModels\outPutMsg.cs" />
     <Compile Include="ViewModels\RegistrationViewModel.cs" />
     <Compile Include="ViewModels\ResultSubmission.cs" />
+    <Compile Include="ViewModels\ScoresEntryVM.cs" />
     <Compile Include="ViewModels\SlideContentVM.cs" />
     <Compile Include="ViewModels\StatDashboardViewModel.cs" />
     <Compile Include="ViewModels\StepRegistrationViewModel.cs" />
@@ -1113,6 +1113,8 @@
     <Content Include="Views\AcademicAffairs\ExamsOfficers.cshtml" />
     <Content Include="Views\Result\GenerateGraduantSummary.cshtml" />
     <Content Include="Views\Admission_Center\StudentEnrolment.cshtml" />
+    <Content Include="Views\Result\UploadResultFromTemplate.cshtml" />
+    <Content Include="Views\Admission_Center\UploadManualMatricNumbers.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

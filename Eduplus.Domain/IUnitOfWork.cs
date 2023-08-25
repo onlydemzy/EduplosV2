@@ -83,7 +83,7 @@ namespace KS.Core
         IRepository<Grading> GradingRepository { get; }
         IRepository<GraduatingClass> GraduatingClassRepository { get; }
         IRepository<RegistrationsPermissionsLog> RegistrationsPermissionsLogRepository { get; }
-        IRepository<CourseScheduleDetails> CourseScheduleDetailsRepository { get; }
+         
         IRepository<TranscriptApplication> TranscriptRepository { get; }
         IRepository<ExamsOfficer> ExamsOfficerRepository { get; }
         IRepository<OLevelSubject> OlevelSubjectRepository { get; }

@@ -9,9 +9,10 @@ namespace Eduplus.Services.Contracts
     public interface IAcademicAffairsService
     {
         string EliminateIncompleteResult();
-        string AddCourseSchedules(List<CourseSchedule> schedules, string userId);
+        string AddCourseSchedules(CourseScheduleDTO schedule, string userId);
         List<CourseSchedule> FetchCourseLecturers(string courseId, int semesterId);
         List<StaffDTO> FetchLecturersForCourseAllocation(string departmentCode);
+         
         string RemoveLecturerFromSchedule(string courseId, int semesterId, StaffDTO lecturer, string userId);
         List<CourseDTO> LecturerCourses(string lecturerId, int semesterId);
         ExamsAttendanceDTO LecturerScoreSheet(int semesterId, string courseId);

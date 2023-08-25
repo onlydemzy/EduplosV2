@@ -17,7 +17,8 @@ namespace Eduplus.Domain.CoreModule
         public string AppEmail { get; set; }
         public string EmailDomain { get; set; }
         public string Password { get; set; }
-        public int? Port { get; set; }
+        public int Port { get; set; }
+        public string Sender { get; set; }
         public bool EnableSsl { get; set; }
         public string Url { get; set; }
         public byte[] Logo { get; set; }

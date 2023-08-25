@@ -65,7 +65,7 @@ function viewModel() {
     self.Lgs = ko.observableArray([]);
     self.Department = ko.observable();
     self.YearAdmitted = ko.observable().extend({required:true});
-    self.JambRegNumber = ko.observable().extend({ required: true });
+    
     self.Sexes = ko.observableArray(['Male', 'Female']);
     self.EntryModes = ko.observableArray(['PUME', 'Direct Entry', 'Transfer'])
     self.months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
@@ -80,7 +80,7 @@ function viewModel() {
     self.lvls = ko.observableArray([0, 100, 200, 300, 400, 500]);
     self.progTypes = ko.observableArray();
     self.DepartmentCode = ko.observable();
-    self.JambYear = ko.observable().extend({ required: true, minValue: 1999 });
+    
     self.ProgrammeType = ko.observable().extend({required:true});
     self.progs = ko.observableArray();
     self.pTypes = ko.observableArray();

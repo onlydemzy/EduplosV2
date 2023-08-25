@@ -26,7 +26,7 @@ namespace Eduplus.Services.Contracts
 
         string AdmitStudent(string studentId, string userId);
         string AddmitWithoutAcceptanceFee(string studentId);
-        int CreateNewStudentProfile(ProspectiveStudentDTO st, out string studentId);
+        int CreateNewStudentProfile(ProspectiveStudentDTO st);
         List<StudentSummaryDTO> FetchStudents(string programmeCode, string sessionAddmitted);
         StudentDTO FetchStudent(string studentId);
         StudentSummaryDTO FetchStudentSummary(string studentId);
@@ -66,6 +66,7 @@ namespace Eduplus.Services.Contracts
 
         bool CanVote(string studentId, int sessionId);
         StudentSummaryDTO FetchStudentByPhone(string phone);
+        string AssignManualMatricNumbers(List<StudentSummaryDTO> students, string userId);
 
 
     }

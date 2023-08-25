@@ -11,13 +11,17 @@ using iText.Kernel.Pdf;
 using iText.Layout;
 using iText.Layout.Element;
 using KS.Web.Security;
+using OfficeOpenXml;
 using Rotativa;
 using Rotativa.Options;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Http.Results;
 using System.Web.Mvc;
+using System.Windows.Documents;
 
 namespace Eduplus.Web.SMC.Controllers
 {
@@ -54,12 +58,132 @@ namespace Eduplus.Web.SMC.Controllers
                 return Json(scores, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult SupplementaryScoresEntry()
+        public ActionResult ScoresEntryTemplate(string courseId,int semesterId)
+        {
+            byte result;
+             
+            var scores = _academicService.FetchCoursesForScoreEntry(semesterId, courseId, 1, out result);
+            if (scores.Count > 0)             
+             
+            {
+                var tit = scores.First();
+                List<ScoresEntryVM> vm = new List<ScoresEntryVM>();
+                foreach(var c in scores)
+                {
+                    vm.Add(new ScoresEntryVM
+                    {
+                        CourseCode = c.CourseCode,
+                        Programme = c.Programme,
+                        RegistrationId = c.RegistrationId,
+                        StudentId = c.StudentId,
+                        CourseId = c.CourseId,
+                        RegNo = c.RegNo,
+                        
+                    });
+                }
+                
+                
+                ExcelPackage package = new ExcelPackage();
+                var wrkSheet = package.Workbook.Worksheets.Add(tit.SemesterId.ToString() + "_" + tit.SessionId.ToString() + tit.Programme);
+                
+                
+                wrkSheet.Cells[1, 1].Value = "StudentId";
+                wrkSheet.Cells[1, 2].Value = "RegistrationId";
+                wrkSheet.Cells[1, 3].Value = "CourseId";
+                wrkSheet.Cells[1, 4].Value = "S/N";
+                wrkSheet.Cells[1, 5].Value = "CourseCode";
+                wrkSheet.Cells[1, 6].Value = "RegNo";
+                wrkSheet.Cells[1, 7].Value = "CA1";
+                wrkSheet.Cells[1, 8].Value = "CA2";
+                wrkSheet.Cells[1, 9].Value = "Exam";
+                wrkSheet.Cells[1, 10].Value = "Programme";
+
+                for (int i = 0; i < scores.Count; i++)
+                {
+                    wrkSheet.Cells[i + 2, 1].Value = scores[i].StudentId;
+                    wrkSheet.Cells[i + 2, 2].Value = scores[i].RegistrationId.ToString();
+                    wrkSheet.Cells[i + 2, 3].Value = scores[i].CourseId;
+                    wrkSheet.Cells[i + 2, 4].Value = i + 1;
+                    wrkSheet.Cells[i + 2, 5].Value = scores[i].CourseCode;
+                    wrkSheet.Cells[i + 2, 6].Value = scores[i].RegNo;
+                    wrkSheet.Cells[i + 2, 10].Value = scores[i].Programme;
+                }
+                wrkSheet.View.FreezePanes(2, 1);
+                wrkSheet.Cells[1, 1, 1, 1 + 1].Style.Font.Bold = true;
+                wrkSheet.Column(1).Hidden = true;
+                wrkSheet.Column(2).Hidden = true;
+                wrkSheet.Column(3).Hidden = true;
+                wrkSheet.Column(4).Width = 3;
+                wrkSheet.Column(5).Width = 15;
+                wrkSheet.Column(6).Width = 25;
+                wrkSheet.Protection.IsProtected = true;
+
+                wrkSheet.Column(7).Style.Locked = false;
+                wrkSheet.Column(8).Style.Locked = false;
+                wrkSheet.Column(9).Style.Locked = false;
+                using (var memoryStream = new MemoryStream())
+                {
+                    Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+
+                    package.SaveAs(memoryStream);
+                     
+                    memoryStream.WriteTo(Response.OutputStream);
+                    Response.Flush();
+                    Response.End();
+                }
+
+                return View("ScoresEntry");
+            }
+            else return View("ScoresEntry");
+        }
+
+        [HttpGet]
+        public ActionResult UploadResultFromTemplate()
         {
             return View();
         }
-       
+        [HttpPost]
+        public ActionResult UploadResultFromTemplate(HttpPostedFileBase result)
+        {
+            if(result.ContentLength>0 &&( result.ContentType== "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                ||result.ContentType== "application/vnd.ms-excel"))
+            {
+                List<ScoresEntryDTO> dto = new List<ScoresEntryDTO>();
+                using(ExcelPackage package=new ExcelPackage(result.InputStream))
+                {
+                    
+                    ExcelWorksheet wrkSheet = package.Workbook.Worksheets[0];
+                    int rows = wrkSheet.Dimension.Rows;
+                    int cols = wrkSheet.Dimension.Columns;
+                    for (int row=2; row<=rows; row++)
+                    {
 
+                        var score = new ScoresEntryDTO();
+                        score.StudentId = wrkSheet.Cells[row, 1].Value.ToString();
+                        score.RegistrationId = Convert.ToInt64(wrkSheet.Cells[row, 2].Value.ToString());
+                        score.CourseId = wrkSheet.Cells[row, 3].Value.ToString();
+                        if(wrkSheet.Cells[row, 7].Value!=null)
+                        {
+                            score.CA1= Convert.ToInt32(wrkSheet.Cells[row, 7].Value.ToString());
+                        }
+                        if (wrkSheet.Cells[row, 8].Value != null)
+                        {
+                            score.CA2 = Convert.ToInt32(wrkSheet.Cells[row, 8].Value.ToString());
+                        }
+                        if (wrkSheet.Cells[row, 9].Value != null)
+                        {
+                            score.Exam = Convert.ToInt32(wrkSheet.Cells[row, 9].Value.ToString());
+                        }
+                        dto.Add(score);
+                    }
+
+                    _academicService.SubmitTemplateScores(dto, User.UserId);
+
+                }
+                
+            }
+            return View();
+        }
         public ActionResult EditScores()
         {
             return View();
@@ -82,7 +206,7 @@ namespace Eduplus.Web.SMC.Controllers
             { progCode = user.ProgrammeCode; }
             else { progCode = programmeCode; }
             var scores = _academicService.FetchBackLogScoresEntry(sessionId, semesterId,courseId,yearAdmitted, progCode,  level, out result);
-            if (result== 0)
+            if (scores.Count== 0)
             { return Json(result, JsonRequestBehavior.AllowGet); }
             else
             { return Json(scores, JsonRequestBehavior.AllowGet); }
@@ -104,20 +228,7 @@ namespace Eduplus.Web.SMC.Controllers
             
         }
 
-        public string SubmitBacklogScores(ResultSubmissionViewModel data)
-        {
-            List<ScoresEntryDTO> dto = new List<ScoresEntryDTO>();
-            foreach (var s in data.students)
-            {
-                if (s.CA1 > 0 || s.Exam > 0||s.CA2>0)
-                {
-                    dto.Add(s);
-                }
-            }
-
-           string msg= _academicService.SubmitBacklogScores(dto, User.UserId,data.IsCarryOver);
-            return msg;
-        }
+        
         public string SubmitBacklogScoresSingle(ScoresEntryDTO data)
         {
             

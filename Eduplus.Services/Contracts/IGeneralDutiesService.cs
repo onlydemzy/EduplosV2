@@ -39,7 +39,7 @@ namespace Eduplus.Services.Contracts
         List<SemesterDTO> FetchSessionSemester(int sessionId);
         CourseDTO SaveCourse(CourseDTO course, string deptCode, string userId);
         List<CourseDTO> PopulateCourse(string programmeCode);
-        List<CourseDTO> PopulateCourse(string programmeCode, int lvl, string semester);
+        List<CourseDTO> PopulateCourse(string programmeCode,  string semester);
         List<CourseDTO> PopulateCourse();
         List<CourseDTO> PopulateCourseByCategory(string programmeCode, string category);
         List<CourseDTO> PopulateCourseByCategory(string programmeCode, string[] cat);

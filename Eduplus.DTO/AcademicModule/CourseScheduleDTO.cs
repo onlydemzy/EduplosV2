@@ -13,5 +13,7 @@ namespace Eduplus.DTO.AcademicModule
         public string CourseId { get; set; }
         public string Title { get; set; }
         public string Lecturers { get; set; }
+        public int SemesterId { get; set; }
+        public string LecturerId { get; set; }
     }
 }

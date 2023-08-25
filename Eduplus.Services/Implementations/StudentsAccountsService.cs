@@ -116,6 +116,8 @@ namespace Eduplus.Services.Implementations
                 return 0;
             if (payInvoice.Status == "Pending")
                 return 1;
+            if (payInvoice.Status == "PAID")
+                return 0;
             else
                 return 2;
         }

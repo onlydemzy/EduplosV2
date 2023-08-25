@@ -9,6 +9,7 @@ using Eduplus.Web.SMC.ViewModels;
 using KS.AES256Encryption;
 using KS.Services.Contract;
 using KS.Web.Security;
+using OfficeOpenXml;
 using QRCoder;
 using Rotativa;
 using Rotativa.Options;
@@ -17,6 +18,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Caching;
 using System.Web.Mvc;
 
 namespace Eduplus.Web.SMC.Controllers
@@ -52,27 +54,15 @@ namespace Eduplus.Web.SMC.Controllers
         public int SubmitNewStudentProfile(ProspectiveStudentDTO data)
         {
             int stat = 0;//some has taken your email
-           
-            string studentId;
-            string mail = data.Email;
-            string pasword = data.Password;
-            string mailresponse;
-            string fullname = data.Title + " " + data.Surname + ", " + data.Firstname + " " + data.MIddlename;
-            stat = _studentService.CreateNewStudentProfile(data, out studentId);
+            
+            stat = _studentService.CreateNewStudentProfile(data);
             if (stat == 1)//send mail
             {
-                string msgBody = "Your personal data profile was successfully created." + "\n" +
-                "Login to the registration portal to complete your registration." + "\n" +
-                "Your login details is as follows: " + "\n" +
-                "Registration Number= " + studentId + "\n" + "Username= " + mail + "Password= " + pasword + "\n";
-                //mailresponse = _commService.SendMail(mail, msgBody,null);
-                /*if (mailresponse == "Ok")
-                {
-                    stat = 1;
-                }
-                return stat*/;
+                
+                return stat;
 
             }
+            else
             return stat;
         }
         
@@ -494,6 +484,7 @@ namespace Eduplus.Web.SMC.Controllers
         public JsonResult SubmitJambResult(JambScoresDTO item)
         {
             int flag;
+
             return Json(_studentService.SaveJambScore(item, User.UserId,out flag),JsonRequestBehavior.AllowGet);
             
         }
@@ -858,6 +849,20 @@ namespace Eduplus.Web.SMC.Controllers
             return Json(vm,JsonRequestBehavior.AllowGet);
 
 
+        }
+
+        public ActionResult UploadManualMatricNumbers()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult UploadManualMatricNumbers(HttpPostedFileBase file)
+        {
+            using (ExcelPackage package = new ExcelPackage())
+            {
+
+            }
+                return View();
         }
         #endregion
 

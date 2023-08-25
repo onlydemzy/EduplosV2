@@ -2,7 +2,7 @@
 {
     public interface ICommunicationService
     {
-        string SendMail(string receiverMail, string msgBody, string subject);
-        void SendMailViaApi(string receiverMail, string msgBody, string subject);
+        string SendMail(string receiverFullname, string receiverMail, string msgBody, string subject);
+         
     }
 }

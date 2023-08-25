@@ -62,7 +62,7 @@ namespace Eduplus.Services.Implementations
                 });
 
 
-            return cts.ToList();
+            return cts.OrderBy(a=>a.State).ToList();
         }
 
         public List<LgaDTO> FetchLgs(string state)
@@ -613,10 +613,10 @@ namespace Eduplus.Services.Implementations
             }
             return dto;
         }
-        public List<CourseDTO> PopulateCourse(string programmeCode,int lvl,string semester)
+        public List<CourseDTO> PopulateCourse(string programmeCode,string semester)
         {
 
-            var courses = _unitOfWork.CourseRepository.GetFiltered(a => a.ProgrammeCode == programmeCode&& a.Level<=lvl 
+            var courses = _unitOfWork.CourseRepository.GetFiltered(a => a.ProgrammeCode == programmeCode  
             && a.Semester==semester && a.IsActive==true).ToList();
             List<CourseDTO> dto = new List<CourseDTO>();
             if (courses.Count > 0)
@@ -670,7 +670,6 @@ namespace Eduplus.Services.Implementations
                 var existcourse = _unitOfWork.CourseRepository.Get(_cos.CourseId);
                 if(existcourse!=null)
                 { return new CourseDTO(); }
-                _cos.InsertDate = DateTime.UtcNow;
                 
                 _unitOfWork.CourseRepository.Add(_cos);
                 _unitOfWork.Commit(userId);

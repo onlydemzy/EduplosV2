@@ -18,5 +18,6 @@
         public long RegistrationId { get; set; }
         public string Title { get; set; }
         public bool IsIR { get; set; }
+        public string Programme { get; set; }
     }
 }

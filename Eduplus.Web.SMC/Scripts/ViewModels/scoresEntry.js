@@ -98,6 +98,7 @@ viewModel = function () {
     self.listCount = ko.observable(0);
     self.selectedItem = ko.observable();
     self.inputtedScores = ko.observableArray([]);
+    self.data1 = ko.observableArray([]);
     var count = 0;
     //Populate Programmes  
 
@@ -370,5 +371,17 @@ viewModel = function () {
     };
     
     //=========================================END=============================================
+    //download template
+    self.dwnLoad = function () {
+        /*self.data1.push(self.CourseId());
+        self.data1.push(self.SemesterId);
+        $.ajax({
+            type: 'post',
+            contentType: 'application/json; charset=utf-8',
+            url: '/Result/ScoresEntryTemplate',
+            data: ko.toJSON(self.data1)
+        });*/
+        window.location.href = '/Result/ScoresEntryTemplate?courseId=' + self.CourseId() + '&semesterId=' + self.SemesterId();
+    }
 };
 ko.applyBindings(new viewModel());

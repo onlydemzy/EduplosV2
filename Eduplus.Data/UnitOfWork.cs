@@ -98,7 +98,6 @@ namespace KS.Data
         private readonly Repository<OLevelResult> _olevelResultRepo;
         private readonly Repository<OlevelResultDetail> _olevelResultDetailRepo;
 
-        private readonly IRepository<CourseScheduleDetails> _courseScheduleDetailsRepo;
 
         //Hostel Module
 
@@ -136,7 +135,7 @@ namespace KS.Data
         public IDbSet<CourseRegistration> CourseRegistration { get; set; }
         public IDbSet<CourseRegRecover> CourseRegRecover { get; set; }
         public IDbSet<CourseSchedule> CourseSchedule { get; set; }
-        public IDbSet<CourseScheduleDetails> CourseScheduleDetails { get; set; }
+        
         public IDbSet<Faculty> Faculty { get; set; }
         public IDbSet<JambResult> JambResult { get; set; }
         public IDbSet<JambScores> JambScores { get; set; }
@@ -232,7 +231,7 @@ namespace KS.Data
             _gradClassRepo = new Repository<GraduatingClass>(this.GraduatingClass);
             _courseCategoryRepo = new Repository<CourseCategory>(this.CourseCategory);
             _lateRegLogRepo=new Repository<RegistrationsPermissionsLog>(this.RegistrationsPermissionsLog);
-            _courseScheduleDetailsRepo = new Repository<CourseScheduleDetails>(this.CourseScheduleDetails);
+            
             _transcriptRepo = new Repository<TranscriptApplication>(this.TranscriptApplication);
             _examsOfficerRepo = new Repository<ExamsOfficer>(this.ExamsOfficer);
             _olevelSubjectRepo = new Repository<OLevelSubject>(this.OLevelSubject);
@@ -554,13 +553,7 @@ namespace KS.Data
                 return _lateRegLogRepo;
             }
         }
-        public IRepository<CourseScheduleDetails> CourseScheduleDetailsRepository
-        {
-            get
-            {
-                return _courseScheduleDetailsRepo;
-            }
-        }
+        
         public IRepository<TranscriptApplication> TranscriptRepository
         {
             get
@@ -967,7 +960,7 @@ namespace KS.Data
             modelBuilder.Configurations.Add(new CourseRegistrationConfiguration());
             modelBuilder.Configurations.Add(new CourseRegRecoverConfiguration());
             modelBuilder.Configurations.Add(new CourseScheduleConfiguration());
-            modelBuilder.Configurations.Add(new CourseScheduleDetailsConfiguration());
+            
             modelBuilder.Configurations.Add(new FacultyConfiguration());
             modelBuilder.Configurations.Add(new JambResultConfiguration());
             modelBuilder.Configurations.Add(new JambScoresConfiguration());

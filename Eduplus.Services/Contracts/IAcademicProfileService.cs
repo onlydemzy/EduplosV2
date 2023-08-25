@@ -19,7 +19,7 @@ namespace Eduplus.Services.Contracts
         
         string SubmitScores(ScoresEntryDTO score, string inputedBy);
         string SubmitScoresEdit(ScoresEntryDTO score, string inputedBy);
-        string SubmitBacklogScores(List<ScoresEntryDTO> scores, string inputedBy, bool isCarryOver);
+        string SubmitTemplateScores(List<ScoresEntryDTO> scores, string inputedBy);
         string SubmitBacklogScores(ScoresEntryDTO score, string inputedBy);
         BroadSheetDTO FetchBroadSheet(string programmeCode, int sessionId, int semesterId, int level);
         BroadSheetDTO FetchGraduantsBroadSheet(string programmeCode, int sessionId, int semesterId, int level, string admittedSession, string gradYr,string batch);

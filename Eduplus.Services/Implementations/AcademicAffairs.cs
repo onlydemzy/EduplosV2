@@ -23,9 +23,11 @@ namespace Eduplus.Services.Implementations
             _unitOfWork = unitOfWork;
         }
         #region COURSESCHEDULE OPERATIONS
-        public List<StaffDTO> FetchLecturersForCourseAllocation(string departmentCode)
+        public List<StaffDTO> FetchLecturersForCourseAllocation(string deptCode)
         {
-            var lecturers = _unitOfWork.StaffRepository.GetFiltered(a => a.DepartmentCode==departmentCode && 
+
+            
+            var lecturers = _unitOfWork.StaffRepository.GetFiltered(a => a.DepartmentCode==deptCode && 
             a.Status=="Active" &&a.Category=="Academic Staff").ToList();
             if (lecturers == null)
                 return new List<StaffDTO>();
@@ -38,29 +40,40 @@ namespace Eduplus.Services.Implementations
 
             return dto;
         }
-
+        
         public List<CourseSchedule> FetchCourseLecturers(string courseId, int semesterId)
         {
             var schedule = _unitOfWork.CourseScheduleRepository.GetFiltered(a => a.CourseId == courseId && a.SemesterId == semesterId).ToList();
             return schedule;
         }
 
-        public string AddCourseSchedules(List<CourseSchedule> schedules,string userId)
+        public string AddCourseSchedules(CourseScheduleDTO schedule,string userId)
         {
             //Check if already added
-            try
-            {
-                foreach (var l in schedules)
+            var courses = _unitOfWork.CourseRepository.GetFiltered(a => a.CourseCode == schedule.CourseCode
+            && a.IsActive==true).ToList();
+            var exist = _unitOfWork.CourseScheduleRepository.GetFiltered(a => a.LecturerId == schedule.LecturerId
+            && a.Course.CourseCode == schedule.CourseCode && a.SemesterId == schedule.SemesterId);
+            if (exist.Count() > 0)
+                return "Lecturer already added to this course schedule for the semester";
+                foreach(var sc in courses)
                 {
-                    _unitOfWork.CourseScheduleRepository.Add(l);
-                }
-                _unitOfWork.Commit(userId);
-                return "Schedule created";
-            }
-            catch(Exception ex)
-            {
-                return ex.Message;
-            }
+                    
+                    var cs= new CourseSchedule
+                    {
+                        CourseId = sc.CourseId,
+                        ProgrammeCode = sc.ProgrammeCode,
+                        SemesterId = schedule.SemesterId,
+                        LecturerId = schedule.LecturerId
+                    };
+                _unitOfWork.CourseScheduleRepository.Add(cs);
+               
+                }    
+                 _unitOfWork.Commit(userId);
+
+               
+                return "00";
+          
             
         }
 
@@ -91,10 +104,9 @@ namespace Eduplus.Services.Implementations
                 csd.CourseId = sc.CourseId;
                 csd.CourseCode = sc.Course.CourseCode;
                 csd.Title = sc.Course.Title;
-                if(sc.CourseScheduleDetails.Count()>0)
-                {
-                    csd.Lecturers =string.Join(",", sc.CourseScheduleDetails.ToList().Select(a => a.LecturerName).ToList());
-                }
+
+                csd.Lecturers = sc.Lecturer.Name;// string.Join(",", sc.CourseScheduleDetails.ToList().Select(a => a.LecturerName).ToList());
+               
                 dto.Add(csd);
             }
             return dto.OrderBy(a => a.CourseCode).ToList();
@@ -104,8 +116,8 @@ namespace Eduplus.Services.Implementations
 
         public List<CourseDTO> LecturerCourses(string lecturerId,int semesterId)
         {
-            var courses = _unitOfWork.CourseScheduleDetailsRepository.GetFiltered(a => a.LecturerId == lecturerId && 
-            a.CourseSchedule.SemesterId == semesterId)
+            var courses = _unitOfWork.CourseScheduleRepository.GetFiltered(a => a.LecturerId == lecturerId && 
+            a.SemesterId == semesterId)
                 .ToList();
 
             if (courses.Count == 0)
@@ -115,9 +127,9 @@ namespace Eduplus.Services.Implementations
             {
                 var cdto = new CourseDTO
                 {
-                    CourseId = c.CourseSchedule.CourseId,
-                    CourseCode = c.CourseSchedule.Course.CourseCode,
-                    Title = c.CourseSchedule.Course.Title
+                    CourseId = c.CourseId,
+                    CourseCode = c.Course.CourseCode,
+                    Title = c.Course.Title
                 };
                 dto.Add(cdto);
             }

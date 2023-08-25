@@ -8,7 +8,7 @@ namespace Eduplus.Web.SMC.ViewModels
 {
     public class ResultSubmissionViewModel
     {
-        public List<ScoresEntryDTO> students { get; set; }
+        public List<ScoresEntryVM> students { get; set; }
         public bool IsCarryOver { get; set; }
     }
 }

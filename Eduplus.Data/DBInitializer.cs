@@ -75,7 +75,7 @@ namespace KS.Data
             User user = new User();
             user.UserId = "000001";
             user.UserName="Admin";
-            user.Email="admin@korrhsolutions.com";
+            
             user.FullName = "Administrator";
             user.IsActive=true;
             user.LastActivityDate=DateTime.UtcNow;
