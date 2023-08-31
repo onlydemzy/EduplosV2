@@ -32,7 +32,7 @@ function viewModel() {
         }
     });
     self.charge.subscribe(function (ch) {
-        self.ChargeId(ch.ChargeId);
+        self.ChargeId(ch.Description);
         self.Amount(ch.Amount);
     })
     self.submit = function () {

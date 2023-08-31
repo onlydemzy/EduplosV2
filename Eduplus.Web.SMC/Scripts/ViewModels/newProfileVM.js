@@ -118,7 +118,11 @@ function data() {
                     }
                     if(data==0)
                     {
-                        alert("A user with same email address already exist.Choose a different Email");
+                        alert("A user with same email address already exist.");
+                        return;
+                    }
+                    if (data == 2) {
+                        alert("A user with same phone already exist.");
                         return;
                     }
                         

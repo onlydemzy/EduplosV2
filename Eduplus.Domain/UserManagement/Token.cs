@@ -9,7 +9,7 @@ namespace KS.Core.UserManagement
     public class Token
     {
         public int TokenId { get; set; }
-        public int? UserId { get; set; }
+        public string UserId { get; set; }
         public string AuthToken { get; set; }
         public DateTime IssuedDate { get; set; }
         public DateTime? ExpiryDate { get; set; }

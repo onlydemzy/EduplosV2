@@ -6,7 +6,7 @@
     @model Eduplus.Web.ViewModels.LoginModel
     @{Layout = null; }
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login - Eduplus</title>
+    <title>Login - Eduplos</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -68,6 +68,10 @@
 
                                 @Html.ActionLink("New student? Click here to create profile","NewStudentProfile","Admission_Center")
                                 @Html.ActionLink("Are you an Alumnus? Click here to Register", "NewAlumnusRegistration", "Alumni")
+                            </div>
+                            <div class="form-group" style="color:#ff0000">
+                                <a style="color:#ff0000" href="@Url.Action("ForgotPassword","Accounts")">Forgot your password? Click here</a>
+                                
                             </div>
                     }
 

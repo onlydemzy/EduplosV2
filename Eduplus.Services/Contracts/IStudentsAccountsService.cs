@@ -12,7 +12,7 @@ namespace Eduplus.Services.Contracts
         string DebitNewStudent(string studentId,string userId);
         string DebitStudentAccount(TransactionDTO debit, string userId);
         PaymentInvoice GenerateSchoolFeesPaymentInvoice(string regNo, int sessionId, int installmentId,int level, string userId, out string flag);
-        PaymentInvoice GenerateStudentPaymentInvoice(string regNo, int otherChargeId,int sessionId, string userId, out string flag);
+        PaymentInvoice GenerateStudentPaymentInvoice(string regNo, string chargeTitle,int sessionId, string userId, out string flag);
         string GenerateTranscriptInvoice(string transcriptNo, int otherChargeId, int sessionId, string userId, out string flag);
         double GenerateExpectedSchoolFeesPayment(string regNo, int sessionId, int installmentId, int payLevel, out string flag);
         string SubmitGenerateExpectedSchoolFeesPayment(string regNo, int sessionId, double amount, int installmentId, string userId, string username, out string flag);

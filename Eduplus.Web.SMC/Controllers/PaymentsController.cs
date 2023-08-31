@@ -231,7 +231,7 @@ namespace Eduplus.Web.SMC.Controllers
         [KSWebAuthorisation]
         public string SubmitOtherChargesPayment(object[] data1)
         {
-            int chargeId = (int)data1[1];
+            string chargeId = (string)data1[1];
             int sessionId = (int)data1[0];
             outPutMsg result = new outPutMsg();
             

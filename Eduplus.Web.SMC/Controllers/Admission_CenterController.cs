@@ -19,6 +19,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Caching;
+using System.Web.Http.Results;
 using System.Web.Mvc;
 
 namespace Eduplus.Web.SMC.Controllers
@@ -81,13 +82,12 @@ namespace Eduplus.Web.SMC.Controllers
             switch(inv)
             {
                 case 0:
-                    var othercharges = _bursaryService.FetchApplicationFeeAmount(User.UserId);
-
-                    var invoice = _studentAccount.GenerateStudentPaymentInvoice(user.UserId, othercharges.ChargeId,adminSesion.SessionId, User.UserId, out flag);
+                    
+                    var invoice = _studentAccount.GenerateStudentPaymentInvoice(user.UserId, "Screening Fee",adminSesion.SessionId, User.UserId, out flag);
                     if(flag!="Ok")
                     {
                         ViewBag.msg = flag;
-                        return View();
+                        return View("PaymentInvoice", "Payments", new { transId = invoice.TransactionId });
                     }
                     else
                     {
@@ -116,9 +116,7 @@ namespace Eduplus.Web.SMC.Controllers
                 case 0:
                     if(_userData.CollectAcceptanceFee==true)
                     {
-                        var othercharges = _bursaryService.FetchOtherChargesAmount("Acceptance Fee", User.UserId);
-
-                        var invoice = _studentAccount.GenerateStudentPaymentInvoice(student.StudentId, othercharges.ChargeId, session.SessionId, User.UserId, out flag);
+                        var invoice = _studentAccount.GenerateStudentPaymentInvoice(student.StudentId, "Acceptance Fee", session.SessionId, User.UserId, out flag);
                         if (flag != "Ok")
                         {
                             ViewBag.msg = flag;
@@ -856,13 +854,38 @@ namespace Eduplus.Web.SMC.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult UploadManualMatricNumbers(HttpPostedFileBase file)
+        public ActionResult UploadManualMatricNumbers(HttpPostedFileBase file, string progType)
         {
-            using (ExcelPackage package = new ExcelPackage())
+            if (file.ContentLength > 0 && (file.ContentType == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                 || file.ContentType == "application/vnd.ms-excel")&& !string.IsNullOrEmpty(progType))
             {
+                
+                using (ExcelPackage package = new ExcelPackage(file.InputStream))
+                {
+                    List<MatricRegDetailsDTO> regs = new List<MatricRegDetailsDTO>();
+                    var wrkSheet = package.Workbook.Worksheets[progType.Trim().ToUpper()];
+                    int rows = wrkSheet.Dimension.Rows;
+                    for (int row = 2; row <= rows; row++)
+                    {
+                        var mt = new MatricRegDetailsDTO();
+                        mt.Programme = progType.Trim().ToUpper();
+                        mt.StudentId = wrkSheet.Cells[row, 10].Value.ToString();
+                        mt.MatricNo = wrkSheet.Cells[row, 2].Value.ToString();
 
-            }
+                        regs.Add(mt);
+                    }
+                    _studentService.UpdateManualMatricNos(progType, regs, User.UserId);
+                }
+                ModelState.AddModelError("", "Matric Numbers successfully updated");
                 return View();
+            }
+            else
+            {
+                ModelState.AddModelError("", "Required field is missing");
+                return View();
+            }
+            
+            return View();
         }
         #endregion
 

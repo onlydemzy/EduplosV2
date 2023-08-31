@@ -9,10 +9,12 @@ using Newtonsoft.Json;
 using NLog;
 using System;
 using System.Linq;
+using System.Net.Mail;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-
+using Org.BouncyCastle.Asn1;
 
 namespace Eduplus.Web.SMC.Controllers
 {
@@ -52,13 +54,14 @@ namespace Eduplus.Web.SMC.Controllers
         public ActionResult Login(string returnUrl)
         {
             
-           _commService.SendMail("ekim, udeme bassey","demzy247@gmail.com", "Can you receive me from eduplos", "Receive eduplus");
-           // UserData user = System.Web.HttpContext.Current.Cache.Get("userData") as UserData;
-            /*f (user == null)
+           
+           UserData user = System.Web.HttpContext.Current.Cache.Get("userData") as UserData;
+            if (user == null)
             {
                 user = _generalDutiesService.GetUserData();
                 System.Web.HttpContext.Current.Cache.Insert("userData", user);
-            }*/
+            }
+
             if (string.IsNullOrEmpty(returnUrl))
             {
                
@@ -74,7 +77,32 @@ namespace Eduplus.Web.SMC.Controllers
             }
             
         }
+        [AllowAnonymous]
+        public ActionResult SendMail()
+        {
 
+           /* MailMessage mailMessage = new MailMessage();
+            mailMessage.From = new MailAddress("noreply@korrhsolutions.com","AKSCOE");
+            mailMessage.To.Add("demzy247@gmail.com");
+            mailMessage.Subject = "Test workings";
+            mailMessage.Body = "It is wonderfull to know that Jesus is alive";
+            mailMessage.IsBodyHtml = true;
+
+            SmtpClient smtpClient = new SmtpClient();
+            smtpClient.UseDefaultCredentials = false;
+            smtpClient.Credentials = new NetworkCredential("noreply@korrhsolutions.com", "N0t@452#");
+            smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+            smtpClient.Host = "smtp.zoho.com";
+            smtpClient.Port = 587;
+             
+            smtpClient.EnableSsl = true;
+            
+            smtpClient.Send(mailMessage);*/
+            string msg = "It is wonderfull to know that Jesus is alive" + "\r\n" + "This is comming from inner appliaction service"
+                + "\r\n" + "Taking from database records";
+            _commService.SendMail("Udeme Bassey Ekim", "demzy247@gmail.com", msg, "Admission Test");
+            return View();
+        }
         [AllowAnonymous]
         [HttpPost]
         
@@ -232,7 +260,7 @@ namespace Eduplus.Web.SMC.Controllers
             return "Check";
 
         }
-
+         
 
         [KSWebAuthorisation]
         [HttpGet]
@@ -289,9 +317,72 @@ namespace Eduplus.Web.SMC.Controllers
             
             return View();
         }
+        [AllowAnonymous]
         public ActionResult ForgotPassword()
         {
             return View();
+        }
+        [AllowAnonymous]
+        [HttpPost]
+        public ActionResult ForgotPassword(string username)
+        {
+            var user = _userService.FetchSingleUser(username.Trim());
+            Session["PassUser"] = null;
+            if (user == null)
+            {
+                ModelState.AddModelError("", "Username not found");
+                return View();
+
+            }
+            else {
+                
+                var dto= new UserDTO
+                {
+                    UserId = user.UserId,
+                    UserName = user.UserName,
+                    Email = user.UserCode,MaskedMail= _userService.MaskUserEmail(user.UserCode),
+
+                };
+
+                Session["PassUser"] = dto;
+                return RedirectToAction("PasswordReset"); }
+            
+        }
+        [AllowAnonymous]
+        public ActionResult PasswordReset()
+        {
+            //generate token and send to user email
+            
+            return View();
+        }
+        [AllowAnonymous]
+        public JsonResult GetPasswordResetData()
+        {
+            var user = (UserDTO)Session["PassUser"];
+
+            return Json(user, JsonRequestBehavior.AllowGet);
+        }
+        [AllowAnonymous]
+        public string GeneratePasswordOTP()
+        {
+            var user = (UserDTO)Session["PassUser"];
+            return _userService.GenerateAndSendEmailToken(user);
+             
+        }
+        [AllowAnonymous]
+        public string SavePasswordReset(object[] data)
+        {
+            string username = (string)data[0];
+            var newPassword = (string)data[1];
+            var userId = (string)data[2];
+            var token = (string)data[3];
+            //Verify token
+            if (_userService.ValidateSimpleToken(userId, token))
+            {
+                return _userService.ChangePassword(username, null, newPassword, userId);
+            }
+            else return "Invalid or expired token entered";
+            
         }
         public ActionResult ResetUSerPassword()
         {
@@ -378,7 +469,7 @@ namespace Eduplus.Web.SMC.Controllers
            
             string encTicket = FormsAuthentication.Encrypt(ntik);
             var chk = FormsAuthentication.FormsCookieName;
-            HttpCookie faCookie = new HttpCookie("KS_Eduplus_AKCOE", encTicket);
+            HttpCookie faCookie = new HttpCookie("KS_Eduplos_AKCOE", encTicket);
             faCookie.HttpOnly=true;
             //faCookie.Secure = true;
             faCookie.Expires = DateTime.UtcNow.AddMinutes(50);

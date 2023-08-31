@@ -818,6 +818,7 @@
     <Content Include="Scripts\ViewModels\mySemesterResultVM.js" />
     <Content Include="Scripts\ViewModels\newFeeScheduleVM.js" />
     <Content Include="Scripts\ViewModels\newProfileVM.js" />
+    <Content Include="Scripts\ViewModels\userPasswordResetVM.js" />
     <Content Include="Scripts\ViewModels\passwordResetVM.js" />
     <Content Include="Scripts\ViewModels\payOtherChargesVM.js" />
     <Content Include="Scripts\ViewModels\preExamReportVM.js" />
@@ -1115,6 +1116,9 @@
     <Content Include="Views\Admission_Center\StudentEnrolment.cshtml" />
     <Content Include="Views\Result\UploadResultFromTemplate.cshtml" />
     <Content Include="Views\Admission_Center\UploadManualMatricNumbers.cshtml" />
+    <Content Include="Views\Accounts\SendMail.cshtml" />
+    <Content Include="Views\Accounts\.cshtml" />
+    <Content Include="Views\Accounts\PasswordReset.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

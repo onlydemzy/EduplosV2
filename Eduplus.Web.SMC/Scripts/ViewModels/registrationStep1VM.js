@@ -49,13 +49,13 @@ function step1VM() {
     self.Faculty = ko.observable();
     self.StudyMode = ko.observable().extend({ required: true });
     self.Duration = ko.observable().extend({ required: true });
-    self.JambYear = ko.observable().extend({
+    /*self.JambYear = ko.observable().extend({
         required: true,
         pattern: {
             message: 'Invalid JAMB Year inputted',
             params: /^[0-9]{4}$/
         }
-    });//^[0-9]{4}$
+    });//^[0-9]{4}$ */
     self.IsHandicapped = ko.observable().extend({ required: true });
     self.Countries = ko.observableArray([]);
     self.States = ko.observableArray([]);
@@ -64,7 +64,7 @@ function step1VM() {
     self.Status = ko.observable();
     self.WhyUs = ko.observable();
     
-    self.JambRegNumber = ko.observable().extend({required:true});
+   // self.JambRegNumber = ko.observable().extend({required:true});
     self.Sexes = ko.observableArray(['Male', 'Female']);
     self.EntryModes = ko.observableArray(['PUME', 'Direct Entry', 'Transfer'])
     self.months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
@@ -155,11 +155,7 @@ function step1VM() {
             self.RefereeAddress(data.RefereeAddress);
             self.RefereeMail(data.RefereeMail);
             self.RefereePhone(data.RefereePhone);
-            self.JambRegNumber(data.JambRegNumber);
-            if (data.JambYear > 0)
-            {
-                self.JambYear(data.JambYear);
-            }
+             
             
             self.StudyMode(data.StudyMode);
             self.WhyUs(data.WhyUs);

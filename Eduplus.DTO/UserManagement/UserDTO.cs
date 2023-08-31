@@ -11,6 +11,8 @@ namespace Eduplus.DTO.UserManagement
         public string UserId { get; set; }
         public string UserName { get; set; }
         public string FullName { get; set; }
+        public string Email { get; set; }
+        public string MaskedMail { get; set; }
         public int[] RoleIDs { get; set; }
         public string[] Roles { get; set; }
         public int NRoleID { get; set; }

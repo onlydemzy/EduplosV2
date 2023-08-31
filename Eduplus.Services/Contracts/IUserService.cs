@@ -32,5 +32,8 @@ namespace KS.Services.Contract
         List<Token> AllTokens();
         Token GetToken(int tokenId);
         void ChangeUserRole(string studentId, string userId, string oldRole, string newRole);
+        string GenerateAndSendEmailToken(UserDTO user);
+        string MaskUserEmail(string email);
+        bool ValidateSimpleToken(string userId, string token);
     }
 }

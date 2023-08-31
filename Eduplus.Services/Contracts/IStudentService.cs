@@ -66,7 +66,7 @@ namespace Eduplus.Services.Contracts
 
         bool CanVote(string studentId, int sessionId);
         StudentSummaryDTO FetchStudentByPhone(string phone);
-        string AssignManualMatricNumbers(List<StudentSummaryDTO> students, string userId);
+        string UpdateManualMatricNos(string progType, List<MatricRegDetailsDTO> matrics, string userId);
 
 
     }

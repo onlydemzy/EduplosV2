@@ -13,6 +13,7 @@ using Eduplus.Domain.AcademicModule;
 using Eduplus.Services.UtilityServices;
 using Eduplus.Domain.BurseryModule;
 using System.IO;
+using Eduplus.DTO.UserManagement;
 
 namespace Eduplus.Services.Implementations
 {
@@ -284,29 +285,29 @@ namespace Eduplus.Services.Implementations
                 user.UserRoles.Add(role);
 
                 _unitOfWork.UserRepository.Add(user);
-                _unitOfWork.Commit(student.PersonId);
-
+               
                 //send mail
-                /*var userData = _unitOfWork.UserDataRepository.GetAll().First();
+                
+                var userData = _unitOfWork.UserDataRepository.GetAll().First();
                 //Generate inner msg content
-                string msgBody = "Thank you for Enrolling with " + userData.InstitutionName +
-                    "Your personal data profile was successfully created." + "\n" +
-                "Login to the registration portal to complete your registration." + "\n" +
-                "Your login details is as follows: " + "\n" +
-                "Registration Number= " + student.PersonId + "\n" + "Username= " + student.Email + "\n" + "Password= " + st.Password;
-                var response=_communicationService.SendMail(student.Name,student.Email, msgBody, "New Profile creation");
-                if (response == "Ok")
-                {
-                    _unitOfWork.Commit(student.PersonId); return 1;
-                }
-                else return 2;*/
+                string msgBody = $@"Thank you for Enrolling with {userData.InstitutionName} +
+                     profile was successfully created." +$@"Login to the  school
+                        portal to complete your registration. Your login details is as follows:
+                                        Registration Number= {student.PersonId} 
+                                        Username= {student.Email} 
+                                        Password= {st.Password}";
+                
+                _communicationService.SendMail(user.FullName, student.Email, msgBody, "New Registration Confirmation");
+                _unitOfWork.Commit(student.PersonId); 
+               
                 return 1;
             }
-            else
+            else if(dbStudent.Phone == st.Phone)
             {
-               
-                return 0;
+                return 2;
+                
             }
+            else { return 0; }
             
         }
         
@@ -315,8 +316,6 @@ namespace Eduplus.Services.Implementations
         public string Step1Submission(StudentDTO dto, string userId,out string flag)
         {
             var dbStudent = _unitOfWork.StudentRepository.Get(dto.StudentId);
-            //check for existing Jamb No
-            
             
             Student nstudent = new Student();
             
@@ -860,7 +859,7 @@ namespace Eduplus.Services.Implementations
                 return msg;
             }
 
-            else if (jambresult==null)
+            else if (jambresult==null && student.EntryMode=="PUME")
             {
                 msg = "Input your UTME Registration number and year";
                 return msg;
@@ -946,14 +945,20 @@ namespace Eduplus.Services.Implementations
         {
              
             var student = _unitOfWork.StudentRepository.Get(studentId);
-            var userData = _unitOfWork.ProgrammeTypeRepository.Get(student.ProgrammeType);
+            var admitSession = _unitOfWork.SessionRepository.GetFiltered(s=>s.IsAdmissionSession).Single();
+
             student.AdmissionDate = DateTime.UtcNow;
             student.AdmissionStatus="Admitted";
-
+            student.YearAddmitted = admitSession.Title;
             //check if 
 
             _unitOfWork.Commit(userId);
-            
+
+            //Send mail
+            string msgBody = $@"Congratulations,based on the resent screening exercise conducted by this institution, your application has been
+accepted, consequently you have been offered admission into you great institution. Please proceed to 
+pay your acceptance fee if you accept this offer. Congratulations once again.";
+            _communicationService.SendMail(student.Name, student.Email, msgBody, "Your have been admitted");
             return "Student successfully admitted";
         }
         public StudentDTO AdmissionStatus(string studentID)
@@ -1452,6 +1457,28 @@ namespace Eduplus.Services.Implementations
 
             return matric;
         }
+
+
+        public string UpdateManualMatricNos(string progType,List<MatricRegDetailsDTO> matrics,string userId)
+        {
+            List<string> stIds = new List<string>();
+            foreach(var s in matrics)
+            {
+                stIds.Add(s.StudentId);
+            }
+            var dbStudents = _unitOfWork.StudentRepository.GetFiltered(st => stIds.Contains(st.PersonId) && st.ProgrammeType==progType && string.IsNullOrEmpty(st.MatricNumber)).ToList();
+            if (dbStudents.Count != matrics.Count)
+            {
+                return "Error Number uploaded students do not match with total number in database";
+            }
+            foreach(var s in dbStudents)
+            {
+                var matNo = matrics.Where(m => m.StudentId == s.PersonId).SingleOrDefault();
+                s.MatricNumber = matNo.MatricNo;
+            }
+            _unitOfWork.Commit(userId);
+            return "Register successfully updated";
+        }
         #endregion
 
         public bool CanVote(string studentId,int sessionId)
@@ -1776,26 +1803,6 @@ namespace Eduplus.Services.Implementations
 
             return dto.OrderBy(a => a.Programme).ThenBy(a => a.Name).ToList();
 
-        }
-
-        public string AssignManualMatricNumbers(List<StudentSummaryDTO> students,string userId)
-        {
-            List<string> studentIds = new List<string>();
-            foreach(var student in students)
-            {
-                studentIds.Add(student.StudentId);
-            }
-            var dbStudents = _unitOfWork.StudentRepository.GetFiltered(s => studentIds.Contains(s.PersonId)).ToList();
-            foreach(var dbSt in dbStudents)
-            {
-                var dto = students.Where(d => d.StudentId == dbSt.PersonId).SingleOrDefault();
-                if (dto != null)
-                {
-                    dbSt.MatricNumber = dto.MatricNumber.Trim().ToUpper();
-                }
-            }
-            _unitOfWork.Commit(userId);
-            return "Matric Number successfully updated";
         }
         #endregion
 

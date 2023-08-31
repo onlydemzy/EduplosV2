@@ -2,44 +2,36 @@
 
 @{
     ViewBag.Title = "Upload Manual Matricnumbers";
-     
+    <!--Layout = "~/Views/Shared/_Layout.cshtml"; -->
+
 }
 
 
-@using (Html.BeginForm("UploadResultFromTemplate", "Result", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+@using (Html.BeginForm("UploadManualMatricNumbers", "Admission_Center", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
 {
-   
+
 
     <div class="row">
         <div class="col-md-7">
-            <h3 style="color:#08581b">Upload Your Passport</h3>
-            <hr/>
-            <h4>Maximum passport size is 50Kb</h4>
-            @Html.AntiForgeryToken();
-            @Html.ValidationSummary(true);
+           
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
 
-             
             <div class="form-group">
-                <img id="output" style="max-height:200px; max-width:200px;" />
-                <input type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" name="file" id="file" value="Choose File" /> 
+                <input type="text" id="progType" name="progType" class="form-control" placeholder="Enter programme type: Degree Or NCE" />
+                <input type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" name="file" id="file" value="Choose File" />
+            </div>
+
+
+            <div class="form-group">
+                <input type="submit" class="btn btn-block btn-success" value="Upload and Continue" />
             </div>
 
             <div class="form-group">
-                <input type="submit" class="btn btn-block btn-success" value="Upload and Continue"/>
-            </div>
-
-            <div class="form-group">
-                @Html.ActionLink("Cancel","Index","Home")
+                @Html.ActionLink("Cancel", "Index", "Home")
             </div>
         </div>
     </div>
 }
-<script>
-    var loadfile = function (event) {
-
-        var output = document.getElementById('output');
-        output.src = URL.createObjectURL(event.target.files[0]);
-    };
-
-</script>
+ 
 

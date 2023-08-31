@@ -79,9 +79,9 @@ namespace Eduplus.Web.SMC.Controllers
             //var inv = _studentAccount.CheckIfOtherFeePaymentExist(User.UserId,"Convocation Fee");
             string flag;
                
-                    var othercharges = _bursaryService.FetchOtherChargesAmount("Convocation Fee", User.UserId);
+                    
 
-                    var invoice = _studentAccount.GenerateStudentPaymentInvoice(User.UserId, othercharges.ChargeId,currentSesion.SessionId, User.UserId,out flag);
+                    var invoice = _studentAccount.GenerateStudentPaymentInvoice(User.UserId, "Convocation Fee",currentSesion.SessionId, User.UserId,out flag);
                     if (invoice == null)
                         invoiceId = "Invalid";
                     else

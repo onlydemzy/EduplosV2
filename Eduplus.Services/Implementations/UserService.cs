@@ -1,4 +1,5 @@
 ﻿ using Eduplus.DTO.UserManagement;
+using Eduplus.Services.Contracts;
 using Eduplus.Services.Implementations;
 using KS.AES256Encryption;
 using KS.Core;
@@ -13,13 +14,15 @@ namespace KS.Services.Implementation
     public class UserService : IUserService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly ICommunicationService _comService;
         
-       public UserService(IUnitOfWork unitOfWork)
+       public UserService(IUnitOfWork unitOfWork,ICommunicationService communication)
         {
               
             if (unitOfWork == null)
                 throw new ArgumentNullException("unitOfWork");
             _unitOfWork = unitOfWork;
+            _comService = communication;
         }
         public User ValidateUser(string password, string username)
         {
@@ -113,9 +116,9 @@ namespace KS.Services.Implementation
             if (string.IsNullOrEmpty(oldPassword)&&user.UserName!="Admin")//admin wants to reset the password
             {
                 user.Password = PasswordMaker.HashPassword(newPassword);
-                 _unitOfWork.SetModified<User>(user);
+                 //_unitOfWork.SetModified<User>(user);
                 _unitOfWork.Commit(userId);
-                return "Password successfully changed";
+                return "Ok";
             }
             
             //Valid old user password
@@ -134,7 +137,15 @@ namespace KS.Services.Implementation
             return "Password successfully changed";
         }
         
+        public string MaskUserEmail(string email)
+        {
+            string first2X = email.Substring(0, 2);
+            int indexAt = email.IndexOf("@");
+            string[] re = email.Split('@');
 
+            string last2B4At = email.Substring(indexAt - 2, 2);
+            return first2X + "***" + last2B4At + "@" + re[1];
+        }
         #region TOKEN OPERATIONS
         public string CreateToken(Token token, string userId)
         {
@@ -157,7 +168,14 @@ namespace KS.Services.Implementation
                 return ex.Message;
             }
         }
-
+        public bool ValidateSimpleToken(string userId,string token)
+        {
+            var to = _unitOfWork.TokenRepository.GetFiltered(a => a.UserId == userId && a.AuthToken == token
+            && a.ExpiryDate>=DateTime.UtcNow).FirstOrDefault();
+            if (to == null)
+                return false;
+            else return true;
+        }
         public bool ValidateToken(string token)
         {
            
@@ -186,7 +204,33 @@ namespace KS.Services.Implementation
                 }
             
         }
-
+        public string GenerateAndSendEmailToken(UserDTO user)
+        {
+            var tk= _unitOfWork.TokenRepository.GetFiltered(t => t.UserId == user.UserId).FirstOrDefault();
+            string tk1 = GenerateSimpleToken();
+            _unitOfWork.TokenRepository.Add(new Token
+            {
+                UserId = user.UserId,
+                AuthToken = tk1,
+                IssuedDate = DateTime.UtcNow,
+                ExpiryDate = DateTime.UtcNow.AddMinutes(10)
+            });
+            _unitOfWork.Commit(user.UserId);
+            var st = _unitOfWork.StudentRepository.Get(user.UserId);
+             
+            //send token
+            string msg = $@"Hello {st.Name},
+                         Your password reset code={tk1}.
+                            Please note that this code will expire in 10minutes time. 
+                            If you are not the one that initiated this action please ignore this mail and change ypur password immediately";
+            _comService.SendMail(user.FullName, user.Email, msg, "Password change verification");
+            return "Ok";
+        }
+        string GenerateSimpleToken()
+        {
+            Random ran = new Random();
+            return ran.Next(100000, 999999).ToString();
+        }
         public void DeleteToken(int tokenId, string userId)
         {
             var dbtoken = _unitOfWork.TokenRepository.Get(tokenId);
@@ -480,8 +524,21 @@ namespace KS.Services.Implementation
         }
         public User FetchSingleUser(string userName)
         {
-            
+
+            string email = "";
             User user =_unitOfWork.UserRepository.GetFiltered(u=>u.UserName==userName).SingleOrDefault();
+            var stUser = _unitOfWork.StudentRepository.Get(user.UserId);
+            if (stUser == null)
+            {
+                var staffUseer = _unitOfWork.StaffRepository.Get(user.UserId);
+                email = staffUseer.Email;
+
+            }
+            else
+            {
+                email = stUser.Email;
+            }
+            user.UserCode = email;
             return user;
         }
         public List<User>FetchRoleUsers(int roleid)

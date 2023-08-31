@@ -14,6 +14,7 @@ using System.Data.Entity;
 using Eduplus.ObjectMappings;
 using Eduplus.DTO.CoreModule;
 using Eduplus.Domain.AcademicModule;
+using KS.Core.UserManagement;
 
 namespace Eduplus.Services.Implementations
 {
@@ -338,27 +339,26 @@ namespace Eduplus.Services.Implementations
 
             return invoice.TransactionId;
         }
-        public PaymentInvoice GenerateStudentPaymentInvoice(string regNo,int otherChargeId,int sessionId, string userId, out string flag)
+        public PaymentInvoice GenerateStudentPaymentInvoice(string regNo,string chargeTitle,int sessionId, string userId, out string flag)
         {
             var paySession = _unitOfWork.SessionRepository.Get(sessionId);
             var currentSemester = _unitOfWork.SemesterRepository.GetFiltered(a=>a.IsCurrent==true).SingleOrDefault();
             double amount = 0;
             flag = "Ok";
-            var charge = _unitOfWork.OtherChargesRepository.Get(otherChargeId);
-            if (charge == null)
-            {
-                flag = "Invalid charge selected";
-                return null;
-            }
             
             var student = _unitOfWork.StudentRepository.Get(regNo);
+            var charge = _unitOfWork.OtherChargesRepository.GetFiltered(c=>c.Description==chargeTitle && c.ProgrammeType==student.ProgrammeType).SingleOrDefault();
             if (student == null)
             {
                 flag = "Invalid student data";
                 return null;
             }
-            var progType = _unitOfWork.ProgrammeTypeRepository.Get(student.ProgrammeType);       
-                           
+            if (charge == null)
+            {
+                flag = "Invalid Student charge";
+                return null;
+            }
+                      
             PaymentInvoice invoice = new PaymentInvoice();
             invoice.TransactionId = TransactionId(student.ProgrammeType);
             invoice.GeneratedDate = DateTime.UtcNow;
@@ -402,6 +402,7 @@ namespace Eduplus.Services.Implementations
                 
             invoice.Amount = amount;
             //Generate TransRef
+            var progType = _unitOfWork.ProgrammeTypeRepository.Get(charge.ProgrammeType);
             if (progType.ApplyGatewayCharge == true)
             {
                 var payGateway = progType.PaymentGateWays.Where(a => a.IsDefault == true).SingleOrDefault();
