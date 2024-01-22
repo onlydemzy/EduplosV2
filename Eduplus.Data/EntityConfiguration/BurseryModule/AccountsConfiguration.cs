@@ -1,8 +1,8 @@
-﻿using Eduplus.Domain.BurseryModule;
+﻿using Eduplos.Domain.BurseryModule;
 using KS.Domain.AccountsModule;
 using System.Data.Entity.ModelConfiguration;
 
-namespace Eduplus.Data.EntityConfiguration.BurseryModule
+namespace Eduplos.Data.EntityConfiguration.BurseryModule
 {
     internal class AccountsConfiguration:EntityTypeConfiguration<Accounts>
     {

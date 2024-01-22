@@ -2,7 +2,7 @@
 
 using System;
 
-namespace Eduplus.DTO.AcademicModule
+namespace Eduplos.DTO.AcademicModule
 {
     public class CalenderDetailsDTO
     {

@@ -1,5 +1,5 @@
-﻿using Eduplus.Services.Contracts;
-using Eduplus.Web.SMC.ViewModels;
+﻿using Eduplos.Services.Contracts;
+using Eduplos.Web.SMC.ViewModels;
 using KS.Web.Security;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
 
-namespace Eduplus.Web.SMC.Controllers
+namespace Eduplos.Web.SMC.Controllers
 {
 
     public class HomeController : BaseController

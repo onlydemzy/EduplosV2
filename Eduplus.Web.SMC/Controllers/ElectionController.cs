@@ -1,5 +1,5 @@
-﻿using Eduplus.Services.Contracts;
-using Eduplus.Web.SMC.ViewModels;
+﻿using Eduplos.Services.Contracts;
+using Eduplos.Web.SMC.ViewModels;
 using Newtonsoft.Json;
 using NLog;
 using System;
@@ -9,7 +9,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace Eduplus.Web.SMC.Controllers
+namespace Eduplos.Web.SMC.Controllers
 {
     [RoutePrefix("api/Election")]
     public class ElectionController : ApiController

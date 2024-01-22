@@ -1,4 +1,4 @@
-﻿namespace Eduplus.Domain.HostelModule
+﻿namespace Eduplos.Domain.HostelModule
 {
     public class BedSpace
     {

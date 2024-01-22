@@ -1,6 +1,6 @@
 ﻿using System.Data;
 
-namespace Eduplus.DTO.AcademicModule
+namespace Eduplos.DTO.AcademicModule
 {
     public class BroadSheetDTO
     {

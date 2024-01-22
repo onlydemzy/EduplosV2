@@ -1,4 +1,4 @@
-﻿using Eduplus.Domain.CoreModule;
+﻿using Eduplos.Domain.CoreModule;
 using System;
 
 namespace KS.Domain.HRModule

@@ -1,8 +1,8 @@
-﻿using Eduplus.DTO.AcademicModule;
+﻿using Eduplos.DTO.AcademicModule;
 using System;
 using System.Collections.Generic;
 
-namespace Eduplus.DTO.CoreModule
+namespace Eduplos.DTO.CoreModule
 {
     public class StudentDTO
     {

@@ -1,7 +1,7 @@
-﻿using Eduplus.Domain.BurseryModule;
+﻿using Eduplos.Domain.BurseryModule;
 using System.Data.Entity.ModelConfiguration;
 
-namespace Eduplus.Data.EntityConfiguration.BurseryModule
+namespace Eduplos.Data.EntityConfiguration.BurseryModule
 {
     internal class FeeOptionsConfiguration:EntityTypeConfiguration<FeeOptions>
     {

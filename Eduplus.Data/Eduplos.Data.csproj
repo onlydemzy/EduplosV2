@@ -7,8 +7,8 @@
     <ProjectGuid>{DD3CBBEB-410D-42FC-BC83-7CEEAE033463}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Eduplus.Data</RootNamespace>
-    <AssemblyName>Eduplus.Data</AssemblyName>
+    <RootNamespace>Eduplos.Data</RootNamespace>
+    <AssemblyName>Eduplos.Data</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -31,9 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Eduplus.DTO, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Eduplus.DTO\bin\Debug\Eduplus.DTO.dll</HintPath>
+    <Reference Include="Eduplos.DTO">
+      <HintPath>..\Eduplus.DTO\bin\Debug\Eduplos.DTO.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
@@ -135,9 +134,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Eduplus.Domain\Eduplus.Domain.csproj">
+    <ProjectReference Include="..\Eduplus.Domain\Eduplos.Domain.csproj">
       <Project>{1AD68F96-9790-4E01-983B-876955930E87}</Project>
-      <Name>Eduplus.Domain</Name>
+      <Name>Eduplos.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

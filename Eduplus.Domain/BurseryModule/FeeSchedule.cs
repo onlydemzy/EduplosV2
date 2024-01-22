@@ -1,10 +1,10 @@
-﻿using Eduplus.Domain.AcademicModule;
-using Eduplus.Domain.CoreModule;
+﻿using Eduplos.Domain.AcademicModule;
+using Eduplos.Domain.CoreModule;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Eduplus.Domain.BurseryModule
+namespace Eduplos.Domain.BurseryModule
 {
     public class FeeSchedule
     {

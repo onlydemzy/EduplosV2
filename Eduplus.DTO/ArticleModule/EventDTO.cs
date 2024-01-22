@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Eduplus.DTO.ArticleModule
+namespace Eduplos.DTO.ArticleModule
 {
     public class EventDTO
     {

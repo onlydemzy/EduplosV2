@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Eduplus.DTO
+namespace Eduplos.DTO
 {
     public class StudentProfileDTO
     {

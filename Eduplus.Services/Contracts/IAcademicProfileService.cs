@@ -1,9 +1,9 @@
-﻿using Eduplus.Domain.AcademicModule;
-using Eduplus.DTO.AcademicModule;
-using Eduplus.DTO.CoreModule;
+﻿using Eduplos.Domain.AcademicModule;
+using Eduplos.DTO.AcademicModule;
+using Eduplos.DTO.CoreModule;
 using System.Collections.Generic;
 
-namespace Eduplus.Services.Contracts
+namespace Eduplos.Services.Contracts
 {
     public interface IAcademicProfileService
     {
@@ -36,7 +36,7 @@ namespace Eduplus.Services.Contracts
         List<SemesterRegistrations> SemesterRegistrations(int semesterId, string progCode);
         
         List<StudentDTO> RegisteredStudents(int semesterId, string departCode);
-        string ApproveResults(int semesterId, int lvl, string prog, string userId);
+        
         void AddRegistrationPermissionsLog(string studentId,int sessionId);
         string DeleteCourseFromCourseRegistration(CourseRegistrationDTO course, string userId);
         string AddCourseToCourseRegistration(CourseRegistrationDTO course, string userId);

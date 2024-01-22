@@ -1,17 +1,17 @@
-﻿using Eduplus.Services.Contracts;
+﻿using Eduplos.Services.Contracts;
 using KS.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Eduplus.Domain.BurseryModule;
-using Eduplus.DTO.BursaryModule;
-using Eduplus.ObjectMappings;
-using Eduplus.Domain.CoreModule;
-using Eduplus.Services.UtilityServices;
+using Eduplos.Domain.BurseryModule;
+using Eduplos.DTO.BursaryModule;
+using Eduplos.ObjectMappings;
+using Eduplos.Domain.CoreModule;
+using Eduplos.Services.UtilityServices;
 using KS.Domain.AccountsModule;
 using System.Data.Entity;
 
-namespace Eduplus.Services.Implementations
+namespace Eduplos.Services.Implementations
 {
     public class BursaryService : IBursaryService
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Eduplus.DTO.BursaryModule
+namespace Eduplos.DTO.BursaryModule
 {
     public class StudentTransactionDTO
     {

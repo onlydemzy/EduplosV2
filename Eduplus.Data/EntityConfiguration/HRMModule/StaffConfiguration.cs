@@ -1,7 +1,7 @@
 ﻿using KS.Domain.HRModule;
 using System.Data.Entity.ModelConfiguration;
 
-namespace Eduplus.Data.EntityConfiguration.HRMModule
+namespace Eduplos.Data.EntityConfiguration.HRMModule
 {
     internal class StaffConfiguration : EntityTypeConfiguration<Staff>
     {

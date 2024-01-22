@@ -1,5 +1,5 @@
-﻿using Eduplus.Domain.BurseryModule;
-using Eduplus.DTO.BursaryModule;
+﻿using Eduplos.Domain.BurseryModule;
+using Eduplos.DTO.BursaryModule;
 using KS.Core;
 using KS.Domain.AccountsModule;
 using KS.Services.Contract;

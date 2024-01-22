@@ -1,13 +1,13 @@
-﻿using Eduplus.Domain.AcademicModule;
-using Eduplus.Domain.CoreModule;
-using Eduplus.DTO.CoreModule;
+﻿using Eduplos.Domain.AcademicModule;
+using Eduplos.Domain.CoreModule;
+using Eduplos.DTO.CoreModule;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 
-namespace Eduplus.Services.Implementations
+namespace Eduplos.Services.Implementations
 {
     public class PaymentGatewayService
     {

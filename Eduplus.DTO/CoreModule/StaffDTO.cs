@@ -1,4 +1,4 @@
-﻿namespace Eduplus.DTO.CoreModule
+﻿namespace Eduplos.DTO.CoreModule
 {
     public class StaffDTO
     {

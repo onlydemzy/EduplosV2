@@ -1,13 +1,13 @@
-﻿using Eduplus.Domain.CoreModule;
-using Eduplus.DTO.ArticleModule;
-using Eduplus.Services.Contracts;
+﻿using Eduplos.Domain.CoreModule;
+using Eduplos.DTO.ArticleModule;
+using Eduplos.Services.Contracts;
 using KS.Web.Security;
 using System;
 using System.IO;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Eduplus.Web.SMC.Controllers
+namespace Eduplos.Web.SMC.Controllers
 {
     [KSWebAuthorisation]
     public class ContentManagementController : BaseController

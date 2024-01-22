@@ -1,4 +1,4 @@
-﻿namespace Eduplus.Services.Contracts
+﻿namespace Eduplos.Services.Contracts
 {
     public interface ICommunicationService
     {

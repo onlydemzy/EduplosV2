@@ -1,8 +1,8 @@
-﻿using Eduplus.Data.EntityConfiguration.CoreModule;
-using Eduplus.Data.EntityConfiguration.HRMModule;
-using Eduplus.Domain.AcademicModule;
-using Eduplus.Domain.CoreModule;
-using Eduplus.Data.EntityConfiguration.AcademicModule;
+﻿using Eduplos.Data.EntityConfiguration.CoreModule;
+using Eduplos.Data.EntityConfiguration.HRMModule;
+using Eduplos.Domain.AcademicModule;
+using Eduplos.Domain.CoreModule;
+using Eduplos.Data.EntityConfiguration.AcademicModule;
 using KS.Core.UserManagement;
 using KS.Data.EntityConfiguration.UserManagement;
 using System.Collections.Generic;
@@ -11,21 +11,21 @@ using System.Data.Entity.Infrastructure;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using UniversitySolution.Data.CoreBC;
-using Eduplus.Domain.ArticleModule;
-using Eduplus.Data.EntityConfiguration.ArticleModule;
+using Eduplos.Domain.ArticleModule;
+using Eduplos.Data.EntityConfiguration.ArticleModule;
 using KS.Core;
 using KS.Data.Repositories;
 using KS.Domain.HRModule;
-using Eduplus.Data.EntityConfiguration.BurseryModule;
-using Eduplus.Domain.BurseryModule;
+using Eduplos.Data.EntityConfiguration.BurseryModule;
+using Eduplos.Domain.BurseryModule;
 using KS.Domain.AccountsModule;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
-using Eduplus.Data;
+using Eduplos.Data;
 using System.Data.Entity.Core.Objects;
 using System.Data.Entity.Validation;
-using Eduplus.Domain;
-using Eduplus.Data.Repositories;
+using Eduplos.Domain;
+using Eduplos.Data.Repositories;
 
 namespace KS.Data
 {

@@ -1,4 +1,4 @@
-﻿namespace Eduplus.DTO
+﻿namespace Eduplos.DTO
 {
     public class SemesterRegistrationsDTO
     {

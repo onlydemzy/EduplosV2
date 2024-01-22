@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Eduplus.DTO.CoreModule
+namespace Eduplos.DTO.CoreModule
 {
     class ProgrammeTypePaymentGatewayDTO
     {

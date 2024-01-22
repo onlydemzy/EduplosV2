@@ -1,17 +1,14 @@
-﻿using Eduplus.Services.Contracts;
+﻿using Eduplos.Services.Contracts;
 using KS.Core;
-using System.Collections.Generic;
-using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Drawing.Printing;
+using MailKit.Net.Smtp;
+using MimeKit;
+
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Net.Mail;
-using System.Security.AccessControl;
-using System.Security.Cryptography;
-using System.Windows;
 
-namespace Eduplus.Services.Implementations
+
+namespace Eduplos.Services.Implementations
 {
     public class CommunicationService:ICommunicationService
     {
@@ -20,10 +17,10 @@ namespace Eduplus.Services.Implementations
         {
             _unitOfWork = unitOfWork;
         }
-        public string SendMail(string receiverFullname,string receiverMail,string msgBody,string subject)
+        /*public string SendMailOld(string receiverFullname,string receiverMail,string msgBody,string subject)
         {
 
-            var userData = _unitOfWork.UserDataRepository.GetAll().First();
+           var userData = _unitOfWork.UserDataRepository.GetAll().First();
             MailMessage mailMessage = new MailMessage();
             mailMessage.From = new MailAddress(userData.AppEmail,userData.Sender);
             mailMessage.To.Add(receiverMail);
@@ -44,8 +41,7 @@ namespace Eduplus.Services.Implementations
 
             //Add view to the Email Message
             mailMessage.AlternateViews.Add(htmlView);
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12 | SecurityProtocolType.Ssl3;
-            
+           
             SmtpClient smtpClient = new SmtpClient();
             smtpClient.UseDefaultCredentials = false;
             smtpClient.Credentials = new NetworkCredential(userData.AppEmail, userData.Password);
@@ -54,10 +50,46 @@ namespace Eduplus.Services.Implementations
             smtpClient.Port = userData.Port;
             smtpClient.EnableSsl = true;
              
-             smtpClient.Send(mailMessage);
+           // smtpClient.Send(mailMessage);
                 return "Ok";
              
              
+        }*/
+        public string SendMail(string receiverFullname, string receiverMail, string msgBody, string subject)
+        {
+
+            var userData = _unitOfWork.UserDataRepository.GetAll().First();
+            var mailMessage = new MimeMessage();
+            mailMessage.From.Add(new MailboxAddress(userData.Sender, userData.AppEmail));
+            mailMessage.To.Add(new MailboxAddress(receiverMail,receiverMail));
+            mailMessage.Subject = subject;
+            // mailMessage.Body =HtmlMessageBody(receiverFullname,msgBody);
+            var bodyBuilder = new BodyBuilder();
+            bodyBuilder.HtmlBody = HtmlMessageBody(receiverFullname, msgBody);
+       //Add Image
+            using(var stream=new MemoryStream(userData.Regbanner))
+            {
+                var theEmailImage = bodyBuilder.LinkedResources.Add("image.jpg", stream);
+                theEmailImage.ContentId = "imageID";
+                bodyBuilder.HtmlBody = bodyBuilder.HtmlBody.Replace("[img-src]", theEmailImage.ContentId);
+            }
+            
+            
+            //Add view to the Email Message
+            
+            mailMessage.Body = bodyBuilder.ToMessageBody();
+
+            using (var smtpClient = new SmtpClient())
+            {
+                smtpClient.Connect(userData.EmailDomain, userData.Port, userData.EnableSsl);
+                smtpClient.Authenticate(userData.EmailDomain, userData.Password);
+                smtpClient.Send(mailMessage);
+                smtpClient.Disconnect(true);
+            }
+                
+            return "Ok";
+
+
         }
         string HtmlMessageBody(string recieverFullname,string content)
         {

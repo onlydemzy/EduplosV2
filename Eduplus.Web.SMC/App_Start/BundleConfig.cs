@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace Eduplus.Web
+namespace Eduplos.Web
 {
     public class BundleConfig
     {
@@ -10,7 +10,7 @@ namespace Eduplus.Web
         {
            
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-3.4.1.js",
+                        "~/Scripts/jquery-3.7.1.js",
                         "~/Scripts/jquery.easing.1.3.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(

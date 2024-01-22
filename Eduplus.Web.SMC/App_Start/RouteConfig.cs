@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace Eduplus.Web.SMC
+namespace Eduplos.Web.SMC
 {
     public class RouteConfig
     {

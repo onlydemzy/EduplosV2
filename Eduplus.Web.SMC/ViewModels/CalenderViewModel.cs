@@ -1,10 +1,10 @@
-﻿using Eduplus.Domain.AcademicModule;
+﻿using Eduplos.Domain.AcademicModule;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Eduplus.Web.SMC.ViewModels
+namespace Eduplos.Web.SMC.ViewModels
 {
     public class CalenderViewModel
     {

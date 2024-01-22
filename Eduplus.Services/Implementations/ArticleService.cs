@@ -1,16 +1,16 @@
 ﻿using System;
-using Eduplus.DTO.ArticleModule;
-using Eduplus.Services.Contracts;
+using Eduplos.DTO.ArticleModule;
+using Eduplos.Services.Contracts;
 using KS.Core;
-using Eduplus.Domain.CoreModule;
-using Eduplus.Domain.ArticleModule;
-using Eduplus.ObjectMappings;
-using Eduplus.Data.Repositories;
+using Eduplos.Domain.CoreModule;
+using Eduplos.Domain.ArticleModule;
+using Eduplos.ObjectMappings;
+using Eduplos.Data.Repositories;
 using System.Collections.Generic;
 using System.Linq;
-using Eduplus.Services.UtilityServices;
+using Eduplos.Services.UtilityServices;
 
-namespace Eduplus.Services.Implementations
+namespace Eduplos.Services.Implementations
 {
     public class ArticleService : IArticleService
     {

@@ -1,4 +1,4 @@
-﻿using Eduplus.DTO.UserManagement;
+﻿using Eduplos.DTO.UserManagement;
 using KS.Core.UserManagement;
 using System.Collections.Generic;
 

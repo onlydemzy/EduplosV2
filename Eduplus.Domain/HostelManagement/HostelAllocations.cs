@@ -1,6 +1,6 @@
-﻿using Eduplus.Domain.CoreModule;
+﻿using Eduplos.Domain.CoreModule;
 
-namespace Eduplus.Domain.HostelModule
+namespace Eduplos.Domain.HostelModule
 {
     public class HostelAllocations
     {

@@ -1,5 +1,5 @@
-﻿using Eduplus.Domain.AcademicModule;
-using Eduplus.Domain.CoreModule;
+﻿using Eduplos.Domain.AcademicModule;
+using Eduplos.Domain.CoreModule;
 using KS.Core.UserManagement;
 using System;
 using System.Collections.Generic;

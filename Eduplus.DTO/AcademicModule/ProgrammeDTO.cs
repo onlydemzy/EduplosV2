@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Eduplus.DTO.AcademicModule
+namespace Eduplos.DTO.AcademicModule
 {
     public class ProgrammeDTO
     {
@@ -19,6 +19,9 @@ namespace Eduplus.DTO.AcademicModule
         public string Faculty { get; set; }
         public int TotalEnrollment { get; set; }
         public string Award { get; set; }
+        public bool EnableSiwes { get; set; }
+        public int? SiwesLvl { get; set; }
+        public string SiwesSemester { get; set; }
         public string Fullname
         {
             get { return this.Title + "-" + this.ProgrammeType; }

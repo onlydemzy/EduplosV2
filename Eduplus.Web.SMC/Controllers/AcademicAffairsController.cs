@@ -1,6 +1,6 @@
-﻿using Eduplus.Domain.AcademicModule;
-using Eduplus.DTO.AcademicModule;
-using Eduplus.Services.Contracts;
+﻿using Eduplos.Domain.AcademicModule;
+using Eduplos.DTO.AcademicModule;
+using Eduplos.Services.Contracts;
 using KS.Web.Security;
 using Rotativa;
 using Rotativa.Options;
@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
-namespace Eduplus.Web.SMC.Controllers
+namespace Eduplos.Web.SMC.Controllers
 {
     [KS.Web.Security.KSWebAuthorisation]
     public class AcademicAffairsController : BaseController

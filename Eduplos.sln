@@ -3,16 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eduplus.Data", "Eduplus.Data\Eduplus.Data.csproj", "{DD3CBBEB-410D-42FC-BC83-7CEEAE033463}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eduplos.Data", "Eduplus.Data\Eduplos.Data.csproj", "{DD3CBBEB-410D-42FC-BC83-7CEEAE033463}"
 	ProjectSection(ProjectDependencies) = postProject
 		{B73EFC83-83FA-48B7-A54F-513E2322EA97} = {B73EFC83-83FA-48B7-A54F-513E2322EA97}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eduplus.DTO", "Eduplus.DTO\Eduplus.DTO.csproj", "{B73EFC83-83FA-48B7-A54F-513E2322EA97}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eduplos.DTO", "Eduplus.DTO\Eduplos.DTO.csproj", "{B73EFC83-83FA-48B7-A54F-513E2322EA97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eduplus.ObjectMappings", "Eduplus.ObjectMappings\Eduplus.ObjectMappings.csproj", "{3A7830DC-17AF-41EF-A679-90D942D402BC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eduplos.ObjectMappings", "Eduplus.ObjectMappings\Eduplos.ObjectMappings.csproj", "{3A7830DC-17AF-41EF-A679-90D942D402BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eduplus.Services", "Eduplus.Services\Eduplus.Services.csproj", "{F322625C-3FE7-4384-A3C3-395CE29C04A1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eduplos.Services", "Eduplus.Services\Eduplos.Services.csproj", "{F322625C-3FE7-4384-A3C3-395CE29C04A1}"
 	ProjectSection(ProjectDependencies) = postProject
 		{1AD68F96-9790-4E01-983B-876955930E87} = {1AD68F96-9790-4E01-983B-876955930E87}
 		{DD3CBBEB-410D-42FC-BC83-7CEEAE033463} = {DD3CBBEB-410D-42FC-BC83-7CEEAE033463}
@@ -20,7 +20,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eduplus.Services", "Eduplus
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KS.Common", "KS.Common\KS.Common.csproj", "{107F74D9-1D82-4A9D-96D5-263843C004F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eduplus.Web.SMC", "Eduplus.Web.SMC\Eduplus.Web.SMC.csproj", "{384AFB57-8C87-4A7A-9828-36C9A80EE6C2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eduplos.Web.SMC", "Eduplus.Web.SMC\Eduplos.Web.SMC.csproj", "{384AFB57-8C87-4A7A-9828-36C9A80EE6C2}"
 	ProjectSection(ProjectDependencies) = postProject
 		{107F74D9-1D82-4A9D-96D5-263843C004F1} = {107F74D9-1D82-4A9D-96D5-263843C004F1}
 		{1AD68F96-9790-4E01-983B-876955930E87} = {1AD68F96-9790-4E01-983B-876955930E87}
@@ -29,7 +29,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eduplus.Web.SMC", "Eduplus.
 		{F322625C-3FE7-4384-A3C3-395CE29C04A1} = {F322625C-3FE7-4384-A3C3-395CE29C04A1}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eduplus.Domain", "Eduplus.Domain\Eduplus.Domain.csproj", "{1AD68F96-9790-4E01-983B-876955930E87}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eduplos.Domain", "Eduplus.Domain\Eduplos.Domain.csproj", "{1AD68F96-9790-4E01-983B-876955930E87}"
 	ProjectSection(ProjectDependencies) = postProject
 		{107F74D9-1D82-4A9D-96D5-263843C004F1} = {107F74D9-1D82-4A9D-96D5-263843C004F1}
 		{B73EFC83-83FA-48B7-A54F-513E2322EA97} = {B73EFC83-83FA-48B7-A54F-513E2322EA97}

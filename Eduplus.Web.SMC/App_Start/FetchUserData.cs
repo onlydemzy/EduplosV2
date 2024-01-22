@@ -1,6 +1,6 @@
-﻿using Eduplus.Domain.CoreModule;
-using Eduplus.Services.Contracts;
-using Eduplus.Services.Implementations;
+﻿using Eduplos.Domain.CoreModule;
+using Eduplos.Services.Contracts;
+using Eduplos.Services.Implementations;
 using KS.Data;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Web;
 //mike-sumoh
 //    untom
 
-namespace Eduplus.Web.SMC
+namespace Eduplos.Web.SMC
 {
     public class FetchUserData
     {

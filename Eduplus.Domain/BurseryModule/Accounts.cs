@@ -1,4 +1,4 @@
-﻿using Eduplus.Domain.BurseryModule;
+﻿using Eduplos.Domain.BurseryModule;
 
 namespace KS.Domain.AccountsModule
 {

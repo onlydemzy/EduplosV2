@@ -1,5 +1,5 @@
-﻿using Eduplus.Domain.CoreModule;
-using Eduplus.Services.Implementations;
+﻿using Eduplos.Domain.CoreModule;
+using Eduplos.Services.Implementations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace Eduplus.Web.SMC
+namespace Eduplos.Web.SMC
 {
     public class ApiLogHandler:DelegatingHandler
     {
@@ -67,7 +67,9 @@ namespace Eduplus.Web.SMC
         }
         private async Task<bool> SendToLog(ApiLog log)
         {
+            
             // TODO: Write code here to store the logMetadata instance to a pre-configured log store...
+
             GeneralDutiesService serv = new GeneralDutiesService();
             serv.SaveApiLog(log);
             return true;

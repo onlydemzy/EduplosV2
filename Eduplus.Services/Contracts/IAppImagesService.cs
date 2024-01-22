@@ -1,7 +1,7 @@
-﻿using Eduplus.Domain.CoreModule;
+﻿using Eduplos.Domain.CoreModule;
 using System.Collections.Generic;
 
-namespace Eduplus.Services.Contracts
+namespace Eduplos.Services.Contracts
 {
     public interface IAppImagesService
     {

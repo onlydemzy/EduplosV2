@@ -1,8 +1,8 @@
-﻿using Eduplus.Domain.CoreModule;
+﻿using Eduplos.Domain.CoreModule;
 using KS.Domain.AccountsModule;
 using System;
 
-namespace Eduplus.Domain.BurseryModule
+namespace Eduplos.Domain.BurseryModule
 {
     public class StudentPayments
     {

@@ -1,9 +1,11 @@
-﻿ using Eduplus.DTO.UserManagement;
-using Eduplus.Services.Contracts;
-using Eduplus.Services.Implementations;
+﻿using Eduplos.Domain.CoreModule;
+using Eduplos.DTO.UserManagement;
+using Eduplos.Services.Contracts;
+using Eduplos.Services.Implementations;
 using KS.AES256Encryption;
 using KS.Core;
 using KS.Core.UserManagement;
+using KS.Domain.HRModule;
 using KS.Services.Contract;
 using System;
 using System.Collections.Generic;
@@ -112,8 +114,8 @@ namespace KS.Services.Implementation
             if (user == null)
             { return "User does not exist"; }//User does not exist
 
-            
-            if (string.IsNullOrEmpty(oldPassword)&&user.UserName!="Admin")//admin wants to reset the password
+            var userrole = user.UserRoles.Select(r => r.IsSystemAdmin == true);
+            if (string.IsNullOrEmpty(oldPassword)&&userrole.Count()>0)//admin wants to reset the password
             {
                 user.Password = PasswordMaker.HashPassword(newPassword);
                  //_unitOfWork.SetModified<User>(user);
@@ -527,18 +529,25 @@ namespace KS.Services.Implementation
 
             string email = "";
             User user =_unitOfWork.UserRepository.GetFiltered(u=>u.UserName==userName).SingleOrDefault();
-            var stUser = _unitOfWork.StudentRepository.Get(user.UserId);
-            if (stUser == null)
+            if(user != null )
             {
-                var staffUseer = _unitOfWork.StaffRepository.Get(user.UserId);
-                email = staffUseer.Email;
+                var stUser = _unitOfWork.StudentRepository.GetFiltered(s=>s.PersonId==user.UserId).SingleOrDefault();
+                if(stUser!=null)
+                {
+                    email = stUser.Email;
+                }
+                else
+                {
+                    var staffUser = _unitOfWork.StaffRepository.GetFiltered(s => s.PersonId == user.UserId).SingleOrDefault();
+                    if(staffUser!=null)
+                    {
+                        email = staffUser.Email;
+                    }
+                }
+                user.UserCode = email;
 
             }
-            else
-            {
-                email = stUser.Email;
-            }
-            user.UserCode = email;
+       
             return user;
         }
         public List<User>FetchRoleUsers(int roleid)

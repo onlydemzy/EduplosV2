@@ -1,7 +1,7 @@
-﻿using Eduplus.Domain.BurseryModule;
-using Eduplus.DTO.BursaryModule;
-using Eduplus.Services.Contracts;
-using Eduplus.Web.SMC.ViewModels;
+﻿using Eduplos.Domain.BurseryModule;
+using Eduplos.DTO.BursaryModule;
+using Eduplos.Services.Contracts;
+using Eduplos.Web.SMC.ViewModels;
 using KS.Services.Contract;
 using KS.UI.ViewModel;
 using KS.Web.Security;
@@ -15,7 +15,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
-namespace Eduplus.Web.SMC.Controllers
+namespace Eduplos.Web.SMC.Controllers
 {
 
     public class PaymentsController : BaseController
@@ -176,6 +176,15 @@ namespace Eduplus.Web.SMC.Controllers
             var ch = User.IsSysAdmin;
             var sem = _generalDutiesService.FetchCurrentSemester();
             var user = (CustomPrincipal)Session["loggedUser"];
+            var st = _studentService.FetchStudent(user.UserId);
+            if(st.Status=="Suspended"||st.Status=="Expelled")
+            {
+                return JsonConvert.SerializeObject(new outPutMsg
+                {
+                    message = "Oops! You are under suspension, hence cannot pay school fees.",
+                    value = null
+                });
+            }
             if (DateTime.Now.Date > sem.LateRegistrationEndDate.Date && user.Roles.Contains("Student"))
             {
                 return JsonConvert.SerializeObject(new outPutMsg

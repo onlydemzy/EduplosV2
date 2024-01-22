@@ -1,17 +1,17 @@
-﻿using Eduplus.Domain.AcademicModule;
-using Eduplus.Domain.CoreModule;
-using Eduplus.DTO.AcademicModule;
-using Eduplus.DTO.CoreModule;
-using Eduplus.ObjectMappings;
-using Eduplus.Services.Contracts;
-using Eduplus.Services.UtilityServices;
+﻿using Eduplos.Domain.AcademicModule;
+using Eduplos.Domain.CoreModule;
+using Eduplos.DTO.AcademicModule;
+using Eduplos.DTO.CoreModule;
+using Eduplos.ObjectMappings;
+using Eduplos.Services.Contracts;
+using Eduplos.Services.UtilityServices;
 using KS.Core;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 
-namespace Eduplus.Services.Implementations
+namespace Eduplos.Services.Implementations
 {
     public class AcademicProfileService:IAcademicProfileService
     {
@@ -26,7 +26,12 @@ namespace Eduplus.Services.Implementations
         public byte CheckIfStudentIsClearedToRegisterForCourse(string studentId,int semesterId)
         {
             
-            var student = _unitOfWork.StudentRepository.Get(studentId);
+            var student = _unitOfWork.StudentRepository.
+                GetFiltered(s=>s.PersonId==studentId || s.MatricNumber==studentId).SingleOrDefault();
+            if(student.Status=="Suspended")
+            {
+                return 6;
+            }
             var semester = _unitOfWork.SemesterRepository.Get(semesterId);
             var reglog = _unitOfWork.RegistrationsPermissionsLogRepository.GetFiltered(a => a.SessionId == semester.SessionId && (a.StudentId == studentId
             ||a.Student.MatricNumber==studentId)).FirstOrDefault();
@@ -36,6 +41,7 @@ namespace Eduplus.Services.Implementations
             //3 Portal Closed for registration
             //4 Student Should pay Late registration Fee
             //5 Something went wrong
+            //6 Student under probation or suspension Or deferred
             //Check student is qualified
             if (reglog == null)
                 return 1;
@@ -53,6 +59,8 @@ namespace Eduplus.Services.Implementations
             {
                 return 2;
             }
+            //check if under suspension
+            
 
             if(reglog.Register1==true && semester.SemesterTitle== "1st Semester")
             {
@@ -134,48 +142,60 @@ namespace Eduplus.Services.Implementations
             {
                 semester = _unitOfWork.SemesterRepository.GetFiltered(a=>a.IsCurrent==true).FirstOrDefault();
             }
-
-            //Fetch outstanding courses if any
-            //var osc = _unitOfWork.OutStandingCourseRepository.GetFiltered(o => o.Owing == true && o.StudentId == studentId &&
-            // o.Course.Semester == semester.SemesterTitle).ToList();
-
-            var osc = _unitOfWork.OutStandingCourseRepository.GetFiltered(o => o.Owing == true && (o.StudentId == studentId || o.Student.MatricNumber==studentId) &&
+            var student = _unitOfWork.StudentRepository.GetSingle(a => a.PersonId == studentId || a.MatricNumber == studentId);
+            var prog = _unitOfWork.ProgrammeRepository.Get(student.ProgrammeCode);
+            //check if programme is siwes and level
+            if (prog.EnableSiwes && lvl==prog.SiwesLvl && semester.SemesterTitle==prog.SiwesSemester)
+            {
+                
+                    var siwesCourse = _unitOfWork.CourseRepository.GetFiltered(c => c.Semester == semester.SemesterTitle && c.Level == lvl && c.ProgrammeCode == student.ProgrammeCode
+                     && c.IsActive == true).ToList();
+                     foreach(var c in siwesCourse)
+                    {
+                        courses.Add(new CourseRegistrationDTO
+                        {
+                            CourseId = c.CourseId,
+                            CourseCode = c.CourseCode,
+                            Title = c.Title,
+                            CreditHour = c.CreditHours,
+                            IsOutStanding = false,
+                            Type = c.CourseType,
+                            SemesterId = semester.SemesterId,
+                            SessionId = semester.SessionId,
+                            Level = lvl,
+                            ProgrammeCode = c.ProgrammeCode,
+                            StudentId = studentId
+                        });
+                    }
+               
+                return courses;
+            }
+            //Check if there is any outstanding. if any, add to list
+            courses = _unitOfWork.OutStandingCourseRepository.GetFiltered(o => o.Owing == true && (o.StudentId == studentId || o.Student.MatricNumber==studentId) &&
                         o.Course.Semester == semester.SemesterTitle)
-                        .GroupBy(a=>new { a.StudentId,a.CourseId,a.Course })
-                        .Select(a=>new OutStandingCourse { StudentId = a.Key.StudentId, CourseId = a.Key.CourseId,Course=a.Key.Course }).ToList();
+                        .GroupBy(a=>new { a.StudentId,a.CourseId,a.Course.CourseCode,a.Course.Title,a.Course.CourseType,
+                            a.Course.Category,a.Course.CreditHours })
+                        .Select(a=>new CourseRegistrationDTO
+                        {
+                            StudentId = a.Key.StudentId,
+                            CourseId = a.Key.CourseId,
+                            Type = a.Key.CourseType,
+                            Title = a.Key.Title,
+                            CourseCode = a.Key.CourseCode,
+                            Level = lvl,
+                            CreditHour=a.Key.CreditHours,
+                            SemesterId = semester.SemesterId,
+                            SessionId = semester.SemesterId,
+                            ProgrammeCode = student.ProgrammeCode,
+                            IsOutStanding=true
+                        }).ToList();
 
 
             //Fetch Current Courses
-            var student = _unitOfWork.StudentRepository.GetSingle(a=>a.PersonId==studentId || a.MatricNumber==studentId);
+            
             var currentCourse = _unitOfWork.CourseRepository.GetFiltered(c => c.Semester == semester.SemesterTitle && c.Level == lvl && c.ProgrammeCode == student.ProgrammeCode
                      && c.IsActive == true).ToList();
 
-
-            //Adding courses to RegList
-            if (osc != null || osc.Count() > 0)
-            {
-
-
-
-                foreach (var o in osc)
-                {
-                    var dto = new CourseRegistrationDTO
-                    {
-                        CourseId = o.CourseId,
-                        CourseCode = o.Course.CourseCode,
-                        CreditHour = o.Course.CreditHours,
-                        Title = o.Course.Title,
-                        Level = o.Course.Level,
-                        IsOutStanding = true,
-                        SemesterId=semester.SemesterId,
-                        SessionId=semester.SessionId,
-                        ProgrammeCode=student.ProgrammeCode,
-                        Type=o.Course.CourseType,
-                        StudentId=studentId
-                    };
-                    courses.Add(dto);
-                }
-            }
 
             //ADDING CURRENT COURSES
             foreach (var c in currentCourse)
@@ -312,7 +332,7 @@ namespace Eduplus.Services.Implementations
                     CA1 = 0,
                     CA2 = 0,
                     Exam = 0,
-                    IsApproved = false,
+                    
                     StudentId = student.PersonId,
                     SemesterId=c.SemesterId,
                     SessionId=c.SessionId
@@ -417,7 +437,7 @@ namespace Eduplus.Services.Implementations
                 _unitOfWork.CourseRegistrationRepository.Add(new CourseRegistration
                 {
                     StudentId=course.StudentId,SemesterId=course.SemesterId,SessionId=course.SessionId,
-                    Lvl=course.Level,CA1=0,CA2=0,GradePoint=0,IsApproved=false,
+                    Lvl=course.Level,CA1=0,CA2=0,GradePoint=0,
                     CourseId=course.CourseId,CourseCreditHour=course.CreditHour,Exam=0
                 });
                 //Check if course was added to outstanding
@@ -638,9 +658,7 @@ namespace Eduplus.Services.Implementations
                 reg.Grade = grade.Grade;
                 reg.GradePoint = grade.GradePoint;
             }
-
-            reg.IsApproved = false;
-
+             
             //Add score to outstanding if any
             if (reg.Grade == "F")
             {
@@ -832,7 +850,7 @@ namespace Eduplus.Services.Implementations
                     cr.SemesterId = score.SemesterId;
                     cr.CourseCreditHour = score.CreditHour;
                     cr.CourseId = score.CourseId;
-                    cr.IsApproved = false;
+                    
                     var grade = cr.CalculateGrade((score.CA1 + score.CA2 + score.Exam), grades);
                     if (grade == null)
                     {
@@ -893,41 +911,7 @@ namespace Eduplus.Services.Implementations
         #endregion
 
         #region RESULT APPROVAL
-        public string ApproveResults(int semesterId,int lvl,string prog,string userId)
-        {
-            if(lvl>0)
-            {
-                var res = _unitOfWork.CourseRegistrationRepository.GetFiltered(a => a.SemesterId == semesterId && a.Student.ProgrammeCode == prog
-                && a.Lvl==lvl && a.IsApproved==false)
-                    .ToList();
-                if (res.Count > 0)
-                {
-                    foreach (var r in res)
-                    {
-                        r.IsApproved = true;
-                    }
-                    _unitOfWork.Commit(userId);
-                    return "Result successfully approved";
-                }
-                else return "No result to approve for choosen semester, Level and programme";
-            }
-            else
-            {
-                var res = _unitOfWork.CourseRegistrationRepository.GetFiltered(a => a.SemesterId == semesterId && a.Student.ProgrammeCode == prog
-                && a.IsApproved==false)
-                    .ToList();
-                if (res.Count > 0)
-                {
-                    foreach (var r in res)
-                    {
-                        r.IsApproved = true;
-                    }
-                    _unitOfWork.Commit(userId);
-                    return "Result successfully approved";
-                }
-                else return "No result to approve for choosen semester and programme";
-            }
-        }
+        
         #endregion
 
         #region RESULT COMPLAINS
@@ -1323,7 +1307,6 @@ namespace Eduplus.Services.Implementations
         /// <returns></returns>
         public StudentAcademicProfileDTO FetchSingleSemesterResultForStudent(string studentId,int semesterId,string progCode, int flag)
         {
-             
             string regNo = studentId.ToUpper();
             List<CourseRegistration> scores = new List<CourseRegistration>();
             if(!string.IsNullOrEmpty(progCode))
@@ -1339,7 +1322,8 @@ namespace Eduplus.Services.Implementations
             List<CourseRegistration> currentScores = new List<CourseRegistration>();
             if (flag == 2)
             {
-                currentScores = scores.Where(s => s.SemesterId == semesterId && s.IsApproved == true).ToList();
+                //currentScores = scores.Where(s => s.SemesterId == semesterId && s.IsApproved == true).ToList();
+                currentScores = scores.Where(s => s.SemesterId == semesterId).ToList();
             }
             else
             { currentScores = scores.Where(s => s.SemesterId == semesterId).ToList(); }
@@ -1360,6 +1344,7 @@ namespace Eduplus.Services.Implementations
             dto.Level = single.Lvl;
             dto.MatricNumber = single.Student.MatricNumber;
             dto.SessionAddmitted = single.Student.YearAddmitted;
+            dto.Photo = single.Student.Photo.Foto;
             double baseCGPA = (double)single.Student.BaseCGPA;
             List<InMemoryScoresDTO> res = new List<InMemoryScoresDTO>();
             

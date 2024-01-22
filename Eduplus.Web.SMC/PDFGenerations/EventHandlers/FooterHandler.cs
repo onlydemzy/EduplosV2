@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Eduplus.Web.SMC.PDFGenerations.EventHandlers
+namespace Eduplos.Web.SMC.PDFGenerations.EventHandlers
 {
     public class FooterHandler:IEventHandler
     {

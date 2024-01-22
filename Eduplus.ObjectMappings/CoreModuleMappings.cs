@@ -1,11 +1,11 @@
-﻿using Eduplus.Domain.CoreModule;
-using Eduplus.DTO.AcademicModule;
-using Eduplus.DTO.CoreModule;
+﻿using Eduplos.Domain.CoreModule;
+using Eduplos.DTO.AcademicModule;
+using Eduplos.DTO.CoreModule;
 using KS.Domain.HRModule;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Eduplus.ObjectMappings
+namespace Eduplos.ObjectMappings
 {
     public static class CoreModuleMappings
     {
@@ -128,7 +128,7 @@ namespace Eduplus.ObjectMappings
                     oldto.ExamNumber = o.ExamNumber;
                     oldto.SitAttempt = o.SitAttempt;
                     oldto.Venue = o.Venue;
-                    oldto.Year = o.ExamYear;
+                    oldto.ExamYear = o.ExamYear;
                     oldto.StudentId = o.StudentId;
                     List<OlevelResultDetailDTO> details = new List<OlevelResultDetailDTO>();
 

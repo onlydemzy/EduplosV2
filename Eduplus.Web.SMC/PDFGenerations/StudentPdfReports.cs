@@ -1,6 +1,6 @@
-﻿using Eduplus.Domain.CoreModule;
-using Eduplus.DTO.CoreModule;
-using Eduplus.Web.SMC.PDFGenerations.EventHandlers;
+﻿using Eduplos.Domain.CoreModule;
+using Eduplos.DTO.CoreModule;
+using Eduplos.Web.SMC.PDFGenerations.EventHandlers;
 using iText.IO.Image;
 using iText.Kernel.Colors;
 using iText.Kernel.Events;
@@ -16,7 +16,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 
-namespace Eduplus.Web.SMC.PDFGenerations
+namespace Eduplos.Web.SMC.PDFGenerations
 {
     public class StudentPDFReports
     {
@@ -199,7 +199,7 @@ namespace Eduplus.Web.SMC.PDFGenerations
                     olv1h.AddCell(new Cell().Add(new Paragraph("Exam Type ").SetFontSize(9)).SetBackgroundColor(textfield).SetFontColor(whitefont).SetBorderTop(whiteborder));
                     olv1h.AddCell(new Cell().Add(new Paragraph(lv1.ExamType ?? "").SetFontSize(9)));
                     olv1h.AddCell(new Cell().Add(new Paragraph("Year ").SetFontSize(9)).SetBackgroundColor(textfield).SetFontColor(whitefont).SetBorderTop(whiteborder));
-                    olv1h.AddCell(new Cell().Add(new Paragraph(lv1.Year.ToString() ?? "").SetFontSize(9)));
+                    olv1h.AddCell(new Cell().Add(new Paragraph(lv1.ExamYear.ToString() ?? "").SetFontSize(9)));
                     olv1h.AddCell(new Cell().Add(new Paragraph("Center ").SetFontSize(9)).SetBackgroundColor(textfield).SetFontColor(whitefont).SetBorderTop(whiteborder));
                     olv1h.AddCell(new Cell().Add(new Paragraph(lv1.Venue ?? "").SetFontSize(9)));
                     olv1h.AddCell(new Cell().Add(new Paragraph("Exam No ").SetFontSize(9)).SetBackgroundColor(textfield).SetFontColor(whitefont).SetBorderTop(whiteborder));
@@ -221,7 +221,7 @@ namespace Eduplus.Web.SMC.PDFGenerations
                     olv2h.AddCell(new Cell().Add(new Paragraph("Exam Type ").SetFontSize(9)).SetBackgroundColor(textfield).SetFontColor(whitefont).SetBorderTop(whiteborder));
                     olv2h.AddCell(new Cell().Add(new Paragraph(lv2.ExamType ?? "").SetFontSize(9)));
                     olv2h.AddCell(new Cell().Add(new Paragraph("Year ").SetFontSize(9)).SetBackgroundColor(textfield).SetFontColor(whitefont).SetBorderTop(whiteborder));
-                    olv2h.AddCell(new Cell().Add(new Paragraph(lv2.Year.ToString() ?? "").SetFontSize(9)));
+                    olv2h.AddCell(new Cell().Add(new Paragraph(lv2.ExamYear.ToString() ?? "").SetFontSize(9)));
                     olv2h.AddCell(new Cell().Add(new Paragraph("Center ").SetFontSize(9)).SetBackgroundColor(textfield).SetFontColor(whitefont).SetBorderTop(whiteborder));
                     olv2h.AddCell(new Cell().Add(new Paragraph(lv2.Venue ?? "").SetFontSize(9)));
                     olv2h.AddCell(new Cell().Add(new Paragraph("Exam No ").SetFontSize(9)).SetBackgroundColor(textfield).SetFontColor(whitefont).SetBorderTop(whiteborder));
@@ -498,7 +498,7 @@ namespace Eduplus.Web.SMC.PDFGenerations
                     olv1h.AddCell(new Cell().Add(new Paragraph("Exam Type ").SetFontSize(9)).SetBackgroundColor(textfield).SetFontColor(whitefont).SetBorderTop(whiteborder));
                     olv1h.AddCell(new Cell().Add(new Paragraph(lv1.ExamType ?? "").SetFontSize(9)));
                     olv1h.AddCell(new Cell().Add(new Paragraph("Year ").SetFontSize(9)).SetBackgroundColor(textfield).SetFontColor(whitefont).SetBorderTop(whiteborder));
-                    olv1h.AddCell(new Cell().Add(new Paragraph(lv1.Year.ToString() ?? "").SetFontSize(9)));
+                    olv1h.AddCell(new Cell().Add(new Paragraph(lv1.ExamYear.ToString() ?? "").SetFontSize(9)));
                     olv1h.AddCell(new Cell().Add(new Paragraph("Center ").SetFontSize(9)).SetBackgroundColor(textfield).SetFontColor(whitefont).SetBorderTop(whiteborder));
                     olv1h.AddCell(new Cell().Add(new Paragraph(lv1.Venue ?? "").SetFontSize(9)));
                     olv1h.AddCell(new Cell().Add(new Paragraph("Exam No ").SetFontSize(9)).SetBackgroundColor(textfield).SetFontColor(whitefont).SetBorderTop(whiteborder));
@@ -520,7 +520,7 @@ namespace Eduplus.Web.SMC.PDFGenerations
                     olv2h.AddCell(new Cell().Add(new Paragraph("Exam Type ").SetFontSize(9)).SetBackgroundColor(textfield).SetFontColor(whitefont).SetBorderTop(whiteborder));
                     olv2h.AddCell(new Cell().Add(new Paragraph(lv2.ExamType ?? "").SetFontSize(9)));
                     olv2h.AddCell(new Cell().Add(new Paragraph("Year ").SetFontSize(9)).SetBackgroundColor(textfield).SetFontColor(whitefont).SetBorderTop(whiteborder));
-                    olv2h.AddCell(new Cell().Add(new Paragraph(lv2.Year.ToString() ?? "").SetFontSize(9)));
+                    olv2h.AddCell(new Cell().Add(new Paragraph(lv2.ExamYear.ToString() ?? "").SetFontSize(9)));
                     olv2h.AddCell(new Cell().Add(new Paragraph("Center ").SetFontSize(9)).SetBackgroundColor(textfield).SetFontColor(whitefont).SetBorderTop(whiteborder));
                     olv2h.AddCell(new Cell().Add(new Paragraph(lv2.Venue ?? "").SetFontSize(9)));
                     olv2h.AddCell(new Cell().Add(new Paragraph("Exam No ").SetFontSize(9)).SetBackgroundColor(textfield).SetFontColor(whitefont).SetBorderTop(whiteborder));

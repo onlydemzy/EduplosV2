@@ -1,4 +1,4 @@
-﻿using Eduplus.Services.Contracts;
+﻿using Eduplos.Services.Contracts;
 using KS.AES256Encryption;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Eduplus.Web.SMC.Controllers
+namespace Eduplos.Web.SMC.Controllers
 {
     public class DocuVerifyController : BaseController
     {

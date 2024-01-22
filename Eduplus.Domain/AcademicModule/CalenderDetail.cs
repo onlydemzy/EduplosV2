@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Eduplus.Domain.AcademicModule
+namespace Eduplos.Domain.AcademicModule
 {
     public class CalenderDetail
     {

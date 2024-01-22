@@ -1,14 +1,14 @@
-﻿using Eduplus.DTO.CoreModule;
-using Eduplus.ObjectMappings;
-using Eduplus.Services.Contracts;
-using Eduplus.Services.UtilityServices;
+﻿using Eduplos.DTO.CoreModule;
+using Eduplos.ObjectMappings;
+using Eduplos.Services.Contracts;
+using Eduplos.Services.UtilityServices;
 using KS.Core;
 using KS.Domain.HRModule;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Eduplus.Services.Implementations
+namespace Eduplos.Services.Implementations
 {
     public class StaffService : IStaffService
     {

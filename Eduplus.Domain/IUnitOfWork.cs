@@ -1,9 +1,9 @@
-﻿using Eduplus.Domain;
-using Eduplus.Domain.AcademicModule;
-using Eduplus.Domain.ArticleModule;
-using Eduplus.Domain.BurseryModule;
-using Eduplus.Domain.CoreModule;
-using Eduplus.Domain.HostelModule;
+﻿using Eduplos.Domain;
+using Eduplos.Domain.AcademicModule;
+using Eduplos.Domain.ArticleModule;
+using Eduplos.Domain.BurseryModule;
+using Eduplos.Domain.CoreModule;
+using Eduplos.Domain.HostelModule;
 using KS.Core.UserManagement;
 using KS.Domain.AccountsModule;
 using KS.Domain.HRModule;

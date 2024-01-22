@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 
-namespace Eduplus.DTO.AcademicModule
+namespace Eduplos.DTO.AcademicModule
 {
     public class OlevelResultDTO
     {
  
         public string ExamNumber { get; set; }
-        public int Year { get; set; }
+        public int ExamYear { get; set; }
         public string ExamType { get; set; }
         public string Venue { get; set; }
         public byte SitAttempt { get; set; }

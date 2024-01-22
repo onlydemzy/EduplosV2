@@ -1,4 +1,4 @@
-namespace Eduplus.Domain.ArticleModule
+namespace Eduplos.Domain.ArticleModule
 
 {
     using CoreModule;

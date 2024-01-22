@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Eduplus.DTO.BursaryModule
+namespace Eduplos.DTO.BursaryModule
 {
     public class TransIdsProcessMthdDTO
     {

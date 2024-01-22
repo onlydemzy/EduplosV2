@@ -1,8 +1,8 @@
-﻿using Eduplus.Domain.AcademicModule;
+﻿using Eduplos.Domain.AcademicModule;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 
-namespace Eduplus.Data.EntityConfiguration.AcademicModule
+namespace Eduplos.Data.EntityConfiguration.AcademicModule
 {
     internal class CourseScheduleConfiguration:EntityTypeConfiguration<CourseSchedule>
     {

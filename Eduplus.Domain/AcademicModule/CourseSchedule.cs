@@ -1,6 +1,6 @@
 using KS.Domain.HRModule;
 
-namespace Eduplus.Domain.AcademicModule
+namespace Eduplos.Domain.AcademicModule
 {
     public class CourseSchedule
     {

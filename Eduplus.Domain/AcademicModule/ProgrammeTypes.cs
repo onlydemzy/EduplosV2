@@ -1,9 +1,9 @@
 ﻿using System.Threading;
 using System.Linq;
-using Eduplus.Domain.CoreModule;
+using Eduplos.Domain.CoreModule;
 using System.Collections.Generic;
 
-namespace Eduplus.Domain.AcademicModule
+namespace Eduplos.Domain.AcademicModule
 {
     public class ProgrammeTypes
     {

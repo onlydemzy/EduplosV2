@@ -1,4 +1,4 @@
-﻿using Eduplus.Domain.CoreModule;
+﻿using Eduplos.Domain.CoreModule;
 using KS.Web.Security;
 using Newtonsoft.Json;
 using System;
@@ -10,7 +10,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Security;
 
-namespace Eduplus.Web.SMC
+namespace Eduplos.Web.SMC
 {
     public class MvcApplication : System.Web.HttpApplication
     {
@@ -57,7 +57,7 @@ namespace Eduplus.Web.SMC
         }
         protected void Application_PostAuthenticateRequest(Object sender, EventArgs e)
         {
-            HttpCookie authCookie = Request.Cookies["KS_Eduplus_AKCOE"];
+            HttpCookie authCookie = Request.Cookies["KS_Eduplos_AKCOE"];
             if (authCookie != null)
             {
 

@@ -1,8 +1,8 @@
-﻿using Eduplus.DTO.CoreModule;
+﻿using Eduplos.DTO.CoreModule;
 using KS.Domain.HRModule;
 using System.Collections.Generic;
 
-namespace Eduplus.Services.Contracts
+namespace Eduplos.Services.Contracts
 {
     public interface IStaffService
     {

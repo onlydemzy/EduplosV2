@@ -1,8 +1,8 @@
-﻿using Eduplus.Web.SMC;
+﻿using Eduplos.Web.SMC;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Eduplus.Web
+namespace Eduplos.Web
 {
     public class FilterConfig
     {

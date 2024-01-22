@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Eduplus.Data
+namespace Eduplos.Data
 {
     internal static class DbContextExtensions
     {

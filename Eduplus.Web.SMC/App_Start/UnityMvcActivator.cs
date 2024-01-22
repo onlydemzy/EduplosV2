@@ -3,10 +3,10 @@ using System.Web.Mvc;
 
 using Unity.AspNet.Mvc;
 
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Eduplus.Web.SMC.UnityMvcActivator), nameof(Eduplus.Web.SMC.UnityMvcActivator.Start))]
-[assembly: WebActivatorEx.ApplicationShutdownMethod(typeof(Eduplus.Web.SMC.UnityMvcActivator), nameof(Eduplus.Web.SMC.UnityMvcActivator.Shutdown))]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Eduplos.Web.SMC.UnityMvcActivator), nameof(Eduplos.Web.SMC.UnityMvcActivator.Start))]
+[assembly: WebActivatorEx.ApplicationShutdownMethod(typeof(Eduplos.Web.SMC.UnityMvcActivator), nameof(Eduplos.Web.SMC.UnityMvcActivator.Shutdown))]
 
-namespace Eduplus.Web.SMC
+namespace Eduplos.Web.SMC
 {
     /// <summary>
     /// Provides the bootstrapping for integrating Unity with ASP.NET MVC.

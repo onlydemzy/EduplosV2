@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Eduplus.DTO.CoreModule
+namespace Eduplos.DTO.CoreModule
 {
     public class SessionDTO
     {

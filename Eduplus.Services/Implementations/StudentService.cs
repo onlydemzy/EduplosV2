@@ -1,21 +1,21 @@
-﻿using Eduplus.Domain.CoreModule;
+﻿using Eduplos.Domain.CoreModule;
 using System;
-using Eduplus.Services.Contracts;
+using Eduplos.Services.Contracts;
 using KS.Core;
 using KS.Core.UserManagement;
 using KS.Services.Contract;
 using System.Linq;
-using Eduplus.DTO.CoreModule;
-using Eduplus.ObjectMappings;
-using Eduplus.DTO.AcademicModule;
+using Eduplos.DTO.CoreModule;
+using Eduplos.ObjectMappings;
+using Eduplos.DTO.AcademicModule;
 using System.Collections.Generic;
-using Eduplus.Domain.AcademicModule;
-using Eduplus.Services.UtilityServices;
-using Eduplus.Domain.BurseryModule;
+using Eduplos.Domain.AcademicModule;
+using Eduplos.Services.UtilityServices;
+using Eduplos.Domain.BurseryModule;
 using System.IO;
-using Eduplus.DTO.UserManagement;
+using Eduplos.DTO.UserManagement;
 
-namespace Eduplus.Services.Implementations
+namespace Eduplos.Services.Implementations
 {
     public class StudentService : IStudentService
     {
@@ -34,7 +34,7 @@ namespace Eduplus.Services.Implementations
         public int CreateNewAlumus(StudentDTO st, out string studentId)
         {
             //check for existing Jamb No
-            var dbStudent = _unitOfWork.StudentRepository.GetFiltered(a => a.MatricNumber == st.MatricNumber.Trim()
+            var dbStudent = _unitOfWork.StudentRepository.GetFiltered(a => a.MatricNumber == st.MatricNumber.Trim().ToUpper()
             ||a.Email==st.Email).FirstOrDefault();
 
             Student student = new Student();
@@ -112,19 +112,59 @@ namespace Eduplus.Services.Implementations
             {
                 studentId = "";
                 var user = _unitOfWork.UserRepository.GetFiltered(a => a.UserName == dbStudent.MatricNumber || a.UserId == dbStudent.PersonId).FirstOrDefault();
-
-                
-                if(user!=null)
+                dbStudent.Surname = StandardGeneralOps.ToTitleCase(st.Surname);
+                dbStudent.Firstname = StandardGeneralOps.ToTitleCase(st.Firstname);
+                dbStudent.MIddlename = StandardGeneralOps.ToTitleCase(st.Middlename);
+                dbStudent.Email = st.Email.ToLower();
+                dbStudent.Phone = st.Phone;
+                dbStudent.YearAddmitted = st.YearAdmitted;
+                dbStudent.GradYear = st.GradYear;
+                dbStudent.StudyMode = st.StudyMode;
+                dbStudent.MaritalStatus = st.MaritalStatus;
+                dbStudent.BDay = st.BDay;
+                dbStudent.BMonth = st.BMonth;
+                dbStudent.BYear = st.BYear;
+                dbStudent.Duration = st.Duration;
+                dbStudent.EntryMode = st.EntryMode;
+                dbStudent.State = st.State;
+                dbStudent.Lg = st.Lg;
+                dbStudent.Country = st.Country;
+                 
+                if (user!=null)
                 {
                     var roles = _unitOfWork.RoleRepository.GetFiltered(a => a.RoleName == "Student" || a.RoleName == "Alumnus").ToList();
+                    if (dbStudent.PersonId!=user.UserId)
+                    {
+                        _unitOfWork.UserRepository.Remove(user);
+                        _unitOfWork.UserRepository.Add(new User
+                        {
+                            UserId = dbStudent.PersonId,
+                            UserName = dbStudent.MatricNumber,
+                            Password = PasswordMaker.HashPassword(st.Password),
+                            IsActive = true,
+                            LastActivityDate = DateTime.UtcNow,
+                            CreateDate = DateTime.UtcNow,
+                            DepartmentCode = dbStudent.DepartmentCode,
+                            ProgrammeCode = dbStudent.ProgrammeCode,
+                            CreatedBy = dbStudent.Name,
+                            FullName = dbStudent.Name,
+                            UserRoles = roles.Where(a => a.RoleName == "Alumnus").ToList()
 
-                    user.UserRoles.Remove(roles.Where(a => a.RoleName == "Student").SingleOrDefault());
-                    user.UserRoles.Add(roles.Where(a => a.RoleName == "Alumnus").SingleOrDefault());
-                    user.UserName = dbStudent.MatricNumber;
-                    user.IsActive = true;
-                    user.Password = PasswordMaker.HashPassword(st.Password);
+                        });
+                    }
+                    else
+                    {
+                        user.UserRoles.Remove(roles.Where(a => a.RoleName == "Student").SingleOrDefault());
+                        user.UserRoles.Add(roles.Where(a => a.RoleName == "Alumnus").SingleOrDefault());
+                        user.UserName = dbStudent.MatricNumber;
+                        user.IsActive = true;
+                        user.Password = PasswordMaker.HashPassword(st.Password);
+
+                        user.LastActivityDate = DateTime.UtcNow;
+                    }
+
                     
-                    user.LastActivityDate = DateTime.UtcNow;
+                    
                     _unitOfWork.Commit(dbStudent.PersonId);
                 }
                 else
@@ -227,8 +267,9 @@ namespace Eduplus.Services.Implementations
 
         public int CreateNewStudentProfile(ProspectiveStudentDTO st)
         {
-            //check for existing Jamb No
-            var dbStudent = _unitOfWork.StudentRepository.GetFiltered(a => a.Email == st.Email || a.Phone==st.Phone)
+            //check for existing Student
+            var dbStudent = _unitOfWork.StudentRepository.GetFiltered(a =>( a.Email == st.Email || a.Phone==st.Phone) &&
+            (a.Surname==st.Surname&&a.Firstname==st.Firstname.Trim()&&a.MIddlename.Trim()==st.MIddlename.Trim()))
                 .FirstOrDefault();
             
             Student student = new Student();
@@ -297,7 +338,7 @@ namespace Eduplus.Services.Implementations
                                         Username= {student.Email} 
                                         Password= {st.Password}";
                 
-                _communicationService.SendMail(user.FullName, student.Email, msgBody, "New Registration Confirmation");
+                //_communicationService.SendMail(user.FullName, student.Email, msgBody, "New Registration Confirmation");
                 _unitOfWork.Commit(student.PersonId); 
                
                 return 1;
@@ -313,6 +354,17 @@ namespace Eduplus.Services.Implementations
         
 
         #endregion
+        public bool CheckStudentStatus(string studentId)
+        {
+            var st = _unitOfWork.StudentRepository.Get(studentId);
+            //'Active','About to Graduate', 'Graduated','Probation','Prospective','Suspended'
+            if (st.Status == "Suspended" || st.Status == "Probation")
+            {
+                return true;
+            }
+            else
+                return false;
+        }
         public string Step1Submission(StudentDTO dto, string userId,out string flag)
         {
             var dbStudent = _unitOfWork.StudentRepository.Get(dto.StudentId);
@@ -565,7 +617,7 @@ namespace Eduplus.Services.Implementations
                 dto.SitAttempt = result.SitAttempt;
                 dto.StudentId = result.StudentId;
                 dto.Venue = result.Venue;
-                dto.Year = result.ExamYear;
+                dto.ExamYear = result.ExamYear;
 
                 List<OlevelResultDetailDTO> details = new List<OlevelResultDetailDTO>();
                 if (result.OlevelResultDetail.Count() > 0)
@@ -651,6 +703,10 @@ namespace Eduplus.Services.Implementations
                     Subject = dto.Subject,
                     Grade = dto.Grade
                 };
+                if (res.ExamYear != dto.ExamYear)
+                {
+                    res.ExamYear = dto.ExamYear;
+                }
                 _unitOfWork.OLevelResultDetailRepository.Add(dt);
                 _unitOfWork.Commit(userId);
                 dto.DetailId = dt.DetailId;
@@ -707,29 +763,50 @@ namespace Eduplus.Services.Implementations
         /// <returns></returns>
         public JambScoresDTO SaveJambScore(JambScoresDTO dto, string userId,out int flag)
         {
-            var scores = _unitOfWork.JambResultRepository.Get(dto.JambRegNumber);
+            var scores = _unitOfWork.JambResultRepository.GetFiltered(j=>j.StudentId==dto.StudentId).FirstOrDefault();
             flag = 0;
             int tscore;
             if (scores == null)
             {
                 JambResult result = new JambResult();
                 result.JambRegNumber = dto.JambRegNumber;
-                result.StudentId = userId;
+                result.StudentId = dto.StudentId;
                 result.JambYear = dto.JambYear;
 
                 result.Scores.Add(new JambScores { Subject = dto.Subject, Score = dto.Score});
                 _unitOfWork.JambResultRepository.Add(result);
                 
                 _unitOfWork.Commit(userId);
+                dto.Flag = 2;
                 return dto;
             }
             else
             {
-                tscore = scores.Scores.Count();
-                if(userId!=scores.StudentId || scores.Scores.Count()>4)
+                //Chec
+                
+                tscore = scores.Scores.Count(); //check if its reached max
+                if(dto.StudentId!=scores.StudentId || scores.Scores.Count()>=4)
                 {
                     flag = 1;
-                    return null;
+                    dto.Flag = 1;
+                    return dto;
+                }
+                if (scores.JambRegNumber != dto.JambRegNumber)// About to update entire jamb delete record
+                {
+                     
+                    _unitOfWork.JambResultRepository.Remove(scores);
+                    JambResult result = new JambResult();
+                    result.JambRegNumber = dto.JambRegNumber;
+                    result.StudentId = dto.StudentId;
+                    result.JambYear = dto.JambYear;
+
+                    result.Scores.Add(new JambScores { Subject = dto.Subject, Score = dto.Score,JambRegNumber=dto.JambRegNumber });
+                    _unitOfWork.JambResultRepository.Add(result);
+
+                    _unitOfWork.Commit(userId);
+                    dto.Flag = 2;
+                    return dto;
+
                 }
                 var js= new JambScores
                 {
@@ -737,7 +814,7 @@ namespace Eduplus.Services.Implementations
                     Score = dto.Score,
                     Subject = dto.Subject
                 };
-                scores.JambYear = dto.JambYear;
+                 
                 _unitOfWork.JambScoresRepository.Add(js);
                 if(tscore+1==4)
                 {
@@ -955,10 +1032,10 @@ namespace Eduplus.Services.Implementations
             _unitOfWork.Commit(userId);
 
             //Send mail
-            string msgBody = $@"Congratulations,based on the resent screening exercise conducted by this institution, your application has been
-accepted, consequently you have been offered admission into you great institution. Please proceed to 
+            string msgBody = $@"Congratulations,based on the recent screening exercise conducted by this institution, your application for admission into our institution has been
+accepted, consequently you have been offered admission. Please proceed to 
 pay your acceptance fee if you accept this offer. Congratulations once again.";
-            _communicationService.SendMail(student.Name, student.Email, msgBody, "Your have been admitted");
+            _communicationService.SendMail(student.Name, student.Email, msgBody, "Congratulations your Application was accepted");
             return "Student successfully admitted";
         }
         public StudentDTO AdmissionStatus(string studentID)
@@ -1467,9 +1544,9 @@ pay your acceptance fee if you accept this offer. Congratulations once again.";
                 stIds.Add(s.StudentId);
             }
             var dbStudents = _unitOfWork.StudentRepository.GetFiltered(st => stIds.Contains(st.PersonId) && st.ProgrammeType==progType && string.IsNullOrEmpty(st.MatricNumber)).ToList();
-            if (dbStudents.Count != matrics.Count)
+            if (dbStudents.Count==0)
             {
-                return "Error Number uploaded students do not match with total number in database";
+                return "Error: No students to update in database";
             }
             foreach(var s in dbStudents)
             {

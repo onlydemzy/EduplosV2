@@ -1,9 +1,9 @@
-﻿using Eduplus.Domain.AcademicModule;
-using Eduplus.DTO.AcademicModule;
-using Eduplus.DTO.CoreModule;
-using Eduplus.ObjectMappings;
-using Eduplus.Services.Contracts;
-using Eduplus.Services.UtilityServices;
+﻿using Eduplos.Domain.AcademicModule;
+using Eduplos.DTO.AcademicModule;
+using Eduplos.DTO.CoreModule;
+using Eduplos.ObjectMappings;
+using Eduplos.Services.Contracts;
+using Eduplos.Services.UtilityServices;
 using KS.Core;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using System.Data.Entity;
 using System.Data.Entity.Core.Metadata.Edm;
 using System.Linq;
 
-namespace Eduplus.Services.Implementations
+namespace Eduplos.Services.Implementations
 {
 
 

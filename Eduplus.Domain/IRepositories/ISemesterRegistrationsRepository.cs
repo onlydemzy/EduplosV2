@@ -1,9 +1,9 @@
-﻿using Eduplus.Domain.AcademicModule;
-using Eduplus.DTO.AcademicModule;
+﻿using Eduplos.Domain.AcademicModule;
+using Eduplos.DTO.AcademicModule;
 using KS.Core;
 using System.Collections.Generic;
 
-namespace Eduplus.Domain
+namespace Eduplos.Domain
 {
     public interface ISemesterRegistrationsRepository:IRepository<SemesterRegistrations>
     {

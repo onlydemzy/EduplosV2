@@ -7,8 +7,8 @@
     <ProjectGuid>{1AD68F96-9790-4E01-983B-876955930E87}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Eduplus.Domain</RootNamespace>
-    <AssemblyName>Eduplus.Domain</AssemblyName>
+    <RootNamespace>Eduplos.Domain</RootNamespace>
+    <AssemblyName>Eduplos.Domain</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -31,8 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Eduplus.DTO">
-      <HintPath>..\Eduplus.DTO\bin\Debug\Eduplus.DTO.dll</HintPath>
+    <Reference Include="Eduplos.DTO">
+      <HintPath>..\Eduplus.DTO\bin\Debug\Eduplos.DTO.dll</HintPath>
     </Reference>
     <Reference Include="KS.Common">
       <HintPath>..\KS.Common\bin\Debug\KS.Common.dll</HintPath>

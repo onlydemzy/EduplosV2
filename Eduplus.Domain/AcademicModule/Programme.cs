@@ -1,8 +1,8 @@
-using Eduplus.Domain.CoreModule;
+using Eduplos.Domain.CoreModule;
 using System;
 using System.Collections.Generic;
 
-namespace Eduplus.Domain.AcademicModule
+namespace Eduplos.Domain.AcademicModule
 {
     public class Programme
     {
@@ -22,6 +22,9 @@ namespace Eduplus.Domain.AcademicModule
         public string Award { get; set; }
         public string MatricNoGeneratorType { get; set; }//Use banks, RandomNos,cumulative
         public int GradLevel { get; set; }
+        public bool EnableSiwes { get; set; }
+        public int? SiwesLvl { get; set; }
+        public string SiwesSemester { get; set; }
         public virtual ICollection<MatricNoFormat> MatricNoFormats { get; set; }
         
     }

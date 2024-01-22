@@ -1,4 +1,4 @@
-﻿namespace Eduplus.Web.ViewModels
+﻿namespace Eduplos.Web.ViewModels
 {
     public class RegistrationViewModel
     {

@@ -22,7 +22,7 @@ function score(data) {
     self.JambYear = ko.observable(data?data.JambYear:0);
     self.ScoreId = ko.observable(data ? data.ScoreId : 0);
     self.StudentId = ko.observable(data?data.StudentId:'');
-
+    self.oldJamb = ko.observable(data ? data.JambRegNumber : '');
      
 };
 //Work on Image
@@ -97,6 +97,8 @@ function resultVM() {
         if (isvalid) {
             self.kill(true);
             var item = new score();
+
+           
             item.JambRegNumber(self.JambRegNumber());
             item.StudentId(self.StudentId());
             item.JambYear(self.JambYear());
@@ -110,18 +112,22 @@ function resultVM() {
                 url: '/Admission_Center/SubmitJambResult',
                 data: ko.toJSON(item),
                 success: function (response) {
-                    if (response == null) {
-                        alert("Inputted Examination Number is already in use by someone else");
-                        return;
+                    switch (response.Flag) {
+                        case 1:
+                            alert("Error: Max subject exceeded");
+                            break;
+                        case 2:
+                            alert("New JAMB record created");
+                            window.location.reload();
+                            break;
+                        case 0:
+                            item.ScoreId(response.ScoreId);
+                            self.jambScores.push(item);
+                            alert("Jamb score successfully added");
+                            self.score(0);
+                            self.subject(undefined);
+                            break;
                     }
-                    else {
-                        item.ScoreId(response.ScoreId);
-                        self.jambScores.push(item);
-                        alert("Jamb score successfully added");
-                        self.score(0);
-                        self.subject(undefined);
-                    }
-
                     
                 },
                 complete: function () {

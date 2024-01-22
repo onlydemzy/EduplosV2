@@ -1,6 +1,6 @@
 ﻿using KS.Common;
 
-namespace Eduplus.Domain.CoreModule
+namespace Eduplos.Domain.CoreModule
 {
     public class LGA : EntityBase
     {

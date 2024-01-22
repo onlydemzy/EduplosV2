@@ -1,9 +1,9 @@
-﻿using Eduplus.Domain.AcademicModule;
-using Eduplus.DTO.AcademicModule;
+﻿using Eduplos.Domain.AcademicModule;
+using Eduplos.DTO.AcademicModule;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Eduplus.ObjectMappings
+namespace Eduplos.ObjectMappings
 {
     public static class AcademicModuleMappings
     {

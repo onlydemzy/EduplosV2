@@ -1,6 +1,6 @@
 ﻿using KS.Domain.AccountsModule;
 
-namespace Eduplus.Domain.BurseryModule
+namespace Eduplos.Domain.BurseryModule
 {
     public class FeeScheduleDetail
     {

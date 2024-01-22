@@ -1,7 +1,7 @@
-﻿using Eduplus.Domain.BurseryModule;
+﻿using Eduplos.Domain.BurseryModule;
 using System.Data.Entity.ModelConfiguration;
 
-namespace Eduplus.Data.EntityConfiguration.CoreModule
+namespace Eduplos.Data.EntityConfiguration.CoreModule
 {
     internal class GatewaylogsConfiguration:EntityTypeConfiguration<GateWaylogs>
     {

@@ -1,10 +1,10 @@
-﻿using Eduplus.Domain.BurseryModule;
-using Eduplus.DTO.BursaryModule;
+﻿using Eduplos.Domain.BurseryModule;
+using Eduplos.DTO.BursaryModule;
 using KS.Core;
 using System;
 using System.Collections.Generic;
 
-namespace Eduplus.Domain
+namespace Eduplos.Domain
 {
     public interface IInvoiceDetailRepository:IRepository<InvoiceDetails>
     {

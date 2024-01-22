@@ -1,4 +1,4 @@
-﻿using Eduplus.Domain.CoreModule;
+﻿using Eduplos.Domain.CoreModule;
 using KS.Domain.AccountsModule;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Eduplus.Domain.BurseryModule
+namespace Eduplos.Domain.BurseryModule
 {
     public class PaymentInvoice
     {

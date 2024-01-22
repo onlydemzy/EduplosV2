@@ -5,8 +5,12 @@
 }
 <div class="container" id="lvl">
 
-    <div class="row">
 
+
+
+    <div class="row">
+        
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="col-md-6">
             <select data-bind="value:level,options:Levels,optionsCaption:'Choose your current Level'" class="form-control"></select>
             <img src="~/Content/images/15.gif" data-bind="visible:Kill" />

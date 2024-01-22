@@ -1,7 +1,7 @@
-﻿using Eduplus.Domain.ArticleModule;
-using Eduplus.DTO.ArticleModule;
+﻿using Eduplos.Domain.ArticleModule;
+using Eduplos.DTO.ArticleModule;
 
-namespace Eduplus.ObjectMappings
+namespace Eduplos.ObjectMappings
 {
     public static class ArticleModuleMappings
     {

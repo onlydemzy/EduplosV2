@@ -1,4 +1,4 @@
-﻿namespace Eduplus.Services.UtilityServices
+﻿namespace Eduplos.Services.UtilityServices
 {
     public class FetchGatewayInfo
     {

@@ -1,7 +1,7 @@
-﻿using Eduplus.Domain.CoreModule;
-using Eduplus.DTO.UserManagement;
-using Eduplus.Services.Contracts;
-using Eduplus.Web.ViewModels;
+﻿using Eduplos.Domain.CoreModule;
+using Eduplos.DTO.UserManagement;
+using Eduplos.Services.Contracts;
+using Eduplos.Web.ViewModels;
 using KS.Core.UserManagement;
 using KS.Services.Contract;
 using KS.Web.Security;
@@ -9,14 +9,11 @@ using Newtonsoft.Json;
 using NLog;
 using System;
 using System.Linq;
-using System.Net.Mail;
-using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using Org.BouncyCastle.Asn1;
 
-namespace Eduplus.Web.SMC.Controllers
+namespace Eduplos.Web.SMC.Controllers
 {
 
     public class  AccountsController : BaseController
@@ -81,26 +78,8 @@ namespace Eduplus.Web.SMC.Controllers
         public ActionResult SendMail()
         {
 
-           /* MailMessage mailMessage = new MailMessage();
-            mailMessage.From = new MailAddress("noreply@korrhsolutions.com","AKSCOE");
-            mailMessage.To.Add("demzy247@gmail.com");
-            mailMessage.Subject = "Test workings";
-            mailMessage.Body = "It is wonderfull to know that Jesus is alive";
-            mailMessage.IsBodyHtml = true;
-
-            SmtpClient smtpClient = new SmtpClient();
-            smtpClient.UseDefaultCredentials = false;
-            smtpClient.Credentials = new NetworkCredential("noreply@korrhsolutions.com", "N0t@452#");
-            smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
-            smtpClient.Host = "smtp.zoho.com";
-            smtpClient.Port = 587;
-             
-            smtpClient.EnableSsl = true;
-            
-            smtpClient.Send(mailMessage);*/
-            string msg = "It is wonderfull to know that Jesus is alive" + "\r\n" + "This is comming from inner appliaction service"
-                + "\r\n" + "Taking from database records";
-            _commService.SendMail("Udeme Bassey Ekim", "demzy247@gmail.com", msg, "Admission Test");
+            _commService.SendMail("Udeme Bassey", "demzy247@gmail.com", "I don win ooo", "Tester");
+          
             return View();
         }
         [AllowAnonymous]
@@ -188,7 +167,7 @@ namespace Eduplus.Web.SMC.Controllers
         {
             Session.Abandon();
             Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));
-            HttpCookie coky = new HttpCookie("KS_Eduplus_AKCOE");
+            HttpCookie coky = new HttpCookie("KS_Eduplos_AKCOE");
             coky.Expires = DateTime.UtcNow.AddDays(-1);
             Response.Cookies.Add(coky);
             
@@ -409,6 +388,7 @@ namespace Eduplus.Web.SMC.Controllers
                     UserId = user.UserId,
                     Username = user.UserName,
                     Fullname = user.FullName,
+                    Email=user.UserCode
                     
                     
                 };

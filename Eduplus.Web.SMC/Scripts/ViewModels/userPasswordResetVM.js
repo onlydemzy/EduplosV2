@@ -1,12 +1,15 @@
 ﻿
 
 //Initial selections
-$(document).ready(function () {
-    $('#otp').prop('disabled', false);
-    $('#btncs').prop('disabled', true);
-    $('#btnds').prop('disabled', true);
-})
-
+ko.validation.rules['areSame'] = {
+    getValue: function (o) {
+        return (typeof o === 'function' ? o() : o);
+    },
+    validator: function (val, otherField) {
+        return val === this.getValue(otherField);
+    },
+    message: 'Your passwords do not match'
+};
 function viewModel() {
     var self = this;
     self.userId = ko.observable(0);
@@ -16,7 +19,7 @@ function viewModel() {
     
     self.dpMail = ko.observable("");
     self.newPassword = ko.observable("");
-    self.confirmPassword = ko.observable("");
+    self.confirmPassword = ko.observable().extend({ areSame: self.newPassword() });
     self.hide = ko.observable(false);
     self.hide2 = ko.observable(false);
     self.busy = ko.observable(false);

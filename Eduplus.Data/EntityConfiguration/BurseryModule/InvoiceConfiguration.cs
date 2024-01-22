@@ -1,4 +1,4 @@
-﻿using Eduplus.Domain.BurseryModule;
+﻿using Eduplos.Domain.BurseryModule;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Eduplus.Data.EntityConfiguration.BurseryModule
+namespace Eduplos.Data.EntityConfiguration.BurseryModule
 {
     internal class InvoiceConfiguration:EntityTypeConfiguration<PaymentInvoice>
     {

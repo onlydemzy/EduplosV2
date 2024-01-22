@@ -1,8 +1,8 @@
-﻿using Eduplus.Domain.AcademicModule;
+﻿using Eduplos.Domain.AcademicModule;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 
-namespace Eduplus.Data.EntityConfiguration.AcademicModule
+namespace Eduplos.Data.EntityConfiguration.AcademicModule
 {
     internal class JambResultConfiguration:EntityTypeConfiguration<JambResult>
     {
@@ -14,7 +14,8 @@ namespace Eduplus.Data.EntityConfiguration.AcademicModule
             Property(a => a.JambRegNumber).HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
             Property(k => k.StudentId).HasMaxLength(130).IsRequired();
             HasRequired(k => k.Student).WithMany().HasForeignKey(k => k.StudentId);
-            HasMany(a => a.Scores).WithRequired(a => a.JambResult).HasForeignKey(k => k.JambRegNumber);
+            HasMany(a => a.Scores).WithRequired(a => a.JambResult).HasForeignKey(k => k.JambRegNumber)
+                .WillCascadeOnDelete(true);
         }
     }
 

@@ -1,9 +1,9 @@
-﻿using Eduplus.Domain.AcademicModule;
-using Eduplus.Domain.CoreModule;
-using Eduplus.DTO.AcademicModule;
-using Eduplus.DTO.CoreModule;
-using Eduplus.Services.Contracts;
-using Eduplus.Web.SMC.ViewModels;
+﻿using Eduplos.Domain.AcademicModule;
+using Eduplos.Domain.CoreModule;
+using Eduplos.DTO.AcademicModule;
+using Eduplos.DTO.CoreModule;
+using Eduplos.Services.Contracts;
+using Eduplos.Web.SMC.ViewModels;
 using KS.Web.Security;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using System.IO;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Eduplus.Web.SMC.Controllers
+namespace Eduplos.Web.SMC.Controllers
 {
     [KSWebAuthorisation]
     public class AdministrationController : BaseController

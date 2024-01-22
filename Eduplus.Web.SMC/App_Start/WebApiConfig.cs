@@ -1,6 +1,6 @@
 ﻿using System.Web.Http;
 
-namespace Eduplus.Web.SMC
+namespace Eduplos.Web.SMC
 {
     public static class WebApiConfig
     {

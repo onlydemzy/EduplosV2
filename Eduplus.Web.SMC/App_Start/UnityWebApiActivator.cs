@@ -2,10 +2,10 @@ using System.Web.Http;
 
 using Unity.AspNet.WebApi;
 
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Eduplus.Web.SMC.UnityWebApiActivator), nameof(Eduplus.Web.SMC.UnityWebApiActivator.Start))]
-[assembly: WebActivatorEx.ApplicationShutdownMethod(typeof(Eduplus.Web.SMC.UnityWebApiActivator), nameof(Eduplus.Web.SMC.UnityWebApiActivator.Shutdown))]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Eduplos.Web.SMC.UnityWebApiActivator), nameof(Eduplos.Web.SMC.UnityWebApiActivator.Start))]
+[assembly: WebActivatorEx.ApplicationShutdownMethod(typeof(Eduplos.Web.SMC.UnityWebApiActivator), nameof(Eduplos.Web.SMC.UnityWebApiActivator.Shutdown))]
 
-namespace Eduplus.Web.SMC
+namespace Eduplos.Web.SMC
 {
     /// <summary>
     /// Provides the bootstrapping for integrating Unity with WebApi when it is hosted in ASP.NET.

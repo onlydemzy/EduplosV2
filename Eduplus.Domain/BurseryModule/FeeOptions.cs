@@ -1,4 +1,4 @@
-﻿namespace Eduplus.Domain.BurseryModule
+﻿namespace Eduplos.Domain.BurseryModule
 {
     public class FeeOptions
     {

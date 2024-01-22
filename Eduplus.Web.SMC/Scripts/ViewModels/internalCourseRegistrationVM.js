@@ -101,37 +101,7 @@ viewModel = function () {
             PopulateStudent(prog);
         }
     });
-    self.studentId.subscribe(function (id) {
-        
-        $.ajax({
-            type: 'Get',
-            data: { semesterId: self.semesterId(), studentId: id },
-            contentyType: 'application/json;charset=utf-8',
-            url: '/Student/CheckIfQualifiedToRegister',
-            success: function (data) {
-                if (data.value != 0) {
-                    alert(data.message);
-                    window.location.reload();
-                }
-            }
-        });
 
-        
-        $.ajax({
-            type: 'get',
-            data:{studentId:id},
-            url: '/HelperService/GetMaxCreditHours',
-            dataType: 'json',
-            success: function (result) {
-                self.allowedCreditHours(result);
-            },
-            error: function (err) {
-                alert(err.status + " : " + err.statusText);
-            }
-
-        });
-        self.spinar(false);
-    });
     //Populate Session
     $.ajax({
         type: 'Get',
@@ -166,6 +136,33 @@ viewModel = function () {
         self.courses([]);
         self.spinar(true);
 
+        $.ajax({
+            type: 'Get',
+            data: { semesterId: self.semesterId(), studentId: self.studentId() },
+            contentyType: 'application/json;charset=utf-8',
+            url: '/Student/CheckIfQualifiedToRegister',
+            success: function (data) {
+                if (data.value != 0) {
+                    alert(data.message);
+                    window.location.reload();
+                }
+            }
+        });
+
+        $.ajax({
+            type: 'get',
+            data: { studentId: self.studentId() },
+            url: '/HelperService/GetMaxCreditHours',
+            dataType: 'json',
+            success: function (result) {
+                self.allowedCreditHours(result);
+            },
+            error: function (err) {
+                alert(err.status + " : " + err.statusText);
+            }
+
+        });
+        
         $.ajax({
             type: 'get',
             data: { level: self.level(), semesterId: self.semesterId(),studentId:self.studentId() },

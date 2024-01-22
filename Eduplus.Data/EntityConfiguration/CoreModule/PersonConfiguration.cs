@@ -1,9 +1,9 @@
-﻿using Eduplus.Domain.CoreModule;
+﻿using Eduplos.Domain.CoreModule;
 using KS.Domain.HRModule;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 
-namespace Eduplus.Data.EntityConfiguration.CoreModule
+namespace Eduplos.Data.EntityConfiguration.CoreModule
 {
     internal class PersonConfiguration:EntityTypeConfiguration<Person>
     {

@@ -1,13 +1,13 @@
-﻿using Eduplus.Domain.AcademicModule;
-using Eduplus.DTO.CoreModule;
-using Eduplus.Services.Contracts;
+﻿using Eduplos.Domain.AcademicModule;
+using Eduplos.DTO.CoreModule;
+using Eduplos.Services.Contracts;
 using KS.Web.Security;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
-namespace Eduplus.Web.SMC.Controllers
+namespace Eduplos.Web.SMC.Controllers
 {
     public class AlumniController : BaseController
     {

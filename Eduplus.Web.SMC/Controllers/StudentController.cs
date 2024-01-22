@@ -1,11 +1,11 @@
-﻿using Eduplus.Domain.AcademicModule;
-using Eduplus.Domain.CoreModule;
-using Eduplus.DTO.AcademicModule;
-using Eduplus.DTO.CoreModule;
-using Eduplus.eb.SMC.ViewModels;
-using Eduplus.Services.Contracts;
-using Eduplus.Web.SMC.PDFGenerations;
-using Eduplus.Web.SMC.ViewModels;
+﻿using Eduplos.Domain.AcademicModule;
+using Eduplos.Domain.CoreModule;
+using Eduplos.DTO.AcademicModule;
+using Eduplos.DTO.CoreModule;
+using Eduplos.eb.SMC.ViewModels;
+using Eduplos.Services.Contracts;
+using Eduplos.Web.SMC.PDFGenerations;
+using Eduplos.Web.SMC.ViewModels;
 using KS.UI.ViewModel;
 using KS.Web.Security;
 using OfficeOpenXml;
@@ -19,7 +19,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 
-namespace Eduplus.Web.SMC.Controllers
+namespace Eduplos.Web.SMC.Controllers
 {
     [KS.Web.Security.KSWebAuthorisation]
     public class StudentController : BaseController
@@ -79,13 +79,18 @@ namespace Eduplus.Web.SMC.Controllers
             {
                 return RedirectToAction("UploadPassport", "Admission_Center");
             }
+            if(_studentService.CheckStudentStatus(user.UserId))
+            {
+                ModelState.AddModelError("", "You are under suspension,hence you cannot register for courses");
+                return View();
+            }
             return View();
         }
 
         public JsonResult CoursesToRegister(int level, int? semesterId, string studentId)
         {
             var user = (CustomPrincipal)Session["LoggedUser"];
-            string programme;
+             
             string stId;
             if (!string.IsNullOrEmpty(studentId))
             {
@@ -174,6 +179,10 @@ namespace Eduplus.Web.SMC.Controllers
                     op.value = 5;
                     op.message = "Fatal Error: Something went wrong while processing request. please try again later";
                     break;
+                case 6:
+                    op.value = 6;
+                    op.message = "You are under suspension, hence cannot register for courses";
+                    break;
             }
             
             return Json(op, JsonRequestBehavior.AllowGet);
@@ -244,17 +253,16 @@ namespace Eduplus.Web.SMC.Controllers
         {
 
             var broadSheet = _academicService.FetchSingleSemesterResultForStudent(User.UserId, semesterId,User.ProgrammeCode,2);
-
-            return new ViewAsPdf(broadSheet)
+            if (broadSheet == null)
+                return View();
+            else
             {
-                //FileName = broadSheet.Session + "_" + broadSheet.Semester + "_" + "Broad_Sheet_for_" + broadSheet.Level + "_" + broadSheet.Department + ".pdf",
-                PageSize = Size.A4,
-                PageOrientation = Orientation.Landscape,
-
-                CustomSwitches = "--footer-right \"Date: [date] [time]\" " +
-                        "--footer-center \"Page: [page] of [toPage]\" --footer-line --footer-font-size \"9\" --footer-spacing 5 --footer-font-name \"calibri light\"",
-                PageMargins = { Left = 2, Right = 2, Top = 2, Bottom = 10 }
-            };
+                var userdata = _generalDutiesService.GetUserData();
+                var pdf = StudentResultPdfGenerator.StudentSemesterResult(broadSheet, userdata);
+                return File(pdf, "application/pdf");
+            }
+            
+            
 
         }
         #endregion

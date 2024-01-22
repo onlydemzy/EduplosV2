@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace Eduplus.Web.SMC
+namespace Eduplos.Web.SMC
 {
     public class RemoveUnwantedHeaderAttribute:ActionFilterAttribute
     {

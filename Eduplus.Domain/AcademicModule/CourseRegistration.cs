@@ -1,9 +1,9 @@
-﻿using Eduplus.Domain.CoreModule;
+﻿using Eduplos.Domain.CoreModule;
 using KS.Common;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Eduplus.Domain.AcademicModule
+namespace Eduplos.Domain.AcademicModule
 {
     public class CourseRegistration:EntityBase
     {
@@ -20,7 +20,7 @@ namespace Eduplus.Domain.AcademicModule
         public int Exam { get; set; }
         public string Grade { get; set; }
         public double GradePoint { get; set; }
-        public bool IsApproved { get; set; }
+       
         public int Lvl { get; set; }
         public virtual Session Session { get; set; }
         public virtual Semester Semester { get; set; }

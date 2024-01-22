@@ -1,10 +1,10 @@
-﻿using Eduplus.Domain.CoreModule;
-using Eduplus.DTO.CoreModule;
+﻿using Eduplos.Domain.CoreModule;
+using Eduplos.DTO.CoreModule;
 using KS.Core;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Eduplus.Data.Repositories
+namespace Eduplos.Data.Repositories
 {
     public static class StudentRepositoryExtensions
     {

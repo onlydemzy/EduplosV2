@@ -1,8 +1,8 @@
-﻿using Eduplus.Domain.AcademicModule;
+﻿using Eduplos.Domain.AcademicModule;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 
-namespace Eduplus.Data.EntityConfiguration.AcademicModule
+namespace Eduplos.Data.EntityConfiguration.AcademicModule
 {
     public class OutStandingCourseConfiguration:EntityTypeConfiguration<OutStandingCourse>
     {
@@ -15,7 +15,8 @@ namespace Eduplus.Data.EntityConfiguration.AcademicModule
             HasRequired(c => c.Student).WithMany().HasForeignKey(c => c.StudentId);
             HasRequired(c => c.Semester).WithMany().HasForeignKey(a => a.SemesterId).WillCascadeOnDelete(false);
             HasRequired(c => c.Session).WithMany().HasForeignKey(a => a.SessionId).WillCascadeOnDelete(false);
-            
+            HasRequired(c => c.Course).WithMany().HasForeignKey(a => a.CourseId).WillCascadeOnDelete(false);
+
         }
     }
 }

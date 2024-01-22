@@ -1,6 +1,6 @@
-﻿using Eduplus.Domain.CoreModule;
-using Eduplus.Services.Contracts;
-using Eduplus.Web.SMC.ViewModels;
+﻿using Eduplos.Domain.CoreModule;
+using Eduplos.Services.Contracts;
+using Eduplos.Web.SMC.ViewModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
-namespace Eduplus.Web.SMC.Controllers
+namespace Eduplos.Web.SMC.Controllers
 {
     [RoutePrefix("api/ContentManagementOut")]
     public class ContentManagementOutController : ApiController

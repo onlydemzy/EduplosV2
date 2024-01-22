@@ -1,12 +1,12 @@
-﻿using Eduplus.Domain;
-using Eduplus.Domain.AcademicModule;
-using Eduplus.DTO.AcademicModule;
+﻿using Eduplos.Domain;
+using Eduplos.Domain.AcademicModule;
+using Eduplos.DTO.AcademicModule;
 using KS.Data.Repositories;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
-namespace Eduplus.Data.Repositories
+namespace Eduplos.Data.Repositories
 {
     public class SemesterRegistrationsRepository : Repository<SemesterRegistrations>, ISemesterRegistrationsRepository
     {

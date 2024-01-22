@@ -1,11 +1,11 @@
-﻿using Eduplus.Domain.AcademicModule;
+﻿using Eduplos.Domain.AcademicModule;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Eduplus.Domain.CoreModule
+namespace Eduplos.Domain.CoreModule
 {
     public class PaymentGateways
     {

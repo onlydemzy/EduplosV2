@@ -1,8 +1,8 @@
-﻿using Eduplus.Domain.AcademicModule;
+﻿using Eduplos.Domain.AcademicModule;
 using System;
 using System.Collections.Generic;
 
-namespace Eduplus.Domain.CoreModule
+namespace Eduplos.Domain.CoreModule
 {
     public abstract class Person
     {

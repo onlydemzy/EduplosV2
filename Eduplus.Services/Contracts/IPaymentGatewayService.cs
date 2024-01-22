@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Eduplus.Services.Contracts
+namespace Eduplos.Services.Contracts
 {
     public interface IPaymentGatewayService
     {

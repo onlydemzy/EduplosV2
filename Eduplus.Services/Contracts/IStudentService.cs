@@ -1,12 +1,12 @@
-﻿using Eduplus.Domain.AcademicModule;
-using Eduplus.Domain.CoreModule;
-using Eduplus.DTO.AcademicModule;
-using Eduplus.DTO.CoreModule;
+﻿using Eduplos.Domain.AcademicModule;
+using Eduplos.Domain.CoreModule;
+using Eduplos.DTO.AcademicModule;
+using Eduplos.DTO.CoreModule;
 using KS.Core.UserManagement;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Eduplus.Services.Contracts
+namespace Eduplos.Services.Contracts
 {
     public interface IStudentService
     {
@@ -23,7 +23,7 @@ namespace Eduplus.Services.Contracts
         List<ApplicantDTO> FetchApplicants(string session, string programmeType, string rpt);
         List<ApplicantDTO> FetchApplicantsByDept(string session, string deptCode, string progType, string rpt);
 
-
+        bool CheckStudentStatus(string studentId);
         string AdmitStudent(string studentId, string userId);
         string AddmitWithoutAcceptanceFee(string studentId);
         int CreateNewStudentProfile(ProspectiveStudentDTO st);

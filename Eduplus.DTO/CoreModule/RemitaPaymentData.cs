@@ -1,11 +1,11 @@
-﻿using Eduplus.DTO.CoreModule;
+﻿using Eduplos.DTO.CoreModule;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Eduplus.DTO.CoreModule
+namespace Eduplos.DTO.CoreModule
 {
     public class RemitaPaymentDataWithLineItems:GatewayPaymentDataBaseDTO
     {

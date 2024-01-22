@@ -1,12 +1,12 @@
-﻿using Eduplus.Domain.AcademicModule;
-using Eduplus.Domain.BurseryModule;
-using Eduplus.Domain.CoreModule;
-using Eduplus.DTO.AcademicModule;
-using Eduplus.DTO.ArticleModule;
-using Eduplus.DTO.CoreModule;
-using Eduplus.ObjectMappings;
-using Eduplus.Services.Contracts;
-using Eduplus.Services.UtilityServices;
+﻿using Eduplos.Domain.AcademicModule;
+using Eduplos.Domain.BurseryModule;
+using Eduplos.Domain.CoreModule;
+using Eduplos.DTO.AcademicModule;
+using Eduplos.DTO.ArticleModule;
+using Eduplos.DTO.CoreModule;
+using Eduplos.ObjectMappings;
+using Eduplos.Services.Contracts;
+using Eduplos.Services.UtilityServices;
 using KS.Core;
 using KS.Data;
 using System;
@@ -15,7 +15,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Eduplus.Services.Implementations
+namespace Eduplos.Services.Implementations
 {
     public class GeneralDutiesService : IGeneralDutiesService
     {

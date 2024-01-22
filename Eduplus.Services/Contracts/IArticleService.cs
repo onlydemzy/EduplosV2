@@ -1,7 +1,7 @@
-﻿using Eduplus.DTO.ArticleModule;
+﻿using Eduplos.DTO.ArticleModule;
 using System.Collections.Generic;
 
-namespace Eduplus.Services.Contracts
+namespace Eduplos.Services.Contracts
 {
     public interface IArticleService
     {

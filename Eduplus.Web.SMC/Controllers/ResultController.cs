@@ -1,9 +1,9 @@
-﻿using Eduplus.Domain.CoreModule;
-using Eduplus.DTO.AcademicModule;
-using Eduplus.Services.Contracts;
-using Eduplus.Web.SMC.PDFGenerations;
-using Eduplus.Web.SMC.PDFGenerations.EventHandlers;
-using Eduplus.Web.SMC.ViewModels;
+﻿using Eduplos.Domain.CoreModule;
+using Eduplos.DTO.AcademicModule;
+using Eduplos.Services.Contracts;
+using Eduplos.Web.SMC.PDFGenerations;
+using Eduplos.Web.SMC.PDFGenerations.EventHandlers;
+using Eduplos.Web.SMC.ViewModels;
 using iText.IO.Font;
 using iText.Kernel.Font;
 using iText.Kernel.Geom;
@@ -23,7 +23,7 @@ using System.Web.Http.Results;
 using System.Web.Mvc;
 using System.Windows.Documents;
 
-namespace Eduplus.Web.SMC.Controllers
+namespace Eduplos.Web.SMC.Controllers
 {
     [KS.Web.Security.KSWebAuthorisation]
     public class ResultController : BaseController
@@ -97,10 +97,11 @@ namespace Eduplus.Web.SMC.Controllers
                 wrkSheet.Cells[1, 8].Value = "CA2";
                 wrkSheet.Cells[1, 9].Value = "Exam";
                 wrkSheet.Cells[1, 10].Value = "Programme";
-
+                
                 for (int i = 0; i < scores.Count; i++)
                 {
                     wrkSheet.Cells[i + 2, 1].Value = scores[i].StudentId;
+
                     wrkSheet.Cells[i + 2, 2].Value = scores[i].RegistrationId.ToString();
                     wrkSheet.Cells[i + 2, 3].Value = scores[i].CourseId;
                     wrkSheet.Cells[i + 2, 4].Value = i + 1;
@@ -111,6 +112,7 @@ namespace Eduplus.Web.SMC.Controllers
                 wrkSheet.View.FreezePanes(2, 1);
                 wrkSheet.Cells[1, 1, 1, 1 + 1].Style.Font.Bold = true;
                 wrkSheet.Column(1).Hidden = true;
+                
                 wrkSheet.Column(2).Hidden = true;
                 wrkSheet.Column(3).Hidden = true;
                 wrkSheet.Column(4).Width = 3;
@@ -242,24 +244,7 @@ namespace Eduplus.Web.SMC.Controllers
         {
             return View();
         }
-        public string SubmitResultApproval(object[] data1)
-        {
-            string _prog;
-            int semesterId = (int)data1[0];
-            string prog = (string)data1[1];
-            string appType = (string)data1[2];
-            int lvl = (int)data1[3];
-            if(prog=="undefined")
-            {
-                var user = (CustomPrincipal)Session["loggedUser"];
-                _prog = user.ProgrammeCode;
-            }
-            else
-            {
-                _prog = prog;
-            }
-            return _academicService.ApproveResults(semesterId, lvl, prog, User.UserId);
-        }
+        
         #endregion
 
         #region RESULT REPORTS

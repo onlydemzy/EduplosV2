@@ -1,7 +1,7 @@
-﻿using Eduplus.Domain.AcademicModule;
+﻿using Eduplos.Domain.AcademicModule;
 using System.Data.Entity.ModelConfiguration;
 
-namespace Eduplus.Data.EntityConfiguration.AcademicModule
+namespace Eduplos.Data.EntityConfiguration.AcademicModule
 {
     internal class TranscriptConfiguration:EntityTypeConfiguration<TranscriptApplication>
     {

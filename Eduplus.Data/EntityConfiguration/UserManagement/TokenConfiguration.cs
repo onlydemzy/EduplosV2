@@ -1,7 +1,7 @@
 ﻿using KS.Core.UserManagement;
 using System.Data.Entity.ModelConfiguration;
 
-namespace Eduplus.Data.EntityConfiguration.UserManagement
+namespace Eduplos.Data.EntityConfiguration.UserManagement
 {
     public class TokenConfiguration:EntityTypeConfiguration<Token>
     {

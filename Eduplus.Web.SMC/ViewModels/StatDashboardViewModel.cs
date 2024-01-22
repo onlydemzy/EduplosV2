@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data;
 
-namespace Eduplus.Web.SMC.ViewModels
+namespace Eduplos.Web.SMC.ViewModels
 {
     public class StatDashboardViewModel
     {

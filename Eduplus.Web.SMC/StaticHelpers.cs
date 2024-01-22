@@ -1,5 +1,5 @@
-﻿using Eduplus.Domain.CoreModule;
-using Eduplus.DTO.AcademicModule;
+﻿using Eduplos.Domain.CoreModule;
+using Eduplos.DTO.AcademicModule;
 using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 
-namespace Eduplus.Web.SMC
+namespace Eduplos.Web.SMC
 {
     public static class StaticHelpers
     {

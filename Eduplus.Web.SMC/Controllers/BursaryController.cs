@@ -1,6 +1,6 @@
-﻿using Eduplus.Domain.BurseryModule;
-using Eduplus.DTO.BursaryModule;
-using Eduplus.Services.Contracts;
+﻿using Eduplos.Domain.BurseryModule;
+using Eduplos.DTO.BursaryModule;
+using Eduplos.Services.Contracts;
 using KS.Domain.AccountsModule;
 using KS.Services.Contract;
 using KS.UI.ViewModel;
@@ -17,7 +17,7 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 
-namespace Eduplus.Web.SMC.Controllers
+namespace Eduplos.Web.SMC.Controllers
 {
     [KSWebAuthorisation]
     public class BursaryController : BaseController

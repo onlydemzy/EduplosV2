@@ -1,22 +1,22 @@
-﻿using Eduplus.Services.Contracts;
+﻿using Eduplos.Services.Contracts;
 using KS.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Eduplus.Domain.BurseryModule;
-using Eduplus.DTO.BursaryModule;
-using Eduplus.Domain.CoreModule;
-using Eduplus.Services.UtilityServices;
+using Eduplos.Domain.BurseryModule;
+using Eduplos.DTO.BursaryModule;
+using Eduplos.Domain.CoreModule;
+using Eduplos.Services.UtilityServices;
 using KS.Domain.AccountsModule;
-using Eduplus.Web.SMC.ViewModels;
+using Eduplos.Web.SMC.ViewModels;
 using OfficeOpenXml;
 using System.Data.Entity;
-using Eduplus.ObjectMappings;
-using Eduplus.DTO.CoreModule;
-using Eduplus.Domain.AcademicModule;
+using Eduplos.ObjectMappings;
+using Eduplos.DTO.CoreModule;
+using Eduplos.Domain.AcademicModule;
 using KS.Core.UserManagement;
 
-namespace Eduplus.Services.Implementations
+namespace Eduplos.Services.Implementations
 {
     public class StudentsAccountsService:IStudentsAccountsService
     {
@@ -384,6 +384,8 @@ namespace Eduplus.Services.Implementations
             invoice.Installment = "Full";
              
             invoice.Semester = currentSemester.SemesterTitle;
+
+
             
             if (charge.Description != "Convocation Fee")
             {

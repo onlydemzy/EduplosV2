@@ -7,8 +7,8 @@
     <ProjectGuid>{B73EFC83-83FA-48B7-A54F-513E2322EA97}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Eduplus.DTO</RootNamespace>
-    <AssemblyName>Eduplus.DTO</AssemblyName>
+    <RootNamespace>Eduplos.DTO</RootNamespace>
+    <AssemblyName>Eduplos.DTO</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

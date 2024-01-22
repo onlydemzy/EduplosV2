@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using Eduplus.DTO.CoreModule;
-using Eduplus.Domain.AcademicModule;
-using Eduplus.DTO.AcademicModule;
-using Eduplus.DTO;
+using Eduplos.DTO.CoreModule;
+using Eduplos.Domain.AcademicModule;
+using Eduplos.DTO.AcademicModule;
+using Eduplos.DTO;
 
-namespace Eduplus.Services.Contracts
+namespace Eduplos.Services.Contracts
 {
     public interface IAcademicAffairsService
     {

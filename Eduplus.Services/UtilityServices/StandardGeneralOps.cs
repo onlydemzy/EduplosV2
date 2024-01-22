@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Eduplus.Services.UtilityServices
+namespace Eduplos.Services.UtilityServices
 {
     internal static class StandardGeneralOps
     {

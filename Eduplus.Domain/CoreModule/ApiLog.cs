@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net;
 
-namespace Eduplus.Domain.CoreModule
+namespace Eduplos.Domain.CoreModule
 {
     public class ApiLog
     {

@@ -1,9 +1,9 @@
-﻿using Eduplus.Domain.AcademicModule;
-using Eduplus.Domain.BurseryModule;
+﻿using Eduplos.Domain.AcademicModule;
+using Eduplos.Domain.BurseryModule;
 using System;
 using System.Collections.Generic;
 
-namespace Eduplus.Domain.CoreModule
+namespace Eduplos.Domain.CoreModule
 {
     public class Student:Person
     {

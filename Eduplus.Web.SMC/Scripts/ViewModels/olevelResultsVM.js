@@ -9,10 +9,10 @@ function resultDetails(data) {
     self.SitAttempt = ko.observable(sitattempt);
     self.StudentId = ko.observable(data ? data.StudentId : '');
     self.ExamNumber = ko.observable(data ? data.ExamNumber : '');
-    self.Year = ko.observable(data ? data.Year : 0);
+    self.ExamYear = ko.observable(data ? data.ExamYear :2000);
     self.ExamType = ko.observable(data ? data.ExamType : '');
     self.Venue = ko.observable(data ? data.Venue : '');
-
+    
 };
 var sitattempt = 1;
 
@@ -21,7 +21,7 @@ function resultVM() {
     self.SitAttempt = ko.observable(sitattempt);
     self.StudentId = ko.observable();
     self.ExamNumber = ko.observable().extend({ required: true });
-    self.Year = ko.observable().extend({ required: true,maxLength:4 });
+    self.ExamYear = ko.observable().extend({ required: true,maxLength:4 });
     self.ExamType = ko.observable().extend({ required: true });
     self.Venue = ko.observable().extend({ required: true });
     self.ResultId = ko.observable('');
@@ -54,6 +54,7 @@ function resultVM() {
         }
         if (isvalid) {
             self.kill(true);
+            if (self.ExamYear() < 2003) { alert('Invalid year inputted'); return 0; }
             var item = new resultDetails();
             item.ResultId(self.ResultId());
             item.StudentId(self.StudentId());
@@ -61,7 +62,7 @@ function resultVM() {
             item.ExamType(self.ExamType());
             item.Venue(self.Venue());
             item.SitAttempt(self.SitAttempt());
-            item.Year(self.Year());
+            item.ExamYear(self.ExamYear());
             item.Subject(self.subject());
             item.Grade(self.grade());
 
@@ -155,7 +156,7 @@ function resultVM() {
         self.Details([]);
         self.ResultId('');
         self.Venue('');
-        self.Year();
+        self.ExamYear();
         self.ExamType(undefined);
         self.ExamNumber('');
         self.SitAttempt(sitAt);
@@ -175,7 +176,7 @@ function resultVM() {
                     self.ExamNumber(data.ExamNumber);
                     self.SitAttempt(data.SitAttempt);
                     self.StudentId(data.StudentId);
-                    self.Year(data.Year);
+                    self.ExamYear(data.ExamYear);
 
                     ko.utils.arrayForEach(data.Details, function (dt) {
                         self.Details.push(new resultDetails(dt))

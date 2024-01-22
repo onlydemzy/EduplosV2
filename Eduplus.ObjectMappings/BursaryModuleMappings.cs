@@ -1,9 +1,9 @@
-﻿using Eduplus.Domain.BurseryModule;
-using Eduplus.DTO.BursaryModule;
+﻿using Eduplos.Domain.BurseryModule;
+using Eduplos.DTO.BursaryModule;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Eduplus.ObjectMappings
+namespace Eduplos.ObjectMappings
 {
     public static class BursaryModuleMappings
     {

@@ -7,8 +7,8 @@
     <ProjectGuid>{3A7830DC-17AF-41EF-A679-90D942D402BC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Eduplus.ObjectMappings</RootNamespace>
-    <AssemblyName>Eduplus.ObjectMappings</AssemblyName>
+    <RootNamespace>Eduplos.ObjectMappings</RootNamespace>
+    <AssemblyName>Eduplos.ObjectMappings</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -52,13 +52,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Eduplus.Domain\Eduplus.Domain.csproj">
+    <ProjectReference Include="..\Eduplus.Domain\Eduplos.Domain.csproj">
       <Project>{1AD68F96-9790-4E01-983B-876955930E87}</Project>
-      <Name>Eduplus.Domain</Name>
+      <Name>Eduplos.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Eduplus.DTO\Eduplus.DTO.csproj">
+    <ProjectReference Include="..\Eduplus.DTO\Eduplos.DTO.csproj">
       <Project>{B73EFC83-83FA-48B7-A54F-513E2322EA97}</Project>
-      <Name>Eduplus.DTO</Name>
+      <Name>Eduplos.DTO</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

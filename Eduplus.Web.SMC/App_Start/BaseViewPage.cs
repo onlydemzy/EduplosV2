@@ -1,5 +1,5 @@
-﻿using Eduplus.Domain.CoreModule;
-using Eduplus.Services.Implementations;
+﻿using Eduplos.Domain.CoreModule;
+using Eduplos.Services.Implementations;
 using KS.Web.Security;
 using System.Web.Mvc;
 

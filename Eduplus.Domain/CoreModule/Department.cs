@@ -1,7 +1,7 @@
-using Eduplus.Domain.AcademicModule;
+using Eduplos.Domain.AcademicModule;
 using System.Collections.Generic;
 
-namespace Eduplus.Domain.CoreModule
+namespace Eduplos.Domain.CoreModule
 {
     public class Department
     {

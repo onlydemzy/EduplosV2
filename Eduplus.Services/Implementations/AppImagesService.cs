@@ -1,12 +1,12 @@
-﻿using Eduplus.Domain.CoreModule;
-using Eduplus.Services.Contracts;
+﻿using Eduplos.Domain.CoreModule;
+using Eduplos.Services.Contracts;
 using KS.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Eduplus.Services.Implementations
+namespace Eduplos.Services.Implementations
 {
     public class AppImagesService:IAppImagesService
     {

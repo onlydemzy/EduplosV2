@@ -1,8 +1,8 @@
-﻿using Eduplus.Domain.AcademicModule;
+﻿using Eduplos.Domain.AcademicModule;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 
-namespace Eduplus.Data.EntityConfiguration.AcademicModule
+namespace Eduplos.Data.EntityConfiguration.AcademicModule
 {
     internal class ProgrammeConfiguration:EntityTypeConfiguration<Programme>
     {  
@@ -16,6 +16,7 @@ namespace Eduplus.Data.EntityConfiguration.AcademicModule
             Property(c => c.MatricNoGeneratorType).HasMaxLength(50);
             Property(c => c.MatricNoSeparator).HasMaxLength(1);
             Property(c => c.Award).HasMaxLength(100);
+            Property(c => c.SiwesSemester).HasMaxLength(20);
             HasMany(a => a.MatricNoFormats).WithRequired(a=>a.Programme).HasForeignKey(a => a.ProgrammeCode);
             HasRequired(c => c.Department).WithMany().HasForeignKey(c => c.DepartmentCode).WillCascadeOnDelete(false);
 

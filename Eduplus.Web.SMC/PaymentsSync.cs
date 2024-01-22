@@ -1,6 +1,6 @@
-﻿using Eduplus.Services.Contracts;
-using Eduplus.Web.SMC.Controllers;
-using Eduplus.Web.SMC.ViewModels;
+﻿using Eduplos.Services.Contracts;
+using Eduplos.Web.SMC.Controllers;
+using Eduplos.Web.SMC.ViewModels;
 using Newtonsoft.Json;
 using Quartz;
 using Quartz.Impl;
@@ -13,7 +13,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace Eduplus.Web.SMC
+namespace Eduplos.Web.SMC
 {
     public class PaymentsSyncJob : IJob
     {

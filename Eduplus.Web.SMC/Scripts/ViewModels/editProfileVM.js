@@ -75,7 +75,7 @@ function viewModel() {
     self.sessions = ko.observable();
     self.Prog = ko.observable().extend({required:true});
     self.Status = ko.observable().extend({ required: true });
-    self.statues = ko.observableArray(['Active','About to Graduate', 'Graduated','Probation','Prospective','Suspend']);
+    self.statues = ko.observableArray(['Active','About to Graduate', 'Graduated','Probation','Prospective','Suspended']);
     self.CurrentLevel = ko.observable();
     self.lvls = ko.observableArray([0, 100, 200, 300, 400, 500]);
     self.progTypes = ko.observableArray();

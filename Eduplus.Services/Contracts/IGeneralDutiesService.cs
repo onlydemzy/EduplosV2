@@ -1,12 +1,12 @@
-﻿using Eduplus.Domain.AcademicModule;
-using Eduplus.Domain.BurseryModule;
-using Eduplus.Domain.CoreModule;
-using Eduplus.DTO.AcademicModule;
-using Eduplus.DTO.ArticleModule;
-using Eduplus.DTO.CoreModule;
+﻿using Eduplos.Domain.AcademicModule;
+using Eduplos.Domain.BurseryModule;
+using Eduplos.Domain.CoreModule;
+using Eduplos.DTO.AcademicModule;
+using Eduplos.DTO.ArticleModule;
+using Eduplos.DTO.CoreModule;
 using System.Collections.Generic;
 
-namespace Eduplus.Services.Contracts
+namespace Eduplos.Services.Contracts
 {
     public interface IGeneralDutiesService
     {

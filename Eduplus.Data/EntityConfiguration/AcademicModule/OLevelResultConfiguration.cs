@@ -1,8 +1,8 @@
-﻿using Eduplus.Domain.AcademicModule;
+﻿using Eduplos.Domain.AcademicModule;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 
-namespace Eduplus.Data.EntityConfiguration.AcademicModule
+namespace Eduplos.Data.EntityConfiguration.AcademicModule
 {
     internal class OLevelResultConfiguration:EntityTypeConfiguration<OLevelResult>
     {
@@ -29,7 +29,8 @@ namespace Eduplus.Data.EntityConfiguration.AcademicModule
             Property(k => k.DetailId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             Property(k => k.Subject).HasMaxLength(100);
             Property(k => k.Grade).HasMaxLength(10);
-            HasRequired(a => a.OlevelResult).WithMany(a=>a.OlevelResultDetail).HasForeignKey(a => a.ResultId);
+            HasRequired(a => a.OlevelResult).WithMany(a=>a.OlevelResultDetail).HasForeignKey(a => a.ResultId)
+                .WillCascadeOnDelete(true);
         }
     }
 }

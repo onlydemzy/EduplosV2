@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Eduplus.DTO.AcademicModule
+namespace Eduplos.DTO.AcademicModule
 {
     public class OtherQualificationDTO
     {

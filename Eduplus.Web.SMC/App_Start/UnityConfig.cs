@@ -1,5 +1,5 @@
-using Eduplus.Services.Contracts;
-using Eduplus.Services.Implementations;
+using Eduplos.Services.Contracts;
+using Eduplos.Services.Implementations;
 using KS.Core;
 using KS.Data.Repositories;
 using KS.Services.Contract;
@@ -8,7 +8,7 @@ using System;
 using System.Web.Http;
 using Unity;
 
-namespace Eduplus.Web.SMC
+namespace Eduplos.Web.SMC
 {
     /// <summary>
     /// Specifies the Unity configuration for the main container.

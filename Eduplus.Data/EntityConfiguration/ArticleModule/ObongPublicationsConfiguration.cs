@@ -1,7 +1,7 @@
-﻿using Eduplus.Domain.ArticleModule;
+﻿using Eduplos.Domain.ArticleModule;
 using System.Data.Entity.ModelConfiguration;
 
-namespace Eduplus.Data.EntityConfiguration.ArticleModule
+namespace Eduplos.Data.EntityConfiguration.ArticleModule
 {
     internal class ObongPublicationsConfiguration : EntityTypeConfiguration<ObongPublications>
     {

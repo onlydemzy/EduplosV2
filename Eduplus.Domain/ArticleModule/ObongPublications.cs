@@ -1,6 +1,6 @@
-﻿using Eduplus.Domain.CoreModule;
+﻿using Eduplos.Domain.CoreModule;
 
-namespace Eduplus.Domain.ArticleModule
+namespace Eduplos.Domain.ArticleModule
 {
     public class ObongPublications
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Eduplus.Domain.BurseryModule
+namespace Eduplos.Domain.BurseryModule
 {
     public class GateWaylogs
     {

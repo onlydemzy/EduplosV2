@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Eduplus.DTO.AcademicModule
+namespace Eduplos.DTO.AcademicModule
 {
     public class JambDTO
     {
@@ -23,6 +23,7 @@ namespace Eduplus.DTO.AcademicModule
         public int JambYear { get; set; }
         public int Score { get; set; }
         public long ScoreId { get; set; }
+        public int Flag { get; set; }
 
     }
 

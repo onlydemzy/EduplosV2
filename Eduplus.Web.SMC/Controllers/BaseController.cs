@@ -6,14 +6,14 @@ using System;
 using System.ComponentModel;
 using OfficeOpenXml;
 using System.IO;
-using Eduplus.Domain.CoreModule;
-using Eduplus.Services.Contracts;
-using Eduplus.Services.Implementations;
-using Eduplus.DTO.AcademicModule;
+using Eduplos.Domain.CoreModule;
+using Eduplos.Services.Contracts;
+using Eduplos.Services.Implementations;
+using Eduplos.DTO.AcademicModule;
 using System.Drawing;
 using OfficeOpenXml.Style;
 
-namespace Eduplus.Web.SMC.Controllers
+namespace Eduplos.Web.SMC.Controllers
 {
     public class BaseController : Controller
     {
@@ -112,7 +112,7 @@ namespace Eduplus.Web.SMC.Controllers
 
             workSheet.Cells[8, 1].Value = title;
             workSheet.Cells[8, 1].Style.Font.Bold = true;
-            workSheet.Cells[8, 1].Style.Font.Size = 11;
+            workSheet.Cells[8, 1].Style.Font.Size = 13;
             workSheet.Cells[8, 1].Style.Font.UnderLine = true;
             //Add Descriptive texts
             string fac;
@@ -134,7 +134,7 @@ namespace Eduplus.Web.SMC.Controllers
             
             workSheet.Cells[13, 1].Value = "S/N";
             workSheet.Column(1).Width = 4;
-            workSheet.Cells[13, 1].Style.Font.Size = 7;
+            workSheet.Cells[13, 1].Style.Font.Size = 9;
             workSheet.Cells[13, 1].Style.Font.Name = "Arial";
             workSheet.Cells[13, 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
             workSheet.Cells[13, 1].Style.Border.Left.Style = ExcelBorderStyle.Thin;
@@ -157,7 +157,7 @@ namespace Eduplus.Web.SMC.Controllers
                 workSheet.Cells[13, colIndex].Style.WrapText = true;
                 workSheet.Cells[13, colIndex].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
                 workSheet.Cells[13, colIndex].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
-                workSheet.Cells[13, colIndex].Style.Font.Size = 7;
+                workSheet.Cells[13, colIndex].Style.Font.Size = 9;
                 workSheet.Cells[13, colIndex].Style.Font.Name = "Arial";
                 //Apply borders
                 workSheet.Cells[13, colIndex].Style.Border.Left.Style = ExcelBorderStyle.Thin;
@@ -175,7 +175,7 @@ namespace Eduplus.Web.SMC.Controllers
             foreach (DataRow r in dto.Results.Rows)
             {
                 workSheet.Cells[rowIndex,1 ].Value = count+1;
-                workSheet.Cells[rowIndex, 1].Style.Font.Size = 7;
+                workSheet.Cells[rowIndex, 1].Style.Font.Size = 9;
                 workSheet.Cells[rowIndex, 1].Style.Font.Name = "Arial";
                 workSheet.Cells[rowIndex, 1].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                 workSheet.Cells[rowIndex, 1].Style.Border.Right.Style = ExcelBorderStyle.Thin;
@@ -193,7 +193,7 @@ namespace Eduplus.Web.SMC.Controllers
                 {
 
                     workSheet.Cells[rowIndex, colIndex2 + 1].Value = r[c.ColumnName].ToString();
-                    workSheet.Cells[rowIndex, colIndex2 + 1].Style.Font.Size = 7;
+                    workSheet.Cells[rowIndex, colIndex2 + 1].Style.Font.Size = 9;
                     workSheet.Cells[rowIndex, colIndex2 + 1].Style.Font.Name = "Arial";
                     workSheet.Cells[rowIndex, colIndex2 + 1].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                     workSheet.Cells[rowIndex, colIndex2 + 1].Style.Border.Right.Style = ExcelBorderStyle.Thin;
@@ -214,29 +214,29 @@ namespace Eduplus.Web.SMC.Controllers
             rowIndex = rowIndex + 3;
             workSheet.Cells[rowIndex, 4].Value = "___________________________";
             workSheet.Cells[rowIndex,4].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-            workSheet.Cells[rowIndex, 4].Style.Font.Size = 7;
+            workSheet.Cells[rowIndex, 4].Style.Font.Size = 9;
             workSheet.Cells[rowIndex, 4].Style.Font.Name = "Arial";
             workSheet.Cells[rowIndex, 10].Value = "___________________________";
             workSheet.Cells[rowIndex, 10].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-            workSheet.Cells[rowIndex, 10].Style.Font.Size = 7;
+            workSheet.Cells[rowIndex, 10].Style.Font.Size = 9;
             workSheet.Cells[rowIndex, 10].Style.Font.Name = "Arial";
 
             workSheet.Cells[rowIndex, 16].Value = "___________________________";
             workSheet.Cells[rowIndex, 16].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-            workSheet.Cells[rowIndex, 16].Style.Font.Size = 7;
+            workSheet.Cells[rowIndex, 16].Style.Font.Size = 9;
             workSheet.Cells[rowIndex, 16].Style.Font.Name = "Arial";
 
             workSheet.Cells[rowIndex+1, 4].Value = "Exams Officer";
             workSheet.Cells[rowIndex+1, 4].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-            workSheet.Cells[rowIndex+1, 4].Style.Font.Size = 7;
+            workSheet.Cells[rowIndex+1, 4].Style.Font.Size = 9;
             workSheet.Cells[rowIndex+1, 4].Style.Font.Name = "Arial";
             workSheet.Cells[rowIndex+1, 10].Value = "HOD";
             workSheet.Cells[rowIndex+1, 10].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-            workSheet.Cells[rowIndex+1, 10].Style.Font.Size = 7;
+            workSheet.Cells[rowIndex+1, 10].Style.Font.Size = 9;
             workSheet.Cells[rowIndex+1, 10].Style.Font.Name = "Arial";
             workSheet.Cells[rowIndex+1, 16].Value = "Dean of "+fac;
             workSheet.Cells[rowIndex+1, 16].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-            workSheet.Cells[rowIndex+1, 16].Style.Font.Size = 7;
+            workSheet.Cells[rowIndex+1, 16].Style.Font.Size = 9;
             workSheet.Cells[rowIndex+1, 16].Style.Font.Name = "Arial";
 
 

@@ -1,6 +1,6 @@
-﻿using Eduplus.Domain;
-using Eduplus.Domain.BurseryModule;
-using Eduplus.DTO.BursaryModule;
+﻿using Eduplos.Domain;
+using Eduplos.Domain.BurseryModule;
+using Eduplos.DTO.BursaryModule;
 using KS.Data.Repositories;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Eduplus.Data.Repositories
+namespace Eduplos.Data.Repositories
 {
     public class InvoiceDetailRepository : Repository<InvoiceDetails>, IInvoiceDetailRepository
     {

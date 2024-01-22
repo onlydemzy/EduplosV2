@@ -43,7 +43,7 @@ switch (self.report())
                     window.open('/Bursary/StudentBalancesByProgTypeAsPDF?sessionId=' + self.sessionId() + '&progType=' + self.progType());
                     break;
                 case 'To Excel':
-                    window.location.href = '/Bursary/ViewSchoolFeePaymentsAsExcel?sessionId=' + self.sessionId() + '&deptCode=' + self.deptCode();
+        window.location.href = '/Bursary/StudentBalancesByProgTypeAsExcel?sessionId=' + self.sessionId() + '&progType=' + self.progType();
                     break;
             }
 }

@@ -373,15 +373,12 @@ viewModel = function () {
     //=========================================END=============================================
     //download template
     self.dwnLoad = function () {
-        /*self.data1.push(self.CourseId());
-        self.data1.push(self.SemesterId);
-        $.ajax({
-            type: 'post',
-            contentType: 'application/json; charset=utf-8',
-            url: '/Result/ScoresEntryTemplate',
-            data: ko.toJSON(self.data1)
-        });*/
-        window.location.href = '/Result/ScoresEntryTemplate?courseId=' + self.CourseId() + '&semesterId=' + self.SemesterId();
+        if (self.CourseId() == null || self.SemesterId() == null) {
+            alert("Course or Semester missing");
+            return;
+        }
+        else { window.location.href = '/Result/ScoresEntryTemplate?courseId=' + self.CourseId() + '&semesterId=' + self.SemesterId(); }
+        
     }
 };
 ko.applyBindings(new viewModel());

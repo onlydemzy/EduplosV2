@@ -1,7 +1,7 @@
-﻿using Eduplus.Domain.AcademicModule;
+﻿using Eduplos.Domain.AcademicModule;
 using System.Collections.Generic;
 
-namespace Eduplus.eb.SMC.ViewModels
+namespace Eduplos.eb.SMC.ViewModels
 {
     public class JambReg
     {

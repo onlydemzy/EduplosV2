@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Eduplus.Web.ViewModels
+namespace Eduplos.Web.ViewModels
 {
     public class Step1RegistrationViewModel
     {

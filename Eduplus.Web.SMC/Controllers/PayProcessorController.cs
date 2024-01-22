@@ -1,6 +1,6 @@
-﻿using Eduplus.Domain.BurseryModule;
-using Eduplus.Services.Contracts;
-using Eduplus.Web.SMC.ViewModels;
+﻿using Eduplos.Domain.BurseryModule;
+using Eduplos.Services.Contracts;
+using Eduplos.Web.SMC.ViewModels;
 using KS.Services.Contract;
 using Newtonsoft.Json;
 using NLog;
@@ -10,7 +10,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 
-namespace Eduplus.Web.SMC.Controllers
+namespace Eduplos.Web.SMC.Controllers
 {
     [RoutePrefix("api/PayProcessor")]
     public class PayProcessorController : ApiController

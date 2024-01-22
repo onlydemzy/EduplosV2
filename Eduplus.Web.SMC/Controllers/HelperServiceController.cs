@@ -1,7 +1,7 @@
 ﻿
-using Eduplus.DTO.AcademicModule;
-using Eduplus.DTO.CoreModule;
-using Eduplus.Services.Contracts;
+using Eduplos.DTO.AcademicModule;
+using Eduplos.DTO.CoreModule;
+using Eduplos.Services.Contracts;
 using KS.Services.Contract;
 using KS.Web.Security;
 using System;
@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
-namespace Eduplus.Web.SMC.Controllers
+namespace Eduplos.Web.SMC.Controllers
 {
     
     public class HelperServiceController : BaseController

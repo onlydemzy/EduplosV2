@@ -1,10 +1,10 @@
-﻿using Eduplus.Domain.ArticleModule;
+﻿using Eduplos.Domain.ArticleModule;
 using KS.Core;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 
-namespace Eduplus.Data.Repositories
+namespace Eduplos.Data.Repositories
 {
     public static class ArticleRepositoryExtensions
     {

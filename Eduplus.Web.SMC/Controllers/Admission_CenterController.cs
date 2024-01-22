@@ -1,11 +1,11 @@
-﻿using Eduplus.Domain.AcademicModule;
-using Eduplus.Domain.CoreModule;
-using Eduplus.DTO.AcademicModule;
-using Eduplus.DTO.CoreModule;
-using Eduplus.eb.SMC.ViewModels;
-using Eduplus.Services.Contracts;
-using Eduplus.Web.SMC.PDFGenerations;
-using Eduplus.Web.SMC.ViewModels;
+﻿using Eduplos.Domain.AcademicModule;
+using Eduplos.Domain.CoreModule;
+using Eduplos.DTO.AcademicModule;
+using Eduplos.DTO.CoreModule;
+using Eduplos.eb.SMC.ViewModels;
+using Eduplos.Services.Contracts;
+using Eduplos.Web.SMC.PDFGenerations;
+using Eduplos.Web.SMC.ViewModels;
 using KS.AES256Encryption;
 using KS.Services.Contract;
 using KS.Web.Security;
@@ -22,7 +22,7 @@ using System.Web.Caching;
 using System.Web.Http.Results;
 using System.Web.Mvc;
 
-namespace Eduplus.Web.SMC.Controllers
+namespace Eduplos.Web.SMC.Controllers
 {
    // [KSWebAuthorisation]
     public class Admission_CenterController : BaseController
@@ -392,8 +392,7 @@ namespace Eduplus.Web.SMC.Controllers
         [HttpPost]
         public JsonResult AddOlevelResult(OlevelResultDetailDTO item)
         {
-
-            string studentid;
+             
             int flag;
             var user = (CustomPrincipal)Session["LoggedUser"];
             if (User.IsSysAdmin==true)

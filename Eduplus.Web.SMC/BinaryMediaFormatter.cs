@@ -7,7 +7,7 @@ using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Eduplus.Web.SMC
+namespace Eduplos.Web.SMC
 {
     public class BinaryMediaFormatter : MediaTypeFormatter
     {

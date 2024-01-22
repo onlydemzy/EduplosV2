@@ -3,7 +3,7 @@ using Microsoft.Owin.Security.Cookies;
 using Owin;
 using System;
 
-namespace Eduplus.Web
+namespace Eduplos.Web
 {
     public partial class Startup
     {

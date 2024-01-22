@@ -1,4 +1,4 @@
-﻿namespace Eduplus.Web.SMC.ViewModels
+﻿namespace Eduplos.Web.SMC.ViewModels
 {
     public class ScoresEntryVM
     {
