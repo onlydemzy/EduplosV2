@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/Eduplus.Web.SMC/Web.config
+/Eduplus.Web.SMC/Web.Debug.config
+/Eduplus.Web.SMC/Web.Release.config
